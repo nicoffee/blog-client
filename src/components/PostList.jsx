@@ -3,14 +3,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PostsList = () => (
+const PostsList = ({ posts, fetchPosts }) => (
   <div>
-    1, 2, 3
+    <button onClick={() => fetchPosts()}>Fetch posts</button>
+    {posts.map(post => (
+      <div key={post.id}>
+        <h1>{post.title}</h1>
+        <p>{post.text}</p>
+      </div>
+    ))}
   </div>
 );
 
 PostsList.propTypes = {
-  store: PropTypes.object.isRequired
+  posts: PropTypes.array,
+  fetchPosts: PropTypes.func
 };
 
 export default PostsList;

@@ -4,19 +4,18 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import PostList from './PostList';
+import PostListContainer from './../containers/PostListContainer';
 
-const Root = ({ store }) => (
+const App = ({ store }) => (
   <Provider store={store}>
     <Router>
-      <h1>Hello world!</h1>
-      <PostList/>
+      <Route path="/" component={PostListContainer} />
     </Router>
   </Provider>
 );
 
-Root.propTypes = {
+App.propTypes = {
   store: PropTypes.object.isRequired
 };
 
-export default Root;
+export default App;
