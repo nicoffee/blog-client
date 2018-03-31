@@ -1,19 +1,20 @@
 // @flow
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Post from './Post';
 
-const PostsList = ({ posts, fetchPosts }) => (
+const PostsList = ({ posts: Array<{title: string, body: string}>, fetchPosts: Function}) => (
   <div>
     <button onClick={() => fetchPosts()}>Fetch posts</button>
-    {posts.map(post => <Post key={post.id} />)}
+    {posts.map(post => (
+      <Post
+        key={post.id}
+        title={post.title}
+        body={post.body}
+        img="https://picsum.photos/600/300/?random"
+      />
+    ))}
   </div>
 );
-
-PostsList.propTypes = {
-  posts: PropTypes.array,
-  fetchPosts: PropTypes.func
-};
 
 export default PostsList;

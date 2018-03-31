@@ -8,13 +8,12 @@
   "scripts": {
     "start": "npm run dev",
     "start:test": "npm run server & npm run test:watch",
-    "build":
-      "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
-    "dev":
-      "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
+    "build": "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
+    "dev": "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
     "lint": "eslint --ext .jsx --ext .js src/",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "flow": "flow"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -25,7 +24,8 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-actions": "^2.3.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^3.2.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -64,7 +64,8 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "fetch-mock": "^6.0.0",
     "file-loader": "^1.1.9",
-    "flow-bin": "^0.68.0",
+    "flow": "^0.2.3",
+    "flow-bin": "^0.69.0",
     "fs-extra": "^5.0.0",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.1.0",
