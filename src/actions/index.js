@@ -10,8 +10,6 @@ export const postsActions = createActions({
   FETCH_POSTS_ERROR: error => error
 });
 
-console.log('postsActions', postsActions);
-
 export const fetchPosts = () => dispatch => {
   return axios.get(`${api}/posts`).then(response => {
     dispatch(fetchPostsAction(response));

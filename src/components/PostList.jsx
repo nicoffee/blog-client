@@ -4,13 +4,11 @@ import * as React from 'react';
 import Post from './Post';
 
 type Props = {
-  posts: Array<{ title: string, body: string, id: number }>,
-  fetchPosts: Function
+  posts: Array<{ title: string, body: string, id: number }>
 };
 
 const PostsList = (props: Props) => (
   <div>
-    <button onClick={() => props.fetchPosts()}>Fetch posts</button>
     {props.posts.map(post => (
       <Post
         key={post.id}
