@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Button from "./Button";
 
 const StyledPost = styled.div`
@@ -18,7 +18,8 @@ type Props = {
   id: number,
   title: string,
   img: string,
-  body: string
+  body: string,
+  editPost: Function
 };
 
 class Post extends React.Component<Props> {
@@ -26,29 +27,33 @@ class Post extends React.Component<Props> {
     super(props);
 
     this.state = {
-      data: {
         title: props.title,
         body: props.body
-      }
     };
   }
 
   submitForm(e) {
     e.preventDefault();
 
-    console.log("this.state", this.state);
-    console.log("this.props", this.props);
+    this.props.editPost(this.props.id, {title: this.state.title, body:  this.state.body});
+  }
 
-    this.props.editPost(this.props.id, this.state.data);
+  updateData(e) {
+    this.setState({[e.target.name]: e.target.value})
   }
 
   render() {
     return (
       <StyledPost>
         <form>
-          <input type="text" value={this.state.data.title} />
+          <input
+            type="text"
+            name="title"
+            value={this.state.title}
+            onChange={e => this.updateData(e)}
+          />
           <br />
-          <textarea value={this.state.data.body} />
+          <textarea name="body" value={this.state.body} onChange={e => this.updateData(e)} />
           <Button primary type="submit" onClick={e => this.submitForm(e)}>
             Save
           </Button>
@@ -57,12 +62,5 @@ class Post extends React.Component<Props> {
     );
   }
 }
-
-// = (props: Props) => {
-//   console.log("props", props);
-//   return (
-
-//   );
-// };
 
 export default Post;
