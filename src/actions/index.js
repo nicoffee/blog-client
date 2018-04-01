@@ -15,7 +15,15 @@ export const postsActions = createActions({
 export const fetchPosts = () => dispatch => {
   dispatch({ type: "FETCH_POSTS_STARTED" });
 
-  return axios.get(`${api}/posts?limit=10`).then(response => {
+  return axios.get(`${api}/posts`).then(response => {
     dispatch(fetchPostsAction(response));
+  });
+};
+
+export const fetchPostInfo = postId => dispatch => {
+  dispatch({ type: "FETCH_POST_INFO_STARTED" });
+
+  return axios.get(`${api}/posts/${postId}`).then(response => {
+    dispatch(fetchPostInfoAction(response));
   });
 };

@@ -11,6 +11,17 @@ const posts = (state = { isFetching: false, items: [] }, action) => {
   }
 };
 
-const rootReducer = combineReducers({ posts });
+const post = (state = { isFetching: false, info: {} }, action) => {
+  switch (action.type) {
+    case "FETCH_POST_INFO_STARTED":
+      return { isFetching: true };
+    case "FETCH_POST_INFO":
+      return { isFetching: false, info: action.payload.data };
+    default:
+      return state;
+  }
+};
+
+const rootReducer = combineReducers({ posts, post });
 
 export default rootReducer;

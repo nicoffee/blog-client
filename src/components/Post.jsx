@@ -23,7 +23,8 @@ type Props = {
 
 const Post = (props: Props) => (
   <StyledPost>
-    <h1>Post</h1>
+    <h1>{props.title}</h1>
+    <p>{props.body}</p>
   </StyledPost>
 );
 

@@ -2,14 +2,14 @@ import * as React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import PostListContainer from "../containers/PostListContainer";
-import Post from "../components/Post";
+import PostContainer from "../containers/PostContainer";
 
 const App = ({ store }) => (
   <Provider store={store}>
     <Router>
       <div>
         <Route exact path="/" component={PostListContainer} />
-        <Route path="/:postId" component={Post} />
+        <Route path="/:postId" component={PostContainer} />
       </div>
     </Router>
   </Provider>
