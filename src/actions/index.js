@@ -27,3 +27,11 @@ export const fetchPostInfo = postId => dispatch => {
     dispatch(fetchPostInfoAction(response));
   });
 };
+
+export const editPostInfo = (id, data) => dispatch => {
+  dispatch({ type: "EDIT_POST_INFO_STARTED" });
+
+  return axios.put(`${api}/posts/${id}`, data).then(response => {
+    dispatch({ type: "EDIT_POST_INFO", payload: response });
+  });
+};

@@ -21,11 +21,15 @@ type Props = {
   body: string
 };
 
-const Post = (props: Props) => (
-  <StyledPost>
-    <h1>{props.title}</h1>
-    <p>{props.body}</p>
-  </StyledPost>
-);
+const Post = (props: Props) => {
+  console.log("props", props);
+  return (
+    <StyledPost>
+      <h1>{props.title}</h1>
+      <p>{props.body}</p>
+      <Link to={`${props.id}/edit`}>Edit</Link>
+    </StyledPost>
+  );
+};
 
 export default Post;

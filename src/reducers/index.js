@@ -17,6 +17,10 @@ const post = (state = { isFetching: false, info: {} }, action) => {
       return { isFetching: true };
     case "FETCH_POST_INFO":
       return { isFetching: false, info: action.payload.data };
+    case "EDIT_POST_INFO_STARTED":
+      return { isFetching: true };
+    case "EDIT_POST_INFO":
+      return { isFetching: false, info: action.payload.data };
     default:
       return state;
   }

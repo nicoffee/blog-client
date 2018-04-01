@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import { connect } from "react-redux";
-import { fetchPostInfo } from "../actions";
-import Post from "../components/Post";
+import { fetchPostInfo, editPostInfo } from "../actions";
+import PostEdit from "../components/PostEdit";
 
 type Props = {
   fetchPosts: Function,
@@ -22,11 +22,12 @@ class PostContainer extends React.Component<Props> {
     }
 
     return (
-      <Post
+      <PostEdit
         id={this.props.info.id}
         title={this.props.info.title}
         body={this.props.info.body}
         img="https://picsum.photos/600/300/?random"
+        editPost={this.props.editPostInfo}
       />
     );
   }
@@ -37,4 +38,4 @@ const mapStateToProps = state => ({
   info: state.post.info
 });
 
-export default connect(mapStateToProps, { fetchPostInfo })(PostContainer);
+export default connect(mapStateToProps, { fetchPostInfo, editPostInfo })(PostContainer);
