@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import { connect } from "react-redux";
-import { fetchPosts } from "../actions";
-import PostList from "../components/PostList";
+import { fetchPostInfo } from "../actions";
+import Post from "../components/Post";
 
 type Props = {
   fetchPosts: Function,
@@ -16,17 +16,10 @@ class PostListContainer extends React.Component<Props> {
   }
 
   render() {
-    if (this.props.isFetching) {
-      return <div>Fetching...</div>;
-    }
-
     return <PostList posts={this.props.posts} />;
   }
 }
 
-const mapStateToProps = state => ({
-  isFetching: state.posts.isFetching,
-  posts: state.posts.items
-});
+const mapStateToProps = state => ({ posts: state.posts });
 
 export default connect(mapStateToProps, { fetchPosts })(PostListContainer);
