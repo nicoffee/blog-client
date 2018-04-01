@@ -21,10 +21,16 @@ type Props = {
   body: string
 };
 
-const Post = (props: Props) => (
+const PostPreviw = (props: Props) => (
   <StyledPost>
-    <h1>Post</h1>
+    <Link to={`/${props.id}`}>
+      <h1>{props.title}</h1>
+    </Link>
+    <img src={props.img} />
+    <p>{props.body}</p>
+    <Button primary>Read</Button>
+    <Button>Support</Button>
   </StyledPost>
 );
 
-export default Post;
+export default PostPreviw;

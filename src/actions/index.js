@@ -1,8 +1,8 @@
-import { createAction, createActions } from 'redux-actions';
-import axios from 'axios';
-import { api } from '../../config.json';
+import { createAction, createActions } from "redux-actions";
+import axios from "axios";
+import { api } from "../../config.json";
 
-export const fetchPostsAction = createAction('FETCH_POSTS', posts => posts);
+export const fetchPostsAction = createAction("FETCH_POSTS", posts => posts);
 
 export const postsActions = createActions({
   FETCH_POSTS_STARTED: () => {},
@@ -11,7 +11,7 @@ export const postsActions = createActions({
 });
 
 export const fetchPosts = () => dispatch => {
-  return axios.get(`${api}/posts`).then(response => {
+  return axios.get(`${api}/posts?limit=10`).then(response => {
     dispatch(fetchPostsAction(response));
   });
 };
