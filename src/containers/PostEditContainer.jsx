@@ -12,7 +12,6 @@ type Props = {
 
 class PostContainer extends React.Component<Props> {
   componentDidMount() {
-    console.log("thisprops", this.props.match.params.postId);
     this.props.fetchPostInfo(this.props.match.params.postId);
   }
 

@@ -6,13 +6,11 @@ import { fetchPostInfo } from "../actions";
 import Post from "../components/Post";
 
 type Props = {
-  fetchPosts: Function,
-  posts: Array<{ title: string, body: string, id: number }>
+  fetchPostInfo: Function
 };
 
 class PostContainer extends React.Component<Props> {
   componentDidMount() {
-    console.log("thisprops", this.props.match.params.postId);
     this.props.fetchPostInfo(this.props.match.params.postId);
   }
 

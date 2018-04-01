@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
-import Button from "./Button";
+import styled from "styled-components";
 
 const StyledPost = styled.div`
   border-radius: 3px;
@@ -21,15 +20,13 @@ type Props = {
   body: string
 };
 
-const Post = (props: Props) => {
-  console.log("props", props);
-  return (
-    <StyledPost>
-      <h1>{props.title}</h1>
-      <p>{props.body}</p>
-      <Link to={`${props.id}/edit`}>Edit</Link>
-    </StyledPost>
-  );
-};
+const Post = (props: Props) => (
+  <StyledPost>
+    <h1>{props.title}</h1>
+    <img src={props.img} />
+    <p>{props.body}</p>
+    <Link to={`${props.id}/edit`}>Edit</Link>
+  </StyledPost>
+);
 
 export default Post;
