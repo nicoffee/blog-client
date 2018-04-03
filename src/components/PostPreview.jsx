@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Button from "./Button";
 
 const StyledPost = styled.div`
@@ -10,7 +10,7 @@ const StyledPost = styled.div`
   padding: 0.25em 1em;
   margin: 0 1em;
   background: transparent;
-  color: palevioletred;
+  color: '#757575';
   border: 2px solid palevioletred;
 `;
 

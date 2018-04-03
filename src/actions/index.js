@@ -28,6 +28,14 @@ export const fetchPostInfo = postId => dispatch => {
   });
 };
 
+export const fetchPostComments = postId => dispatch => {
+  dispatch({ type: "FETCH_POST_COMMENTS_STARTED" });
+
+  return axios.get(`${api}/comments/?postId=${postId}`).then(response => {
+    dispatch({ type: "FETCH_POST_COMMENTS_SUCCESS", payload: response });
+  });
+};
+
 export const editPostInfo = (id, data) => dispatch => {
   dispatch({ type: "EDIT_POST_INFO_STARTED" });
 

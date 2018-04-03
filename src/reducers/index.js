@@ -11,16 +11,20 @@ const posts = (state = { isFetching: false, items: [] }, action) => {
   }
 };
 
-const post = (state = { isFetching: false, info: {} }, action) => {
+const post = (state = { isFetching: false, info: {}, comments: [] }, action) => {
   switch (action.type) {
     case "FETCH_POST_INFO_STARTED":
-      return { isFetching: true };
+      return { ...state, isFetching: true };
     case "FETCH_POST_INFO":
-      return { isFetching: false, info: action.payload.data };
+      return { ...state, isFetching: false, info: action.payload.data };
+    case "FETCH_POST_COMMENTS_STARTED":
+      return state;
+    case "FETCH_POST_COMMENTS_SUCCESS":
+      return { ...state, comments: action.payload.data };
     case "EDIT_POST_INFO_STARTED":
-      return { isFetching: true };
+      return { ...state, isFetching: true };
     case "EDIT_POST_INFO":
-      return { isFetching: false, info: action.payload.data };
+      return { ...state, isFetching: false, info: action.payload.data };
     default:
       return state;
   }
