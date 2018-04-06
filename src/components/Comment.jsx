@@ -5,12 +5,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledComment = styled.div`
-  border-radius: 3px;
+  border-bottom: 1px solid grey;
   padding: 0.25em 1em;
-  margin: 0 1em;
-  background: transparent;
-  color: palevioletred;
-  border: 2px solid palevioletred;
+  margin: 10px 0;
 `;
 
 type Props = {
