@@ -28,8 +28,9 @@ const PostPreviw = (props: Props) => (
     </Link>
     <img src={props.img} />
     <p>{props.body}</p>
-    <Button primary>Read</Button>
-    <Button>Support</Button>
+    <Link to={`/${props.id}`}>
+      <Button primary>Read</Button>
+    </Link>
   </StyledPost>
 );
 
