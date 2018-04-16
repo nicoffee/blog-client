@@ -1,45 +1,80 @@
-import { createAction, createActions } from "redux-actions";
 import axios from "axios";
 import { api } from "../../config.json";
-
-export const fetchPostsStartedAction = createAction("FETCH_POSTS_STARTED");
-export const fetchPostsAction = createAction("FETCH_POSTS", posts => posts);
-export const fetchPostInfoAction = createAction("FETCH_POST_INFO", post => post);
-
-export const postsActions = createActions({
-  FETCH_POSTS_STARTED: () => {},
-  FETCH_POSTS_SUCCESS: posts => posts,
-  FETCH_POSTS_ERROR: error => error
-});
+import {
+  FETCH_POSTS_REQUEST,
+  FETCH_POSTS_FAILURE,
+  FETCH_POSTS_SUCCESS,
+  POST_INFO_REQUEST,
+  POST_INFO_FAILURE,
+  POST_INFO_SUCCESS,
+  EDIT_POST_REQUEST,
+  EDIT_POST_FAILURE,
+  EDIT_POST_SUCCESS,
+  POST_COMMENTS_REQUEST,
+  POST_COMMENTS_FAILURE,
+  POST_COMMENTS_SUCCESS
+} from "../constants";
 
 export const fetchPosts = () => dispatch => {
-  dispatch({ type: "FETCH_POSTS_STARTED" });
+  dispatch({ type: FETCH_POSTS_REQUEST });
 
-  return axios.get(`${api}/posts`).then(response => {
-    dispatch(fetchPostsAction(response));
-  });
+  return axios.get(`${api}/posts`).then(response =>
+    dispatch({
+      type: FETCH_POSTS_SUCCESS,
+      payload: response
+    }).catch(error =>
+      dispatch({
+        type: FETCH_POSTS_FAILURE,
+        payload: error
+      })
+    )
+  );
 };
 
 export const fetchPostInfo = postId => dispatch => {
-  dispatch({ type: "FETCH_POST_INFO_STARTED" });
+  dispatch({ type: POST_INFO_REQUEST });
 
-  return axios.get(`${api}/posts/${postId}`).then(response => {
-    dispatch(fetchPostInfoAction(response));
+  return axios
+    .get(`${api}/posts/${postId}`)
+    .then(response => {
+      dispatch({
+        type: POST_INFO_SUCCESS,
+        payload: response
+      });
+    })
+    .catch(error =>
+      dispatch({
+        type: POST_INFO_FAILURE,
+        payload: error
+      })
+    );
+};
+
+export const editPost = (id, data) => dispatch => {
+  dispatch({ type: EDIT_POST_REQUEST });
+
+  return axios.put(`${api}/posts/${id}`, data).then(response => {
+    dispatch({ type: EDIT_POST_SUCCESS, payload: response }).catch(error =>
+      dispatch({
+        type: EDIT_POST_FAILURE,
+        payload: error
+      })
+    );
   });
 };
 
 export const fetchPostComments = postId => dispatch => {
-  dispatch({ type: "FETCH_POST_COMMENTS_STARTED" });
+  dispatch({ type: POST_COMMENTS_REQUEST });
 
-  return axios.get(`${api}/comments/?postId=${postId}`).then(response => {
-    dispatch({ type: "FETCH_POST_COMMENTS_SUCCESS", payload: response });
-  });
-};
-
-export const editPostInfo = (id, data) => dispatch => {
-  dispatch({ type: "EDIT_POST_INFO_STARTED" });
-
-  return axios.put(`${api}/posts/${id}`, data).then(response => {
-    dispatch({ type: "EDIT_POST_INFO", payload: response });
-  });
+  return axios
+    .get(`${api}/comments/?postId=${postId}`)
+    .then(response => {
+      dispatch({ type: POST_COMMENTS_SUCCESS, payload: response });
+    })
+    .catch(error =>
+      dispatch({
+        type: POST_COMMENTS_FAILURE,
+        payload: error
+      })
+    );
 };
