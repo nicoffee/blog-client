@@ -1,1 +1,4 @@
-{ "api": "https://my-fake-json-server-api.herokuapp.com" }
+{ 
+    "api_prod": "https://my-fake-json-server-api.herokuapp.com",
+    "api_dev": "http://localhost:3000/"
+}
