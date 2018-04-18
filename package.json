@@ -11,8 +11,7 @@
   "scripts": {
     "start": "npm run dev",
     "start:test": "npm run server & npm run test:watch",
-    "build":
-      "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
+    "build": "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
     "dev": "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
     "lint": "eslint --ext .jsx --ext .js src/",
     "test": "jest",
@@ -32,6 +31,7 @@
     "styled-components": "^3.2.5"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.15.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
