@@ -8,7 +8,8 @@ import Comment from "../components/Comment";
 import Loader from "../components/Loader";
 
 type Props = {
-  fetchPostInfo: Function
+  fetchPostInfo: Function,
+  fetchPostComments: Function
 };
 
 class PostContainer extends React.Component<Props> {
@@ -21,8 +22,6 @@ class PostContainer extends React.Component<Props> {
     if (this.props.isFetching) {
       return <Loader />;
     }
-
-    console.log("this.props.info", this.props);
 
     return (
       <div>
