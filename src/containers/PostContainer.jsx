@@ -1,15 +1,15 @@
 // @flow
 
-import * as React from "react";
-import { connect } from "react-redux";
-import { fetchPostInfo, fetchPostComments } from "../actions";
-import Post from "../components/Post";
-import Comment from "../components/Comment";
-import Loader from "../components/Loader";
+import * as React from 'react';
+import {connect} from 'react-redux';
+import {fetchPostInfo, fetchPostComments} from '../actions';
+import Post from '../components/Post';
+import Comment from '../components/Comment';
+import Loader from '../components/Loader';
 
 type Props = {
   fetchPostInfo: Function,
-  fetchPostComments: Function
+  fetchPostComments: Function,
 };
 
 class PostContainer extends React.Component<Props> {
@@ -45,7 +45,9 @@ class PostContainer extends React.Component<Props> {
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
   info: state.post.info,
-  comments: state.post.comments
+  comments: state.post.comments,
 });
 
-export default connect(mapStateToProps, { fetchPostInfo, fetchPostComments })(PostContainer);
+export default connect(mapStateToProps, {fetchPostInfo, fetchPostComments})(
+  PostContainer
+);

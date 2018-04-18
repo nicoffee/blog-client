@@ -1,9 +1,9 @@
 // @flow
 
-import * as React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import Button from "./Button";
+import * as React from 'react';
+import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+import Button from './Button';
 
 const StyledPost = styled.div`
   border-radius: 3px;
@@ -18,7 +18,7 @@ type Props = {
   id: number,
   title: string,
   img: string,
-  body: string
+  body: string,
 };
 
 const PostPreviw = (props: Props) => (

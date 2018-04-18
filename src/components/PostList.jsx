@@ -1,10 +1,10 @@
 // @flow
 
-import * as React from "react";
-import PostPreviw from "./PostPreview";
+import * as React from 'react';
+import PostPreviw from './PostPreview';
 
 type Props = {
-  posts: Array<{ title: string, body: string, id: number }>
+  posts: Array<{title: string, body: string, id: number}>,
 };
 
 const PostsList = (props: Props) => (

@@ -1,8 +1,8 @@
 // @flow
 
-import * as React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import * as React from 'react';
+import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
 const StyledComment = styled.div`
   border-bottom: 1px solid grey;
@@ -12,7 +12,7 @@ const StyledComment = styled.div`
 
 type Props = {
   name: string,
-  body: string
+  body: string,
 };
 
 const Comment = (props: Props) => (

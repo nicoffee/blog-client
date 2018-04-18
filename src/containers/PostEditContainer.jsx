@@ -1,14 +1,14 @@
 // @flow
 
-import * as React from "react";
-import { connect } from "react-redux";
-import { fetchPostInfo, editPost } from "../actions";
-import PostEdit from "../components/PostEdit";
-import Loader from "../components/Loader";
+import * as React from 'react';
+import {connect} from 'react-redux';
+import {fetchPostInfo, editPost} from '../actions';
+import PostEdit from '../components/PostEdit';
+import Loader from '../components/Loader';
 
 type Props = {
   fetchPosts: Function,
-  posts: Array<{ title: string, body: string, id: number }>
+  posts: Array<{title: string, body: string, id: number}>,
 };
 
 class PostContainer extends React.Component<Props> {
@@ -35,7 +35,9 @@ class PostContainer extends React.Component<Props> {
 
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
-  info: state.post.info
+  info: state.post.info,
 });
 
-export default connect(mapStateToProps, { fetchPostInfo, editPost })(PostContainer);
+export default connect(mapStateToProps, {fetchPostInfo, editPost})(
+  PostContainer
+);
