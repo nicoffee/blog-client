@@ -14,3 +14,5 @@ const posts = (state = { isFetching: false, items: [] }, action) => {
 };
 
 export default posts;
+
+export const getPosts = state => state.items;

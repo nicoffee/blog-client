@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { fetchPosts } from "../actions";
 import PostList from "../components/PostList";
 import Loader from "../components/Loader";
+import { getPosts } from "../reducers";
 
 type Props = {
   fetchPosts: Function,
@@ -27,7 +28,7 @@ class PostListContainer extends React.Component<Props> {
 
 const mapStateToProps = state => ({
   isFetching: state.posts.isFetching,
-  posts: state.posts.items
+  posts: getPosts(state)
 });
 
 export default connect(mapStateToProps, { fetchPosts })(PostListContainer);
