@@ -19,6 +19,6 @@
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
     "no-extra-semi": "error",
-    "react/no-unused-prop-types": "error"
+    "react/prop-types": "off"
   }
 }
