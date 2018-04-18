@@ -23,7 +23,7 @@ export const fetchPosts = () => dispatch => {
     .then(response =>
       dispatch({
         type: FETCH_POSTS_SUCCESS,
-        payload: response,
+        payload: response.data,
       })
     )
     .catch(error =>

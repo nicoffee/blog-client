@@ -9,7 +9,7 @@ const posts = (state = {isFetching: false, items: []}, action) => {
     case FETCH_POSTS_REQUEST:
       return {isFetching: true};
     case FETCH_POSTS_SUCCESS:
-      return {isFetching: false, items: [...action.payload.data]};
+      return {isFetching: false, items: [...action.payload]};
     case FETCH_POSTS_FAILURE:
       return {isFetching: false, error: action.payload};
     default:
