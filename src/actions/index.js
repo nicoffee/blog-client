@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {api_prod} from '../../config.json';
+import config from '../../config.json';
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_FAILURE,
@@ -15,11 +15,14 @@ import {
   POST_COMMENTS_SUCCESS,
 } from '../constants';
 
+const apiUrl =
+  process.env.NODE_ENV === 'development' ? config.api_dev : config.api_prod;
+
 export const fetchPosts = () => dispatch => {
   dispatch({type: FETCH_POSTS_REQUEST});
 
   return axios
-    .get(`${api_prod}/posts`)
+    .get(`${apiUrl}/posts`)
     .then(response =>
       dispatch({
         type: FETCH_POSTS_SUCCESS,
@@ -38,7 +41,7 @@ export const fetchPostInfo = postId => dispatch => {
   dispatch({type: POST_INFO_REQUEST});
 
   return axios
-    .get(`${api_prod}/posts/${postId}`)
+    .get(`${apiUrl}/posts/${postId}`)
     .then(response => {
       dispatch({
         type: POST_INFO_SUCCESS,
@@ -56,7 +59,7 @@ export const fetchPostInfo = postId => dispatch => {
 export const editPost = (id, data) => dispatch => {
   dispatch({type: EDIT_POST_REQUEST});
 
-  return axios.put(`${api_prod}/posts/${id}`, data).then(response => {
+  return axios.put(`${apiUrl}/posts/${id}`, data).then(response => {
     dispatch({type: EDIT_POST_SUCCESS, payload: response}).catch(error =>
       dispatch({
         type: EDIT_POST_FAILURE,
@@ -70,7 +73,7 @@ export const fetchPostComments = postId => dispatch => {
   dispatch({type: POST_COMMENTS_REQUEST});
 
   return axios
-    .get(`${api_prod}/comments/?postId=${postId}`)
+    .get(`${apiUrl}/comments/?postId=${postId}`)
     .then(response => {
       dispatch({type: POST_COMMENTS_SUCCESS, payload: response});
     })

@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -6,12 +7,12 @@ module.exports = {
   devServer: {
     contentBase: './public',
     historyApiFallback: true,
-    hot: true
+    hot: true,
   },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../public'),
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -19,20 +20,26 @@ module.exports = {
         test: /\.js$|\.jsx$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader?modules'] //, 'postcss-loader']
+        use: ['style-loader', 'css-loader?modules'],
       },
       {
         test: /\.svg$/,
-        loader: 'url-loader'
-      }
-    ]
+        loader: 'url-loader',
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
-  }
+    extensions: ['.js', '.jsx'],
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+      DEBUG: false,
+    }),
+  ],
 };
