@@ -18,17 +18,19 @@ class PostListContainer extends React.Component<Props> {
   }
 
   render() {
-    if (this.props.isFetching) {
+    const {posts, isFetching} = this.props;
+
+    if (isFetching) {
       return <Loader />;
     }
 
-    return <PostList posts={this.props.posts} />;
+    return <PostList posts={posts} />;
   }
 }
 
 const mapStateToProps = state => ({
-  isFetching: state.posts.isFetching,
   posts: getPosts(state),
+  isFetching: state.posts.isFetching,
 });
 
 export default connect(mapStateToProps, {fetchPosts})(PostListContainer);
