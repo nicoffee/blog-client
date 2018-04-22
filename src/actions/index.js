@@ -21,20 +21,20 @@ const apiUrl =
 export const fetchPosts = () => dispatch => {
   dispatch({type: FETCH_POSTS_REQUEST});
 
-  return axios
-    .get(`${apiUrl}/posts`)
-    .then(response =>
+  return axios.get(`${apiUrl}/posts`).then(
+    response => {
       dispatch({
         type: FETCH_POSTS_SUCCESS,
         payload: response.data,
-      })
-    )
-    .catch(error =>
+      });
+    },
+    error => {
       dispatch({
         type: FETCH_POSTS_FAILURE,
-        payload: error,
-      })
-    );
+        payload: error.message,
+      });
+    }
+  );
 };
 
 export const fetchPostInfo = postId => dispatch => {

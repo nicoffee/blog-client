@@ -7,3 +7,5 @@ const rootReducer = combineReducers({posts, post});
 export default rootReducer;
 
 export const getPosts = state => fromPosts.getPosts(state.posts);
+export const getIsFetching = state => fromPosts.getIsFetching(state.posts);
+export const getErrorMessage = state => fromPosts.getErrorMessage(state.posts);

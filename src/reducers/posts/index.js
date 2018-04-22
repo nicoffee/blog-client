@@ -6,7 +6,7 @@ export const getPosts = state => {
   const ids = fromList.getIds(state.ids);
   return ids.map(id => fromById.getPost(state.byId[id], id));
 };
-
-export const getIsFetching = state => fromList.getIsFetching(state);
+export const getIsFetching = state => fromList.getIsFetching(state.ids);
+export const getErrorMessage = state => fromList.getErrorMessage(state.ids);
 
 export default combineReducers({ids: createList(), byId});
