@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 const StyledPost = styled.div`
   display: flex;
@@ -22,6 +22,14 @@ const StyledPost = styled.div`
   }
 `;
 
+const PreviewImage = styled.div`
+  width: 350px;
+  height: 180px;
+  background: url(${props => props.background});
+  background-position: center;
+  background-size: cover;
+`;
+
 type Props = {
   id: number,
   title: string,
@@ -33,8 +41,8 @@ const PostPreviw = (props: Props) => (
     <Link to={`/${props.id}`}>
       <h1>{props.title}</h1>
     </Link>
-    <p>{props.body}</p>
-    <img src={props.img} />
+    <p>{props.body.slice(0, 100)}</p>
+    <PreviewImage background={props.img} />
   </StyledPost>
 );
 

@@ -22,7 +22,7 @@ const PostsList = (props: Props) => (
         id={post.id}
         title={post.title}
         body={post.body}
-        img="https://picsum.photos/600/300/?random"
+        img={post.picture}
       />
     ))}
   </StyledDiv>
