@@ -9,7 +9,7 @@ const createList = () => {
   const ids = (state = [], action) => {
     switch (action.type) {
       case FETCH_POSTS_SUCCESS:
-        return action.payload.map(post => post.id);
+        return action.payload.result;
       default:
         return state;
     }
