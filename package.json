@@ -9,7 +9,7 @@
     "setupTestFrameworkScriptFile": "<rootDir>/src/tests/config.js"
   },
   "scripts": {
-    "start": "npm run dev",
+    "start": "node index.js",
     "start:test": "npm run server & npm run test:watch",
     "build":
       "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.3",
     "normalizr": "^3.2.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
