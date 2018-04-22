@@ -1,14 +1,21 @@
 // @flow
 
 import * as React from 'react';
+import styled from 'styled-components';
 import PostPreviw from './PostPreview';
+
+const StyledDiv = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px 25px;
+`;
 
 type Props = {
   posts: Array<{title: string, body: string, id: number}>,
 };
 
 const PostsList = (props: Props) => (
-  <div>
+  <StyledDiv>
     {props.posts.map(post => (
       <PostPreviw
         key={post.id}
@@ -18,7 +25,7 @@ const PostsList = (props: Props) => (
         img="https://picsum.photos/600/300/?random"
       />
     ))}
-  </div>
+  </StyledDiv>
 );
 
 export default PostsList;
