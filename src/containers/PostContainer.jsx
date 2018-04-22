@@ -29,7 +29,7 @@ class PostContainer extends React.Component<Props> {
           id={this.props.info.id}
           title={this.props.info.title}
           body={this.props.info.body}
-          img="https://picsum.photos/600/300/?random"
+          img={this.props.info.picture}
         />
         <div>
           {this.props.comments.map(comment => (
