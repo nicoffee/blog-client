@@ -1,5 +1,5 @@
 const byId = (state = {}, action) => {
-  if (action.payload) {
+  if (action.payload && action.payload.entities) {
     return {
       ...state,
       ...action.payload.entities.posts,

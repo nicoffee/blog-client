@@ -8,6 +8,7 @@ const StyledDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px 25px;
+  margin-top: 80px;
 `;
 
 type Props = {
@@ -22,7 +23,7 @@ const PostsList = (props: Props) => (
         id={post.id}
         title={post.title}
         body={post.body}
-        img="https://picsum.photos/600/300/?random"
+        img={post.picture}
       />
     ))}
   </StyledDiv>
