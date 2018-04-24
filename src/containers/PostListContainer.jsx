@@ -16,9 +16,9 @@ type Props = {
 };
 
 class PostListContainer extends React.Component<Props> {
-  componentDidMount() {
-    this.props.fetchPosts();
-  }
+  // componentDidMount() {
+  //   this.props.fetchPosts();
+  // }
 
   render() {
     const {posts, isFetching, errorMessage} = this.props;
@@ -31,7 +31,12 @@ class PostListContainer extends React.Component<Props> {
       return <Error errorMessage={errorMessage} />;
     }
 
-    return <PostList posts={posts} />;
+    return (
+      <div>
+        <PostList posts={posts} />
+        <button onClick={() => this.props.fetchPosts()}>Refetch posts</button>
+      </div>
+    );
   }
 }
 
