@@ -1,11 +1,7 @@
-import {normalize} from 'normalizr';
 import axios from 'axios';
-import * as schema from './schema';
 import config from '../../config.json';
 import {
   FETCH_POSTS_REQUEST,
-  FETCH_POSTS_FAILURE,
-  FETCH_POSTS_SUCCESS,
   POST_INFO_REQUEST,
   POST_INFO_FAILURE,
   POST_INFO_SUCCESS,
@@ -20,31 +16,13 @@ import {
 const apiUrl =
   process.env.NODE_ENV === 'development' ? config.api_dev : config.api_prod;
 
-export const fetchPosts = () => dispatch => {
-  dispatch({type: FETCH_POSTS_REQUEST});
-
-  return axios.get(`${apiUrl}/posts`).then(
-    response => {
-      dispatch({
-        type: FETCH_POSTS_SUCCESS,
-        payload: normalize(response.data, schema.postListSchema),
-      });
-    },
-    error => {
-      dispatch({
-        type: FETCH_POSTS_FAILURE,
-        payload: error.message,
-      });
-    }
-  );
-};
-
-export const fetchPostsWithSaga = () => dispatch => {
-  dispatch({type: FETCH_POSTS_REQUEST});
-};
+export const fetchPosts = () => ({
+  type: FETCH_POSTS_REQUEST,
+});
 
 export const fetchPostInfo = postId => dispatch => {
   dispatch({type: POST_INFO_REQUEST});
+  fetchPosts;
 
   return axios
     .get(`${apiUrl}/posts/${postId}`)
