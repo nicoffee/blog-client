@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {fetchPosts} from '../actions';
+import {fetchPosts, fetchPostsWithSaga} from '../actions';
 import {getPosts, getIsFetching, getErrorMessage} from '../reducers';
 import PostList from '../components/PostList';
 import Error from '../components/Error';
@@ -23,6 +23,8 @@ class PostListContainer extends React.Component<Props> {
   render() {
     const {posts, isFetching, errorMessage} = this.props;
 
+    console.log('this.props', this.props);
+
     if (isFetching) {
       return <Loader />;
     }
@@ -34,7 +36,9 @@ class PostListContainer extends React.Component<Props> {
     return (
       <div>
         <PostList posts={posts} />
-        <button onClick={() => this.props.fetchPosts()}>Refetch posts</button>
+        <button onClick={() => this.props.fetchPostsWithSaga()}>
+          Refetch posts
+        </button>
       </div>
     );
   }
@@ -46,4 +50,6 @@ const mapStateToProps = state => ({
   errorMessage: getErrorMessage(state),
 });
 
-export default connect(mapStateToProps, {fetchPosts})(PostListContainer);
+export default connect(mapStateToProps, {fetchPosts, fetchPostsWithSaga})(
+  PostListContainer
+);

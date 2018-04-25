@@ -39,6 +39,10 @@ export const fetchPosts = () => dispatch => {
   );
 };
 
+export const fetchPostsWithSaga = () => dispatch => {
+  dispatch({type: FETCH_POSTS_REQUEST});
+};
+
 export const fetchPostInfo = postId => dispatch => {
   dispatch({type: POST_INFO_REQUEST});
 

@@ -1,22 +1,30 @@
-// import {call, put, takeEvery, takeLatest} from 'redux-saga/effects';
+import {call, put, takeEvery} from 'redux-saga/effects';
+import {normalize} from 'normalizr';
+import * as schema from '../actions/schema';
+import {
+  FETCH_POSTS_REQUEST,
+  FETCH_POSTS_FAILURE,
+  FETCH_POSTS_SUCCESS,
+} from '../constants';
+import {fetchPosts} from '../services/api';
 
-// // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-// function* fetchUser(action) {
-//   try {
-//     const user = yield call(Api.fetchUser, action.payload.userId);
-//     yield put({type: 'USER_FETCH_SUCCEEDED', user: user});
-//   } catch (e) {
-//     yield put({type: 'USER_FETCH_FAILED', message: e.message});
-//   }
-// }
+function* fetchPostsSaga() {
+  try {
+    const posts = yield call(fetchPosts);
+    yield put({
+      type: FETCH_POSTS_SUCCESS,
+      payload: normalize(posts.data, schema.postListSchema),
+    });
+  } catch (error) {
+    yield put({
+      type: FETCH_POSTS_FAILURE,
+      payload: error.message,
+    });
+  }
+}
 
-/*
-  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
-  Allows concurrent fetches of user.
-*/
 function* mySaga() {
-  console.log('Hello world!');
-  // yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
+  yield takeEvery(FETCH_POSTS_REQUEST, fetchPostsSaga);
 }
 
 export default mySaga;
