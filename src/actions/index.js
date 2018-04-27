@@ -2,6 +2,7 @@ import axios from 'axios';
 import config from '../../config.json';
 import {
   FETCH_POSTS_REQUEST,
+  FETCH_POSTS_SUCCESS
   POST_INFO_REQUEST,
   POST_INFO_FAILURE,
   POST_INFO_SUCCESS,
@@ -16,9 +17,19 @@ import {
 const apiUrl =
   process.env.NODE_ENV === 'development' ? config.api_dev : config.api_prod;
 
-export const fetchPosts = () => ({
+export const fetchPostsRequest = () => ({
   type: FETCH_POSTS_REQUEST,
 });
+
+export const fetchPostsSuccess = data => ({
+  type: FETCH_POSTS_SUCCESS,
+  payload: normalize(data, schema.postListSchema),
+})
+
+export const fetchPostsError = error => ({
+  type: FETCH_POSTS_FAILURE,
+  payload: error
+})
 
 export const fetchPostInfo = postId => dispatch => {
   dispatch({type: POST_INFO_REQUEST});
