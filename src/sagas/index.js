@@ -4,6 +4,7 @@ import {
   fetchPostsSuccess,
   fetchPostsError,
 } from '../actions';
+import {FETCH_POSTS_REQUEST} from '../constants';
 import {fetchPosts} from '../services/api';
 
 export function* fetchPostsSaga() {
@@ -11,12 +12,12 @@ export function* fetchPostsSaga() {
     const posts = yield call(fetchPosts);
     yield put(fetchPostsSuccess(posts.data));
   } catch (error) {
-    yield put(fetchPostsError);
+    yield put(fetchPostsError(error));
   }
 }
 
 function* mySaga() {
-  yield takeEvery(fetchPostsRequest(), fetchPostsSaga);
+  yield takeEvery(FETCH_POSTS_REQUEST, fetchPostsSaga);
 }
 
 export default mySaga;

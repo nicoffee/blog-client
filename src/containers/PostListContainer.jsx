@@ -9,7 +9,7 @@ import Error from '../components/Error';
 import Loader from '../components/Loader';
 
 type Props = {
-  fetchPosts: Function,
+  fetchPostsRequest: Function,
   posts: Array<{title: string, body: string, id: number}>,
   isFetching: boolean,
   errorMessage: string,
