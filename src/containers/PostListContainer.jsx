@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {fetchPosts} from '../actions';
+import {fetchPostsRequest} from '../actions';
 import {getPosts, getIsFetching, getErrorMessage} from '../reducers';
 import PostList from '../components/PostList';
 import Error from '../components/Error';
@@ -17,7 +17,7 @@ type Props = {
 
 class PostListContainer extends React.Component<Props> {
   componentDidMount() {
-    this.props.fetchPosts();
+    this.props.fetchPostsRequest();
   }
 
   render() {
@@ -41,4 +41,4 @@ const mapStateToProps = state => ({
   errorMessage: getErrorMessage(state),
 });
 
-export default connect(mapStateToProps, {fetchPosts})(PostListContainer);
+export default connect(mapStateToProps, {fetchPostsRequest})(PostListContainer);

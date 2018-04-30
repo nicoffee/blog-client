@@ -1,8 +1,11 @@
 import axios from 'axios';
+import {normalize} from 'normalizr';
 import config from '../../config.json';
+import schema from './schema';
 import {
   FETCH_POSTS_REQUEST,
-  FETCH_POSTS_SUCCESS
+  FETCH_POSTS_SUCCESS,
+  FETCH_POSTS_FAILURE,
   POST_INFO_REQUEST,
   POST_INFO_FAILURE,
   POST_INFO_SUCCESS,
@@ -24,12 +27,12 @@ export const fetchPostsRequest = () => ({
 export const fetchPostsSuccess = data => ({
   type: FETCH_POSTS_SUCCESS,
   payload: normalize(data, schema.postListSchema),
-})
+});
 
 export const fetchPostsError = error => ({
   type: FETCH_POSTS_FAILURE,
-  payload: error
-})
+  payload: error,
+});
 
 export const fetchPostInfo = postId => dispatch => {
   dispatch({type: POST_INFO_REQUEST});
