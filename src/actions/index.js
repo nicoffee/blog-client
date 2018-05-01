@@ -49,6 +49,21 @@ export const fetchPostInfoError = error => ({
   payload: error,
 });
 
+export const editPostInfoRequest = postId => ({
+  type: EDIT_POST_REQUEST,
+  id: postId,
+});
+
+export const editPostInfoSuccess = data => ({
+  type: EDIT_POST_SUCCESS,
+  payload: data,
+});
+
+export const editPostInfoError = error => ({
+  type: EDIT_POST_FAILURE,
+  payload: error,
+});
+
 export const editPost = (id, data) => dispatch => {
   dispatch({type: EDIT_POST_REQUEST});
 

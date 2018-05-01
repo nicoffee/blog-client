@@ -19,19 +19,20 @@ class PostContainer extends React.Component<Props> {
   }
 
   render() {
-    console.log('this.props', this.props);
+    const {isFetching, info} = this.props;
 
-    if (this.props.isFetching) {
+    if (isFetching) {
       return <Loader />;
     }
 
     return (
       <div>
         <Post
-          id={this.props.info.id}
-          title={this.props.info.title}
-          body={this.props.info.body}
-          img={this.props.info.picture}
+          id={info.id}
+          title={info.title}
+          body={info.body}
+          img={info.picture}
+          likes={info.likes}
         />
         {/* <div>
           {this.props.comments.map(comment => (

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {fetchPostsRequest} from '../actions';
-import {getPosts, getIsFetching, getErrorMessage} from '../reducers';
+import {getPosts, getIsFetching, getErrorMessage} from '../reducers/posts';
 import PostList from '../components/PostList';
 import Error from '../components/Error';
 import Loader from '../components/Loader';

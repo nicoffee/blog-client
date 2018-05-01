@@ -3,10 +3,10 @@ import createList, * as fromList from './createList';
 import byId, * as fromById from './byId';
 
 export const getPosts = state => {
-  const ids = fromList.getIds(state.all);
-  return ids.map(id => fromById.getPost(state.byId[id], id));
+  const ids = fromList.getIds(state.posts.all);
+  return ids.map(id => fromById.getPost(state.posts.byId[id], id));
 };
-export const getIsFetching = state => fromList.getIsFetching(state.all);
-export const getErrorMessage = state => fromList.getErrorMessage(state.all);
+export const getIsFetching = state => fromList.getIsFetching(state.posts);
+export const getErrorMessage = state => fromList.getErrorMessage(state.posts);
 
 export default combineReducers({all: createList(), byId});
