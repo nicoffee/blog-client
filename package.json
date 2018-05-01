@@ -6,15 +6,16 @@
   "author": "nicoffee <fedoseevn@gmail.com>",
   "license": "MIT",
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/tests/config.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/src/tests/config.js",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/mocks/fileMock.js"
+    }
   },
   "scripts": {
     "start": "node index.js",
     "start:test": "npm run server & npm run test:watch",
-    "build":
-      "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
-    "dev":
-      "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
+    "build": "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
+    "dev": "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
     "postinstall": "npm run build",
     "lint": "eslint --ext .jsx --ext .js src/",
     "test": "jest",
@@ -81,6 +82,7 @@
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
+    "jest-styled-components": "^5.0.1",
     "jsxobj": "^1.1.0",
     "object-assign": "^4.1.1",
     "postcss-flexbugs-fixes": "^3.3.0",
@@ -96,7 +98,7 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.1",
-    "redux-saga-test-plan": "^3.5.0",
+    "redux-saga-test-plan": "^3.6.0",
     "style-loader": "^0.20.2",
     "svg-inline-loader": "^0.8.0",
     "sw-precache-webpack-plugin": "^0.11.4",
