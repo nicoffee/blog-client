@@ -34,25 +34,20 @@ export const fetchPostsError = error => ({
   payload: error,
 });
 
-export const fetchPostInfo = postId => dispatch => {
-  dispatch({type: POST_INFO_REQUEST});
-  fetchPosts;
+export const fetchPostInfoRequest = postId => ({
+  type: POST_INFO_REQUEST,
+  id: postId,
+});
 
-  return axios
-    .get(`${apiUrl}/posts/${postId}`)
-    .then(response => {
-      dispatch({
-        type: POST_INFO_SUCCESS,
-        payload: response,
-      });
-    })
-    .catch(error =>
-      dispatch({
-        type: POST_INFO_FAILURE,
-        payload: error,
-      })
-    );
-};
+export const fetchPostInfoSuccess = data => ({
+  type: POST_INFO_SUCCESS,
+  payload: data,
+});
+
+export const fetchPostInfoError = error => ({
+  type: POST_INFO_FAILURE,
+  payload: error,
+});
 
 export const editPost = (id, data) => dispatch => {
   dispatch({type: EDIT_POST_REQUEST});

@@ -6,3 +6,7 @@ const apiUrl =
 export function fetchPosts() {
   return axios.get(`${apiUrl}/posts`);
 }
+
+export function fetchPost(postId) {
+  return axios.get(`${apiUrl}/posts/${postId}`);
+}

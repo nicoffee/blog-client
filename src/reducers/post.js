@@ -15,7 +15,7 @@ const post = (state = {isFetching: false, info: {}, comments: []}, action) => {
     case POST_INFO_REQUEST:
       return {...state, isFetching: true};
     case POST_INFO_SUCCESS:
-      return {...state, isFetching: false, info: action.payload.data};
+      return {...state, isFetching: false, info: action.payload};
     case POST_INFO_FAILURE:
       return {...state, isFetching: false, error: action.payload};
     case POST_COMMENTS_REQUEST:

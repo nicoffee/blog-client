@@ -2,23 +2,25 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {fetchPostInfo, fetchPostComments} from '../actions';
+import {fetchPostInfoRequest, fetchPostComments} from '../actions';
 import Post from '../components/Post';
 import Comment from '../components/Comment';
 import Loader from '../components/Loader';
 
 type Props = {
-  fetchPostInfo: Function,
+  fetchPostInfoRequest: Function,
   fetchPostComments: Function,
 };
 
 class PostContainer extends React.Component<Props> {
   componentDidMount() {
-    this.props.fetchPostInfo(this.props.match.params.postId);
-    this.props.fetchPostComments(this.props.match.params.postId);
+    this.props.fetchPostInfoRequest(this.props.match.params.postId);
+    // this.props.fetchPostComments(this.props.match.params.postId);
   }
 
   render() {
+    console.log('this.props', this.props);
+
     if (this.props.isFetching) {
       return <Loader />;
     }
@@ -31,11 +33,11 @@ class PostContainer extends React.Component<Props> {
           body={this.props.info.body}
           img={this.props.info.picture}
         />
-        <div>
+        {/* <div>
           {this.props.comments.map(comment => (
             <Comment key={comment.id} name={comment.name} body={comment.body} />
           ))}
-        </div>
+        </div> */}
         {/* <Comments/> */}
       </div>
     );
@@ -48,6 +50,7 @@ const mapStateToProps = state => ({
   comments: state.post.comments,
 });
 
-export default connect(mapStateToProps, {fetchPostInfo, fetchPostComments})(
-  PostContainer
-);
+export default connect(mapStateToProps, {
+  fetchPostInfoRequest,
+  fetchPostComments,
+})(PostContainer);
