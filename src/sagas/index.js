@@ -4,8 +4,14 @@ import {
   fetchPostsError,
   fetchPostInfoSuccess,
   fetchPostInfoError,
+  editPostInfoSuccess,
+  editPostInfoError,
 } from '../actions';
-import {FETCH_POSTS_REQUEST, POST_INFO_REQUEST} from '../constants';
+import {
+  FETCH_POSTS_REQUEST,
+  POST_INFO_REQUEST,
+  EDIT_POST_REQUEST,
+} from '../constants';
 import * as api from '../services/api';
 
 export function* fetchPosts() {
@@ -26,9 +32,19 @@ export function* fetchPostInfo(action) {
   }
 }
 
+export function* editPostInfo(action) {
+  try {
+    const post = yield call(api.editPost, action.id, action.data);
+    yield put(editPostInfoSuccess(post.data));
+  } catch (error) {
+    yield put(editPostInfoError(error));
+  }
+}
+
 function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPosts);
   yield takeEvery(POST_INFO_REQUEST, fetchPostInfo);
+  yield takeEvery(EDIT_POST_REQUEST, editPostInfo);
 }
 
 export default mySaga;

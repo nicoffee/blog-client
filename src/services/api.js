@@ -10,3 +10,7 @@ export function fetchPosts() {
 export function fetchPost(postId) {
   return axios.get(`${apiUrl}/posts/${postId}`);
 }
+
+export function editPost(postId, data) {
+  return axios.patch(`${apiUrl}/posts/${postId}`, data);
+}

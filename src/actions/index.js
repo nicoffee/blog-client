@@ -49,9 +49,10 @@ export const fetchPostInfoError = error => ({
   payload: error,
 });
 
-export const editPostInfoRequest = postId => ({
+export const editPostInfoRequest = (postId, data) => ({
   type: EDIT_POST_REQUEST,
   id: postId,
+  data,
 });
 
 export const editPostInfoSuccess = data => ({
@@ -63,19 +64,6 @@ export const editPostInfoError = error => ({
   type: EDIT_POST_FAILURE,
   payload: error,
 });
-
-export const editPost = (id, data) => dispatch => {
-  dispatch({type: EDIT_POST_REQUEST});
-
-  return axios.put(`${apiUrl}/posts/${id}`, data).then(response => {
-    dispatch({type: EDIT_POST_SUCCESS, payload: response}).catch(error =>
-      dispatch({
-        type: EDIT_POST_FAILURE,
-        payload: error,
-      })
-    );
-  });
-};
 
 export const fetchPostComments = postId => dispatch => {
   dispatch({type: POST_COMMENTS_REQUEST});

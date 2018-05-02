@@ -13,7 +13,7 @@ const Button = styled.button`
   ${props =>
     props.primary &&
     css`
-      background: palevioletred;
+      background: #28abe3;
       color: white;
     `};
 
