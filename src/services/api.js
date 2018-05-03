@@ -18,3 +18,7 @@ export function editPost(postId, data) {
 export function fetchPostComments(postId) {
   return axios.get(`${apiUrl}/comments/?postId=${postId}`);
 }
+
+export function fetchLogin(data) {
+  return axios.post(`${apiUrl}/users`, data);
+}

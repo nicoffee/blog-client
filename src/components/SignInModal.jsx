@@ -22,10 +22,26 @@ const StyledModal = styled.div`
 `;
 
 class SignInModal extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
+
   submitForm(e) {
     e.preventDefault();
 
-    this.props.sigIn();
+    this.props.fetchLoginRequest({
+      email: this.state.email,
+      password: this.state.password,
+    });
+  }
+
+  updateData(e) {
+    this.setState({[e.target.name]: e.target.value});
   }
 
   render() {
@@ -35,7 +51,9 @@ class SignInModal extends React.Component {
           <h1>Sign in with email</h1>
           <form>
             <label htmlFor="email">Your email</label>
-            <input type="text" id="email" />
+            <input type="text" id="email" name="email" />
+            <label htmlFor="pass">Password</label>
+            <input type="text" id="pass" name="password" />
             <Button primary type="submit" onClick={e => this.submitForm(e)}>
               Continue
             </Button>

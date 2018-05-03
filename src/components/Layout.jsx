@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Modal from '../components/Modal';
-import SignInModal from '../components/SignInModal';
+import SignInModalContainer from '../containers/SignInModalContainer';
 
 const StyledDiv = styled.div`
   margin-top: 80px;
@@ -10,10 +10,10 @@ const StyledDiv = styled.div`
 
 const Layout = ({children}) => (
   <React.Fragment>
-    {/* <Header /> */}
-    {/* <Modal>
-      <SignInModal>Sign In</SignInModal>
-    </Modal> */}
+    <Header />
+    <Modal>
+      <SignInModalContainer />
+    </Modal>
     <StyledDiv>{children}</StyledDiv>
   </React.Fragment>
 );

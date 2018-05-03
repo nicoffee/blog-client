@@ -1,11 +1,8 @@
 import {combineReducers} from 'redux';
-import posts, * as fromPosts from './posts';
-import post from './post.js';
+import posts from './posts';
+import post from './post';
+import user from './user';
 
-const rootReducer = combineReducers({posts, post});
+const rootReducer = combineReducers({posts, post, user});
 
 export default rootReducer;
-
-export const getPosts = state => fromPosts.getPosts(state.posts);
-export const getIsFetching = state => fromPosts.getIsFetching(state.posts);
-export const getErrorMessage = state => fromPosts.getErrorMessage(state.posts);

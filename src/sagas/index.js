@@ -14,6 +14,7 @@ import {
   POST_INFO_REQUEST,
   EDIT_POST_REQUEST,
   POST_COMMENTS_REQUEST,
+  FETCH_LOGIN_REQUEST,
 } from '../constants';
 import * as api from '../services/api';
 
@@ -53,11 +54,22 @@ export function* fetchPostComments(action) {
   }
 }
 
+export function* fetchLogin(action) {
+  try {
+    console.log('action', action);
+    const post = yield call(api.fetchLoginRequest, action.id);
+    // yield put(fetchPostCommentsSuccess(post.data));
+  } catch (error) {
+    // yield put(fetchPostCommentsError(error));
+  }
+}
+
 function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPosts);
   yield takeEvery(POST_INFO_REQUEST, fetchPostInfo);
   yield takeEvery(EDIT_POST_REQUEST, editPostInfo);
   yield takeEvery(POST_COMMENTS_REQUEST, fetchPostComments);
+  yield takeEvery(FETCH_LOGIN_REQUEST, fetchLogin);
 }
 
 export default mySaga;
