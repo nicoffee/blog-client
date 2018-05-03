@@ -21,7 +21,7 @@ const post = (state = {isFetching: false, info: {}, comments: []}, action) => {
     case POST_COMMENTS_REQUEST:
       return {...state, isFetching: true};
     case POST_COMMENTS_SUCCESS:
-      return {...state, isFetching: false, comments: action.payload.data};
+      return {...state, isFetching: false, comments: action.payload};
     case POST_COMMENTS_FAILURE:
       return {...state, isFetching: false, error: action.payload};
     case EDIT_POST_REQUEST:

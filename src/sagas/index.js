@@ -6,11 +6,14 @@ import {
   fetchPostInfoError,
   editPostInfoSuccess,
   editPostInfoError,
+  fetchPostCommentsSuccess,
+  fetchPostCommentsError,
 } from '../actions';
 import {
   FETCH_POSTS_REQUEST,
   POST_INFO_REQUEST,
   EDIT_POST_REQUEST,
+  POST_COMMENTS_REQUEST,
 } from '../constants';
 import * as api from '../services/api';
 
@@ -41,10 +44,20 @@ export function* editPostInfo(action) {
   }
 }
 
+export function* fetchPostComments(action) {
+  try {
+    const post = yield call(api.fetchPostComments, action.id);
+    yield put(fetchPostCommentsSuccess(post.data));
+  } catch (error) {
+    yield put(fetchPostCommentsError(error));
+  }
+}
+
 function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPosts);
   yield takeEvery(POST_INFO_REQUEST, fetchPostInfo);
   yield takeEvery(EDIT_POST_REQUEST, editPostInfo);
+  yield takeEvery(POST_COMMENTS_REQUEST, fetchPostComments);
 }
 
 export default mySaga;

@@ -65,6 +65,21 @@ export const editPostInfoError = error => ({
   payload: error,
 });
 
+export const fetchPostCommentsRequest = postId => ({
+  type: POST_COMMENTS_REQUEST,
+  id: postId,
+});
+
+export const fetchPostCommentsSuccess = data => ({
+  type: POST_COMMENTS_SUCCESS,
+  payload: data,
+});
+
+export const fetchPostCommentsError = error => ({
+  type: POST_COMMENTS_FAILURE,
+  payload: error,
+});
+
 export const fetchPostComments = postId => dispatch => {
   dispatch({type: POST_COMMENTS_REQUEST});
 

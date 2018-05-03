@@ -2,20 +2,20 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {fetchPostInfoRequest, fetchPostComments} from '../actions';
+import {fetchPostInfoRequest, fetchPostCommentsRequest} from '../actions';
 import Post from '../components/Post';
 import Comment from '../components/Comment';
 import Loader from '../components/Loader';
 
 type Props = {
   fetchPostInfoRequest: Function,
-  fetchPostComments: Function,
+  fetchPostCommentsRequest: Function,
 };
 
 class PostContainer extends React.Component<Props> {
   componentDidMount() {
     this.props.fetchPostInfoRequest(this.props.match.params.postId);
-    // this.props.fetchPostComments(this.props.match.params.postId);
+    this.props.fetchPostCommentsRequest(this.props.match.params.postId);
   }
 
   render() {
@@ -34,12 +34,11 @@ class PostContainer extends React.Component<Props> {
           img={info.picture}
           likes={info.likes}
         />
-        {/* <div>
+        <div>
           {this.props.comments.map(comment => (
             <Comment key={comment.id} name={comment.name} body={comment.body} />
           ))}
-        </div> */}
-        {/* <Comments/> */}
+        </div>
       </div>
     );
   }
@@ -53,5 +52,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   fetchPostInfoRequest,
-  fetchPostComments,
+  fetchPostCommentsRequest,
 })(PostContainer);

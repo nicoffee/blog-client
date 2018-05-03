@@ -10,10 +10,10 @@ const StyledDiv = styled.div`
 
 const Layout = ({children}) => (
   <React.Fragment>
-    <Header />
-    <Modal>
+    {/* <Header /> */}
+    {/* <Modal>
       <SignInModal>Sign In</SignInModal>
-    </Modal>
+    </Modal> */}
     <StyledDiv>{children}</StyledDiv>
   </React.Fragment>
 );
