@@ -6,4 +6,4 @@ import './index.css';
 
 const store = configureStore();
 
-render(<App store={store} />, document.getElementById('root'));
+render(<App store={store} />, document.getElementById('app-root'));

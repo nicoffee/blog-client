@@ -38,8 +38,8 @@ const Header = () => (
       </Link>
     </StyledLogo>
     <StyledLink>
-      <Link to="/">
-        <Button>Sign in</Button>
+      <Link to="/signin">
+        <Button onClick={() => {}}>Sign in</Button>
       </Link>
     </StyledLink>
   </StyledHeader>
