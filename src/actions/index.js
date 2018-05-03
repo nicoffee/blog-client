@@ -1,7 +1,5 @@
-import axios from 'axios';
 import {normalize} from 'normalizr';
 import {postListSchema} from './schema';
-import config from '../../config.json';
 import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
@@ -15,10 +13,8 @@ import {
   POST_COMMENTS_REQUEST,
   POST_COMMENTS_FAILURE,
   POST_COMMENTS_SUCCESS,
+  FETCH_LOGIN_REQUEST,
 } from '../constants';
-
-const apiUrl =
-  process.env.NODE_ENV === 'development' ? config.api_dev : config.api_prod;
 
 export const fetchPostsRequest = () => ({
   type: FETCH_POSTS_REQUEST,
@@ -79,19 +75,3 @@ export const fetchPostCommentsError = error => ({
   type: POST_COMMENTS_FAILURE,
   payload: error,
 });
-
-export const fetchPostComments = postId => dispatch => {
-  dispatch({type: POST_COMMENTS_REQUEST});
-
-  return axios
-    .get(`${apiUrl}/comments/?postId=${postId}`)
-    .then(response => {
-      dispatch({type: POST_COMMENTS_SUCCESS, payload: response});
-    })
-    .catch(error =>
-      dispatch({
-        type: POST_COMMENTS_FAILURE,
-        payload: error,
-      })
-    );
-};
