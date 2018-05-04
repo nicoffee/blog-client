@@ -29,7 +29,7 @@ export const fetchPostsSuccess = data => ({
 
 export const fetchPostsError = error => ({
   type: FETCH_POSTS_FAILURE,
-  payload: error,
+  payload: error.message,
 });
 
 export const fetchPostInfoRequest = postId => ({
@@ -44,7 +44,7 @@ export const fetchPostInfoSuccess = data => ({
 
 export const fetchPostInfoError = error => ({
   type: POST_INFO_FAILURE,
-  payload: error,
+  payload: error.message,
 });
 
 export const editPostInfoRequest = (postId, data) => ({
@@ -60,7 +60,7 @@ export const editPostInfoSuccess = data => ({
 
 export const editPostInfoError = error => ({
   type: EDIT_POST_FAILURE,
-  payload: error,
+  payload: error.message,
 });
 
 export const fetchPostCommentsRequest = postId => ({
@@ -78,13 +78,15 @@ export const fetchPostCommentsError = error => ({
   payload: error,
 });
 
-export const fetchLoginRequest = () => ({
+export const fetchLoginRequest = data => ({
   type: FETCH_LOGIN_REQUEST,
+  payload: data,
 });
 
 export const fetchLoginSuccess = () => ({
   type: FETCH_LOGIN_SUCCESS,
 });
-export const fetchLoginError = () => ({
+export const fetchLoginError = error => ({
   type: FETCH_LOGIN_FAILURE,
+  payload: error.message,
 });

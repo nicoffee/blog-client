@@ -29,7 +29,7 @@ class Layout extends React.Component {
     return (
       <ThemeProvider theme={DefaultTheme || DarkTheme}>
         <React.Fragment>
-          <Header />
+          <Header onSignInClick={() => this.setState({isModalOpen: true})} />
           {this.state.isModalOpen && (
             <Modal>
               <SignInModalContainer />

@@ -51,9 +51,21 @@ class SignInModal extends React.Component {
           <h1>Sign in with email</h1>
           <form>
             <label htmlFor="email">Your email</label>
-            <input type="text" id="email" name="email" />
+            <input
+              value={this.state.email}
+              onChange={e => this.updateData(e)}
+              type="text"
+              id="email"
+              name="email"
+            />
             <label htmlFor="pass">Password</label>
-            <input type="text" id="pass" name="password" />
+            <input
+              value={this.state.password}
+              onChange={e => this.updateData(e)}
+              type="text"
+              id="pass"
+              name="password"
+            />
             <Button primary type="submit" onClick={e => this.submitForm(e)}>
               Continue
             </Button>

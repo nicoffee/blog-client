@@ -20,5 +20,6 @@ export function fetchPostComments(postId) {
 }
 
 export function fetchLogin(data) {
+  console.log('data', data);
   return axios.post(`${apiUrl}/users`, data);
 }

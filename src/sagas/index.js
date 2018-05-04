@@ -58,9 +58,10 @@ export function* fetchPostComments(action) {
 
 export function* fetchLogin(action) {
   try {
-    const login = yield call(api.fetchLoginRequest, action.id);
+    const login = yield call(api.fetchLogin, action.payload);
     yield put(fetchLoginSuccess(login.data));
   } catch (error) {
+    console.log('error', error);
     yield put(fetchLoginError(error));
   }
 }

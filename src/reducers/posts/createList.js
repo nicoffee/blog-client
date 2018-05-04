@@ -30,7 +30,7 @@ const createList = () => {
   const errorMessage = (state = null, action) => {
     switch (action.type) {
       case FETCH_POSTS_FAILURE:
-        return action.payload.message || 'Something went wrong';
+        return action.payload || 'Something went wrong';
       case FETCH_POSTS_REQUEST:
       case FETCH_POSTS_SUCCESS:
         return null;

@@ -31,7 +31,11 @@ const StyledLink = styled.div`
   align-items: center;
 `;
 
-const Header = () => (
+type Props = {
+  onSignInClick: Function,
+};
+
+const Header = (props: Props) => (
   <StyledHeader>
     <StyledLogo>
       <Link to="/">
@@ -39,9 +43,7 @@ const Header = () => (
       </Link>
     </StyledLogo>
     <StyledLink>
-      <Link to="/signin">
-        <Button onClick={() => {}}>Sign in</Button>
-      </Link>
+      <Button onClick={props.onSignInClick}>Sign in</Button>
     </StyledLink>
   </StyledHeader>
 );
