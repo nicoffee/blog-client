@@ -25,6 +25,11 @@ class Layout extends React.Component {
     this.state = {isModalOpen: false};
   }
 
+  handleClose = e => {
+    console.log('e', e.target);
+    this.setState({isModalOpen: false});
+  };
+
   render() {
     return (
       <ThemeProvider theme={DefaultTheme || DarkTheme}>
@@ -32,7 +37,7 @@ class Layout extends React.Component {
           <Header onSignInClick={() => this.setState({isModalOpen: true})} />
           {this.state.isModalOpen && (
             <Modal>
-              <SignInModalContainer />
+              <SignInModalContainer onClickOutside={e => this.handleClose(e)} />
             </Modal>
           )}
           <InnerContainer>{this.props.children}</InnerContainer>

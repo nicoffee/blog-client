@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import {Input} from './Styled';
 import Button from './Button';
+import {FormGroup} from './Styled';
 
 const Overlay = styled.div`
   position: fixed;
@@ -16,9 +18,20 @@ const Overlay = styled.div`
 const StyledModal = styled.div`
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
+  padding: 40px;
   border: 1px solid #888;
   width: 60%;
+  border-radius: 8px;
+`;
+
+const ModalInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+`;
+
+const Error = styled.span`
+  color: red;
 `;
 
 class SignInModal extends React.Component {
@@ -29,6 +42,8 @@ class SignInModal extends React.Component {
       email: '',
       password: '',
     };
+
+    this.modal = React.createRef();
   }
 
   submitForm(e) {
@@ -40,35 +55,61 @@ class SignInModal extends React.Component {
     });
   }
 
+  handleClick(e) {
+    // console.log('this.modal', this.modal);
+    // debugger; //sdfa
+    console.log('this.modal', this.modal);
+    console.log('EEE', e.target);
+    // debugger;
+    if (e.target === this.modal.current) {
+      this.props.onClickOutside(e);
+    }
+    // debugger;
+    // onClickOutside(e);
+  }
+
   updateData(e) {
     this.setState({[e.target.name]: e.target.value});
   }
 
   render() {
+    const {error, onClickOutside} = this.props;
+
     return (
-      <Overlay>
-        <StyledModal>
+      <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>
+        <StyledModal >
           <h1>Sign in with email</h1>
           <form>
-            <label htmlFor="email">Your email</label>
-            <input
-              value={this.state.email}
-              onChange={e => this.updateData(e)}
-              type="text"
-              id="email"
-              name="email"
-            />
-            <label htmlFor="pass">Password</label>
-            <input
-              value={this.state.password}
-              onChange={e => this.updateData(e)}
-              type="text"
-              id="pass"
-              name="password"
-            />
-            <Button primary type="submit" onClick={e => this.submitForm(e)}>
-              Continue
-            </Button>
+            <ModalInner>
+              <FormGroup>
+                <label htmlFor="email">Your email</label>
+                <div>
+                  <Input
+                    value={this.state.email}
+                    onChange={e => this.updateData(e)}
+                    type="text"
+                    id="email"
+                    name="email"
+                  />
+                </div>
+              </FormGroup>
+              <FormGroup>
+                <label htmlFor="pass">Password</label>
+                <div>
+                  <Input
+                    value={this.state.password}
+                    onChange={e => this.updateData(e)}
+                    type="text"
+                    id="pass"
+                    name="password"
+                  />
+                </div>
+              </FormGroup>
+              {error && <Error>{error}</Error>}
+              <Button primary type="submit" onClick={e => this.submitForm(e)}>
+                Continue
+              </Button>
+            </ModalInner>
           </form>
         </StyledModal>
       </Overlay>

@@ -3,6 +3,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import {FormGroup} from './Styled';
 
 const StyledPost = styled.div`
   input,
@@ -19,21 +20,6 @@ const StyledPost = styled.div`
 const FormContent = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  
-  label {
-    width: 20%:
-  }
-
-  div {
-    width: 70%;
-  }
 `;
 
 type Props = {

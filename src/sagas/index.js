@@ -61,7 +61,6 @@ export function* fetchLogin(action) {
     const login = yield call(api.fetchLogin, action.payload);
     yield put(fetchLoginSuccess(login.data));
   } catch (error) {
-    console.log('error', error);
     yield put(fetchLoginError(error));
   }
 }

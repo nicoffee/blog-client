@@ -83,9 +83,11 @@ export const fetchLoginRequest = data => ({
   payload: data,
 });
 
-export const fetchLoginSuccess = () => ({
+export const fetchLoginSuccess = data => ({
   type: FETCH_LOGIN_SUCCESS,
+  payload: data,
 });
+
 export const fetchLoginError = error => ({
   type: FETCH_LOGIN_FAILURE,
   payload: error.message,

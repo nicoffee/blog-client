@@ -10,7 +10,6 @@ const StyledPost = styled.div`
   border-radius: 3px;
   padding: 0.25em 1em;
   margin: 0 1em;
-  width: 300px;
   background: transparent;
 
   h1 {
@@ -23,7 +22,6 @@ const StyledPost = styled.div`
 `;
 
 const PreviewImage = styled.div`
-  width: 350px;
   height: 180px;
   background: url(${props => props.background});
   background-position: center;
