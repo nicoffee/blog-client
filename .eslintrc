@@ -19,6 +19,8 @@
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
     "no-extra-semi": "error",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "flowtype/define-flow-type": "warn",
+    "flowtype/use-flow-type": "warn"
   }
 }
