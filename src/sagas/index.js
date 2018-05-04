@@ -8,6 +8,8 @@ import {
   editPostInfoError,
   fetchPostCommentsSuccess,
   fetchPostCommentsError,
+  fetchLoginSuccess,
+  fetchLoginError,
 } from '../actions';
 import {
   FETCH_POSTS_REQUEST,
@@ -23,6 +25,7 @@ export function* fetchPosts() {
     const posts = yield call(api.fetchPosts);
     yield put(fetchPostsSuccess(posts.data));
   } catch (error) {
+    console.log('ERROR', error);
     yield put(fetchPostsError(error));
   }
 }
@@ -56,11 +59,10 @@ export function* fetchPostComments(action) {
 
 export function* fetchLogin(action) {
   try {
-    console.log('action', action);
-    const post = yield call(api.fetchLoginRequest, action.id);
-    // yield put(fetchPostCommentsSuccess(post.data));
+    const login = yield call(api.fetchLoginRequest, action.id);
+    yield put(fetchLoginSuccess(login.data));
   } catch (error) {
-    // yield put(fetchPostCommentsError(error));
+    yield put(fetchLoginError(error));
   }
 }
 
