@@ -8,14 +8,26 @@ const StyledDiv = styled.div`
   margin-top: 80px;
 `;
 
-const Layout = ({children}) => (
-  <React.Fragment>
-    <Header />
-    <Modal>
-      <SignInModalContainer />
-    </Modal>
-    <StyledDiv>{children}</StyledDiv>
-  </React.Fragment>
-);
+class Layout extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {isModalOpen: false};
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Header />
+        {this.state.isModalOpen && (
+          <Modal>
+            <SignInModalContainer />
+          </Modal>
+        )}
+        <StyledDiv>{this.props.children}</StyledDiv>
+      </React.Fragment>
+    );
+  }
+}
 
 export default Layout;
