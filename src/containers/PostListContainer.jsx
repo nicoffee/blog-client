@@ -10,7 +10,7 @@ import Loader from '../components/Loader';
 
 type Props = {
   fetchPostsRequest: Function,
-  posts: Array<{title: string, body: string, id: number}>,
+  posts: Array<{title: string, body: string, picture: string, id: string}>,
   isFetching: boolean,
   errorMessage: string,
 };

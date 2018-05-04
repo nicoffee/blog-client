@@ -25,7 +25,6 @@ export function* fetchPosts() {
     const posts = yield call(api.fetchPosts);
     yield put(fetchPostsSuccess(posts.data));
   } catch (error) {
-    console.log('ERROR', error);
     yield put(fetchPostsError(error));
   }
 }

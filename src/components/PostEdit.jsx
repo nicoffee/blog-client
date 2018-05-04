@@ -41,15 +41,20 @@ const FormGroup = styled.div`
 `;
 
 type Props = {
-  id: number,
+  id: string,
   title: string,
   img: string,
   body: string,
   editPost: Function,
 };
 
-class Post extends React.Component<Props> {
-  constructor(props) {
+type State = {
+  title: string,
+  body: string,
+};
+
+class Post extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -58,7 +63,7 @@ class Post extends React.Component<Props> {
     };
   }
 
-  submitForm(e) {
+  submitForm(e: SyntheticEvent<>) {
     e.preventDefault();
 
     this.props.editPost(this.props.id, {
@@ -67,8 +72,9 @@ class Post extends React.Component<Props> {
     });
   }
 
-  updateData(e) {
-    this.setState({[e.target.name]: e.target.value});
+  updateData(e: SyntheticInputEvent<>) {
+    const data = e.target;
+    this.setState({[data.name]: data.value});
   }
 
   render() {

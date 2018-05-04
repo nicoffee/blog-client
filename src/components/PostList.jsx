@@ -11,7 +11,7 @@ const StyledDiv = styled.div`
 `;
 
 type Props = {
-  posts: Array<{title: string, body: string, id: number}>,
+  posts: Array<{title: string, body: string, picture: string, id: string}>,
 };
 
 const PostsList = (props: Props) => (

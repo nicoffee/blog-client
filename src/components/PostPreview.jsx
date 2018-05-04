@@ -31,8 +31,9 @@ const PreviewImage = styled.div`
 `;
 
 type Props = {
-  id: number,
+  id: string,
   title: string,
+  body: string,
   img: string,
 };
 

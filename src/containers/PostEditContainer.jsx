@@ -2,13 +2,22 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
+import type {Match} from 'react-router-dom';
 import {fetchPostInfoRequest, editPostInfoRequest} from '../actions';
 import PostEdit from '../components/PostEdit';
 import Loader from '../components/Loader';
 
 type Props = {
-  fetchPosts: Function,
-  posts: Array<{title: string, body: string, id: number}>,
+  fetchPostInfoRequest: Function,
+  editPostInfoRequest: Function,
+  isFetching: boolean,
+  info: {
+    id: string,
+    title: string,
+    body: string,
+    picture: string,
+  },
+  match: Match,
 };
 
 class PostContainer extends React.Component<Props> {
@@ -17,17 +26,19 @@ class PostContainer extends React.Component<Props> {
   }
 
   render() {
-    if (this.props.isFetching) {
+    const {isFetching, info, editPostInfoRequest} = this.props;
+
+    if (isFetching) {
       return <Loader />;
     }
 
     return (
       <PostEdit
-        id={this.props.info.id}
-        title={this.props.info.title}
-        body={this.props.info.body}
-        img={this.props.info.picture}
-        editPost={this.props.editPostInfoRequest}
+        id={info.id}
+        title={info.title}
+        body={info.body}
+        img={info.picture}
+        editPost={editPostInfoRequest}
       />
     );
   }

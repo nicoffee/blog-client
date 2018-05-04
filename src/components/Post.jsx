@@ -46,10 +46,11 @@ const PreviewImage = styled.div`
 `;
 
 type Props = {
-  id: number,
+  id: string,
   title: string,
   img: string,
   body: string,
+  likes: number,
 };
 
 const Post = (props: Props) => (
