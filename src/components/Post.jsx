@@ -7,10 +7,6 @@ import likeIcon from './../images/like.svg';
 
 const StyledPost = styled.div`
   position: relative;
-  width: 700px;
-  border-radius: 3px;
-  padding: 0.25em 1em;
-  margin: 0 1em;
 
   h1 {
     font-size: 42px;
@@ -28,12 +24,20 @@ const StyledPost = styled.div`
 const LikeBlock = styled.div`
   position: fixed;
   top: 50%;
-  left: 50px;
-  width: 20px;
-  height: 20px;
+  left: 30px;
+  font-weight: 100;
+  font-size: 14px;
 
-  span {
-    font-weight: 100;
+  div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
   }
 `;
 
@@ -60,8 +64,10 @@ const Post = (props: Props) => (
     <p>{props.body}</p>
     <Link to={`${props.id}/edit`}>Edit</Link>
     <LikeBlock>
-      <img src={likeIcon} />
-      <span>{props.likes}</span>
+      <div>
+        <img src={likeIcon} />
+        <span>{props.likes}</span>
+      </div>
     </LikeBlock>
   </StyledPost>
 );

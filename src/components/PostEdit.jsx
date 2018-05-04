@@ -5,10 +5,6 @@ import styled from 'styled-components';
 import Button from './Button';
 
 const StyledPost = styled.div`
-  width: 700px;
-  padding: 0.25em 1em;
-  margin: 0 1em;
-
   input,
   textarea {
     font-size: 18px;

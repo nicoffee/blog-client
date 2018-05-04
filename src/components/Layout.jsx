@@ -4,8 +4,10 @@ import Header from '../components/Header';
 import Modal from '../components/Modal';
 import SignInModalContainer from '../containers/SignInModalContainer';
 
-const StyledDiv = styled.div`
-  margin-top: 80px;
+const InnerContainer = styled.div`
+  margin: 80px auto;
+  max-width: 700px;
+  padding: 10px 20px;
 `;
 
 const DefaultTheme = {
@@ -33,7 +35,7 @@ class Layout extends React.Component {
               <SignInModalContainer />
             </Modal>
           )}
-          <StyledDiv>{this.props.children}</StyledDiv>
+          <InnerContainer>{this.props.children}</InnerContainer>
         </React.Fragment>
       </ThemeProvider>
     );

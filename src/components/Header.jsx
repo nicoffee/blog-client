@@ -12,6 +12,7 @@ const StyledHeader = styled.div`
   background-color: #ffffff;
   opacity: 0.9;
   width: 100%;
+  top: 0;
   left: 0;
 `;
 
@@ -34,7 +35,7 @@ const Header = () => (
   <StyledHeader>
     <StyledLogo>
       <Link to="/">
-        <h1>Blogspot</h1>
+        <h1>Blog</h1>
       </Link>
     </StyledLogo>
     <StyledLink>
