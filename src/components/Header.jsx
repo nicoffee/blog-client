@@ -3,7 +3,8 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import Button from './Styled';
+import UserBlock from './UserBlock';
+import {Button} from './Styled';
 
 const StyledHeader = styled.div`
   display: grid;
@@ -29,10 +30,13 @@ const StyledLink = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  padding: 30px;
 `;
 
 type Props = {
   onSignInClick: Function,
+  openModal: Function,
+  user: string,
 };
 
 const Header = (props: Props) => (
@@ -43,7 +47,11 @@ const Header = (props: Props) => (
       </Link>
     </StyledLogo>
     <StyledLink>
-      <Button onClick={() => props.openModal()}>Sign in</Button>
+      {props.user ? (
+        <UserBlock />
+      ) : (
+        <Button onClick={() => props.openModal()}>Sign in</Button>
+      )}
     </StyledLink>
   </StyledHeader>
 );

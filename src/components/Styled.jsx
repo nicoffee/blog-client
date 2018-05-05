@@ -25,7 +25,7 @@ export const FormGroup = styled.div`
   }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   border-radius: 3px;
   padding: 8px 16px;
   margin: 0 1em;
@@ -47,5 +47,3 @@ const Button = styled.button`
     color: #ffffff;
   }
 `;
-
-export default Button;

@@ -55,7 +55,7 @@ class SignInModal extends React.Component {
 
   handleClick(e) {
     if (e.target === this.modal.current) {
-      this.props.onClickOutside(e);
+      this.props.closeModal();
     }
   }
 
@@ -64,7 +64,7 @@ class SignInModal extends React.Component {
   }
 
   render() {
-    const {error, onClickOutside} = this.props;
+    const {error} = this.props;
 
     return (
       <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>

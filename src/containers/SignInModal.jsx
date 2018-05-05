@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {fetchLoginRequest} from '../actions';
+import {fetchLoginRequest, closeModal} from '../actions';
 import {getErrorMessage} from '../reducers/user';
 import SignInModal from '../components/SignInModal';
 
@@ -10,6 +10,6 @@ const mapStateToProps = state => ({
   error: getErrorMessage(state),
 });
 
-export default connect(mapStateToProps, {fetchLoginRequest})(
+export default connect(mapStateToProps, {fetchLoginRequest, closeModal})(
   SignInModalContainer
 );

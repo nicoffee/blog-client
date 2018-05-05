@@ -18,16 +18,16 @@ const DarkTheme = {
   color: 'black',
 };
 
-const Layout = () => (
+const Layout = props => (
   <ThemeProvider theme={DefaultTheme || DarkTheme}>
     <React.Fragment>
-      <Header onSignInClick={() => this.setState({isModalOpen: true})} />
-      {this.props.isModalOpen && (
+      <Header />
+      {props.isModalOpen && (
         <Modal>
-          <SignInModal onClickOutside={e => this.handleClose(e)} />
+          <SignInModal />
         </Modal>
       )}
-      <InnerContainer>{this.props.children}</InnerContainer>
+      <InnerContainer>{props.children}</InnerContainer>
     </React.Fragment>
   </ThemeProvider>
 );
