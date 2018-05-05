@@ -18,34 +18,18 @@ const DarkTheme = {
   color: 'black',
 };
 
-class Layout extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {isModalOpen: false};
-  }
-
-  handleClose = e => {
-    this.setState({isModalOpen: false});
-  };
-
-  render() {
-    console.log('isModalOpen', this.props);
-
-    return (
-      <ThemeProvider theme={DefaultTheme || DarkTheme}>
-        <React.Fragment>
-          <Header onSignInClick={() => this.setState({isModalOpen: true})} />
-          {this.props.isModalOpen && (
-            <Modal>
-              <SignInModal onClickOutside={e => this.handleClose(e)} />
-            </Modal>
-          )}
-          <InnerContainer>{this.props.children}</InnerContainer>
-        </React.Fragment>
-      </ThemeProvider>
-    );
-  }
-}
+const Layout = () => (
+  <ThemeProvider theme={DefaultTheme || DarkTheme}>
+    <React.Fragment>
+      <Header onSignInClick={() => this.setState({isModalOpen: true})} />
+      {this.props.isModalOpen && (
+        <Modal>
+          <SignInModal onClickOutside={e => this.handleClose(e)} />
+        </Modal>
+      )}
+      <InnerContainer>{this.props.children}</InnerContainer>
+    </React.Fragment>
+  </ThemeProvider>
+);
 
 export default Layout;

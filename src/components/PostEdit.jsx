@@ -2,8 +2,7 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
-import {FormGroup} from './Styled';
+import {Button, FormGroup} from './Styled';
 
 const StyledPost = styled.div`
   input,

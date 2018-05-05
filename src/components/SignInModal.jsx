@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {Input} from './Styled';
-import Button from './Button';
-import {FormGroup} from './Styled';
+import {FormGroup, Input, Button} from './Styled';
 
 const Overlay = styled.div`
   position: fixed;
@@ -70,7 +68,7 @@ class SignInModal extends React.Component {
 
     return (
       <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>
-        <StyledModal >
+        <StyledModal>
           <h1>Sign in with email</h1>
           <form>
             <ModalInner>

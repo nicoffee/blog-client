@@ -6,18 +6,16 @@ import PostList from '../containers/PostList';
 import Post from '../containers/Post';
 import PostEdit from '../containers/PostEdit';
 
-const App = ({store}) => {
-  return (
-    <Provider store={store}>
-      <Router>
-        <Layout>
-          <Route exact path="/" component={PostList} />
-          <Route exact path="/:postId" component={Post} />
-          <Route path="/:postId/edit" component={PostEdit} />
-        </Layout>
-      </Router>
-    </Provider>
-  );
-};
+const App = ({store}) => (
+  <Provider store={store}>
+    <Router>
+      <Layout>
+        <Route exact path="/" component={PostList} />
+        <Route exact path="/:postId" component={Post} />
+        <Route path="/:postId/edit" component={PostEdit} />
+      </Layout>
+    </Router>
+  </Provider>
+);
 
 export default App;

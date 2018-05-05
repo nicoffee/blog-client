@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import Button from './Button';
+import Button from './Styled';
 
 const StyledHeader = styled.div`
   display: grid;
