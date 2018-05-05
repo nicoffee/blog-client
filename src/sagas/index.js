@@ -1,16 +1,5 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {
-  fetchPostsSuccess,
-  fetchPostsError,
-  fetchPostInfoSuccess,
-  fetchPostInfoError,
-  editPostInfoSuccess,
-  editPostInfoError,
-  fetchPostCommentsSuccess,
-  fetchPostCommentsError,
-  fetchLoginSuccess,
-  fetchLoginError,
-} from '../actions';
+import * as actions from '../actions';
 import {
   FETCH_POSTS_REQUEST,
   POST_INFO_REQUEST,
@@ -23,45 +12,46 @@ import * as api from '../services/api';
 export function* fetchPosts() {
   try {
     const posts = yield call(api.fetchPosts);
-    yield put(fetchPostsSuccess(posts.data));
+    yield put(actions.fetchPostsSuccess(posts.data));
   } catch (error) {
-    yield put(fetchPostsError(error));
+    yield put(actions.fetchPostsError(error));
   }
 }
 
 export function* fetchPostInfo(action) {
   try {
     const post = yield call(api.fetchPost, action.id);
-    yield put(fetchPostInfoSuccess(post.data));
+    yield put(actions.fetchPostInfoSuccess(post.data));
   } catch (error) {
-    yield put(fetchPostInfoError(error));
+    yield put(actions.fetchPostInfoError(error));
   }
 }
 
 export function* editPostInfo(action) {
   try {
     const post = yield call(api.editPost, action.id, action.data);
-    yield put(editPostInfoSuccess(post.data));
+    yield put(actions.editPostInfoSuccess(post.data));
   } catch (error) {
-    yield put(editPostInfoError(error));
+    yield put(actions.editPostInfoError(error));
   }
 }
 
 export function* fetchPostComments(action) {
   try {
     const post = yield call(api.fetchPostComments, action.id);
-    yield put(fetchPostCommentsSuccess(post.data));
+    yield put(actions.fetchPostCommentsSuccess(post.data));
   } catch (error) {
-    yield put(fetchPostCommentsError(error));
+    yield put(actions.fetchPostCommentsError(error));
   }
 }
 
 export function* fetchLogin(action) {
   try {
     const login = yield call(api.fetchLogin, action.payload);
-    yield put(fetchLoginSuccess(login.data));
+    yield put(actions.fetchLoginSuccess(login.data));
+    yield put(actions.closeModal());
   } catch (error) {
-    yield put(fetchLoginError(error));
+    yield put(actions.fetchLoginError(error));
   }
 }
 

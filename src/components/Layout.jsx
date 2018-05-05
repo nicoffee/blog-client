@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled, {ThemeProvider} from 'styled-components';
-import Header from '../components/Header';
+import Header from '../containers/Header';
 import Modal from '../components/Modal';
-import SignInModalContainer from '../containers/SignInModalContainer';
+import SignInModal from '../containers/SignInModal';
 
 const InnerContainer = styled.div`
   margin: 80px auto;
@@ -26,18 +26,19 @@ class Layout extends React.Component {
   }
 
   handleClose = e => {
-    console.log('e', e.target);
     this.setState({isModalOpen: false});
   };
 
   render() {
+    console.log('isModalOpen', this.props);
+
     return (
       <ThemeProvider theme={DefaultTheme || DarkTheme}>
         <React.Fragment>
           <Header onSignInClick={() => this.setState({isModalOpen: true})} />
-          {this.state.isModalOpen && (
+          {this.props.isModalOpen && (
             <Modal>
-              <SignInModalContainer onClickOutside={e => this.handleClose(e)} />
+              <SignInModal onClickOutside={e => this.handleClose(e)} />
             </Modal>
           )}
           <InnerContainer>{this.props.children}</InnerContainer>

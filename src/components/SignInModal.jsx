@@ -56,16 +56,9 @@ class SignInModal extends React.Component {
   }
 
   handleClick(e) {
-    // console.log('this.modal', this.modal);
-    // debugger; //sdfa
-    console.log('this.modal', this.modal);
-    console.log('EEE', e.target);
-    // debugger;
     if (e.target === this.modal.current) {
       this.props.onClickOutside(e);
     }
-    // debugger;
-    // onClickOutside(e);
   }
 
   updateData(e) {

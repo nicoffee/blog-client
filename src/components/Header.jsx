@@ -43,7 +43,7 @@ const Header = (props: Props) => (
       </Link>
     </StyledLogo>
     <StyledLink>
-      <Button onClick={props.onSignInClick}>Sign in</Button>
+      <Button onClick={() => props.openModal()}>Sign in</Button>
     </StyledLink>
   </StyledHeader>
 );

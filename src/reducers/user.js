@@ -4,7 +4,7 @@ import {
   FETCH_LOGIN_FAILURE,
 } from '../constants';
 
-const post = (state = {isFetching: false, user: null}, action) => {
+const user = (state = {isFetching: false, user: null}, action) => {
   switch (action.type) {
     case FETCH_LOGIN_REQUEST:
       return {...state, isFetching: true};
@@ -12,7 +12,8 @@ const post = (state = {isFetching: false, user: null}, action) => {
       return {
         ...state,
         isFetching: false,
-        user: {login: action.payload.email, id: action.payload.id},
+        name: action.payload.email,
+        id: action.payload.id,
       };
     case FETCH_LOGIN_FAILURE:
       return {...state, isFetching: false, error: action.payload};
@@ -22,6 +23,6 @@ const post = (state = {isFetching: false, user: null}, action) => {
 };
 
 export const getErrorMessage = state => state.user.error;
-// export const getUser = state => state.user.error;
+export const getUserName = state => state.user.name;
 
-export default post;
+export default user;
