@@ -30,3 +30,7 @@ export function fetchLogin(data) {
 export function createUser(data) {
   return axios.post(`${apiUrl}/users`, data);
 }
+
+export function updateUser(userId, data) {
+  return axios.patch(`${apiUrl}/users/${userId}`, data);
+}

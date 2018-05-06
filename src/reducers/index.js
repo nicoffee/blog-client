@@ -10,7 +10,9 @@ const rootReducer = combineReducers({posts, post, user, modal, app});
 export default rootReducer;
 
 export const getIsLiked = state => {
-  return state.user.posts
-    ? Object.keys(state.user.posts).indexOf(state.post.info.id) > -1
-    : false;
+  if (state.user.posts && state.post.info.id) {
+    return state.user.posts[state.post.info.id].like;
+  }
+
+  return false;
 };

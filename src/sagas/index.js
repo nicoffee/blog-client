@@ -1,4 +1,4 @@
-import {call, put, takeEvery} from 'redux-saga/effects';
+import {call, put, takeEvery, select} from 'redux-saga/effects';
 import {
   FETCH_POSTS_REQUEST,
   POST_INFO_REQUEST,
@@ -6,6 +6,7 @@ import {
   POST_COMMENTS_REQUEST,
   FETCH_LOGIN_REQUEST,
   CREATE_POST_REQUEST,
+  TOGGLE_LIKE_REQUEST,
 } from '../types';
 import * as actions from '../actions';
 import * as api from '../services/api';
@@ -65,6 +66,15 @@ export function* fetchLogin(action) {
   }
 }
 
+export function* toggleLike(action) {
+  const user = yield select(state => state.user);
+  const post = user.posts[action.payload];
+  const like = post ? post.like : false;
+  const superData = {posts: {[action.payload]: {like: !like}}};
+  const response = yield call(api.updateUser, user.id, superData);
+  yield put(actions.toggleLikeSuccess(response.data));
+}
+
 function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPosts);
   yield takeEvery(POST_INFO_REQUEST, fetchPostInfo);
@@ -72,6 +82,7 @@ function* mySaga() {
   yield takeEvery(CREATE_POST_REQUEST, createPost);
   yield takeEvery(POST_COMMENTS_REQUEST, fetchPostComments);
   yield takeEvery(FETCH_LOGIN_REQUEST, fetchLogin);
+  yield takeEvery(TOGGLE_LIKE_REQUEST, toggleLike);
 }
 
 export default mySaga;

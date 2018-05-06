@@ -3,7 +3,11 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
-import {fetchPostInfoRequest, fetchPostCommentsRequest} from '../actions';
+import {
+  fetchPostInfoRequest,
+  fetchPostCommentsRequest,
+  toggleLikeRequest,
+} from '../actions';
 import {getIsLiked} from '../reducers';
 import Post from '../components/Post';
 import Comment from '../components/Comment';
@@ -12,6 +16,7 @@ import Loader from '../components/Loader';
 type Props = {
   fetchPostInfoRequest: Function,
   fetchPostCommentsRequest: Function,
+  toggleLikeRequest: Function,
   canEdit: boolean,
   isFetching: boolean,
   isLiked: boolean,
@@ -34,7 +39,7 @@ class PostContainer extends React.Component<Props> {
   }
 
   render() {
-    const {isFetching, isLiked, canEdit, info} = this.props;
+    const {isFetching, isLiked, canEdit, toggleLikeRequest, info} = this.props;
 
     if (isFetching) {
       return <Loader />;
@@ -50,6 +55,7 @@ class PostContainer extends React.Component<Props> {
           likes={info.likes}
           canEdit={canEdit}
           isLiked={isLiked}
+          toggleLike={toggleLikeRequest}
         />
         <div>
           {this.props.comments.map(comment => (
@@ -74,4 +80,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   fetchPostInfoRequest,
   fetchPostCommentsRequest,
+  toggleLikeRequest,
 })(PostContainer);
