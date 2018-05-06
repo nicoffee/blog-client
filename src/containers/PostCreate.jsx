@@ -26,8 +26,6 @@ class PostContainer extends React.Component<Props> {
     data.likes = 0;
     /* -------------------------------------------- */
 
-    debugger;
-
     this.props.createPostRequest(data);
   }
 
