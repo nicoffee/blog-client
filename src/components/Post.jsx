@@ -16,7 +16,6 @@ const StyledPost = styled.div`
     font-weight: 200;
     line-height: 25px;
     letter-spacing: 1px;
-    color: rgba(0, 0, 0, 0.84);
   }
 `;
 

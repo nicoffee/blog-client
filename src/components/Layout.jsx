@@ -8,12 +8,12 @@ import Theme from '../containers/Theme';
 import Modal from './Modal';
 
 const InnerContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 80px auto 0;
-    max-width: 700px;
-    padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 78px auto 0;
+  max-width: 700px;
+  padding: 10px 20px 50px;
 `;
 
 const Wrapper = styled.div`
