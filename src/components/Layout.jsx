@@ -1,10 +1,11 @@
 // @flow
 
 import * as React from 'react';
-import styled, {ThemeProvider} from 'styled-components';
+import styled from 'styled-components';
 import Header from '../containers/Header';
-import Modal from '../components/Modal';
 import SignInModal from '../containers/SignInModal';
+import Theme from '../containers/Theme';
+import Modal from './Modal';
 
 const InnerContainer = styled.div`
   margin: 80px auto;
@@ -14,27 +15,20 @@ const InnerContainer = styled.div`
 
 const Wrapper = styled.div`
   background-color: ${props => props.theme.backgroundColor || '#fff'};
-  color: ${props => props.theme.color || '#fff'};
+  color: ${props => props.theme.primaryColor};
+
+  a {
+    text-decoration: none;
+  }
 `;
 
-const DefaultTheme = {
-  color: '#28abe3',
-};
-
-const DarkTheme = {
-  color: '#fff',
-  backgroundColor: '#212121',
-  headerBackgroundColor: '#000',
-};
-
 type Props = {
-  theme: string,
   isModalOpen: boolean,
   children?: React.Node,
 };
 
 const Layout = (props: Props) => (
-  <ThemeProvider theme={props.theme === 'dark' ? DarkTheme : DefaultTheme}>
+  <Theme>
     <Wrapper>
       <Header />
       {props.isModalOpen && (
@@ -44,7 +38,7 @@ const Layout = (props: Props) => (
       )}
       <InnerContainer>{props.children}</InnerContainer>
     </Wrapper>
-  </ThemeProvider>
+  </Theme>
 );
 
 export default Layout;

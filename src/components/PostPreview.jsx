@@ -16,8 +16,8 @@ const StyledPost = styled.div`
     font-size: 20px;
   }
 
-  p {
-    color: rgba(0, 0, 0, 0.54);
+  a {
+    color: inherit;
   }
 `;
 
