@@ -28,7 +28,9 @@ const StyledDropdown = styled.div`
   }
 `;
 
-type Props = {};
+type Props = {
+  switchTheme: Function,
+};
 
 type State = {
   isDropdownOpen: boolean,
@@ -51,7 +53,9 @@ class UserBlock extends React.Component<Props, State> {
               <li>
                 <Link to="/new">New Post</Link>
               </li>
-              <li>Switch to night theme</li>
+              <li onClick={() => this.props.switchTheme('dark')}>
+                Switch to night theme
+              </li>
               <li>Sign Out</li>
             </ul>
           </StyledDropdown>

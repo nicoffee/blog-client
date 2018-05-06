@@ -37,7 +37,7 @@ type Props = {
 
 const PostPreviw = (props: Props) => (
   <StyledPost>
-    <Link to={`/${props.id}`}>
+    <Link to={`post/${props.id}`}>
       <h1>{props.title}</h1>
     </Link>
     <p>{props.body.slice(0, 100)}</p>

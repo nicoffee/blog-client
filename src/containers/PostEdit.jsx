@@ -4,7 +4,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
 import {fetchPostInfoRequest, editPostInfoRequest} from '../actions';
-import PostEdit from '../components/PostEdit';
+import PostForm from '../components/PostForm';
 import Loader from '../components/Loader';
 
 type Props = {
@@ -20,25 +20,34 @@ type Props = {
   match: Match,
 };
 
-class PostContainer extends React.Component<Props> {
+class PostEditContainer extends React.Component<Props> {
   componentDidMount() {
     this.props.fetchPostInfoRequest(this.props.match.params.postId);
   }
 
+  submitForm(e, data) {
+    e.preventDefault();
+
+    this.props.editPostInfoRequest(data.id, {
+      title: data.title,
+      body: data.body,
+    });
+  }
+
   render() {
-    const {isFetching, info, editPostInfoRequest} = this.props;
+    const {isFetching, info} = this.props;
 
     if (isFetching) {
       return <Loader />;
     }
 
     return (
-      <PostEdit
+      <PostForm
         id={info.id}
         title={info.title}
         body={info.body}
         img={info.picture}
-        editPost={editPostInfoRequest}
+        handleSubmit={this.submitForm.bind(this)}
       />
     );
   }
@@ -52,4 +61,4 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   fetchPostInfoRequest,
   editPostInfoRequest,
-})(PostContainer);
+})(PostEditContainer);

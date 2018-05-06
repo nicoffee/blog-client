@@ -10,17 +10,24 @@ const InnerContainer = styled.div`
   padding: 10px 20px;
 `;
 
+const Wrapper = styled.div`
+  background-color: ${props => props.theme.backgroundColor || '#fff'};
+  color: ${props => props.theme.color || '#fff'};
+`;
+
 const DefaultTheme = {
   color: '#28abe3',
 };
 
 const DarkTheme = {
-  color: 'black',
+  color: '#fff',
+  backgroundColor: '#212121',
+  headerBackgroundColor: '#000',
 };
 
 const Layout = props => (
-  <ThemeProvider theme={DefaultTheme || DarkTheme}>
-    <React.Fragment>
+  <ThemeProvider theme={props.theme === 'dark' ? DarkTheme : DefaultTheme}>
+    <Wrapper>
       <Header />
       {props.isModalOpen && (
         <Modal>
@@ -28,7 +35,7 @@ const Layout = props => (
         </Modal>
       )}
       <InnerContainer>{props.children}</InnerContainer>
-    </React.Fragment>
+    </Wrapper>
   </ThemeProvider>
 );
 

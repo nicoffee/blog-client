@@ -1,12 +1,13 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import * as actions from '../actions';
 import {
   FETCH_POSTS_REQUEST,
   POST_INFO_REQUEST,
   EDIT_POST_REQUEST,
   POST_COMMENTS_REQUEST,
   FETCH_LOGIN_REQUEST,
-} from '../constants';
+  CREATE_POST_REQUEST,
+} from '../types';
+import * as actions from '../actions';
 import * as api from '../services/api';
 
 export function* fetchPosts() {
@@ -36,6 +37,15 @@ export function* editPostInfo(action) {
   }
 }
 
+export function* createPost() {
+  try {
+    const post = yield call(api.createPost);
+    yield put(actions.createPostSuccess(post.data));
+  } catch (error) {
+    yield put(actions.createPostError(error));
+  }
+}
+
 export function* fetchPostComments(action) {
   try {
     const post = yield call(api.fetchPostComments, action.id);
@@ -59,6 +69,7 @@ function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPosts);
   yield takeEvery(POST_INFO_REQUEST, fetchPostInfo);
   yield takeEvery(EDIT_POST_REQUEST, editPostInfo);
+  yield takeEvery(CREATE_POST_REQUEST, createPost);
   yield takeEvery(POST_COMMENTS_REQUEST, fetchPostComments);
   yield takeEvery(FETCH_LOGIN_REQUEST, fetchLogin);
 }

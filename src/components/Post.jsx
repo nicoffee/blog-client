@@ -62,7 +62,7 @@ const Post = (props: Props) => (
     <h1>{props.title}</h1>
     <PreviewImage background={props.img} />
     <p>{props.body}</p>
-    <Link to={`${props.id}/edit`}>Edit</Link>
+    <Link to={`/post/${props.id}/edit`}>Edit</Link>
     <LikeBlock>
       <div>
         <img src={likeIcon} />

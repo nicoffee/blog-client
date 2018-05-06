@@ -1,7 +1,7 @@
 import {normalize} from 'normalizr';
 import {postListSchema} from '../actions/schema';
 import * as actions from '../actions';
-import * as types from '../constants';
+import * as types from '../types';
 
 describe('fetch posts actions', () => {
   it('should create an action to fetch posts', () => {
@@ -48,7 +48,7 @@ describe('fetch post info actions', () => {
 
     const expectedAction = {
       type: types.POST_INFO_REQUEST,
-      id: postId
+      id: postId,
     };
 
     expect(actions.fetchPostInfoRequest(postId)).toEqual(expectedAction);
@@ -88,7 +88,7 @@ describe('edit post info actions', () => {
 
     const expectedAction = {
       type: types.EDIT_POST_REQUEST,
-      id: postId
+      id: postId,
     };
 
     expect(actions.editPostInfoRequest(postId)).toEqual(expectedAction);

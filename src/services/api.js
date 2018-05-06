@@ -15,11 +15,14 @@ export function editPost(postId, data) {
   return axios.patch(`${apiUrl}/posts/${postId}`, data);
 }
 
+export function createPost(data) {
+  return axios.post(`${apiUrl}/posts`, data);
+}
+
 export function fetchPostComments(postId) {
   return axios.get(`${apiUrl}/comments/?postId=${postId}`);
 }
 
 export function fetchLogin(data) {
-  console.log('data', data);
   return axios.post(`${apiUrl}/users`, data);
 }

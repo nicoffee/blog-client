@@ -3,14 +3,14 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import UserBlock from './UserBlock';
+import UserBlock from '../containers/UserBlock';
 import {Button} from './Styled';
 
 const StyledHeader = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   position: fixed;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.headerBackgroundColor || '#fff'};
   opacity: 0.9;
   width: 100%;
   top: 0;

@@ -2,7 +2,7 @@ import {
   FETCH_LOGIN_REQUEST,
   FETCH_LOGIN_SUCCESS,
   FETCH_LOGIN_FAILURE,
-} from '../constants';
+} from '../types';
 
 const user = (state = {isFetching: false, user: null}, action) => {
   switch (action.type) {

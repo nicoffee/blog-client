@@ -1,6 +1,6 @@
 import {normalize} from 'normalizr';
 import {postListSchema} from './schema';
-import * as types from '../constants';
+import * as types from '../types';
 
 export const fetchPostsRequest = () => ({
   type: types.FETCH_POSTS_REQUEST,
@@ -47,6 +47,21 @@ export const editPostInfoError = error => ({
   payload: error.message,
 });
 
+export const createPostRequest = data => ({
+  type: types.CREATE_POST_REQUEST,
+  data,
+});
+
+export const createPostSuccess = data => ({
+  type: types.CREATE_POST_SUCCESS,
+  payload: data,
+});
+
+export const createPostError = error => ({
+  type: types.CREATE_POST_FAILURE,
+  payload: error.message,
+});
+
 export const fetchPostCommentsRequest = postId => ({
   type: types.POST_COMMENTS_REQUEST,
   id: postId,
@@ -83,4 +98,9 @@ export const openModal = () => ({
 
 export const closeModal = () => ({
   type: types.CLOSE_MODAL,
+});
+
+export const switchTheme = theme => ({
+  type: types.SWITCH_THEME,
+  payload: theme,
 });
