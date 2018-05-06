@@ -24,5 +24,9 @@ export function fetchPostComments(postId) {
 }
 
 export function fetchLogin(data) {
+  return axios.get(`${apiUrl}/users?email=${data.email}`);
+}
+
+export function createUser(data) {
   return axios.post(`${apiUrl}/users`, data);
 }

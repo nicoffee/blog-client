@@ -4,6 +4,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
 import {fetchPostInfoRequest, fetchPostCommentsRequest} from '../actions';
+import {getIsLiked} from '../reducers';
 import Post from '../components/Post';
 import Comment from '../components/Comment';
 import Loader from '../components/Loader';
@@ -13,6 +14,7 @@ type Props = {
   fetchPostCommentsRequest: Function,
   canEdit: boolean,
   isFetching: boolean,
+  isLiked: boolean,
   info: {
     id: string,
     title: string,
@@ -32,7 +34,7 @@ class PostContainer extends React.Component<Props> {
   }
 
   render() {
-    const {isFetching, canEdit, info} = this.props;
+    const {isFetching, isLiked, canEdit, info} = this.props;
 
     if (isFetching) {
       return <Loader />;
@@ -47,6 +49,7 @@ class PostContainer extends React.Component<Props> {
           img={info.picture}
           likes={info.likes}
           canEdit={canEdit}
+          isLiked={isLiked}
         />
         <div>
           {this.props.comments.map(comment => (
@@ -65,6 +68,7 @@ const mapStateToProps = state => ({
   canEdit: state.post.info.author
     ? state.post.info.author.id === state.user.id
     : false,
+  isLiked: getIsLiked(state),
 });
 
 export default connect(mapStateToProps, {

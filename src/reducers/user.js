@@ -4,16 +4,14 @@ import {
   FETCH_LOGIN_FAILURE,
 } from '../types';
 
-const user = (state = {isFetching: false, user: null}, action) => {
+const user = (state = {isFetching: false}, action) => {
   switch (action.type) {
     case FETCH_LOGIN_REQUEST:
-      return {...state, isFetching: true};
+      return {...state, isFetching: true, error: null};
     case FETCH_LOGIN_SUCCESS:
       return {
-        ...state,
         isFetching: false,
-        name: action.payload.email,
-        id: action.payload.id,
+        ...action.payload,
       };
     case FETCH_LOGIN_FAILURE:
       return {...state, isFetching: false, error: action.payload};
@@ -25,5 +23,5 @@ const user = (state = {isFetching: false, user: null}, action) => {
 export default user;
 
 export const getErrorMessage = state => state.user.error;
-export const getUserName = state => state.user.name;
+export const getUserName = state => state.user.email;
 export const getUserId = state => state.user.id;
