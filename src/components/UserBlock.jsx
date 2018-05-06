@@ -1,6 +1,4 @@
-// @flow
-
-import * as React from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import userIcon from './../images/user.svg';
@@ -47,9 +45,32 @@ type State = {
 };
 
 class UserBlock extends React.Component<Props, State> {
+  dropdown = React.createRef();
+
   state = {
     isDropdownOpen: false,
   };
+
+  handleDropdownClose(e: SyntheticMouseEvent<>) {
+    if (
+      this.dropdown.current &&
+      e.target !== this.dropdown.current &&
+      !this.dropdown.current.contains(e.target)
+    ) {
+      this.setState({isDropdownOpen: false});
+    }
+  }
+
+  componentDidMount() {
+    document.body.addEventListener(
+      'click',
+      this.handleDropdownClose.bind(this)
+    );
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.handleDropdownClose);
+  }
 
   render() {
     return (
@@ -58,7 +79,7 @@ class UserBlock extends React.Component<Props, State> {
           <img src={userIcon} />
         </div>
         {this.state.isDropdownOpen && (
-          <StyledDropdown>
+          <StyledDropdown innerRef={this.dropdown}>
             <ul>
               <li>
                 <Link to="/new">New Post</Link>

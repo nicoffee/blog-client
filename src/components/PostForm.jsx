@@ -1,8 +1,11 @@
 // @flow
 
 import * as React from 'react';
+import Formsy from 'formsy-react';
 import styled from 'styled-components';
-import {Button, FormGroup} from './Styled';
+import FormGroup from './FormGroup';
+import Input from './Input';
+import {Button} from './Styled';
 
 const StyledPost = styled.div`
   input,
@@ -24,7 +27,7 @@ const FormContent = styled.div`
 type Props = {
   id?: string,
   title?: string,
-  img?: string,
+  picture?: string,
   body?: string,
   handleSubmit: Function,
 };
@@ -33,18 +36,16 @@ type State = {
   title: string,
   picture: string,
   body: string,
+  canSubmit: boolean,
 };
 
 class PostForm extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      title: props.title || '',
-      picture: '',
-      body: props.body || '',
-    };
-  }
+  state = {
+    title: this.props.title || '',
+    picture: this.props.picture || '',
+    body: this.props.body || '',
+    canSubmit: false,
+  };
 
   updateData(e: SyntheticInputEvent<>) {
     const data = e.target;
@@ -56,30 +57,16 @@ class PostForm extends React.Component<Props, State> {
 
     return (
       <StyledPost>
-        <form>
+        <Formsy
+          onValidSubmit={e => handleSubmit(e, this.state)}
+          onValid={() => this.setState({canSubmit: true})}
+          onInvalid={() => this.setState({canSubmit: false})}>
           <FormContent>
-            <FormGroup>
-              <label htmlFor="picture">Image:</label>
-              <div>
-                <input
-                  id="picture"
-                  type="text"
-                  name="picture"
-                  value={this.state.picture}
-                  onChange={e => this.updateData(e)}
-                />
-              </div>
-            </FormGroup>
+            <FormGroup component={Input} name="picture" label="Image:" />
             <FormGroup>
               <label htmlFor="title">Title:</label>
               <div>
-                <input
-                  id="title"
-                  type="text"
-                  name="title"
-                  value={this.state.title}
-                  onChange={e => this.updateData(e)}
-                />
+                <Input name="title" required />
               </div>
             </FormGroup>
             <FormGroup>
@@ -95,13 +82,10 @@ class PostForm extends React.Component<Props, State> {
               </div>
             </FormGroup>
           </FormContent>
-          <Button
-            primary
-            type="submit"
-            onClick={e => handleSubmit(e, this.state)}>
+          <Button primary type="submit" disabled={!this.state.canSubmit}>
             Save
           </Button>
-        </form>
+        </Formsy>
       </StyledPost>
     );
   }

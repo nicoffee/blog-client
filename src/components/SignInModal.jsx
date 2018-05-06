@@ -1,6 +1,9 @@
 import React from 'react';
+import Formsy from 'formsy-react';
 import styled from 'styled-components';
-import {FormGroup, Input, Button} from './Styled';
+import Input from './Input';
+import FormGroup from './FormGroup';
+import {Button} from './Styled';
 
 const Overlay = styled.div`
   position: fixed;
@@ -20,6 +23,13 @@ const StyledModal = styled.div`
   border: 1px solid #888;
   width: 60%;
   border-radius: 8px;
+
+  button:disabled {
+    background-color: #bdbdbd;
+    border-color: #bdbdbd;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 `;
 
 const ModalInner = styled.div`
@@ -46,22 +56,12 @@ type State = {
 class SignInModal extends React.Component<Props, State> {
   modal: {value: null | HTMLDivElement} = React.createRef();
 
-  constructor(props: Props) {
-    super(props);
+  state = {
+    canSubmit: false,
+  };
 
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
-
-  submitForm(e: SyntheticEvent<>) {
-    e.preventDefault();
-
-    this.props.fetchLoginRequest({
-      email: this.state.email,
-      password: this.state.password,
-    });
+  submitForm(model) {
+    this.props.fetchLoginRequest(model);
   }
 
   handleClick(e: SyntheticInputEvent<>) {
@@ -81,38 +81,35 @@ class SignInModal extends React.Component<Props, State> {
       <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>
         <StyledModal>
           <h1>Sign in with email</h1>
-          <form>
+          <Formsy
+            onValidSubmit={e => this.submitForm(e)}
+            onValid={() => this.setState({canSubmit: true})}
+            onInvalid={() => this.setState({canSubmit: false})}>
             <ModalInner>
-              <FormGroup>
-                <label htmlFor="email">Your email</label>
-                <div>
-                  <Input
-                    value={this.state.email}
-                    onChange={e => this.updateData(e)}
-                    type="text"
-                    id="email"
-                    name="email"
-                  />
-                </div>
+              <FormGroup label="Your email">
+                <Input
+                  onChange={e => this.updateData(e)}
+                  name="email"
+                  validations="isEmail"
+                  validationError="This is not a valid email"
+                  required
+                />
               </FormGroup>
-              <FormGroup>
-                <label htmlFor="pass">Password</label>
-                <div>
-                  <Input
-                    value={this.state.password}
-                    onChange={e => this.updateData(e)}
-                    type="text"
-                    id="pass"
-                    name="password"
-                  />
-                </div>
+              <FormGroup label="Password">
+                <Input
+                  value={this.state.password}
+                  onChange={e => this.updateData(e)}
+                  type="password"
+                  name="password"
+                  required
+                />
               </FormGroup>
               {error && <Error>{error}</Error>}
-              <Button primary type="submit" onClick={e => this.submitForm(e)}>
-                Continue
-              </Button>
             </ModalInner>
-          </form>
+            <Button primary type="submit" disabled={!this.state.canSubmit}>
+              Continue
+            </Button>
+          </Formsy>
         </StyledModal>
       </Overlay>
     );

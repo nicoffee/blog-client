@@ -28,6 +28,10 @@ const LikeBlock = styled.div`
   font-weight: 100;
   font-size: 14px;
 
+  @media (max-width: 900px) {
+    position: static;
+  }
+
   div {
     display: flex;
     justify-content: flex-start;

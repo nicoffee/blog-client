@@ -20,6 +20,10 @@ const Wrapper = styled.div`
   a {
     text-decoration: none;
   }
+
+  button:disabled {
+    background-color: #757575;
+  }
 `;
 
 type Props = {

@@ -11,11 +11,11 @@ export const Input = styled.input`
   font-weight: 100;
 `;
 
-export const FormGroup = styled.div`
+export const StyledFormGroup = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   
   label {
     width: 30%:
