@@ -31,6 +31,7 @@ type Props = {
 
 type State = {
   title: string,
+  picture: string,
   body: string,
 };
 
@@ -40,6 +41,7 @@ class PostForm extends React.Component<Props, State> {
 
     this.state = {
       title: props.title || '',
+      picture: '',
       body: props.body || '',
     };
   }
@@ -56,6 +58,18 @@ class PostForm extends React.Component<Props, State> {
       <StyledPost>
         <form>
           <FormContent>
+            <FormGroup>
+              <label htmlFor="picture">Image:</label>
+              <div>
+                <input
+                  id="picture"
+                  type="text"
+                  name="picture"
+                  value={this.state.picture}
+                  onChange={e => this.updateData(e)}
+                />
+              </div>
+            </FormGroup>
             <FormGroup>
               <label htmlFor="title">Title:</label>
               <div>

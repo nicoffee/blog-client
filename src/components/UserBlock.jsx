@@ -12,6 +12,9 @@ const StyledContainer = styled.div`
 `;
 
 const StyledDropdown = styled.div`
+  width: 200px;
+  z-index: 100;
+  background: #fff;
   margin-top: 5px;
   right: 0;
   position: absolute;
@@ -25,6 +28,13 @@ const StyledDropdown = styled.div`
 
   li {
     padding: 10px;
+    cursor: pointer;
+    transition: background-color 200ms ease-out, color 200ms ease-out;
+
+    &:hover {
+      background-color: #28abe3;
+      color: #fff;
+    }
   }
 `;
 

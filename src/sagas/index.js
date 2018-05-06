@@ -37,9 +37,9 @@ export function* editPostInfo(action) {
   }
 }
 
-export function* createPost() {
+export function* createPost(action) {
   try {
-    const post = yield call(api.createPost);
+    const post = yield call(api.createPost, action.data);
     yield put(actions.createPostSuccess(post.data));
   } catch (error) {
     yield put(actions.createPostError(error));

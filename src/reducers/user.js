@@ -22,7 +22,8 @@ const user = (state = {isFetching: false, user: null}, action) => {
   }
 };
 
+export default user;
+
 export const getErrorMessage = state => state.user.error;
 export const getUserName = state => state.user.name;
-
-export default user;
+export const getUserId = state => state.user.id;
