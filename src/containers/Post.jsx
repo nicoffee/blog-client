@@ -11,6 +11,7 @@ import Loader from '../components/Loader';
 type Props = {
   fetchPostInfoRequest: Function,
   fetchPostCommentsRequest: Function,
+  canEdit: boolean,
   isFetching: boolean,
   info: {
     id: string,
@@ -31,7 +32,7 @@ class PostContainer extends React.Component<Props> {
   }
 
   render() {
-    const {isFetching, info} = this.props;
+    const {isFetching, canEdit, info} = this.props;
 
     if (isFetching) {
       return <Loader />;
@@ -45,6 +46,7 @@ class PostContainer extends React.Component<Props> {
           body={info.body}
           img={info.picture}
           likes={info.likes}
+          canEdit={canEdit}
         />
         <div>
           {this.props.comments.map(comment => (
@@ -60,6 +62,9 @@ const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
   info: state.post.info,
   comments: state.post.comments,
+  canEdit: state.post.info.author
+    ? state.post.info.author.id === state.user.id
+    : false,
 });
 
 export default connect(mapStateToProps, {
