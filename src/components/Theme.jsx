@@ -6,11 +6,19 @@ import {ThemeProvider} from 'styled-components';
 const DefaultTheme = {
   primaryColor: '#212121',
   secondaryColor: '#28abe3',
+  fontColor: '#000',
+  iconColor: '#000',
+  primaryBackgroundColor: '#fff',
+  secondaryBackgroundColor: '#fff',
 };
 
 const DarkTheme = {
-  primaryColor: '#ffffff',
-  backgroundColor: '#212121',
+  primaryColor: '#fff',
+  secondaryColor: '#fdd835',
+  fontColor: '#fff',
+  iconColor: '#fdd835',
+  primaryBackgroundColor: '#212121',
+  secondaryBackgroundColor: '#424242',
   headerBackgroundColor: '#000',
 };
 
