@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import styled, {ThemeProvider} from 'styled-components';
 import Header from '../containers/Header';
@@ -25,7 +27,13 @@ const DarkTheme = {
   headerBackgroundColor: '#000',
 };
 
-const Layout = props => (
+type Props = {
+  theme: string,
+  isModalOpen: boolean,
+  children?: React.Node,
+};
+
+const Layout = (props: Props) => (
   <ThemeProvider theme={props.theme === 'dark' ? DarkTheme : DefaultTheme}>
     <Wrapper>
       <Header />

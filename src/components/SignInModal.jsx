@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {FormGroup, Input, Button} from './Styled';
 
@@ -32,19 +32,30 @@ const Error = styled.span`
   color: red;
 `;
 
-class SignInModal extends React.Component {
-  constructor(props) {
+type Props = {
+  fetchLoginRequest: Function,
+  closeModal: Function,
+  error?: string,
+};
+
+type State = {
+  email: string,
+  password: string,
+};
+
+class SignInModal extends React.Component<Props, State> {
+  modal: {value: null | HTMLDivElement} = React.createRef();
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       email: '',
       password: '',
     };
-
-    this.modal = React.createRef();
   }
 
-  submitForm(e) {
+  submitForm(e: SyntheticEvent<>) {
     e.preventDefault();
 
     this.props.fetchLoginRequest({
@@ -53,13 +64,13 @@ class SignInModal extends React.Component {
     });
   }
 
-  handleClick(e) {
+  handleClick(e: SyntheticInputEvent<>) {
     if (e.target === this.modal.current) {
       this.props.closeModal();
     }
   }
 
-  updateData(e) {
+  updateData(e: SyntheticInputEvent<>) {
     this.setState({[e.target.name]: e.target.value});
   }
 
