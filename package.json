@@ -1,19 +1,12 @@
 {
-  "name": "movies-db",
+  "name": "blog",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:nicoffee/movies-db.git",
+  "repository": "https://github.com/nicoffee/blog-demo.git",
   "author": "nicoffee <fedoseevn@gmail.com>",
   "license": "MIT",
-  "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/tests/config.js",
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/src/tests/mocks/fileMock.js"
-    }
-  },
   "engines": {
-    "node": "8.9.4"
+    "node": "9.8.0"
   },
   "scripts": {
     "start": "node index.js",
@@ -31,6 +24,13 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint & flow"
+    }
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/tests/config.js",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/src/tests/mocks/fileMock.js"
     }
   },
   "dependencies": {

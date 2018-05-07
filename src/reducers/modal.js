@@ -1,4 +1,4 @@
-import {OPEN_MODAL, CLOSE_MODAL} from '../constants';
+import {OPEN_MODAL, CLOSE_MODAL} from '../types';
 
 const modal = (state = {isOpen: false}, action) => {
   switch (action.type) {
