@@ -4,8 +4,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 const StyledComment = styled.div`
-  border-bottom: 1px solid grey;
   padding: 0.25em 1em;
+  border-bottom: 1px solid grey;
   margin: 10px 0;
 `;
 

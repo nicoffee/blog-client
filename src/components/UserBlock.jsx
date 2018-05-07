@@ -12,17 +12,17 @@ const UserImage = styled.div`
   cursor: pointer;
 
   svg {
-    fill: ${props => props.theme.iconColor}};
+    fill: ${props => props.theme.iconColor};
   }
 `;
 
 const StyledDropdown = styled.div`
-  width: 200px;
-  z-index: 100;
-  background-color: ${props => props.theme.primaryBackgroundColor};
-  margin-top: 5px;
-  right: 0;
   position: absolute;
+  z-index: 100;
+  right: 0;
+  width: 200px;
+  margin-top: 5px;
+  background-color: ${props => props.theme.primaryBackgroundColor};
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35);
 

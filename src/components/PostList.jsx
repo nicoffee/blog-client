@@ -6,8 +6,8 @@ import PostPreviw from './PostPreview';
 
 const StyledDiv = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-gap: 50px 25px;
+  grid-template-columns: 1fr 1fr;
 `;
 
 type Props = {

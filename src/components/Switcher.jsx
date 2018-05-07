@@ -14,33 +14,33 @@ const StyledLabel = styled.label`
       background-color: #fdd835;
     }
 
-    &:checked + span:before {
-      transform: translateX(18px);
+    &:checked + span::before {
       background-color: #000;
+      transform: translateX(18px);
     }
   }
 `;
 
 const Slider = styled.span`
   position: absolute;
-  cursor: pointer;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 18px;
+  left: 0;
   background-color: #2196f3;
+  border-radius: 18px;
+  cursor: pointer;
   transition: 0.4s;
 
-  &:before {
+  &::before {
     position: absolute;
-    content: '';
-    height: 14px;
-    width: 14px;
-    left: 4px;
     bottom: 3px;
-    border-radius: 50%;
+    left: 4px;
+    width: 14px;
+    height: 14px;
     background-color: white;
+    border-radius: 50%;
+    content: '';
     transition: 0.4s;
   }
 `;

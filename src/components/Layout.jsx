@@ -9,11 +9,11 @@ import Modal from './Modal';
 
 const InnerContainer = styled.div`
   display: flex;
+  max-width: 700px;
   flex-direction: column;
   align-items: center;
-  margin: 78px auto 0;
-  max-width: 700px;
   padding: 10px 20px 50px;
+  margin: 78px auto 0;
 `;
 
 const Wrapper = styled.div`

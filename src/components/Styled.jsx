@@ -3,11 +3,11 @@
 import styled, {css} from 'styled-components';
 
 export const Input = styled.input`
-  font-size: 18px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
   width: 100%;
   padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 18px;
   font-weight: 100;
 `;
 
@@ -16,9 +16,9 @@ export const StyledFormGroup = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 30px;
-  
+
   label {
-    width: 30%:
+    width: 30%;
   }
 
   div {
@@ -28,14 +28,13 @@ export const StyledFormGroup = styled.div`
 `;
 
 export const Button = styled.button`
-  border-radius: 3px;
   padding: 8px 16px;
-  margin: 0 1em;
-  color: ${props => props.theme.color};
   border: 1px solid #28abe3;
-  font-size: 12px;
+  margin: 0 1em;
+  border-radius: 3px;
+  color: ${props => props.theme.color};
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  font-size: 12px;
 
   ${props =>
     props.primary &&
@@ -44,8 +43,10 @@ export const Button = styled.button`
       color: ${props.theme.color};
     `};
 
+  transition: background-color 0.2s, color 0.2s;
+
   &:hover {
     background-color: #28abe3;
-    color: #ffffff;
+    color: #fff;
   }
 `;

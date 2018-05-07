@@ -7,10 +7,10 @@ import styled from 'styled-components';
 const StyledPost = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 3px;
   padding: 0.25em 1em;
   margin: 0 1em;
   background: transparent;
+  border-radius: 3px;
 
   h1 {
     font-size: 20px;

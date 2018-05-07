@@ -8,15 +8,15 @@ import Switcher from './Switcher';
 import {Button} from './Styled';
 
 const StyledHeader = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   position: fixed;
-  background-color: ${props => props.theme.headerBackgroundColor || '#fff'};
-  opacity: 0.9;
-  width: 100%;
+  z-index: 10;
   top: 0;
   left: 0;
-  z-index: 10;
+  display: grid;
+  width: 100%;
+  background-color: ${props => props.theme.headerBackgroundColor || '#fff'};
+  grid-template-columns: repeat(3, 1fr);
+  opacity: 0.9;
 
   > div {
     display: flex;

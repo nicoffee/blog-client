@@ -8,27 +8,27 @@ import {Button} from './Styled';
 const Overlay = styled.div`
   position: fixed;
   z-index: 1;
-  left: 0;
   top: 0;
+  left: 0;
+  overflow: hidden;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const StyledModal = styled.div`
-  background-color: #fefefe;
-  margin: 15% auto;
+  width: 60%;
   padding: 40px;
   border: 1px solid #888;
-  width: 60%;
+  margin: 15% auto;
+  background-color: #fefefe;
   border-radius: 8px;
 
   button:disabled {
     background-color: #bdbdbd;
     border-color: #bdbdbd;
-    pointer-events: none;
     cursor: not-allowed;
+    pointer-events: none;
   }
 `;
 
