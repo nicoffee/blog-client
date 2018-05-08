@@ -10,11 +10,11 @@ import * as variables from '../types/style-variables';
 
 const InnerContainer = styled.div`
   display: flex;
+  max-width: ${variables.BASIC_CONTENT_WIDTH};
   flex-direction: column;
   align-items: center;
-  margin: 78px auto 0;
-  max-width: ${variables.BASIC_CONTENT_WIDTH};
   padding: 10px 20px 50px;
+  margin: 78px auto 0;
 `;
 
 const BaseStyles = styled.div`

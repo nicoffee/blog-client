@@ -1,7 +1,6 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import styled from 'styled-components';
-import Input from './Input';
 import FormGroup from './FormGroup';
 import {Button} from './Styled';
 import * as variables from '../types/style-variables';
@@ -9,11 +8,11 @@ import * as variables from '../types/style-variables';
 const Overlay = styled.div`
   position: fixed;
   z-index: 1;
-  left: 0;
   top: 0;
+  left: 0;
+  overflow: hidden;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
@@ -35,7 +34,18 @@ const StyledModal = styled.div`
     background-color: ${variables.COLOR_GRAY_400};
     border-color: ${variables.COLOR_GRAY_400};
     pointer-events: none;
+    width: 60%;
+    padding: 40px;
+    border: 1px solid #888;
+    margin: 15% auto;
+    background-color: #fefefe;
+    border-radius: 8px;
+
+  button:disabled {
+    background-color: #bdbdbd;
+    border-color: #bdbdbd;
     cursor: not-allowed;
+    pointer-events: none;
   }
 `;
 

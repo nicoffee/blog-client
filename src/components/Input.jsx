@@ -5,7 +5,7 @@ import {Input} from './Styled';
 import * as variables from '../types/style-variables';
 
 export const InputWrapper = styled.div`
-  display; flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
 

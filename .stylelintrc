@@ -1,0 +1,22 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components",
+    "stylelint-config-idiomatic-order"
+  ],
+  "rules": {
+    "order/order": [
+        "custom-properties",
+        "rules",
+        "at-rules"
+    ],
+    "declaration-empty-line-before": null,
+    "no-empty-source": null,
+    "value-list-max-empty-lines": null,
+    "declaration-colon-newline-after": null
+  }
+}

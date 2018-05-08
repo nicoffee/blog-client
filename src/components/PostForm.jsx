@@ -10,11 +10,11 @@ import {Button} from './Styled';
 const StyledPost = styled.div`
   input,
   textarea {
-    font-size: 18px;
-    border: 1px solid #e0e0e0;
-    border-radius: 3px;
     width: 100%;
     padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    font-size: 18px;
     font-weight: 100;
   }
 `;

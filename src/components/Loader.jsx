@@ -17,11 +17,11 @@ const Loader = styled.div`
   top: 50%;
   width: 40px;
   height: 40px;
-  margin-bottom: -20px;
   border: 6px solid #f3f3f3;
   border-top: 6px solid #3498db;
-  border-radius: 50%;
+  margin-bottom: -20px;
   animation: ${rotate360} 2s linear infinite;
+  border-radius: 50%;
 `;
 
 export default Loader;

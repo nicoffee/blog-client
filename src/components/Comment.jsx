@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import * as variables from '../types/style-variables';
 
 const StyledComment = styled.div`
-  border-bottom: 1px solid ${variables.COLOR_GRAY_400};
   padding: 0.25em 1em;
+  border-bottom: 1px solid ${variables.COLOR_GRAY_400};
   margin: 10px 0;
 `;
 

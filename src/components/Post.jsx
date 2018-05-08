@@ -15,8 +15,8 @@ const StyledPost = styled.div`
   p {
     font-size: 20px;
     font-weight: 200;
-    line-height: 25px;
     letter-spacing: 1px;
+    line-height: 25px;
   }
 `;
 
@@ -24,26 +24,22 @@ const LikeBlock = styled.div`
   position: fixed;
   top: 50%;
   left: 30px;
-  font-weight: 100;
   font-size: 14px;
-
-  @media (max-width: 900px) {
-    position: static;
-  }
+  font-weight: 100;
 
   div {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: flex-start;
   }
 
   svg {
     width: 25px;
     height: 25px;
     margin-right: 5px;
+    cursor: pointer;
     stroke: black;
     stroke-width: 2px;
-    cursor: pointer;
 
     path {
       fill: ${props => (props.isLiked ? '#e53935' : 'none')};
@@ -53,6 +49,10 @@ const LikeBlock = styled.div`
     &:hover path {
       fill: ${variables.COLOR_RED_400};
     }
+  }
+
+  @media (max-width: 900px) {
+    position: static;
   }
 `;
 

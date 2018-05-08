@@ -31,11 +31,11 @@ describe('fetch posts actions', () => {
   });
 
   it('should create an action when fetch posts failed', () => {
-    const error = new Error();
+    const error = new Error('error message');
 
     const expectedAction = {
       type: types.FETCH_POSTS_FAILURE,
-      payload: error,
+      payload: error.message,
     };
 
     expect(actions.fetchPostsError(error)).toEqual(expectedAction);
@@ -71,11 +71,11 @@ describe('fetch post info actions', () => {
   });
 
   it('should create an action when fetch post info failed', () => {
-    const error = new Error();
+    const error = new Error('error message');
 
     const expectedAction = {
       type: types.POST_INFO_FAILURE,
-      payload: error,
+      payload: error.message,
     };
 
     expect(actions.fetchPostInfoError(error)).toEqual(expectedAction);
@@ -111,11 +111,11 @@ describe('edit post info actions', () => {
   });
 
   it('should create an action when edit post info failed', () => {
-    const error = new Error();
+    const error = new Error('error message');
 
     const expectedAction = {
       type: types.EDIT_POST_FAILURE,
-      payload: error,
+      payload: error.message,
     };
 
     expect(actions.editPostInfoError(error)).toEqual(expectedAction);
