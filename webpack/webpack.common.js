@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './public',
+    contentBase: ['./public', path.resolve(__dirname, 'assets')],
     historyApiFallback: true,
     hot: true,
   },
@@ -30,6 +30,17 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'url-loader',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: './assets/fonts/[name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
