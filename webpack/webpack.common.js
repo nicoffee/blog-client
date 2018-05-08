@@ -3,12 +3,6 @@ const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: ['./public', path.resolve(__dirname, 'assets')],
-    historyApiFallback: true,
-    hot: true,
-  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../public'),
@@ -37,7 +31,8 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: './assets/fonts/[name].[ext]',
+              name: '[hash].[ext]',
+              limit: 100
             },
           },
         ],
