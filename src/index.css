@@ -14,8 +14,21 @@ body {
 
 @font-face {
   font-family: 'Raleway';
-  src: url('/assets/fonts/Raleway-Light.woff2') format('woff2'),
-    url('/assets/fonts/Raleway-Light.woff') format('woff');
-  font-weight: 600;
+  font-weight: 100;
   font-style: normal;
+  src: url('./assets/fonts/Raleway-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./assets/fonts/Raleway-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./assets/fonts/Raleway-Bold.ttf');
 }
