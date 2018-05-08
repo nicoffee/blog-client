@@ -9,12 +9,12 @@ import {Button} from './Styled';
 
 const StyledHeader = styled.div`
   position: fixed;
-  background-color: ${props => props.theme.headerBackgroundColor};
   z-index: 10;
   top: 0;
   left: 0;
   display: grid;
   width: 100%;
+  background-color: ${props => props.theme.headerBackgroundColor};
   grid-template-columns: repeat(3, 1fr);
   opacity: 0.9;
 

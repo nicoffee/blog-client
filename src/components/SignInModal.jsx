@@ -17,13 +17,13 @@ const Overlay = styled.div`
 `;
 
 const StyledModal = styled.div`
-  background-color: ${variables.COLOR_WHITE};
-  margin: 15% auto;
-  padding: 30px 40px;
   width: 40%;
+  padding: 30px 40px;
+  margin: 15% auto;
+  background-color: ${variables.COLOR_WHITE};
   border-radius: ${variables.SECONDARY_BORDER_RADIUS};
-  text-align: center;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  text-align: center;
 
   h2 {
     margin: 30px 0 60px;
@@ -31,19 +31,12 @@ const StyledModal = styled.div`
   }
 
   button:disabled {
-    background-color: ${variables.COLOR_GRAY_400};
-    border-color: ${variables.COLOR_GRAY_400};
-    pointer-events: none;
     width: 60%;
     padding: 40px;
-    border: 1px solid #888;
     margin: 15% auto;
-    background-color: #fefefe;
+    background-color: ${variables.COLOR_GRAY_400};
+    border-color: ${variables.COLOR_GRAY_400};
     border-radius: 8px;
-
-  button:disabled {
-    background-color: #bdbdbd;
-    border-color: #bdbdbd;
     cursor: not-allowed;
     pointer-events: none;
   }
