@@ -3,10 +3,12 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import * as variables from '../types/style-variables';
 
 const StyledError = styled.div`
   display: flex;
   flex-direction: column;
+  color: ${variables.ERROR_COLOR};
 `;
 
 type Props = {

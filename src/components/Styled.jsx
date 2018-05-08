@@ -1,14 +1,20 @@
 // @flow
 
 import styled, {css} from 'styled-components';
+import * as variables from '../types/style-variables';
 
 export const Input = styled.input`
-  font-size: 18px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  width: 100%;
-  padding: 15px;
+  font-size: ${variables.BASIC_FONT_SIZE};
+  border: 1px solid ${variables.COLOR_GRAY_300};
+  border-radius: ${variables.BASIC_BORDER_RADIUS};
+  padding: 8px 12px;
   font-weight: 100;
+  transition: border-color 200ms;
+  outline: none;
+
+  &:focus {
+    border-color: ${props => props.theme.secondaryColor};
+  }
 `;
 
 export const StyledFormGroup = styled.div`
@@ -16,9 +22,11 @@ export const StyledFormGroup = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 30px;
-  
+
   label {
-    width: 30%:
+    color: ${variables.SECONDARY_FONT_COLOR};
+    font-size: ${variables.SMALL_FONT_SIZE};
+    width: 30%;
   }
 
   div {
@@ -32,20 +40,21 @@ export const Button = styled.button`
   padding: 8px 16px;
   margin: 0 1em;
   color: ${props => props.theme.color};
-  border: 1px solid #28abe3;
+  border: 1px solid ${props => props.theme.secondaryColor};
   font-size: 12px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
+  background-color: ${props => props.theme.buttonsBgColor};
 
   ${props =>
     props.primary &&
     css`
-      background: #28abe3;
+      background: ${props.theme.secondaryColor};
       color: ${props.theme.color};
     `};
 
   &:hover {
-    background-color: #28abe3;
-    color: #ffffff;
+    background-color: ${props => props.theme.buttonsHoverBgColor};
+    color: ${variables.COLOR_WHITE};
   }
 `;

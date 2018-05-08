@@ -2,18 +2,21 @@ import React from 'react';
 import {withFormsy} from 'formsy-react';
 import styled from 'styled-components';
 import {Input} from './Styled';
+import * as variables from '../types/style-variables';
 
 export const InputWrapper = styled.div`
   display; flex;
   flex-direction: column;
+  align-items: flex-start;
 
   input {
     margin-bottom: 10px;
   }
+`;
 
-  span {
-    color: #f44336;
-  }
+export const StyledError = styled.span`
+  color: ${variables.ERROR_COLOR};
+  font-size: ${variables.SMALL_FONT_SIZE};
 `;
 
 class MyInput extends React.Component {
@@ -35,8 +38,9 @@ class MyInput extends React.Component {
           onChange={this.changeValue}
           type={this.props.type || 'text'}
           value={this.props.getValue() || ''}
+          id={this.props.name}
         />
-        <span>{errorMessage}</span>
+        <StyledError>{errorMessage}</StyledError>
       </InputWrapper>
     );
   }

@@ -3,6 +3,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import * as variables from '../types/style-variables';
 
 const StyledPost = styled.div`
   position: relative;
@@ -50,7 +51,7 @@ const LikeBlock = styled.div`
     }
 
     &:hover path {
-      fill: #ef9a9a;
+      fill: ${variables.COLOR_RED_400};
     }
   }
 `;

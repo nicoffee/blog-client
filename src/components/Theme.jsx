@@ -2,24 +2,29 @@
 
 import * as React from 'react';
 import {ThemeProvider} from 'styled-components';
+import * as variables from '../types/style-variables';
 
 const DefaultTheme = {
-  primaryColor: '#212121',
-  secondaryColor: '#28abe3',
-  fontColor: '#000',
-  iconColor: '#000',
-  primaryBackgroundColor: '#fff',
-  secondaryBackgroundColor: '#fff',
+  buttonsBgColor: variables.COLOR_WHITE,
+  buttonsHoverBgColor: variables.COLOR_BLUE_400,
+  primaryColor: variables.COLOR_GRAY_900,
+  secondaryColor: variables.COLOR_BLUE_400,
+  fontColor: variables.COLOR_BLACK,
+  iconColor: variables.COLOR_BLACK,
+  primaryBackgroundColor: variables.COLOR_WHITE,
+  secondaryBackgroundColor: variables.COLOR_WHITE,
 };
 
 const DarkTheme = {
-  primaryColor: '#fff',
-  secondaryColor: '#fdd835',
-  fontColor: '#fff',
-  iconColor: '#fdd835',
-  primaryBackgroundColor: '#212121',
-  secondaryBackgroundColor: '#424242',
-  headerBackgroundColor: '#000',
+  buttonsBgColor: variables.COLOR_YELLOW_600,
+  buttonsHoverBgColor: variables.COLOR_YELLOW_600,
+  primaryColor: variables.COLOR_BLUE_400,
+  secondaryColor: variables.COLOR_YELLOW_600,
+  fontColor: variables.COLOR_WHITE,
+  iconColor: variables.COLOR_YELLOW_600,
+  primaryBackgroundColor: variables.COLOR_GRAY_900,
+  secondaryBackgroundColor: variables.COLOR_GRAY_800,
+  headerBackgroundColor: variables.COLOR_BLACK,
 };
 
 type Props = {

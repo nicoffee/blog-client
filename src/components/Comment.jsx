@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
+import * as variables from '../types/style-variables';
 
 const StyledComment = styled.div`
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid ${variables.COLOR_GRAY_400};
   padding: 0.25em 1em;
   margin: 10px 0;
 `;

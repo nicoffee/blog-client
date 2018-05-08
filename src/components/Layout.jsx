@@ -6,27 +6,42 @@ import Header from '../containers/Header';
 import SignInModal from '../containers/SignInModal';
 import Theme from '../containers/Theme';
 import Modal from './Modal';
+import * as variables from '../types/style-variables';
 
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 78px auto 0;
-  max-width: 700px;
+  max-width: ${variables.BASIC_CONTENT_WIDTH};
   padding: 10px 20px 50px;
 `;
 
-const Wrapper = styled.div`
+const BaseStyles = styled.div`
   background-color: ${props => props.theme.secondaryBackgroundColor};
   color: ${props => props.theme.primaryColor};
   transition: background-color 200ms ease-out, color 200ms ease-out;
 
   a {
+    color: inherit;
     text-decoration: none;
   }
 
   button:disabled {
-    background-color: #757575;
+    background-color: ${variables.COLOR_GRAY_600};
+  }
+
+  p {
+    font-size: ${variables.BASIC_FONT_SIZE};
+    font-weight: 100;
+  }
+
+  h1 {
+    font-size: ${variables.H1_FONT_SIZE};
+  }
+
+  h2 {
+    font-size: ${variables.H2_FONT_SIZE};
   }
 `;
 
@@ -37,7 +52,7 @@ type Props = {
 
 const Layout = (props: Props) => (
   <Theme>
-    <Wrapper>
+    <BaseStyles>
       <Header />
       {props.isModalOpen && (
         <Modal>
@@ -45,7 +60,7 @@ const Layout = (props: Props) => (
         </Modal>
       )}
       <InnerContainer>{props.children}</InnerContainer>
-    </Wrapper>
+    </BaseStyles>
   </Theme>
 );
 

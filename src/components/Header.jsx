@@ -11,7 +11,7 @@ const StyledHeader = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   position: fixed;
-  background-color: ${props => props.theme.headerBackgroundColor || '#fff'};
+  background-color: ${props => props.theme.headerBackgroundColor};
   opacity: 0.9;
   width: 100%;
   top: 0;
