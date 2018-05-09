@@ -1,6 +1,6 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import FormGroup from './FormGroup';
 import {Button} from './Styled';
 import * as variables from '../types/style-variables';
@@ -31,9 +31,6 @@ const StyledModal = styled.div`
   }
 
   button:disabled {
-    width: 60%;
-    padding: 40px;
-    margin: 15% auto;
     background-color: ${variables.COLOR_GRAY_400};
     border-color: ${variables.COLOR_GRAY_400};
     border-radius: 8px;
@@ -52,6 +49,24 @@ const Error = styled.span`
   color: red;
 `;
 
+const Tabs = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+const Tab = styled.div`
+  cursor: pointer;
+  transition: font-weight 200ms, color 200ms;
+
+  ${props =>
+    props.active &&
+    css`
+      color: ${props.theme.secondaryColor};
+      font-weight: bold;
+    `};
+`;
+
 type Props = {
   fetchLoginRequest: Function,
   closeModal: Function,
@@ -68,10 +83,15 @@ class SignInModal extends React.Component<Props, State> {
 
   state = {
     canSubmit: false,
+    activeForm: 'signin',
   };
 
   submitForm(model) {
-    this.props.fetchLoginRequest(model);
+    if (this.state.activeForm === 'signun') {
+      this.props.fetchLoginRequest(model);
+    }
+
+    this.props.createUserRequest(model);
   }
 
   handleClick(e: SyntheticInputEvent<>) {
@@ -90,7 +110,23 @@ class SignInModal extends React.Component<Props, State> {
     return (
       <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>
         <StyledModal>
-          <h2>Sign in with email</h2>
+          <Tabs>
+            <Tab
+              onClick={() => this.setState({activeForm: 'signup'})}
+              active={this.state.activeForm === 'signup'}>
+              Sign Up
+            </Tab>
+            <Tab
+              onClick={() => this.setState({activeForm: 'signin'})}
+              active={this.state.activeForm === 'signin'}>
+              Sign In
+            </Tab>
+          </Tabs>
+          {this.state.activeForm === 'signin' ? (
+            <h2>Sign in with email</h2>
+          ) : (
+            <h2>Sign up with email</h2>
+          )}
           <Formsy
             onValidSubmit={e => this.submitForm(e)}
             onValid={() => this.setState({canSubmit: true})}

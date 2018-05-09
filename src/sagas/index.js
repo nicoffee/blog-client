@@ -66,6 +66,12 @@ export function* fetchLogin(action) {
   }
 }
 
+export function* createUser(action) {
+  const login = yield call(api.createUser, action.payload);
+  yield put(actions.createUserSuccess(login.data[0]));
+  yield put(actions.closeModal());
+}
+
 export function* toggleLike(action) {
   const user = yield select(state => state.user);
   const post = user.posts[action.payload];

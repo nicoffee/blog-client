@@ -3,7 +3,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Header from '../containers/Header';
-import SignInModal from '../containers/SignInModal';
+import AuthForm from '../containers/AuthForm';
 import Theme from '../containers/Theme';
 import Modal from './Modal';
 import * as variables from '../types/style-variables';
@@ -56,7 +56,7 @@ const Layout = (props: Props) => (
       <Header />
       {props.isModalOpen && (
         <Modal>
-          <SignInModal />
+          <AuthForm />
         </Modal>
       )}
       <InnerContainer>{props.children}</InnerContainer>

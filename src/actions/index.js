@@ -87,6 +87,21 @@ export const fetchLoginSuccess = data => ({
   payload: data,
 });
 
+export const fetchLoginError = error => ({
+  type: types.FETCH_LOGIN_FAILURE,
+  payload: error.message,
+});
+
+export const createUserRequest = data => ({
+  type: types.CREATE_USER_REQUEST,
+  payload: data,
+});
+
+export const createUserSuccess = data => ({
+  type: types.FETCH_USER_SUCCESS,
+  payload: data,
+});
+
 export const toggleLikeRequest = data => ({
   type: types.TOGGLE_LIKE_REQUEST,
   payload: data,
@@ -95,11 +110,6 @@ export const toggleLikeRequest = data => ({
 export const toggleLikeSuccess = data => ({
   type: types.TOGGLE_LIKE_SUCCESS,
   payload: data,
-});
-
-export const fetchLoginError = error => ({
-  type: types.FETCH_LOGIN_FAILURE,
-  payload: error.message,
 });
 
 export const openModal = () => ({
