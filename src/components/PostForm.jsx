@@ -47,10 +47,9 @@ class PostForm extends React.Component<Props, State> {
     canSubmit: false,
   };
 
-  updateData(e: SyntheticInputEvent<>) {
-    const data = e.target;
-    this.setState({[data.name]: data.value});
-  }
+  changeValue = event => {
+    this.setValue(event.currentTarget.value);
+  };
 
   render() {
     const {handleSubmit} = this.props;
@@ -62,25 +61,31 @@ class PostForm extends React.Component<Props, State> {
           onValid={() => this.setState({canSubmit: true})}
           onInvalid={() => this.setState({canSubmit: false})}>
           <FormContent>
-            <FormGroup component={Input} name="picture" label="Image:" />
-            <FormGroup>
-              <label htmlFor="title">Title:</label>
-              <div>
-                <Input name="title" required />
-              </div>
-            </FormGroup>
-            <FormGroup>
-              <label htmlFor="content">Text:</label>
-              <div>
-                <textarea
-                  id="content"
-                  name="body"
-                  value={this.state.body}
-                  onChange={e => this.updateData(e)}
-                  rows={20}
-                />
-              </div>
-            </FormGroup>
+            <FormGroup
+              component="input"
+              name="picture"
+              value={this.state.picture}
+              onChange={() => this.changeValue}
+              label="Title:"
+            />
+            <FormGroup
+              component="input"
+              name="title"
+              value={this.state.picture}
+              onChange={() => this.changeValue}
+              label="Text:"
+              required
+            />
+            <FormGroup
+              component="textarea"
+              name="body"
+              value={this.state.body}
+              validations="isEmail"
+              validationError="This is not a valid email"
+              onChange={() => this.changeValue}
+              label="Image:"
+              required
+            />
           </FormContent>
           <Button primary type="submit" disabled={!this.state.canSubmit}>
             Save

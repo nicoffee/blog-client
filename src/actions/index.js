@@ -98,8 +98,13 @@ export const createUserRequest = data => ({
 });
 
 export const createUserSuccess = data => ({
-  type: types.FETCH_USER_SUCCESS,
+  type: types.CREATE_USER_SUCCESS,
   payload: data,
+});
+
+export const createUserError = error => ({
+  type: types.CREATE_USER_SUCCESS,
+  payload: error.message,
 });
 
 export const toggleLikeRequest = data => ({

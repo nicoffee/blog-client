@@ -37,7 +37,7 @@ class PostContainer extends React.Component<Props> {
     }
 
     if (!user.name) {
-      return <h1>You need to sign in in order to write new post</h1>;
+      return <h1>You need to sign in order to write new post</h1>;
     }
 
     return <PostForm handleSubmit={this.submitForm.bind(this)} />;

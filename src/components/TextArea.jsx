@@ -1,7 +1,7 @@
 import React from 'react';
 import {withFormsy} from 'formsy-react';
 import styled from 'styled-components';
-import {Input} from './Styled';
+import {Input, TextArea} from './Styled';
 import * as variables from '../types/style-variables';
 
 export const InputWrapper = styled.div`
@@ -31,7 +31,7 @@ class MyInput extends React.Component {
 
   render() {
     return (
-      <Input
+      <TextArea
         onChange={this.changeValue}
         type={this.props.type || 'text'}
         value={this.props.getValue() || ''}

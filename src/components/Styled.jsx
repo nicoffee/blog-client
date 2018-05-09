@@ -19,6 +19,22 @@ export const Input = styled.input`
   }
 `;
 
+export const TextArea = styled.textarea`
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid ${variables.COLOR_GRAY_300};
+  border-radius: ${variables.BASIC_BORDER_RADIUS};
+  font-size: ${variables.BASIC_FONT_SIZE};
+  font-size: 18px;
+  font-weight: 100;
+  outline: none;
+  transition: border-color 200ms;
+
+  &:focus {
+    border-color: ${props => props.theme.secondaryColor};
+  }
+`;
+
 export const StyledFormGroup = styled.div`
   display: flex;
   flex-direction: row;

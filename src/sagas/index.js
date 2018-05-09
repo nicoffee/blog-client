@@ -5,6 +5,7 @@ import {
   EDIT_POST_REQUEST,
   POST_COMMENTS_REQUEST,
   FETCH_LOGIN_REQUEST,
+  CREATE_USER_REQUEST,
   CREATE_POST_REQUEST,
   TOGGLE_LIKE_REQUEST,
 } from '../types';
@@ -67,8 +68,8 @@ export function* fetchLogin(action) {
 }
 
 export function* createUser(action) {
-  const login = yield call(api.createUser, action.payload);
-  yield put(actions.createUserSuccess(login.data[0]));
+  const user = yield call(api.createUser, action.payload);
+  yield put(actions.createUserSuccess(user.data));
   yield put(actions.closeModal());
 }
 
@@ -88,6 +89,7 @@ function* mySaga() {
   yield takeEvery(CREATE_POST_REQUEST, createPost);
   yield takeEvery(POST_COMMENTS_REQUEST, fetchPostComments);
   yield takeEvery(FETCH_LOGIN_REQUEST, fetchLogin);
+  yield takeEvery(CREATE_USER_REQUEST, createUser);
   yield takeEvery(TOGGLE_LIKE_REQUEST, toggleLike);
 }
 

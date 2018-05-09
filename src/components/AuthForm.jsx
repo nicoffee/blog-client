@@ -87,8 +87,9 @@ class SignInModal extends React.Component<Props, State> {
   };
 
   submitForm(model) {
-    if (this.state.activeForm === 'signun') {
+    if (this.state.activeForm === 'signin') {
       this.props.fetchLoginRequest(model);
+      return;
     }
 
     this.props.createUserRequest(model);
@@ -103,6 +104,10 @@ class SignInModal extends React.Component<Props, State> {
   updateData(e: SyntheticInputEvent<>) {
     this.setState({[e.target.name]: e.target.value});
   }
+
+  changeValue = event => {
+    this.setValue(event.currentTarget.value);
+  };
 
   render() {
     const {error} = this.props;
@@ -134,17 +139,16 @@ class SignInModal extends React.Component<Props, State> {
             <ModalInner>
               <FormGroup
                 label="Your email"
-                onChange={e => this.updateData(e)}
+                onChange={e => this.changeValue(e)}
+                type="text"
                 name="email"
-                value={this.state.email}
                 validations="isEmail"
                 validationError="This is not a valid email"
                 required
               />
               <FormGroup
                 label="Password"
-                value={this.state.password}
-                onChange={e => this.updateData(e)}
+                onChange={e => this.changeValue(e)}
                 type="password"
                 name="password"
                 required
