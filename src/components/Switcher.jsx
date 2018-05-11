@@ -47,7 +47,9 @@ const Slider = styled.span`
 
 const Switcher = props => (
   <StyledLabel>
-    <input type="checkbox" onChange={props.onChange} />
+    <input
+      onChange={props.onChange}
+      type="checkbox" />
     <Slider />
   </StyledLabel>
 );

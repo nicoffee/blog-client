@@ -21,6 +21,8 @@
     "no-extra-semi": "error",
     "react/prop-types": "off",
     "flowtype/define-flow-type": "warn",
-    "flowtype/use-flow-type": "warn"
+    "flowtype/use-flow-type": "warn",
+    "react/sort-comp": "warn",
+    "react/jsx-sort-props": "warn"
   }
 }

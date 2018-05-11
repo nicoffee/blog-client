@@ -9,6 +9,9 @@ export const BASIC_CONTENT_WIDTH = '700px';
 export const BASIC_BORDER_RADIUS = '12px';
 export const SECONDARY_BORDER_RADIUS = '6px';
 
+export const BASIC_BOX_SHADOW = 'rgba(0, 0, 0, 0.4)';
+export const SECONDARY_BOX_SHADOW = 'rgba(0, 0, 0, 0.22)';
+
 export const COLOR_WHITE = '#fff';
 export const COLOR_BLACK = '#000';
 

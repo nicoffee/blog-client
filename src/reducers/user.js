@@ -15,7 +15,6 @@ const user = (state = {isFetching: false}, action) => {
       return {...state, isFetching: true, error: null};
     case FETCH_LOGIN_SUCCESS:
     case CREATE_USER_SUCCESS:
-      console.log('action.payload', action.payload);
       return {...state, isFetching: false, ...action.payload};
     case FETCH_LOGIN_FAILURE:
     case CREATE_USER_FAILURE:

@@ -1,30 +1,11 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import FormGroup from './FormGroup';
-import {Button} from './Styled';
+import { Button } from './Styled';
 import * as variables from '../types/style-variables';
 
-const Overlay = styled.div`
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-`;
-
-const StyledModal = styled.div`
-  width: 40%;
-  padding: 30px 40px;
-  margin: 15% auto;
-  background-color: ${variables.COLOR_WHITE};
-  border-radius: ${variables.SECONDARY_BORDER_RADIUS};
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  text-align: center;
-
+const Wrapper = styled.div`
   h2 {
     margin: 30px 0 60px;
     font-weight: 100;
@@ -57,7 +38,6 @@ const Tabs = styled.div`
 
 const Tab = styled.div`
   cursor: pointer;
-  transition: font-weight 200ms, color 200ms;
 
   ${props =>
     props.active &&
@@ -65,6 +45,8 @@ const Tab = styled.div`
       color: ${props.theme.secondaryColor};
       font-weight: bold;
     `};
+
+  transition: font-weight 200ms, color 200ms;
 `;
 
 type Props = {
@@ -79,12 +61,12 @@ type State = {
 };
 
 class SignInModal extends React.Component<Props, State> {
-  modal: {value: null | HTMLDivElement} = React.createRef();
-
   state = {
     canSubmit: false,
     activeForm: 'signin',
   };
+
+  modal: { value: null | HTMLDivElement } = React.createRef();
 
   submitForm(model) {
     if (this.state.activeForm === 'signin') {
@@ -102,7 +84,7 @@ class SignInModal extends React.Component<Props, State> {
   }
 
   updateData(e: SyntheticInputEvent<>) {
-    this.setState({[e.target.name]: e.target.value});
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   changeValue = event => {
@@ -110,57 +92,55 @@ class SignInModal extends React.Component<Props, State> {
   };
 
   render() {
-    const {error} = this.props;
+    const { error } = this.props;
 
     return (
-      <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>
-        <StyledModal>
-          <Tabs>
-            <Tab
-              onClick={() => this.setState({activeForm: 'signup'})}
-              active={this.state.activeForm === 'signup'}>
-              Sign Up
-            </Tab>
-            <Tab
-              onClick={() => this.setState({activeForm: 'signin'})}
-              active={this.state.activeForm === 'signin'}>
-              Sign In
-            </Tab>
-          </Tabs>
-          {this.state.activeForm === 'signin' ? (
-            <h2>Sign in with email</h2>
-          ) : (
+      <Wrapper>
+        <Tabs>
+          <Tab
+            active={this.state.activeForm === 'signup'}
+            onClick={() => this.setState({ activeForm: 'signup' })}>
+            Sign Up
+          </Tab>
+          <Tab
+            active={this.state.activeForm === 'signin'}
+            onClick={() => this.setState({ activeForm: 'signin' })}>
+            Sign In
+          </Tab>
+        </Tabs>
+        {this.state.activeForm === 'signin' ? (
+          <h2>Sign in with email</h2>
+        ) : (
             <h2>Sign up with email</h2>
           )}
-          <Formsy
-            onValidSubmit={e => this.submitForm(e)}
-            onValid={() => this.setState({canSubmit: true})}
-            onInvalid={() => this.setState({canSubmit: false})}>
-            <ModalInner>
-              <FormGroup
-                label="Your email"
-                onChange={e => this.changeValue(e)}
-                type="text"
-                name="email"
-                validations="isEmail"
-                validationError="This is not a valid email"
-                required
-              />
-              <FormGroup
-                label="Password"
-                onChange={e => this.changeValue(e)}
-                type="password"
-                name="password"
-                required
-              />
-              {error && <Error>{error}</Error>}
-            </ModalInner>
-            <Button primary type="submit" disabled={!this.state.canSubmit}>
-              Continue
-            </Button>
-          </Formsy>
-        </StyledModal>
-      </Overlay>
+        <Formsy
+          onInvalid={() => this.setState({ canSubmit: false })}>
+          onValid={() => this.setState({ canSubmit: true })}
+          onValidSubmit={e => this.submitForm(e)}
+          <ModalInner>
+            <FormGroup
+              label="Your email"
+              name="email"
+              onChange={e => this.changeValue(e)}
+              required
+              type="text"
+              validationError="This is not a valid email"
+              validations="isEmail"
+            />
+            <FormGroup
+              label="Password"
+              name="password"
+              onChange={e => this.changeValue(e)}
+              required
+              type="password"
+            />
+            {error && <Error>{error}</Error>}
+          </ModalInner>
+          <Button disabled={!this.state.canSubmit} primary type="submit">
+            Continue
+          </Button>
+        </Formsy>
+      </Wrapper>
     );
   }
 }

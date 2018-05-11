@@ -11,10 +11,10 @@ const App = ({store}) => (
   <Provider store={store}>
     <Router>
       <Layout>
-        <Route exact path="/" component={PostList} />
-        <Route exact path="/post/:postId" component={Post} />
-        <Route exact path="/post/:postId/edit" component={PostEdit} />
-        <Route exact path="/new" component={PostCreate} />
+        <Route component={PostList} exact path="/"  />
+        <Route component={Post} exact path="/post/:postId"  />
+        <Route component={PostEdit} exact path="/post/:postId/edit"  />
+        <Route component={PostCreate} exact path="/new"  />
       </Layout>
     </Router>
   </Provider>

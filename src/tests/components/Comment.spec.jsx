@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import 'jest-styled-components';
-import Comment, {StyledComment} from '../../components/Comment';
+import Comment from '../../components/Comment';
 
 describe('Comment', () => {
   let props;
@@ -41,11 +41,4 @@ describe('Comment', () => {
   it('always renders a paragraph', () => {
     expect(comment().find('p').length).toBe(1);
   });
-
-  // it("contains everything else that gets rendered", () => {
-  //   const divs = comment().find("div");
-  //   const wrappingDiv = divs.first();
-    
-  //   expect(wrappingDiv.children()).toEqual(comment().children());
-  // });
 });

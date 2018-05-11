@@ -48,18 +48,18 @@ class PostContainer extends React.Component<Props> {
     return (
       <div>
         <Post
-          id={info.id}
-          title={info.title}
           body={info.body}
-          img={info.picture}
-          likes={info.likes}
           canEdit={canEdit}
+          id={info.id}
+          img={info.picture}
           isLiked={isLiked}
+          likes={info.likes}
+          title={info.title}
           toggleLike={toggleLikeRequest}
         />
         <div>
           {this.props.comments.map(comment => (
-            <Comment key={comment.id} name={comment.name} body={comment.body} />
+            <Comment body={comment.body} key={comment.id} name={comment.name} />
           ))}
         </div>
       </div>

@@ -32,10 +32,10 @@ class MyInput extends React.Component {
   render() {
     return (
       <Input
+        id={this.props.name}
         onChange={this.changeValue}
         type={this.props.type || 'text'}
         value={this.props.getValue() || ''}
-        id={this.props.name}
       />
     );
   }

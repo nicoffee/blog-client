@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Header from '../containers/Header';
 import AuthForm from '../containers/AuthForm';
 import Theme from '../containers/Theme';
+import ModalPortal from './ModalPortal';
 import Modal from './Modal';
 import * as variables from '../types/style-variables';
 
@@ -55,9 +56,9 @@ const Layout = (props: Props) => (
     <BaseStyles>
       <Header />
       {props.isModalOpen && (
-        <Modal>
-          <AuthForm />
-        </Modal>
+        <ModalPortal>
+          <Modal><AuthForm /></Modal>
+        </ModalPortal>
       )}
       <InnerContainer>{props.children}</InnerContainer>
     </BaseStyles>

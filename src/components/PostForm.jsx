@@ -4,7 +4,6 @@ import * as React from 'react';
 import Formsy from 'formsy-react';
 import styled from 'styled-components';
 import FormGroup from './FormGroup';
-import Input from './Input';
 import {Button} from './Styled';
 
 const StyledPost = styled.div`
@@ -57,37 +56,37 @@ class PostForm extends React.Component<Props, State> {
     return (
       <StyledPost>
         <Formsy
-          onValidSubmit={e => handleSubmit(e, this.state)}
+          onInvalid={() => this.setState({canSubmit: false})}
           onValid={() => this.setState({canSubmit: true})}
-          onInvalid={() => this.setState({canSubmit: false})}>
+          onValidSubmit={e => handleSubmit(e, this.state)}>
           <FormContent>
             <FormGroup
               component="input"
-              name="picture"
-              value={this.state.picture}
-              onChange={() => this.changeValue}
               label="Title:"
+              name="picture"
+              onChange={() => this.changeValue}
+              value={this.state.picture}
             />
             <FormGroup
               component="input"
-              name="title"
-              value={this.state.picture}
-              onChange={() => this.changeValue}
               label="Text:"
+              name="title"
+              onChange={() => this.changeValue}
               required
+              value={this.state.picture}
             />
             <FormGroup
               component="textarea"
-              name="body"
-              value={this.state.body}
-              validations="isEmail"
-              validationError="This is not a valid email"
-              onChange={() => this.changeValue}
               label="Image:"
+              name="body"
+              onChange={() => this.changeValue}
               required
+              validationError="This is not a valid email"
+              validations="isEmail"
+              value={this.state.body}
             />
           </FormContent>
-          <Button primary type="submit" disabled={!this.state.canSubmit}>
+          <Button disabled={!this.state.canSubmit} primary type="submit">
             Save
           </Button>
         </Formsy>
