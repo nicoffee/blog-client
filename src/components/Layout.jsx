@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+import {withRouter} from 'react-router';
 import styled from 'styled-components';
 import Header from '../containers/Header';
 import AuthForm from '../containers/AuthForm';
@@ -67,4 +68,4 @@ const Layout = (props: Props) => (
   </Theme>
 );
 
-export default Layout;
+export default withRouter(Layout);

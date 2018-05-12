@@ -8,10 +8,8 @@
   "scripts": {
     "start": "node index.js",
     "start:test": "npm run server & npm run test:watch",
-    "build":
-      "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
-    "dev":
-      "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
+    "build": "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
+    "dev": "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
     "postinstall": "npm run build",
     "lint": "yarn lint:js & yarn lint:css",
     "lint:test": "eslint ./src/containers/Post.jsx --fix",
@@ -29,8 +27,7 @@
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/tests/config.js",
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/src/tests/mocks/fileMock.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/mocks/fileMock.js"
     }
   },
   "dependencies": {
@@ -43,6 +40,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^4.0.0",
     "redux-actions": "^2.3.2",
     "redux-saga": "^0.16.0",
