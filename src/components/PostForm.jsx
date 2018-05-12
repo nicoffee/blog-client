@@ -46,10 +46,6 @@ class PostForm extends React.Component<Props, State> {
     canSubmit: false,
   };
 
-  changeValue = event => {
-    this.setValue(event.currentTarget.value);
-  };
-
   render() {
     const {handleSubmit} = this.props;
 
@@ -64,14 +60,12 @@ class PostForm extends React.Component<Props, State> {
               component="input"
               label="Title:"
               name="picture"
-              onChange={() => this.changeValue}
               value={this.state.picture}
             />
             <FormGroup
               component="input"
               label="Text:"
               name="title"
-              onChange={() => this.changeValue}
               required
               value={this.state.picture}
             />
@@ -79,7 +73,6 @@ class PostForm extends React.Component<Props, State> {
               component="textarea"
               label="Image:"
               name="body"
-              onChange={() => this.changeValue}
               required
               validationError="This is not a valid email"
               validations="isEmail"

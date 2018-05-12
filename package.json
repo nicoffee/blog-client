@@ -21,6 +21,11 @@
     "test:watch": "npm test -- --watch",
     "flow": "flow"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint & flow"
+    }
+  },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/tests/config.js",
     "moduleNameMapper": {

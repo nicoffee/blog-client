@@ -77,4 +77,15 @@ export const Button = styled.button`
     color: ${variables.COLOR_WHITE};
     color: #fff;
   }
+
+  &:disabled {
+    background-color: ${variables.COLOR_GRAY_400};
+    border-color: ${variables.COLOR_GRAY_400};
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+`;
+
+export const ErrorMessage = styled.span`
+  color: ${props => props.theme.errorColor};
 `;

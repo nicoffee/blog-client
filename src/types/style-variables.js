@@ -15,6 +15,7 @@ export const SECONDARY_BOX_SHADOW = 'rgba(0, 0, 0, 0.22)';
 export const COLOR_WHITE = '#fff';
 export const COLOR_BLACK = '#000';
 
+export const COLOR_RED_600 = '#e53935';
 export const COLOR_RED_400 = '#ef5350';
 
 export const COLOR_BLUE_400 = '#29b6f6';

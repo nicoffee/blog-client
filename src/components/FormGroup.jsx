@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {withFormsy} from 'formsy-react';
 import styled from 'styled-components';
 import Input from './Input';
@@ -11,29 +11,33 @@ export const StyledError = styled.span`
   font-size: ${variables.SMALL_FONT_SIZE};
 `;
 
-const renderField = (component = 'input', inputProps) => {
-  console.log('component', component);
+class FormGroup extends PureComponent {
+  changeValue = (e: SyntheticInputEvent<>) => {
+    this.setValue(e.currentTarget.value);
+  };
 
-  return React.createElement(component, inputProps);
-};
+  render() {
+    const {label, component, ...rest} = this.props;
+    const errorMessage = this.props.getErrorMessage();
 
-// const StyledError = styled.span`
-//   color: ${variables.ERROR_COLOR};
-//   font-size: ${variables.SMALL_FONT_SIZE};
-// `;
+    return (
+      <StyledFormGroup>
+        <label htmlFor={rest.name}>{label}</label>
+        {component === 'textarea' ? (
+          <TextArea
+            onChange={this.changeValue}
+            value={this.props.getValue() || ''}
+          />
+        ) : (
+          <Input
+            onChange={this.changeValue}
+            value={this.props.getValue() || ''}
+          />
+        )}
+        <StyledError>{errorMessage}</StyledError>
+      </StyledFormGroup>
+    );
+  }
+}
 
-const FormGroup = ({
-  label,
-  component,
-  validations,
-  validationError,
-  ...rest
-}) => (
-  <StyledFormGroup>
-    <label htmlFor={rest.name}>{label}</label>
-    {component === 'textarea' ? <TextArea {...rest} /> : <Input {...rest} />}
-    <StyledError>errorMessage</StyledError>
-  </StyledFormGroup>
-);
-
-export default FormGroup;
+export default withFormsy(FormGroup);
