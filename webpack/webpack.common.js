@@ -32,7 +32,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[hash].[ext]',
-              limit: 100
+              limit: 100,
             },
           },
         ],
