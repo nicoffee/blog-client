@@ -47,8 +47,14 @@ export const StyledFormGroup = styled.div`
     font-size: ${variables.SMALL_FONT_SIZE};
   }
 
+  input,
+  textarea {
+    margin-bottom: 8px;
+  }
+
   div {
     display: flex;
+    flex-direction: column;
     width: 70%;
   }
 `;

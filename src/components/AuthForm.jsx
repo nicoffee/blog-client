@@ -19,7 +19,6 @@ const FormInner = styled.div`
 
 type Props = {
   fetchLoginRequest: Function,
-  closeModal: Function,
   error?: string,
 };
 
@@ -43,12 +42,6 @@ class AuthForm extends React.Component<Props, State> {
     }
 
     this.props.createUserRequest(model);
-  }
-
-  handleClick(e: SyntheticInputEvent<>) {
-    if (e.target === this.modal.current) {
-      this.props.closeModal();
-    }
   }
 
   render() {
