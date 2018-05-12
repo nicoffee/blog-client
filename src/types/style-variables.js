@@ -1,13 +1,15 @@
 export const H1_FONT_SIZE = '36px';
 export const H2_FONT_SIZE = '28px';
+
 export const LARGE_FONT_SIZE = '18px';
 export const BASIC_FONT_SIZE = '16px';
 export const SMALL_FONT_SIZE = '14px';
+export const XSMALL_FONT_SIZE = '12px';
 
 export const BASIC_CONTENT_WIDTH = '700px';
 
 export const BASIC_BORDER_RADIUS = '12px';
-export const SECONDARY_BORDER_RADIUS = '6px';
+export const SMALL_BORDER_RADIUS = '6px';
 
 export const BASIC_BOX_SHADOW = 'rgba(0, 0, 0, 0.4)';
 export const SECONDARY_BOX_SHADOW = 'rgba(0, 0, 0, 0.22)';

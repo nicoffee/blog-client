@@ -31,7 +31,7 @@ const DarkTheme = {
   secondaryBackgroundColor: variables.COLOR_GRAY_800,
   headerBackgroundColor: variables.COLOR_BLACK,
   errorColor: variables.COLOR_RED_600,
-  disabledColor: variables.COLOR_GRAY_300,
+  disabledColor: variables.COLOR_GRAY_800,
 };
 
 type Props = {

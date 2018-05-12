@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {withFormsy} from 'formsy-react';
-import styled from 'styled-components';
 import {StyledFormGroup, ErrorMessage, Input, TextArea} from './Styled';
-import * as variables from '../types/style-variables';
 
 class FormGroup extends Component {
   changeValue = (e: SyntheticInputEvent<>) => {
@@ -27,6 +25,7 @@ class FormGroup extends Component {
             <Input
               id={rest.name}
               onChange={this.changeValue}
+              type={rest.type || 'text'}
               value={this.props.getValue() || ''}
             />
           )}

@@ -7,6 +7,7 @@ import FormGroup from './FormGroup';
 import {Button} from './Styled';
 
 const FormInner = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -38,10 +39,10 @@ class PostForm extends React.Component<Props, State> {
         <Formsy
           onInvalid={() => this.setState({canSubmit: false})}
           onValid={() => this.setState({canSubmit: true})}
-          onValidSubmit={e => handleSubmit(e, this.state)}>
-          <FormGroup label="Title:" name="picture" />
-          <FormGroup label="Text:" name="title" required />
-          <FormGroup component="textarea" label="Image:" name="body" required />
+          onValidSubmit={handleSubmit}>
+          <FormGroup label="Picture:" name="picture" />
+          <FormGroup label="Title:" name="title" required />
+          <FormGroup component="textarea" label="Text:" name="body" required />
           <Button disabled={!this.state.canSubmit} primary type="submit">
             Save
           </Button>

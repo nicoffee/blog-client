@@ -15,7 +15,7 @@ const fadeIn = keyframes`
 
 const Overlay = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   left: 0;
   overflow: hidden;
@@ -29,7 +29,7 @@ const StyledModal = styled.div`
   width: 40%;
   margin: 15% auto;
   background-color: ${props => props.theme.headerBackgroundColor};
-  border-radius: ${variables.SECONDARY_BORDER_RADIUS};
+  border-radius: ${variables.SMALL_BORDER_RADIUS};
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   overflow: hidden;
   color: ${props => props.theme.fontColor};

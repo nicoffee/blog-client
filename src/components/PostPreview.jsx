@@ -8,16 +8,9 @@ const StyledPost = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.25em 1em;
-  margin: 0 1em;
-  background: transparent;
-  border-radius: 3px;
 
   h1 {
     font-size: 20px;
-  }
-
-  a {
-    color: inherit;
   }
 `;
 
@@ -40,7 +33,7 @@ const PostPreviw = (props: Props) => (
     <StyledPost>
       <h1>{props.title}</h1>
       <p>{props.body.slice(0, 100)}</p>
-      <PreviewImage background={props.img} />
+      {props.img && <PreviewImage background={props.img} />}
     </StyledPost>
   </Link>
 );

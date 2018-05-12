@@ -9,7 +9,7 @@ import {Button} from './Styled';
 
 const StyledHeader = styled.div`
   position: fixed;
-  z-index: 10;
+  z-index: 1;
   top: 0;
   left: 0;
   display: grid;

@@ -15,6 +15,12 @@ const FormInner = styled.div`
   flex-direction: column;
   align-items: stretch;
   padding: 30px 40px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 type Props = {

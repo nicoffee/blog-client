@@ -77,8 +77,8 @@ type Props = {
 
 const Post = (props: Props) => (
   <StyledPost>
-    <h1>{props.title}</h1>
-    <PreviewImage background={props.img} />
+    <h2>{props.title}</h2>
+    {props.img && <PreviewImage background={props.img} />}
     <p>{props.body}</p>
     {props.canEdit && <Link to={`/post/${props.id}/edit`}>Edit</Link>}
     <LikeBlock isLiked={props.isLiked}>

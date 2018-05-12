@@ -17,14 +17,11 @@ type Props = {
 };
 
 class PostContainer extends React.Component<Props> {
-  submitForm(e, data) {
-    e.preventDefault();
-
+  submitForm(data) {
     /* In real app this should be done on server-side */
     data.author = this.props.user;
     data.published = new Date().toString();
     data.likes = 0;
-    /* -------------------------------------------- */
 
     this.props.createPostRequest(data);
   }
@@ -37,7 +34,7 @@ class PostContainer extends React.Component<Props> {
     }
 
     if (!user.name) {
-      return <h1>You need to sign in order to write new post</h1>;
+      return <p>You need to sign in order to write new post</p>;
     }
 
     return <PostForm handleSubmit={this.submitForm.bind(this)} />;
