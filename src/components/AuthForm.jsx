@@ -1,21 +1,20 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Formsy from 'formsy-react';
 import styled from 'styled-components';
 import FormTabs from './FormTabs';
 import FormGroup from './FormGroup';
 import {Button, Error} from './Styled';
 
-const Wrapper = styled.div`
-  h2 {
-    margin: 30px 0 60px;
-    font-weight: 100;
-  }
+const Header = styled.h1`
+  margin: 30px 0 60px;
+  font-weight: 100;
 `;
 
 const FormInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding: 30px 40px;
 `;
 
 type Props = {
@@ -56,21 +55,22 @@ class AuthForm extends React.Component<Props, State> {
     const {error} = this.props;
 
     return (
-      <Wrapper>
+      <Fragment>
         <FormTabs
-          active={this.state.activeForm}
+          activeForm={this.state.activeForm}
           onSignInClick={() => this.setState({activeForm: 'signin'})}
           onSignUpClick={() => this.setState({activeForm: 'signup'})}
         />
-        {this.state.activeForm === 'signin' ? (
-          <h2>Sign in with email</h2>
-        ) : (
-          <h2>Sign up with email</h2>
-        )}
-        <Formsy onInvalid={() => this.setState({canSubmit: false})}>
-          onValid={() => this.setState({canSubmit: true})}
-          onValidSubmit={e => this.submitForm(e)}
-          <FormInner>
+        <FormInner>
+          <Header>
+            {this.state.activeForm === 'signin'
+              ? 'Sign in with email'
+              : 'Sign up with email'}
+          </Header>
+          <Formsy
+            onInvalid={() => this.setState({canSubmit: false})}
+            onValid={() => this.setState({canSubmit: true})}
+            onValidSubmit={e => this.submitForm(e)}>
             <FormGroup
               label="Your email"
               name="email"
@@ -86,12 +86,12 @@ class AuthForm extends React.Component<Props, State> {
               type="password"
             />
             {error && <Error>{error}</Error>}
-          </FormInner>
-          <Button disabled={!this.state.canSubmit} primary type="submit">
-            Continue
-          </Button>
-        </Formsy>
-      </Wrapper>
+            <Button disabled={!this.state.canSubmit} primary type="submit">
+              Continue
+            </Button>
+          </Formsy>
+        </FormInner>
+      </Fragment>
     );
   }
 }

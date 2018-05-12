@@ -1,9 +1,7 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import {withFormsy} from 'formsy-react';
 import styled from 'styled-components';
-import Input from './Input';
-import TextArea from './TextArea';
-import {StyledFormGroup} from './Styled';
+import {StyledFormGroup, Input, TextArea} from './Styled';
 import * as variables from '../types/style-variables';
 
 export const StyledError = styled.span`
@@ -11,9 +9,9 @@ export const StyledError = styled.span`
   font-size: ${variables.SMALL_FONT_SIZE};
 `;
 
-class FormGroup extends PureComponent {
+class FormGroup extends Component {
   changeValue = (e: SyntheticInputEvent<>) => {
-    this.setValue(e.currentTarget.value);
+    this.props.setValue(e.currentTarget.value);
   };
 
   render() {
@@ -25,11 +23,13 @@ class FormGroup extends PureComponent {
         <label htmlFor={rest.name}>{label}</label>
         {component === 'textarea' ? (
           <TextArea
+            id={rest.name}
             onChange={this.changeValue}
             value={this.props.getValue() || ''}
           />
         ) : (
           <Input
+            id={rest.name}
             onChange={this.changeValue}
             value={this.props.getValue() || ''}
           />

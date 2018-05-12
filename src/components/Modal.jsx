@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import ModalPortal from './ModalPortal';
 import * as variables from '../types/style-variables';
 
@@ -27,11 +27,12 @@ const Overlay = styled.div`
 
 const StyledModal = styled.div`
   width: 40%;
-  padding: 30px 40px;
   margin: 15% auto;
-  background-color: ${variables.COLOR_WHITE};
+  background-color: ${props => props.theme.headerBackgroundColor};
   border-radius: ${variables.SECONDARY_BORDER_RADIUS};
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  color: ${props => props.theme.fontColor};
 `;
 
 type Props = {
@@ -39,7 +40,7 @@ type Props = {
 };
 
 class Modal extends React.Component<Props> {
-  modal: { value: null | HTMLDivElement } = React.createRef();
+  modal: {value: null | HTMLDivElement} = React.createRef();
 
   handleClick(e: SyntheticInputEvent<>) {
     if (e.target === this.modal.current) {
@@ -51,9 +52,7 @@ class Modal extends React.Component<Props> {
     return (
       <ModalPortal>
         <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>
-          <StyledModal>
-            {this.props.children}
-          </StyledModal>
+          <StyledModal>{this.props.children}</StyledModal>
         </Overlay>
       </ModalPortal>
     );

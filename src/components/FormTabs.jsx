@@ -4,15 +4,19 @@ import styled, {css} from 'styled-components';
 const Tabs = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 `;
 
 const Tab = styled.div`
   cursor: pointer;
+  padding: 30px 40px;
+  width: 50%;
+  text-align: center;
+  background-color: ${props => props.theme.disabledColor};
 
   ${props =>
     props.active &&
     css`
+      background-color: ${props => props.theme.headerBackgroundColor};
       color: ${props.theme.secondaryColor};
       font-weight: bold;
     `};

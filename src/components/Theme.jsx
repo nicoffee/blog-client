@@ -14,7 +14,9 @@ const DefaultTheme = {
   iconColor: variables.COLOR_BLACK,
   primaryBackgroundColor: variables.COLOR_WHITE,
   secondaryBackgroundColor: variables.COLOR_WHITE,
+  headerBackgroundColor: variables.COLOR_WHITE,
   errorColor: variables.COLOR_RED_600,
+  disabledColor: variables.COLOR_GRAY_300,
 };
 
 const DarkTheme = {
@@ -29,6 +31,7 @@ const DarkTheme = {
   secondaryBackgroundColor: variables.COLOR_GRAY_800,
   headerBackgroundColor: variables.COLOR_BLACK,
   errorColor: variables.COLOR_RED_600,
+  disabledColor: variables.COLOR_GRAY_300,
 };
 
 type Props = {

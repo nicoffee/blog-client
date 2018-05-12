@@ -36,13 +36,13 @@ type Props = {
 };
 
 const PostPreviw = (props: Props) => (
-  <StyledPost>
-    <Link to={`post/${props.id}`}>
+  <Link to={`post/${props.id}`}>
+    <StyledPost>
       <h1>{props.title}</h1>
-    </Link>
-    <p>{props.body.slice(0, 100)}</p>
-    <PreviewImage background={props.img} />
-  </StyledPost>
+      <p>{props.body.slice(0, 100)}</p>
+      <PreviewImage background={props.img} />
+    </StyledPost>
+  </Link>
 );
 
 export default PostPreviw;

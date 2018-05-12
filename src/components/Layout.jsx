@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import Header from '../containers/Header';
 import AuthForm from '../containers/AuthForm';
 import Theme from '../containers/Theme';
+import Modal from '../containers/Modal';
 import ModalPortal from './ModalPortal';
-import Modal from './Modal';
 import * as variables from '../types/style-variables';
 
 const InnerContainer = styled.div`
@@ -20,7 +20,7 @@ const InnerContainer = styled.div`
 
 const BaseStyles = styled.div`
   background-color: ${props => props.theme.secondaryBackgroundColor};
-  color: ${props => props.theme.primaryColor};
+  color: ${props => props.theme.fontColor};
   transition: background-color 200ms ease-out, color 200ms ease-out;
 
   a {
@@ -57,7 +57,9 @@ const Layout = (props: Props) => (
       <Header />
       {props.isModalOpen && (
         <ModalPortal>
-          <Modal><AuthForm /></Modal>
+          <Modal>
+            <AuthForm />
+          </Modal>
         </ModalPortal>
       )}
       <InnerContainer>{props.children}</InnerContainer>
