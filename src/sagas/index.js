@@ -11,6 +11,7 @@ import {
 } from '../types';
 import * as actions from '../actions';
 import * as api from '../services/api';
+import history from '../history';
 
 export function* fetchPosts() {
   try {
@@ -43,6 +44,7 @@ export function* createPost(action) {
   try {
     const post = yield call(api.createPost, action.data);
     yield put(actions.createPostSuccess(post.data));
+    yield call(history.push, `/post/${post.data.id}`);
   } catch (error) {
     yield put(actions.createPostError(error));
   }
@@ -75,10 +77,20 @@ export function* createUser(action) {
 
 export function* toggleLike(action) {
   const user = yield select(state => state.user);
-  const post = user.posts[action.payload];
-  const like = post ? post.like : false;
-  const superData = {posts: {[action.payload]: {like: !like}}};
-  const response = yield call(api.updateUser, user.id, superData);
+  const post = yield select(state => state.post);
+  let like = false;
+
+  if (user.likedPosts && user.likedPosts[action.payload].like) {
+    like = user.likedPosts[action.payload].like;
+  }
+
+  const postReq = yield call(api.editPost, action.payload, {
+    likes: like ? post.info.likes - 1 : post.info.likes + 1,
+  });
+
+  yield put(actions.editPostInfoSuccess(postReq.data));
+  const data = {likedPosts: {[action.payload]: {like: !like}}};
+  const response = yield call(api.updateUser, user.id, data);
   yield put(actions.toggleLikeSuccess(response.data));
 }
 
