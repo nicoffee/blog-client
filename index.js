@@ -1,5 +1,5 @@
-import express from 'express';
-import path from 'path';
+const express = require('express');
+const path = require('path');
 // import React from 'react';
 // import {renderToString} from 'react-dom/server';
 // import App from './src/components/App';
