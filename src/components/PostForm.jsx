@@ -7,8 +7,8 @@ import FormGroup from './FormGroup';
 import {Button} from './Styled';
 
 const FormInner = styled.div`
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: stretch;
   padding: 30px 40px;

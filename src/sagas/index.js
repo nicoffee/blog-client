@@ -85,7 +85,7 @@ export function* toggleLike(action) {
   const post = yield select(state => state.post);
   let like = false;
 
-  if (user.likedPosts && user.likedPosts[action.payload].like) {
+  if (user.likedPosts && user.likedPosts[action.payload]) {
     like = user.likedPosts[action.payload].like;
   }
 

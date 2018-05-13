@@ -26,12 +26,12 @@ const Overlay = styled.div`
 `;
 
 const StyledModal = styled.div`
+  overflow: hidden;
   width: 40%;
   margin: 15% auto;
   background-color: ${props => props.theme.headerBackgroundColor};
   border-radius: ${variables.SMALL_BORDER_RADIUS};
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  overflow: hidden;
   color: ${props => props.theme.fontColor};
 `;
 

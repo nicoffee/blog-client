@@ -7,11 +7,10 @@ const Tabs = styled.div`
 `;
 
 const Tab = styled.div`
-  cursor: pointer;
-  padding: 30px 40px;
   width: 50%;
-  text-align: center;
+  padding: 30px 40px;
   background-color: ${props => props.theme.disabledColor};
+  cursor: pointer;
 
   ${props =>
     props.active &&
@@ -21,6 +20,7 @@ const Tab = styled.div`
       font-weight: bold;
     `};
 
+  text-align: center;
   transition: font-weight 200ms, color 200ms;
 `;
 

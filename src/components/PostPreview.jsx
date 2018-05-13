@@ -3,6 +3,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import {formatDate} from '../utils/helpers';
 
 const StyledPost = styled.div`
   display: flex;
@@ -25,15 +26,21 @@ type Props = {
   id: string,
   title: string,
   body: string,
-  img: string,
+  picture: string,
+  published: string,
+  author: {
+    name: string,
+  },
 };
 
 const PostPreviw = (props: Props) => (
   <Link to={`post/${props.id}`}>
     <StyledPost>
+      {props.picture && <PreviewImage background={props.picture} />}
       <h1>{props.title}</h1>
       <p>{props.body.slice(0, 100)}</p>
-      {props.img && <PreviewImage background={props.img} />}
+      <span>{props.author.name}</span>
+      <span>{formatDate(props.published)}</span>
     </StyledPost>
   </Link>
 );

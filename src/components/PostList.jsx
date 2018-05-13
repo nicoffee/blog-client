@@ -11,20 +11,21 @@ const StyledDiv = styled.div`
 `;
 
 type Props = {
-  posts: Array<{ title: string, body: string, picture: string, id: string }>,
+  posts: Array<{
+    id: string,
+    title: string,
+    body: string,
+    picture: string,
+    published: string,
+    author: {
+      name: string,
+    },
+  }>,
 };
 
 const PostsList = (props: Props) => (
   <StyledDiv>
-    {props.posts.map(post => (
-      <PostPreviw
-        body={post.body}
-        id={post.id}
-        img={post.picture}
-        key={post.id}
-        title={post.title}
-      />
-    ))}
+    {props.posts.map(post => <PostPreviw key={post.id} {...post} />)}
   </StyledDiv>
 );
 

@@ -52,8 +52,8 @@ export const StyledFormGroup = styled.div`
 
   div {
     display: flex;
-    flex-direction: column;
     width: 70%;
+    flex-direction: column;
   }
 `;
 
