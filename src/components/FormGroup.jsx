@@ -3,6 +3,12 @@ import {withFormsy} from 'formsy-react';
 import {StyledFormGroup, ErrorMessage, Input, TextArea} from './Styled';
 
 class FormGroup extends Component {
+  componentDidMount() {
+    if (this.props.initialValue) {
+      this.props.setValue(this.props.initialValue);
+    }
+  }
+
   changeValue = (e: SyntheticInputEvent<>) => {
     this.props.setValue(e.currentTarget.value);
   };

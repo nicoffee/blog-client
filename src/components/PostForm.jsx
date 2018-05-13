@@ -40,9 +40,24 @@ class PostForm extends React.Component<Props, State> {
           onInvalid={() => this.setState({canSubmit: false})}
           onValid={() => this.setState({canSubmit: true})}
           onValidSubmit={handleSubmit}>
-          <FormGroup label="Picture:" name="picture" />
-          <FormGroup label="Title:" name="title" required />
-          <FormGroup component="textarea" label="Text:" name="body" required />
+          <FormGroup
+            initialValue={this.props.picture}
+            label="Picture:"
+            name="picture"
+          />
+          <FormGroup
+            initialValue={this.props.title}
+            label="Title:"
+            name="title"
+            required
+          />
+          <FormGroup
+            component="textarea"
+            initialValue={this.props.body}
+            label="Text:"
+            name="body"
+            required
+          />
           <Button disabled={!this.state.canSubmit} primary type="submit">
             Save
           </Button>

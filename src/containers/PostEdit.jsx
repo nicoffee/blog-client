@@ -1,9 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { connect } from 'react-redux';
-import type { Match } from 'react-router-dom';
-import { fetchPostInfoRequest, editPostInfoRequest } from '../actions';
+import {connect} from 'react-redux';
+import type {Match} from 'react-router-dom';
+import {fetchPostInfoRequest, editPostInfoRequest} from '../actions';
 import PostForm from '../components/PostForm';
 import Loader from '../components/Loader';
 
@@ -29,13 +29,14 @@ class PostEditContainer extends React.Component<Props> {
     e.preventDefault();
 
     this.props.editPostInfoRequest(data.id, {
+      picture: data.picture,
       title: data.title,
       body: data.body,
     });
   }
 
   render() {
-    const { isFetching, info } = this.props;
+    const {isFetching, info} = this.props;
 
     if (isFetching) {
       return <Loader />;
@@ -46,7 +47,7 @@ class PostEditContainer extends React.Component<Props> {
         body={info.body}
         handleSubmit={this.submitForm.bind(this)}
         id={info.id}
-        img={info.picture}
+        picture={info.picture}
         title={info.title}
       />
     );
