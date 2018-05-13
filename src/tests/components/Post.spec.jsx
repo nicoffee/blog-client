@@ -8,7 +8,7 @@ describe('Post', () => {
   it('always renders a div', () => {
     const mountedPost = mount(
       <MemoryRouter>
-        <Post body="body" title="title"  />
+        <Post info={{body: 'body', title: 'title'}} />
       </MemoryRouter>
     );
     const divs = mountedPost.find('div');
