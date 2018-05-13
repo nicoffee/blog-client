@@ -8,6 +8,7 @@ import {
   CREATE_USER_REQUEST,
   CREATE_POST_REQUEST,
   TOGGLE_LIKE_REQUEST,
+  SWITCH_THEME,
 } from '../types';
 import * as actions from '../actions';
 import * as api from '../services/api';
@@ -75,6 +76,10 @@ export function* createUser(action) {
   yield put(actions.closeModal());
 }
 
+export function* switchTheme(action) {
+  yield localStorage.setItem('theme', action.payload);
+}
+
 export function* toggleLike(action) {
   const user = yield select(state => state.user);
   const post = yield select(state => state.post);
@@ -103,6 +108,7 @@ function* mySaga() {
   yield takeEvery(FETCH_LOGIN_REQUEST, fetchLogin);
   yield takeEvery(CREATE_USER_REQUEST, createUser);
   yield takeEvery(TOGGLE_LIKE_REQUEST, toggleLike);
+  yield takeEvery(SWITCH_THEME, switchTheme);
 }
 
 export default mySaga;

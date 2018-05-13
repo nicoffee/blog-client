@@ -48,8 +48,10 @@ const Slider = styled.span`
 const Switcher = props => (
   <StyledLabel>
     <input
+      defaultChecked={props.defaultChecked}
       onChange={props.onChange}
-      type="checkbox" />
+      type="checkbox"
+    />
     <Slider />
   </StyledLabel>
 );

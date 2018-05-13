@@ -57,6 +57,7 @@ const Header = (props: Props) => (
   <StyledHeader>
     <StyledSwitcher>
       <Switcher
+        defaultChecked={props.theme === 'dark'}
         onChange={() =>
           props.switchTheme(props.theme === 'dark' ? 'light' : 'dark')
         }

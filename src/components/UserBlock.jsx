@@ -45,7 +45,6 @@ const StyledDropdown = styled.div`
 
     a {
       width: 100%;
-      padding: 10px;
     }
   }
 `;
