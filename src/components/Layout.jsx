@@ -8,7 +8,7 @@ import AuthForm from '../containers/AuthForm';
 import Theme from '../containers/Theme';
 import Modal from '../containers/Modal';
 import ModalPortal from './ModalPortal';
-import * as variables from '../types/style-variables';
+import * as variables from '../constants/style-variables';
 
 const InnerContainer = styled.div`
   display: flex;

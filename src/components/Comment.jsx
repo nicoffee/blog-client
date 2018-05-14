@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import * as variables from '../types/style-variables';
+import * as variables from '../constants/style-variables';
 
 export const StyledComment = styled.div`
   padding: 14px 18px;

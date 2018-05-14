@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import configureStore from './store/configureStore';
+import configureStore from './utils/configureStore';
 import App from './components/App';
 import './index.css';
 

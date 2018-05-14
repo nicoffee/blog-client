@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import {logger} from 'redux-logger';
 import rootReducer from '../reducers';
 import mySaga from '../sagas';
-import {loadTheme} from '../loadTheme';
+import {loadTheme} from '../utils/helpers';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

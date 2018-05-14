@@ -1,6 +1,9 @@
-import * as types from '../types';
+import * as types from '../constants/types';
 
-const post = (state = {isFetching: false, error: null, info: {}, comments: []}, action) => {
+const post = (
+  state = {isFetching: false, error: null, info: {}, comments: []},
+  action
+) => {
   switch (action.type) {
     case types.POST_INFO_REQUEST:
       return {...state, isFetching: true};

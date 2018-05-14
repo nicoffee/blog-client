@@ -6,7 +6,7 @@ import {
   FETCH_LOGIN_FAILURE,
   CREATE_USER_FAILURE,
   TOGGLE_LIKE_SUCCESS,
-} from '../types';
+} from '../constants/types';
 
 const user = (state = {isFetching: false}, action) => {
   switch (action.type) {
