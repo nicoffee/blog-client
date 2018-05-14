@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {Button} from './Styled';
 import * as variables from '../types/style-variables';
+import type Props from '../containers/Post';
 
 const StyledPost = styled.div`
   position: relative;
@@ -61,22 +62,6 @@ const PreviewImage = styled.div`
   background-position: center;
   background-size: cover;
 `;
-
-type Props = {
-  info: {
-    id: string,
-    title: string,
-    body: string,
-    picture: string,
-    likes: number,
-  },
-  canEdit: boolean,
-  isLiked: boolean,
-  isUserLogged: boolean,
-  toggleLike: Function,
-  toggleLikeRequest: Function,
-  openModal: Function,
-};
 
 class Post extends React.PureComponent<Props> {
   handleLikeClick = (id: string) => {

@@ -8,18 +8,20 @@ import PostList from '../components/PostList';
 import Error from '../components/Error';
 import Loader from '../components/Loader';
 
+export type post = {
+  id: string,
+  title: string,
+  body: string,
+  picture: string,
+  published: string,
+  author: {
+    name: string,
+  },
+};
+
 type Props = {
   fetchPostsRequest: Function,
-  posts: Array<{
-    id: string,
-    title: string,
-    body: string,
-    picture: string,
-    published: string,
-    author: {
-      name: string,
-    },
-  }>,
+  posts: Array<post>,
   isFetching: boolean,
   errorMessage: string,
 };

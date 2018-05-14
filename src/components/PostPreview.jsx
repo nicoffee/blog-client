@@ -4,6 +4,7 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {formatDate} from '../utils/helpers';
+import type {post} from '../containers/PostList';
 
 const StyledPost = styled.div`
   display: flex;
@@ -22,18 +23,7 @@ const PreviewImage = styled.div`
   background-size: cover;
 `;
 
-type Props = {
-  id: string,
-  title: string,
-  body: string,
-  picture: string,
-  published: string,
-  author: {
-    name: string,
-  },
-};
-
-const PostPreviw = (props: Props) => (
+const PostPreviw = (props: post) => (
   <Link to={`post/${props.id}`}>
     <StyledPost>
       {props.picture && <PreviewImage background={props.picture} />}

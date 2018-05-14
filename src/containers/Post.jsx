@@ -12,10 +12,9 @@ import {
 import {getIsLiked} from '../reducers';
 import {getUserId} from '../reducers/user';
 import Post from '../components/Post';
-// import Comment from '../components/Comment';
 import Loader from '../components/Loader';
 
-type Props = {
+export type Props = {
   fetchPostInfoRequest: Function,
   fetchPostCommentsRequest: Function,
   toggleLikeRequest: Function,
@@ -54,16 +53,9 @@ class PostContainer extends React.Component<Props> {
   }
 }
 
-// {/* <div>
-//   {this.props.comments.map(comment => (
-//     <Comment body={comment.body} key={comment.id} name={comment.name} />
-//   ))}
-// </div> */}
-
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
   info: state.post.info,
-  // comments: state.post.comments,
   canEdit: state.post.info.author
     ? state.post.info.author.id === state.user.id
     : false,
