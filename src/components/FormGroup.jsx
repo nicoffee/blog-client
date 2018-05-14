@@ -25,6 +25,7 @@ class FormGroup extends Component {
             <TextArea
               id={rest.name}
               onChange={this.changeValue}
+              rows={this.props.rows}
               value={this.props.getValue() || ''}
             />
           ) : (

@@ -25,10 +25,8 @@ class PostEditContainer extends React.Component<Props> {
     this.props.fetchPostInfoRequest(this.props.match.params.postId);
   }
 
-  submitForm(e, data) {
-    e.preventDefault();
-
-    this.props.editPostInfoRequest(data.id, {
+  submitForm(data) {
+    this.props.editPostInfoRequest(this.props.info.id, {
       picture: data.picture,
       title: data.title,
       body: data.body,

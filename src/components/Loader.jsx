@@ -17,8 +17,8 @@ const Loader = styled.div`
   top: 50%;
   width: 40px;
   height: 40px;
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #3498db;
+  border: 6px solid ${props => props.theme.disabledColor};
+  border-top: 6px solid ${props => props.theme.secondaryColor};
   margin-bottom: -20px;
   animation: ${rotate360} 2s linear infinite;
   border-radius: 50%;

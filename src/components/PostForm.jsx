@@ -57,6 +57,7 @@ class PostForm extends React.Component<Props, State> {
             label="Text:"
             name="body"
             required
+            rows={10}
           />
           <Button disabled={!this.state.canSubmit} primary type="submit">
             Save
