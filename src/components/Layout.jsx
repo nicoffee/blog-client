@@ -12,12 +12,12 @@ import * as variables from '../types/style-variables';
 
 const InnerContainer = styled.div`
   display: flex;
-  padding: 10px 20px 50px;
-  margin: 78px auto 0;
   max-width: ${variables.BASIC_CONTENT_WIDTH};
   min-height: 100vh;
   flex-direction: column;
   align-items: center;
+  padding: 10px 20px 50px;
+  margin: 78px auto 0;
 `;
 
 const BaseStyles = styled.div`
