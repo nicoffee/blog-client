@@ -2,6 +2,7 @@ import axios from 'axios';
 import config from '../../config.json';
 const apiUrl =
   process.env.NODE_ENV === 'development' ? config.api_dev : config.api_prod;
+const loginApiUrl = config.api_login;
 
 export function fetchPosts() {
   return axios.get(`${apiUrl}/posts`);
@@ -24,11 +25,11 @@ export function fetchPostComments(postId) {
 }
 
 export function fetchLogin(data) {
-  return axios.get(`${apiUrl}/users?email=${data.email}`);
+  return axios.put(`${loginApiUrl}/users`, data);
 }
 
 export function createUser(data) {
-  return axios.post(`${apiUrl}/users`, data);
+  return axios.post(`${loginApiUrl}/users`, data);
 }
 
 export function updateUser(userId, data) {

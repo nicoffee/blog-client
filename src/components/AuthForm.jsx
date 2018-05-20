@@ -74,16 +74,26 @@ class AuthForm extends React.Component<Props, State> {
               label="Your email"
               name="email"
               required
-              type="text"
               validationError="This is not a valid email"
               validations="isEmail"
             />
+            {this.state.activeForm === 'signup' && (
+              <FormGroup label="Nickname" name="username" required />
+            )}
             <FormGroup
               label="Password"
               name="password"
               required
               type="password"
             />
+            {this.state.activeForm === 'signup' && (
+              <FormGroup
+                label="Password Confirmation"
+                name="passwordConf"
+                required
+                type="password"
+              />
+            )}
             {error && <Error>{error}</Error>}
             <Button disabled={!this.state.canSubmit} primary type="submit">
               Continue
