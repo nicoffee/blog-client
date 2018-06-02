@@ -18,3 +18,5 @@ export const sortPostsByDate = posts => {
 
   return posts.sort(compare);
 };
+
+export const loadTheme = () => localStorage.getItem('theme');

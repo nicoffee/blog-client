@@ -3,7 +3,7 @@ import {
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_FAILURE,
-} from '../../types';
+} from '../../constants/types';
 
 const createList = () => {
   const ids = (state = [], action) => {

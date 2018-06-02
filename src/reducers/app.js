@@ -1,4 +1,4 @@
-import {SWITCH_THEME} from '../types';
+import {SWITCH_THEME} from '../constants/types';
 
 const app = (state = {theme: undefined}, action) => {
   switch (action.type) {

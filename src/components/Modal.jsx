@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import ModalPortal from './ModalPortal';
-import * as variables from '../types/style-variables';
+import * as variables from '../constants/style-variables';
 
 const fadeIn = keyframes`
   from {

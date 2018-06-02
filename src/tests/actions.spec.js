@@ -1,7 +1,7 @@
 import {normalize} from 'normalizr';
 import {postListSchema} from '../actions/schema';
 import * as actions from '../actions';
-import * as types from '../types';
+import * as types from '../constants/types';
 
 describe('fetch posts actions', () => {
   it('should create an action to fetch posts', () => {
