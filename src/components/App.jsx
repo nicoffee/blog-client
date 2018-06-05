@@ -7,7 +7,7 @@ import PostList from '../containers/PostList';
 import Post from '../containers/Post';
 import PostEdit from '../containers/PostEdit';
 import PostCreate from '../containers/PostCreate';
-import history from '../history';
+import history from '../utils/history';
 
 const App = ({store}) => (
   <Provider store={store}>

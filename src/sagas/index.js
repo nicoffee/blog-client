@@ -9,10 +9,10 @@ import {
   CREATE_POST_REQUEST,
   TOGGLE_LIKE_REQUEST,
   SWITCH_THEME,
-} from '../types';
+} from '../constants/types';
 import * as actions from '../actions';
 import * as api from '../services/api';
-import history from '../history';
+import history from '../utils/history';
 
 export function* fetchPosts() {
   try {

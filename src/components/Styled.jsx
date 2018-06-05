@@ -1,7 +1,7 @@
 // @flow
 
 import styled, {css} from 'styled-components';
-import * as variables from '../types/style-variables';
+import * as variables from '../constants/style-variables';
 
 export const Input = styled.input`
   padding: 8px 12px;

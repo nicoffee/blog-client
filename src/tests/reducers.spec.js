@@ -1,5 +1,5 @@
 import post from '../reducers/post';
-import * as types from '../types'
+import * as types from '../constants/types';
 
 describe('post reducer', () => {
   it('should return the initial state', () => {
@@ -7,54 +7,48 @@ describe('post reducer', () => {
       isFetching: false,
       info: {},
       comments: [],
-      error: null
+      error: null,
     });
   });
 
   it('should handle POST_INFO_REQUEST', () => {
     expect(
       post(undefined, {
-        type: types.POST_INFO_REQUEST
+        type: types.POST_INFO_REQUEST,
       })
-    ).toEqual(
-      {
-        isFetching: true,
-        info: {},
-        comments: [],
-        error: null
-      }
-    )
+    ).toEqual({
+      isFetching: true,
+      info: {},
+      comments: [],
+      error: null,
+    });
   });
 
   it('should handle POST_INFO_SUCCESS', () => {
     expect(
       post(undefined, {
         type: types.POST_INFO_SUCCESS,
-        payload: {title: 'title'}
+        payload: {title: 'title'},
       })
-    ).toEqual(
-      {
-        isFetching: false, 
-        info: {title: 'title'},
-        comments: [],
-        error: null
-      }
-    )
+    ).toEqual({
+      isFetching: false,
+      info: {title: 'title'},
+      comments: [],
+      error: null,
+    });
   });
 
   it('should handle POST_INFO_FAILURE', () => {
     expect(
       post(undefined, {
         type: types.POST_INFO_FAILURE,
-        payload: 'error'
+        payload: 'error',
       })
-    ).toEqual(
-      {
-        isFetching: false, 
-        info: {},
-        comments: [],
-        error: 'error',
-      }
-    )
+    ).toEqual({
+      isFetching: false,
+      info: {},
+      comments: [],
+      error: 'error',
+    });
   });
 });

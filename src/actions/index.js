@@ -1,6 +1,6 @@
 import {normalize} from 'normalizr';
 import {postListSchema} from './schema';
-import * as types from '../types';
+import * as types from '../constants/types';
 
 export const fetchPostsRequest = () => ({
   type: types.FETCH_POSTS_REQUEST,
