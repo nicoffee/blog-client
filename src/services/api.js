@@ -1,8 +1,13 @@
 import axios from 'axios';
 import config from '../../config.json';
+
 const apiUrl =
   process.env.NODE_ENV === 'development' ? config.api_dev : config.api_prod;
-const loginApiUrl = config.api_login;
+
+const loginApiUrl =
+  process.env.NODE_ENV === 'development'
+    ? config.api_dev
+    : config.api_login_prod;
 
 export function fetchPosts() {
   return axios.get(`${apiUrl}/posts`);

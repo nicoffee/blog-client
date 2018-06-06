@@ -77,9 +77,6 @@ class AuthForm extends React.Component<Props, State> {
               validationError="This is not a valid email"
               validations="isEmail"
             />
-            {this.state.activeForm === 'signup' && (
-              <FormGroup label="Nickname" name="username" required />
-            )}
             <FormGroup
               label="Password"
               name="password"
