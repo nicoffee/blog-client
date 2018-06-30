@@ -49,7 +49,9 @@ const StyledDropdown = styled.div`
   }
 `;
 
-type Props = {};
+type Props = {
+  handleLogout: Function,
+};
 
 type State = {
   isDropdownOpen: boolean,
@@ -97,7 +99,7 @@ class UserBlock extends React.Component<Props, State> {
               <li>
                 <Link to="/new">New Post</Link>
               </li>
-              <li>Sign Out</li>
+              <li onClick={this.props.fetchLogoutRequest}>Sign Out</li>
             </ul>
           </StyledDropdown>
         )}

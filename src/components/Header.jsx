@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import UserBlock from './UserBlock';
+import UserBlock from '../containers/UserBlock';
 import Switcher from './Switcher';
 import {Button} from './Styled';
 

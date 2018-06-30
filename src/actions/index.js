@@ -92,6 +92,10 @@ export const fetchLoginError = error => ({
   payload: error.message,
 });
 
+export const fetchLogoutRequest = () => ({
+  type: types.FETCH_LOGOUT_REQUEST
+});
+
 export const createUserRequest = data => ({
   type: types.CREATE_USER_REQUEST,
   payload: data,

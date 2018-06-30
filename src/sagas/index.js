@@ -5,6 +5,7 @@ import {
   EDIT_POST_REQUEST,
   POST_COMMENTS_REQUEST,
   FETCH_LOGIN_REQUEST,
+  FETCH_LOGOUT_REQUEST,
   CREATE_USER_REQUEST,
   CREATE_POST_REQUEST,
   TOGGLE_LIKE_REQUEST,
@@ -70,6 +71,11 @@ export function* fetchLogin(action) {
   }
 }
 
+export function* fetchLogout() {
+  yield call(api.fetchLogoutSuccess);
+  yield put(actions.fetchLogoutSuccess());
+}
+
 export function* createUser(action) {
   const user = yield call(api.createUser, action.payload);
   yield put(actions.createUserSuccess(user.data));
@@ -106,6 +112,7 @@ function* mySaga() {
   yield takeEvery(CREATE_POST_REQUEST, createPost);
   yield takeEvery(POST_COMMENTS_REQUEST, fetchPostComments);
   yield takeEvery(FETCH_LOGIN_REQUEST, fetchLogin);
+  yield takeEvery(FETCH_LOGOUT_REQUEST, fetchLogout);
   yield takeEvery(CREATE_USER_REQUEST, createUser);
   yield takeEvery(TOGGLE_LIKE_REQUEST, toggleLike);
   yield takeEvery(SWITCH_THEME, switchTheme);

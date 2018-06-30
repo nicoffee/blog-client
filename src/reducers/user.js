@@ -1,5 +1,6 @@
 import {
   FETCH_LOGIN_REQUEST,
+  FETCH_LOGOUT_REQUEST,
   CREATE_USER_REQUEST,
   FETCH_LOGIN_SUCCESS,
   CREATE_USER_SUCCESS,
@@ -19,6 +20,8 @@ const user = (state = {isFetching: false}, action) => {
     case FETCH_LOGIN_FAILURE:
     case CREATE_USER_FAILURE:
       return {...state, isFetching: false, error: action.payload};
+    case FETCH_LOGOUT_REQUEST:
+      return {...state, isFetching: false, email: null};
     case TOGGLE_LIKE_SUCCESS:
       return {...state, ...action.payload};
     default:

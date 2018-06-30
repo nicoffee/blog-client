@@ -37,6 +37,10 @@ export function createUser(data) {
   return axios.post(`${loginApiUrl}/users`, data);
 }
 
+export function fetchLogout() {
+  return axios.get(`${loginApiUrl}/logout`);
+}
+
 export function updateUser(userId, data) {
   return axios.patch(`${apiUrl}/users/${userId}`, data);
 }
