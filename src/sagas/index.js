@@ -77,9 +77,14 @@ export function* fetchLogout() {
 }
 
 export function* createUser(action) {
-  const user = yield call(api.createUser, action.payload);
-  yield put(actions.createUserSuccess(user.data));
-  yield put(actions.closeModal());
+  try {
+    const user = yield call(api.createUser, action.payload);
+    yield put(actions.createUserSuccess(user.data));
+    yield put(actions.closeModal());
+  } catch (error) {
+    const errors = error.response.data.errors;
+    yield put(actions.createUserError(errors));
+  }
 }
 
 export function* switchTheme(action) {

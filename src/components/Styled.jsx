@@ -34,13 +34,13 @@ export const TextArea = styled.textarea`
 `;
 
 export const StyledFormGroup = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-gap: 10px;
+  width: 100%;
+  grid-template-columns: 1fr 3fr;
   margin-bottom: 30px;
 
   label {
-    width: 30%;
     color: ${variables.SECONDARY_FONT_COLOR};
     font-size: ${variables.SMALL_FONT_SIZE};
   }
@@ -52,7 +52,6 @@ export const StyledFormGroup = styled.div`
 
   div {
     display: flex;
-    width: 70%;
     flex-direction: column;
   }
 `;

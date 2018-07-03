@@ -3,7 +3,7 @@ import Formsy from 'formsy-react';
 import styled from 'styled-components';
 import FormTabs from './FormTabs';
 import FormGroup from './FormGroup';
-import {Button, Error} from './Styled';
+import {Button, ErrorMessage} from './Styled';
 
 const Header = styled.h1`
   margin: 30px 0 60px;
@@ -20,6 +20,7 @@ const FormInner = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 `;
 
@@ -39,7 +40,15 @@ class AuthForm extends React.Component<Props, State> {
     activeForm: 'signin',
   };
 
-  modal: {value: null | HTMLDivElement} = React.createRef();
+  componentDidUpdate() {
+    if (this.props.errors) {
+      const errorsObject = {};
+      Object.keys(this.props.errors).map(
+        key => (errorsObject[key] = this.props.errors[key].msg)
+      );
+      this.formRef.current.updateInputsWithError(errorsObject);
+    }
+  }
 
   submitForm(model) {
     if (this.state.activeForm === 'signin') {
@@ -49,6 +58,9 @@ class AuthForm extends React.Component<Props, State> {
 
     this.props.createUserRequest(model);
   }
+
+  modal: {value: null | HTMLDivElement} = React.createRef();
+  formRef: {value: null | HTMLDivElement} = React.createRef();
 
   render() {
     const {error} = this.props;
@@ -69,7 +81,8 @@ class AuthForm extends React.Component<Props, State> {
           <Formsy
             onInvalid={() => this.setState({canSubmit: false})}
             onValid={() => this.setState({canSubmit: true})}
-            onValidSubmit={e => this.submitForm(e)}>
+            onValidSubmit={e => this.submitForm(e)}
+            ref={this.formRef}>
             <FormGroup
               label="Your email"
               name="email"
@@ -91,7 +104,7 @@ class AuthForm extends React.Component<Props, State> {
                 type="password"
               />
             )}
-            {error && <Error>{error}</Error>}
+            {error && <ErrorMessage>{error}</ErrorMessage>}
             <Button disabled={!this.state.canSubmit} primary type="submit">
               Continue
             </Button>

@@ -9,7 +9,7 @@ import {
   TOGGLE_LIKE_SUCCESS,
 } from '../constants/types';
 
-const user = (state = {isFetching: false}, action) => {
+const user = (state = {isFetching: false, errors: []}, action) => {
   switch (action.type) {
     case FETCH_LOGIN_REQUEST:
     case CREATE_USER_REQUEST:
@@ -18,8 +18,9 @@ const user = (state = {isFetching: false}, action) => {
     case CREATE_USER_SUCCESS:
       return {...state, isFetching: false, ...action.payload};
     case FETCH_LOGIN_FAILURE:
-    case CREATE_USER_FAILURE:
       return {...state, isFetching: false, error: action.payload};
+    case CREATE_USER_FAILURE:
+      return {...state, isFetching: false, errors: action.payload};
     case FETCH_LOGOUT_REQUEST:
       return {...state, isFetching: false, email: null};
     case TOGGLE_LIKE_SUCCESS:
@@ -32,5 +33,6 @@ const user = (state = {isFetching: false}, action) => {
 export default user;
 
 export const getErrorMessage = state => state.user.error;
+export const getErrors = state => state.user.errors;
 export const getUserName = state => state.user.email;
 export const getUserId = state => state.user.id;

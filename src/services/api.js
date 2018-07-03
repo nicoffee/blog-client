@@ -10,7 +10,7 @@ const loginApiUrl =
     : config.api_login_prod;
 
 export function fetchPosts() {
-  return axios.get(`${apiUrl}/posts`);
+  return axios.get(`${loginApiUrl}/posts`);
 }
 
 export function fetchPost(postId) {

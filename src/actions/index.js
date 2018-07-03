@@ -106,9 +106,9 @@ export const createUserSuccess = data => ({
   payload: data,
 });
 
-export const createUserError = error => ({
-  type: types.CREATE_USER_SUCCESS,
-  payload: error.message,
+export const createUserError = errors => ({
+  type: types.CREATE_USER_FAILURE,
+  payload: errors,
 });
 
 export const toggleLikeRequest = data => ({

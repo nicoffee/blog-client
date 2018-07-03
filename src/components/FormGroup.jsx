@@ -17,6 +17,9 @@ class FormGroup extends Component {
     const {label, component, ...rest} = this.props;
     const errorMessage = this.props.getErrorMessage();
 
+    console.log('errorMessage', errorMessage);
+    // console.log('this.props', this.props);
+
     return (
       <StyledFormGroup>
         <label htmlFor={rest.name}>{label}</label>
