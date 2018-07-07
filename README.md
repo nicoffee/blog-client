@@ -1,4 +1,4 @@
-# Example Blog
+# Blog
 
 It's app which i made with purpose to train my redux-saga skills and touch new technologies.
 
@@ -44,6 +44,6 @@ yarn lint
 
 * [React](https://reactjs.org/) - The web framework used
 * [Redux](https://redux.js.org/) - The state management framework used
-* [redux-saga](https://redux-saga.js.org/) - Application side effects
-* [styled-components](https://www.styled-components.com/) - Application styling solution
+* [Redux-saga](https://redux-saga.js.org/) - Application side effects
+* [Styled-components](https://www.styled-components.com/) - Application styling solution
 * [Yarn](https://yarnpkg.com/) - Dependency Management

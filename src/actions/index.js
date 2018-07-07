@@ -77,6 +77,15 @@ export const fetchPostCommentsError = error => ({
   payload: error,
 });
 
+export const fetchSessionRequest = () => ({
+  type: types.FETCH_SESSION_REQUEST
+});
+
+export const fetchSessionSuccess = data => ({
+  type: types.FETCH_SESSION_REQUEST,
+  payload: data,
+});
+
 export const fetchLoginRequest = data => ({
   type: types.FETCH_LOGIN_REQUEST,
   payload: data,

@@ -6,6 +6,7 @@ import {
   POST_COMMENTS_REQUEST,
   FETCH_LOGIN_REQUEST,
   FETCH_LOGOUT_REQUEST,
+  FETCH_SESSION_REQUEST,
   CREATE_USER_REQUEST,
   CREATE_POST_REQUEST,
   TOGGLE_LIKE_REQUEST,
@@ -64,7 +65,7 @@ export function* fetchPostComments(action) {
 export function* fetchLogin(action) {
   try {
     const login = yield call(api.fetchLogin, action.payload);
-    yield put(actions.fetchLoginSuccess(login.data[0]));
+    yield put(actions.fetchLoginSuccess(login.data.email));
     yield put(actions.closeModal());
   } catch (error) {
     yield put(actions.fetchLoginError(error));
@@ -74,6 +75,15 @@ export function* fetchLogin(action) {
 export function* fetchLogout() {
   yield call(api.fetchLogoutSuccess);
   yield put(actions.fetchLogoutSuccess());
+}
+
+export function* fetchSession() {
+  try {
+    const session = yield call(api.fetchSession);
+    yield put(actions.fetchSessionSuccess(session));
+  } catch (error) {
+    //handleError()
+  }
 }
 
 export function* createUser(action) {
@@ -121,6 +131,7 @@ function* mySaga() {
   yield takeEvery(CREATE_USER_REQUEST, createUser);
   yield takeEvery(TOGGLE_LIKE_REQUEST, toggleLike);
   yield takeEvery(SWITCH_THEME, switchTheme);
+  yield takeEvery(FETCH_SESSION_REQUEST, fetchSession);
 }
 
 export default mySaga;
