@@ -9,7 +9,7 @@ import Error from '../components/Error';
 import Loader from '../components/Loader';
 
 export type post = {
-  id: string,
+  _id: string,
   title: string,
   body: string,
   picture: string,
