@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import * as variables from '../constants/style-variables';
 
-const BaseStyles = styled.div`
+const Styles = styled.div`
   background-color: ${props => props.theme.secondaryBackgroundColor};
   color: ${props => props.theme.fontColor};
   transition: background-color 200ms ease-out, color 200ms ease-out;
@@ -12,6 +12,10 @@ const BaseStyles = styled.div`
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  button:disabled {
+    background-color: ${variables.COLOR_GRAY_600};
   }
 
   p {
@@ -29,10 +33,9 @@ const BaseStyles = styled.div`
 `;
 
 type Props = {
-  isModalOpen: boolean,
   children?: React.Node,
 };
 
-const Styles = (props: Props) => <BaseStyles>{props.children}</BaseStyles>;
+const BaseStyles = (props: Props) => <Styles>{props.children}</Styles>;
 
-export default Styles;
+export default BaseStyles;

@@ -8,7 +8,7 @@ import * as variables from '../constants/style-variables';
 const StyledError = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${variables.ERROR_COLOR};
+  color: ${variables.COLOR_RED_600};
 `;
 
 type Props = {

@@ -3,6 +3,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import PostPreviw from './PostPreview';
+import type {post} from '../containers/PostList';
 
 const StyledDiv = styled.div`
   display: grid;
@@ -11,21 +12,12 @@ const StyledDiv = styled.div`
 `;
 
 type Props = {
-  posts: Array<{
-    id: string,
-    title: string,
-    body: string,
-    picture: string,
-    published: string,
-    author: {
-      name: string,
-    },
-  }>,
+  posts: Array<post>,
 };
 
 const PostsList = (props: Props) => (
   <StyledDiv>
-    {props.posts.map(post => <PostPreviw key={post.id} {...post} />)}
+    {props.posts.map(post => <PostPreviw key={post._id} {...post} />)}
   </StyledDiv>
 );
 

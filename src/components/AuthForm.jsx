@@ -18,10 +18,14 @@ const FormInner = styled.div`
 
   form {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
-    width: 100%;
   }
+`;
+
+const ErrorWrapper = styled.div`
+  margin-bottom: 30px;
 `;
 
 type Props = {
@@ -104,7 +108,11 @@ class AuthForm extends React.Component<Props, State> {
                 type="password"
               />
             )}
-            {error && <ErrorMessage>{error}</ErrorMessage>}
+            {error && (
+              <ErrorWrapper>
+                <ErrorMessage>{error}</ErrorMessage>
+              </ErrorWrapper>
+            )}
             <Button disabled={!this.state.canSubmit} primary type="submit">
               Continue
             </Button>

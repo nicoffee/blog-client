@@ -12,9 +12,9 @@ const StyledPost = styled.div`
   width: 100%;
 
   p {
-    font-size: 20px;
-    font-weight: 200;
-    line-height: 25px;
+    font-size: ${variables.LARGE_FONT_SIZE};
+    font-weight: ${variables.BASIC_FONT_WIGHT};
+    line-height: ${variables.BASIC_LINE_HEIGHT};
   }
 `;
 
@@ -22,7 +22,7 @@ const LikeBlock = styled.div`
   position: fixed;
   top: 50%;
   left: 30px;
-  font-size: 14px;
+  font-size: ${variables.SMALL_FONT_SIZE};
   font-weight: 100;
 
   div {
@@ -38,11 +38,12 @@ const LikeBlock = styled.div`
     cursor: pointer;
     stroke: black;
     stroke-width: 1px;
-    transition: fill 200ms ease-out;
+    transition: fill ${variables.BASIC_ANIMATION_PRESET};
 
     path {
-      fill: ${props => (props.isLiked ? '#e53935' : 'transparent')};
-      transition: fill 200ms ease-out;
+      fill: ${props =>
+        props.isLiked ? variables.COLOR_RED_600 : 'transparent'};
+      transition: fill ${variables.BASIC_ANIMATION_PRESET};
     }
 
     &:hover path {

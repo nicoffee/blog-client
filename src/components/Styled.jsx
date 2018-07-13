@@ -34,13 +34,12 @@ export const TextArea = styled.textarea`
 `;
 
 export const StyledFormGroup = styled.div`
-  display: grid;
-  grid-gap: 10px;
   width: 100%;
-  grid-template-columns: 1fr 3fr;
   margin-bottom: 30px;
 
   label {
+    display: inline-block;
+    margin-bottom: 10px;
     color: ${variables.SECONDARY_FONT_COLOR};
     font-size: ${variables.SMALL_FONT_SIZE};
   }
