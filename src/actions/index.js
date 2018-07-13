@@ -78,11 +78,11 @@ export const fetchPostCommentsError = error => ({
 });
 
 export const fetchSessionRequest = () => ({
-  type: types.FETCH_SESSION_REQUEST
+  type: types.FETCH_SESSION_REQUEST,
 });
 
 export const fetchSessionSuccess = data => ({
-  type: types.FETCH_SESSION_REQUEST,
+  type: types.FETCH_SESSION_SUCCESS,
   payload: data,
 });
 
@@ -98,11 +98,15 @@ export const fetchLoginSuccess = data => ({
 
 export const fetchLoginError = error => ({
   type: types.FETCH_LOGIN_FAILURE,
-  payload: error.message,
+  payload: error,
 });
 
 export const fetchLogoutRequest = () => ({
-  type: types.FETCH_LOGOUT_REQUEST
+  type: types.FETCH_LOGOUT_REQUEST,
+});
+
+export const fetchLogoutSuccess = () => ({
+  type: types.FETCH_LOGOUT_SUCCESS,
 });
 
 export const createUserRequest = data => ({

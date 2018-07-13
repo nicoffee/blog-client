@@ -1,6 +1,8 @@
 import axios from 'axios';
 import config from '../../config.json';
 
+axios.defaults.withCredentials = true;
+
 const apiUrl =
   process.env.NODE_ENV === 'development' ? config.api_dev : config.api_prod;
 

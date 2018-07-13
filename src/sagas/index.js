@@ -65,22 +65,23 @@ export function* fetchPostComments(action) {
 export function* fetchLogin(action) {
   try {
     const login = yield call(api.fetchLogin, action.payload);
+    localStorage.setItem('session_id', login.data.session_id);
     yield put(actions.fetchLoginSuccess(login.data.email));
     yield put(actions.closeModal());
   } catch (error) {
-    yield put(actions.fetchLoginError(error));
+    yield put(actions.fetchLoginError(error.response.data.message));
   }
 }
 
 export function* fetchLogout() {
-  yield call(api.fetchLogoutSuccess);
+  yield call(api.fetchLogout);
   yield put(actions.fetchLogoutSuccess());
 }
 
 export function* fetchSession() {
   try {
     const session = yield call(api.fetchSession);
-    yield put(actions.fetchSessionSuccess(session));
+    yield put(actions.fetchSessionSuccess(session.data.email));
   } catch (error) {
     //handleError()
   }

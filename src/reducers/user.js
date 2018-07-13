@@ -8,6 +8,7 @@ import {
   CREATE_USER_FAILURE,
   TOGGLE_LIKE_SUCCESS,
   FETCH_USER_SESSION,
+  FETCH_SESSION_SUCCESS,
 } from '../constants/types';
 
 const user = (state = {isFetching: false, errors: []}, action) => {
@@ -26,6 +27,8 @@ const user = (state = {isFetching: false, errors: []}, action) => {
       return {...state, isFetching: false, email: null};
     case FETCH_USER_SESSION: 
       return {...state};
+    case FETCH_SESSION_SUCCESS: 
+      return {...state, isFetching: false, email: action.payload};
     case TOGGLE_LIKE_SUCCESS:
       return {...state, ...action.payload};
     default:
