@@ -4,7 +4,7 @@ import * as React from 'react';
 import {ThemeProvider} from 'styled-components';
 import * as variables from '../constants/style-variables';
 
-const DefaultTheme = {
+export const DefaultTheme = {
   buttonsBgColor: variables.COLOR_WHITE,
   buttonsHoverBgColor: variables.COLOR_BLUE_400,
   primaryColor: variables.COLOR_GRAY_900,
@@ -19,7 +19,7 @@ const DefaultTheme = {
   disabledColor: variables.COLOR_GRAY_300,
 };
 
-const DarkTheme = {
+export const DarkTheme = {
   buttonsBgColor: variables.COLOR_YELLOW_600,
   buttonsHoverBgColor: variables.COLOR_YELLOW_600,
   primaryColor: variables.COLOR_BLUE_400,

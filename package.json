@@ -8,17 +8,17 @@
   "scripts": {
     "start": "node index.js",
     "start:test": "npm run server & npm run test:watch",
-    "build":
-      "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
-    "dev":
-      "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
+    "build": "webpack --mode production --profile --json > stats.json --config webpack/webpack.prod.js",
+    "dev": "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
     "postinstall": "npm run build",
     "lint": "yarn lint:js & yarn lint:css",
     "lint:js": "eslint --ext .jsx --ext .js src/",
     "lint:css": "stylelint './src/**/*.jsx'",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "flow": "flow"
+    "flow": "flow",
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
@@ -28,8 +28,7 @@
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/utils/testsConfig.js",
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/src/utils/test_mocks/index.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/utils/test_mocks/index.js"
     }
   },
   "dependencies": {
@@ -49,6 +48,11 @@
     "styled-components": "^3.2.6"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.8",
+    "@storybook/addon-backgrounds": "^3.4.8",
+    "@storybook/addon-links": "^3.4.8",
+    "@storybook/addons": "^3.4.8",
+    "@storybook/react": "^3.4.8",
     "axios-mock-adapter": "^1.15.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
