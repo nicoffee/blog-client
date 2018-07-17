@@ -6,17 +6,17 @@ axios.defaults.withCredentials = true;
 const apiUrl =
   process.env.NODE_ENV === 'development' ? config.api_dev : config.api_prod;
 
-const loginApiUrl =
+const realApiUrl =
   process.env.NODE_ENV === 'development'
     ? config.api_dev
     : config.api_login_prod;
 
 export function fetchPosts() {
-  return axios.get(`${apiUrl}/posts`);
+  return axios.get(`${realApiUrl}/posts`);
 }
 
 export function fetchPost(postId) {
-  return axios.get(`${apiUrl}/posts/${postId}`);
+  return axios.get(`${realApiUrl}/posts/${postId}`);
 }
 
 export function editPost(postId, data) {
@@ -32,19 +32,19 @@ export function fetchPostComments(postId) {
 }
 
 export function fetchLogin(data) {
-  return axios.put(`${loginApiUrl}/users`, data);
+  return axios.put(`${realApiUrl}/users`, data);
 }
 
 export function createUser(data) {
-  return axios.post(`${loginApiUrl}/users`, data);
+  return axios.post(`${realApiUrl}/users`, data);
 }
 
 export function fetchLogout() {
-  return axios.get(`${loginApiUrl}/logout`);
+  return axios.get(`${realApiUrl}/logout`);
 }
 
 export function fetchSession() {
-  return axios.get(`${loginApiUrl}/session`);
+  return axios.get(`${realApiUrl}/session`);
 }
 
 export function updateUser(userId, data) {
