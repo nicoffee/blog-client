@@ -20,11 +20,6 @@
     "storybook": "start-storybook -p 6006 -c .storybook",
     "build-storybook": "build-storybook"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint & flow"
-    }
-  },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/utils/testsConfig.js",
     "moduleNameMapper": {
