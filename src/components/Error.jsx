@@ -1,8 +1,8 @@
 // @flow
 
 import * as React from 'react';
-import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import {Button} from './Styled';
 import * as variables from '../constants/style-variables';
 
 const StyledError = styled.div`
@@ -12,13 +12,14 @@ const StyledError = styled.div`
 `;
 
 type Props = {
+  request: Function,
   errorMessage: string,
 };
 
 const Error = (props: Props) => (
   <StyledError>
     <h1>{props.errorMessage}</h1>
-    <Link to="/">Back to main page</Link>
+    <Button onClick={props.request}>Retry</Button>
   </StyledError>
 );
 

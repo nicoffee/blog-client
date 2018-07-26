@@ -62,10 +62,10 @@ class PostContainer extends React.Component<Props> {
 
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
-  info: state.post.info,
+  info: state.post.data,
   // comments: state.post.comments,
-  canEdit: state.post.info.author
-    ? state.post.info.author.id === state.user.id
+  canEdit: state.post.data.author
+    ? state.post.data.author.id === state.user.id
     : false,
   isLiked: getIsLiked(state),
   isUserLogged: !!getUserId(state),

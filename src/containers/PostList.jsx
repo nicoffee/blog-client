@@ -28,18 +28,44 @@ type Props = {
 
 class PostListContainer extends React.Component<Props> {
   componentDidMount() {
-    this.props.fetchPostsRequest();
+    this.props.fetchPostsRequest({limit: 10, offset: 0});
+    window.addEventListener('scroll', this.handleScroll);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const offset = document.documentElement.scrollTop + window.innerHeight;
+    const height = document.documentElement.offsetHeight;
+
+    if (offset === height) {
+      this.props.fetchPostsRequest({
+        limit: 10,
+        offset: this.props.posts.length,
+      });
+    }
+  };
+
   render() {
-    const {posts, isFetching, errorMessage} = this.props;
+    const {posts, isFetching, errorMessage, fetchPostsRequest} = this.props;
 
     if (isFetching) {
       return <Loader />;
     }
 
     if (errorMessage) {
-      return <Error errorMessage={errorMessage} />;
+      return <Error errorMessage={errorMessage} request={fetchPostsRequest} />;
+    }
+
+    if (!posts.length) {
+      return (
+        <Error
+          errorMessage="No published posts yet"
+          request={fetchPostsRequest}
+        />
+      );
     }
 
     return <PostList posts={posts} />;

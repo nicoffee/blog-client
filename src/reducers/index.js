@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import posts from './posts';
-import post from './post';
+import post from '../ducks/post';
 import user from './user';
 import modal from './modal';
 import app from './app';
@@ -12,10 +12,10 @@ export default rootReducer;
 export const getIsLiked = state => {
   if (
     state.user.likedPosts &&
-    state.post.info.id &&
-    state.user.likedPosts[state.post.info.id]
+    state.post.data.id &&
+    state.user.likedPosts[state.post.data.id]
   ) {
-    return state.user.likedPosts[state.post.info.id].like;
+    return state.user.likedPosts[state.post.data.id].like;
   }
 
   return false;

@@ -103,7 +103,7 @@ class AuthForm extends React.Component<Props, State> {
             {this.state.activeForm === 'signup' && (
               <FormGroup
                 label="Password Confirmation"
-                name="passwordConf"
+                name="password_confirm"
                 required
                 type="password"
               />
