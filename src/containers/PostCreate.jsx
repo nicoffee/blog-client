@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {createPostRequest} from '../actions';
+import {createPostRequest} from '../ducks/post';
 import {getUserName, getUserId} from '../reducers/user';
 import PostForm from '../components/PostForm';
 import Loader from '../components/Loader';
@@ -18,11 +18,6 @@ type Props = {
 
 class PostContainer extends React.Component<Props> {
   submitForm(data) {
-    /* In real app this should be done on server-side */
-    data.author = this.props.user;
-    data.published = new Date().toString();
-    data.likes = 0;
-
     this.props.createPostRequest(data);
   }
 
@@ -43,7 +38,7 @@ class PostContainer extends React.Component<Props> {
 
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
-  info: state.post.info,
+  info: state.post.data,
   user: {
     id: getUserId(state),
     name: getUserName(state),

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
-import {fetchPostInfoRequest, editPostInfoRequest} from '../actions';
+import {fetchPostRequest, updatePostRequest} from '../ducks/post';
 import PostForm from '../components/PostForm';
 import Loader from '../components/Loader';
 
@@ -22,11 +22,11 @@ type Props = {
 
 class PostEditContainer extends React.Component<Props> {
   componentDidMount() {
-    this.props.fetchPostInfoRequest(this.props.match.params.postId);
+    this.props.fetchPostRequest(this.props.match.params.postId);
   }
 
   submitForm(data) {
-    this.props.editPostInfoRequest(this.props.info.id, {
+    this.props.updatePostRequest(this.props.info.id, {
       picture: data.picture,
       title: data.title,
       body: data.body,
@@ -54,10 +54,10 @@ class PostEditContainer extends React.Component<Props> {
 
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
-  info: state.post.info,
+  info: state.post.data,
 });
 
 export default connect(mapStateToProps, {
-  fetchPostInfoRequest,
-  editPostInfoRequest,
+  fetchPostRequest,
+  updatePostRequest,
 })(PostEditContainer);

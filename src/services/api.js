@@ -9,26 +9,10 @@ const apiUrl =
 const realApiUrl =
   process.env.NODE_ENV === 'development'
     ? config.api_dev
-    : config.api_login_prod;
+    : config.real_api_prod;
 
-export function fetchPosts() {
-  return axios.get(`${realApiUrl}/posts`);
-}
-
-export function fetchPost(postId) {
-  return axios.get(`${realApiUrl}/posts/${postId}`);
-}
-
-export function editPost(postId, data) {
-  return axios.patch(`${apiUrl}/posts/${postId}`, data);
-}
-
-export function createPost(data) {
-  return axios.post(`${apiUrl}/posts`, data);
-}
-
-export function fetchPostComments(postId) {
-  return axios.get(`${apiUrl}/comments/?postId=${postId}`);
+export function fetchPosts(params) {
+  return axios.get(`${realApiUrl}/posts`, {params});
 }
 
 export function fetchLogin(data) {
