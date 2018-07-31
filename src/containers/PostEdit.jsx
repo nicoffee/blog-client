@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
-import {fetchPostRequest, updatePostRequest} from '../ducks/post';
+import {fetchPostRequest, updatePostRequest} from '../modules/post';
 import PostForm from '../components/PostForm';
 import Loader from '../components/Loader';
 

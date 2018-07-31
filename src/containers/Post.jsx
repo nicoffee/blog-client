@@ -3,10 +3,14 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
-import {openModal, toggleLikeRequest} from '../actions';
-import {fetchPostRequest, fetchPostCommentsRequest} from '../ducks/post';
+import {openModal} from '../actions';
+import {
+  fetchPostRequest,
+  fetchPostCommentsRequest,
+  toggleLikeRequest,
+} from '../modules/post';
 import {getIsLiked} from '../reducers';
-import {getUserId} from '../reducers/user';
+import {getUserName} from '../reducers/user';
 import Post from '../components/Post';
 import Loader from '../components/Loader';
 
@@ -57,7 +61,7 @@ const mapStateToProps = state => ({
     ? state.post.data.author.id === state.user.id
     : false,
   isLiked: getIsLiked(state),
-  isUserLogged: !!getUserId(state),
+  isUserLogged: !!getUserName(state),
 });
 
 export default connect(mapStateToProps, {

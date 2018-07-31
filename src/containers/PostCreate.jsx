@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {createPostRequest} from '../ducks/post';
+import {createPostRequest} from '../modules/post';
 import {getUserName, getUserId} from '../reducers/user';
 import PostForm from '../components/PostForm';
 import Loader from '../components/Loader';

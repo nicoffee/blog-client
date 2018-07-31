@@ -5,19 +5,21 @@ import {
   FETCH_LOGOUT_REQUEST,
   FETCH_SESSION_REQUEST,
   CREATE_USER_REQUEST,
-  TOGGLE_LIKE_REQUEST,
+  // TOGGLE_LIKE_REQUEST,
   SWITCH_THEME,
 } from '../constants/types';
 import {
   CREATE_POST_REQUEST,
   FETCH_POST_REQUEST,
   UPDATE_POST_REQUEST,
+  TOGGLE_LIKE_REQUEST,
   FETCH_COMMENTS_REQUEST,
   createPostSaga,
   fetchPostSaga,
   updatePostSaga,
   fetchPostCommentsSaga,
-} from '../ducks/post';
+  likePostSaga,
+} from '../modules/post';
 import * as actions from '../actions';
 import * as api from '../services/api';
 
@@ -70,24 +72,24 @@ export function* switchTheme(action) {
   yield localStorage.setItem('theme', action.payload);
 }
 
-export function* toggleLike(action) {
-  const user = yield select(state => state.user);
-  const post = yield select(state => state.post);
-  let like = false;
+// export function* toggleLike(action) {
+//   const user = yield select(state => state.user);
+//   const post = yield select(state => state.post);
+//   let like = false;
 
-  if (user.likedPosts && user.likedPosts[action.payload]) {
-    like = user.likedPosts[action.payload].like;
-  }
+//   if (user.likedPosts && user.likedPosts[action.payload]) {
+//     like = user.likedPosts[action.payload].like;
+//   }
 
-  const postReq = yield call(api.editPost, action.payload, {
-    likes: like ? post.data.likes - 1 : post.data.likes + 1,
-  });
+//   const postReq = yield call(api.editPost, action.payload, {
+//     likes: like ? post.data.likes - 1 : post.data.likes + 1,
+//   });
 
-  yield put(actions.editPostInfoSuccess(postReq.data));
-  const data = {likedPosts: {[action.payload]: {like: !like}}};
-  const response = yield call(api.updateUser, user.id, data);
-  yield put(actions.toggleLikeSuccess(response.data));
-}
+//   yield put(actions.editPostInfoSuccess(postReq.data));
+//   const data = {likedPosts: {[action.payload]: {like: !like}}};
+//   const response = yield call(api.updateUser, user.id, data);
+//   yield put(actions.toggleLikeSuccess(response.data));
+// }
 
 function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPosts);
@@ -95,12 +97,15 @@ function* mySaga() {
   yield takeEvery(CREATE_POST_REQUEST, createPostSaga);
   yield takeEvery(FETCH_POST_REQUEST, fetchPostSaga);
   yield takeEvery(UPDATE_POST_REQUEST, updatePostSaga);
+  yield takeEvery(TOGGLE_LIKE_REQUEST, likePostSaga);
   yield takeEvery(FETCH_COMMENTS_REQUEST, fetchPostCommentsSaga);
 
   yield takeEvery(FETCH_LOGIN_REQUEST, fetchLogin);
   yield takeEvery(FETCH_LOGOUT_REQUEST, fetchLogout);
   yield takeEvery(CREATE_USER_REQUEST, createUser);
-  yield takeEvery(TOGGLE_LIKE_REQUEST, toggleLike);
+
+  // yield takeEvery(TOGGLE_LIKE_REQUEST, toggleLike);
+
   yield takeEvery(SWITCH_THEME, switchTheme);
   yield takeEvery(FETCH_SESSION_REQUEST, fetchSession);
 }

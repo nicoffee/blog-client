@@ -27,6 +27,9 @@ export const FETCH_COMMENTS_REQUEST = 'blog/post/comments/REQUEST';
 const FETCH_COMMENTS_SUCCESS = 'blog/post/comments/SUCCESS';
 const FETCH_COMMENTS_FAILURE = 'blog/post/comments/FAILURE';
 
+export const TOGGLE_LIKE_REQUEST = 'blog/post/like/REQUEST';
+const TOGGLE_LIKE_SUCCESS = 'blog/post/like/SUCCESS';
+
 // Reducer
 const initialState = {isFetching: false, error: null, data: {}, comments: []};
 
@@ -42,7 +45,7 @@ export default function reducer(state = initialState, action) {
     case FETCH_POST_REQUEST:
       return {...state, isFetching: true};
     case FETCH_POST_SUCCESS:
-      console.log('ACTION:::', action);
+    case TOGGLE_LIKE_SUCCESS:
       return {...state, isFetching: false, data: action.payload};
     case FETCH_POST_FAILURE:
       return {...state, isFetching: false, error: action.payload};
@@ -60,6 +63,7 @@ export default function reducer(state = initialState, action) {
       return {...state, isFetching: false, comments: action.payload};
     case FETCH_COMMENTS_FAILURE:
       return {...state, isFetching: false, error: action.payload};
+
     default:
       return state;
   }
@@ -127,6 +131,16 @@ export const fetchPostCommentsError = error => ({
   payload: error,
 });
 
+export const toggleLikeRequest = data => ({
+  type: TOGGLE_LIKE_REQUEST,
+  id: data,
+});
+
+export const toggleLikeSuccess = data => ({
+  type: TOGGLE_LIKE_SUCCESS,
+  payload: data,
+});
+
 // Side effects
 export function fetchPost(postId) {
   return axios.get(`${apiUrl}/posts/${postId}`);
@@ -138,6 +152,10 @@ export function updatePost(postId, data) {
 
 export function createPost(data) {
   return axios.post(`${apiUrl}/posts`, data);
+}
+
+export function likePost(postId) {
+  return axios.put(`${apiUrl}/posts/${postId}/like`);
 }
 
 export function fetchPostComments(postId) {
@@ -180,4 +198,9 @@ export function* fetchPostCommentsSaga(action) {
   } catch (error) {
     yield put(fetchPostCommentsError(error));
   }
+}
+
+export function* likePostSaga(action) {
+  const post = yield call(likePost, action.id);
+  yield put(toggleLikeSuccess(post.data));
 }

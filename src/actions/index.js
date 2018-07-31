@@ -64,16 +64,6 @@ export const createUserError = errors => ({
   payload: errors,
 });
 
-export const toggleLikeRequest = data => ({
-  type: types.TOGGLE_LIKE_REQUEST,
-  payload: data,
-});
-
-export const toggleLikeSuccess = data => ({
-  type: types.TOGGLE_LIKE_SUCCESS,
-  payload: data,
-});
-
 export const openModal = () => ({
   type: types.OPEN_MODAL,
 });
