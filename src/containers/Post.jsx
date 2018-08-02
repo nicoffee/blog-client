@@ -3,14 +3,14 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
-import {openModal} from '../actions';
+import {openModal} from '../modules/app';
 import {
   fetchPostRequest,
   fetchPostCommentsRequest,
   toggleLikeRequest,
 } from '../modules/post';
-import {getIsLiked} from '../reducers';
-import {getUserName} from '../reducers/user';
+import {getIsLiked, getCanEdit, getLikesCount} from '../modules/post';
+import {getUserName} from '../modules/user';
 import Post from '../components/Post';
 import Loader from '../components/Loader';
 
@@ -29,7 +29,7 @@ export type Props = {
     title: string,
     body: string,
     picture: string,
-    likes: number,
+    likes: Array,
   },
   comments: Array<{id: string, body: string, name: string}>,
   match: Match,
@@ -40,7 +40,7 @@ class PostContainer extends React.Component<Props> {
     const {postId} = this.props.match.params;
 
     this.props.fetchPostRequest(postId);
-    this.props.fetchPostCommentsRequest(postId);
+    // this.props.fetchPostCommentsRequest(postId);
   }
 
   render() {
@@ -57,10 +57,9 @@ class PostContainer extends React.Component<Props> {
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
   info: state.post.data,
-  canEdit: state.post.data.author
-    ? state.post.data.author.id === state.user.id
-    : false,
+  canEdit: getCanEdit(state),
   isLiked: getIsLiked(state),
+  likesCounts: getLikesCount(state),
   isUserLogged: !!getUserName(state),
 });
 

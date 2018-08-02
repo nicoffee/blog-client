@@ -4,13 +4,13 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
 import {
-  openModal,
   fetchPostInfoRequest,
   fetchPostCommentsRequest,
   toggleLikeRequest,
-} from '../actions';
-import {getIsLiked} from '../reducers';
-import {getUserId} from '../reducers/user';
+} from '../modules/post';
+import {openModal} from '../modules/app';
+import {getIsLiked, getCanEdit} from '../modules/post';
+import {getUserId} from '../modules/user';
 import Post from '../components/Post';
 // import Comment from '../components/Comment';
 import Loader from '../components/Loader';
@@ -64,9 +64,7 @@ const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
   info: state.post.data,
   // comments: state.post.comments,
-  canEdit: state.post.data.author
-    ? state.post.data.author.id === state.user.id
-    : false,
+  canEdit: getCanEdit(state),
   isLiked: getIsLiked(state),
   isUserLogged: !!getUserId(state),
 });

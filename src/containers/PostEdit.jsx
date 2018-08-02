@@ -26,7 +26,7 @@ class PostEditContainer extends React.Component<Props> {
   }
 
   submitForm(data) {
-    this.props.updatePostRequest(this.props.info.id, {
+    this.props.updatePostRequest(this.props.info._id, {
       picture: data.picture,
       title: data.title,
       body: data.body,

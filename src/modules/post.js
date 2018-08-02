@@ -31,14 +31,23 @@ export const TOGGLE_LIKE_REQUEST = 'blog/post/like/REQUEST';
 const TOGGLE_LIKE_SUCCESS = 'blog/post/like/SUCCESS';
 
 // Reducer
-const initialState = {isFetching: false, error: null, data: {}, comments: []};
+const initialState = {
+  isFetching: false,
+  error: null,
+  data: {likes: []},
+  comments: [],
+};
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_POST_REQUEST:
       return {...state, isFetching: true};
     case CREATE_POST_SUCCESS:
-      return {...state, isFetching: false, data: action.payload};
+      return {
+        ...state,
+        isFetching: false,
+        data: {...state.data, ...action.payload},
+      };
     case CREATE_POST_FAILURE:
       return {...state, isFetching: false, error: action.payload};
 
@@ -46,14 +55,22 @@ export default function reducer(state = initialState, action) {
       return {...state, isFetching: true};
     case FETCH_POST_SUCCESS:
     case TOGGLE_LIKE_SUCCESS:
-      return {...state, isFetching: false, data: action.payload};
+      return {
+        ...state,
+        isFetching: false,
+        data: {...state.data, ...action.payload},
+      };
     case FETCH_POST_FAILURE:
       return {...state, isFetching: false, error: action.payload};
 
     case UPDATE_POST_REQUEST:
       return {...state, isFetching: true};
     case UPDATE_POST_SUCCESS:
-      return {...state, isFetching: false};
+      return {
+        ...state,
+        isFetching: false,
+        data: {...state.data, ...action.payload},
+      };
     case UPDATE_POST_FAILURE:
       return {...state, isFetching: false, error: action.payload};
 
@@ -131,9 +148,10 @@ export const fetchPostCommentsError = error => ({
   payload: error,
 });
 
-export const toggleLikeRequest = data => ({
+export const toggleLikeRequest = (postId, like) => ({
   type: TOGGLE_LIKE_REQUEST,
-  id: data,
+  postId,
+  like,
 });
 
 export const toggleLikeSuccess = data => ({
@@ -154,8 +172,8 @@ export function createPost(data) {
   return axios.post(`${apiUrl}/posts`, data);
 }
 
-export function likePost(postId) {
-  return axios.put(`${apiUrl}/posts/${postId}/like`);
+export function likePost(postId, like) {
+  return axios.put(`${apiUrl}/posts/${postId}/like`, {like});
 }
 
 export function fetchPostComments(postId) {
@@ -166,7 +184,7 @@ export function fetchPostComments(postId) {
 export function* createPostSaga(action) {
   try {
     const post = yield call(createPost, action.data);
-    yield put(createPostSuccess(post.data));
+    // yield put(createPostSuccess(post.data));
     yield call(history.push, `/post/${post.data.id}`);
   } catch (error) {
     yield put(createPostError(error));
@@ -201,6 +219,11 @@ export function* fetchPostCommentsSaga(action) {
 }
 
 export function* likePostSaga(action) {
-  const post = yield call(likePost, action.id);
+  const post = yield call(likePost, action.postId, action.like);
   yield put(toggleLikeSuccess(post.data));
 }
+
+//Selectors
+export const getIsLiked = state => state.post.data.isLiked;
+export const getCanEdit = state => state.post.data.canEdit;
+export const getLikesCount = state => state.post.data.likes.length;

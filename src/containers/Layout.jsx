@@ -3,15 +3,13 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
-import {getCurrentTheme} from '../reducers/app';
-import {getisModalOpen} from '../reducers/modal';
-import {switchTheme} from '../actions';
+import {getCurrentTheme, getIsModalOpen, switchTheme} from '../modules/app';
 import Layout from '../components/Layout';
 
 const LayoutContainer = props => <Layout {...props} />;
 
 const mapStateToProps = state => ({
-  isModalOpen: getisModalOpen(state),
+  isModalOpen: getIsModalOpen(state),
   theme: getCurrentTheme(state),
 });
 

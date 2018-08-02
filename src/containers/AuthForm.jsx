@@ -2,8 +2,12 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {fetchLoginRequest, createUserRequest} from '../actions';
-import {getErrorMessage, getErrors} from '../reducers/user';
+import {
+  getErrorMessage,
+  getErrors,
+  fetchLoginRequest,
+  createUserRequest,
+} from '../modules/user';
 import AuthForm from '../components/AuthForm';
 
 const AuthFormContainer = props => <AuthForm {...props} />;

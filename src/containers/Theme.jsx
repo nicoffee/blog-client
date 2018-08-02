@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
-import {getCurrentTheme} from '../reducers/app';
+import {getCurrentTheme} from '../modules/app';
 import Theme from '../components/Theme';
 
 const ThemeContainer = props => <Theme {...props} />;

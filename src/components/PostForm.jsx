@@ -32,7 +32,8 @@ class PostForm extends React.Component<Props, State> {
   };
 
   render() {
-    const {handleSubmit} = this.props;
+    const {handleSubmit, picture, title, body} = this.props;
+    const {canSubmit} = this.state;
 
     return (
       <FormInner>
@@ -40,26 +41,22 @@ class PostForm extends React.Component<Props, State> {
           onInvalid={() => this.setState({canSubmit: false})}
           onValid={() => this.setState({canSubmit: true})}
           onValidSubmit={handleSubmit}>
+          <FormGroup initialValue={picture} label="Picture:" name="picture" />
           <FormGroup
-            initialValue={this.props.picture}
-            label="Picture:"
-            name="picture"
-          />
-          <FormGroup
-            initialValue={this.props.title}
+            initialValue={title}
             label="Title:"
             name="title"
             required
           />
           <FormGroup
             component="textarea"
-            initialValue={this.props.body}
+            initialValue={body}
             label="Text:"
             name="body"
             required
             rows={10}
           />
-          <Button disabled={!this.state.canSubmit} primary type="submit">
+          <Button disabled={!canSubmit} primary type="submit">
             Save
           </Button>
         </Formsy>

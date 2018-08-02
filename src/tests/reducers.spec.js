@@ -1,4 +1,4 @@
-import post from '../reducers/post';
+import post from '../modules/post';
 import * as types from '../constants/types';
 
 describe('post reducer', () => {

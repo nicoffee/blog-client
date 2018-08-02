@@ -67,7 +67,7 @@ const PreviewImage = styled.div`
 class Post extends React.PureComponent<Props> {
   handleLikeClick = (id: string) => {
     if (this.props.isUserLogged) {
-      this.props.toggleLikeRequest(id);
+      this.props.toggleLikeRequest(id, !this.props.isLiked);
       return;
     }
 
@@ -76,7 +76,7 @@ class Post extends React.PureComponent<Props> {
 
   render() {
     const {info, canEdit, isLiked} = this.props;
-    const {title, body, picture, likes, _id} = info;
+    const {title, body, picture, _id, likesCounts} = info;
 
     return (
       <StyledPost>
@@ -96,7 +96,7 @@ class Post extends React.PureComponent<Props> {
                 fill="#d75a4a"
               />
             </svg>
-            <span>{likes}</span>
+            <span>{likesCounts}</span>
           </div>
         </LikeBlock>
       </StyledPost>
