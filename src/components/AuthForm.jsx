@@ -3,7 +3,8 @@ import Formsy from 'formsy-react';
 import styled from 'styled-components';
 import FormTabs from './FormTabs';
 import FormGroup from './FormGroup';
-import {Button, ErrorMessage} from './Styled';
+import Button from './Button';
+import {ErrorMessage} from './Styled';
 
 const Header = styled.h1`
   margin: 30px 0 60px;

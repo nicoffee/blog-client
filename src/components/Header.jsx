@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import UserBlock from '../containers/UserBlock';
 import Switcher from './Switcher';
-import {Button} from './Styled';
+import Button from './Button';
 
 const StyledHeader = styled.div`
   position: fixed;

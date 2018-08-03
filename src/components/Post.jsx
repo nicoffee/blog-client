@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import {Button} from './Styled';
+import Button from './Button';
 import * as variables from '../constants/style-variables';
 import type Props from '../containers/Post';
 

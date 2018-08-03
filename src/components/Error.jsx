@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import {Button} from './Styled';
+import Button from './Button';
 import * as variables from '../constants/style-variables';
 
 const StyledError = styled.div`
