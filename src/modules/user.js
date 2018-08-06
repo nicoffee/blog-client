@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {call, put} from 'redux-saga/effects';
 import config from '../../config.json';
+import {closeModal} from './app';
 
 axios.defaults.withCredentials = true;
 
@@ -12,6 +13,7 @@ const apiUrl =
 // Actions
 export const CREATE_USER_REQUEST = 'blog/user/create/REQUEST';
 const CREATE_USER_SUCCESS = 'blog/user/create/SUCCESS';
+const CREATE_USER_VALIDATION_FAILURE = 'blog/user/create/validation/FAILURE';
 const CREATE_USER_FAILURE = 'blog/user/create/FAILURE';
 
 export const FETCH_LOGIN_REQUEST = 'blog/user/login/REQUEST';
@@ -38,8 +40,10 @@ export default function reducer(state = initialState, action) {
       return {...state, isFetching: false, email: action.payload};
     case FETCH_LOGIN_FAILURE:
       return {...state, isFetching: false, error: action.payload};
-    case CREATE_USER_FAILURE:
+    case CREATE_USER_VALIDATION_FAILURE:
       return {...state, isFetching: false, errors: action.payload};
+    case CREATE_USER_FAILURE:
+      return {...state, isFetching: false, error: action.payload};
     case FETCH_LOGOUT_REQUEST:
       return {...state, isFetching: false, email: null};
     case FETCH_SESSION_REQUEST:
@@ -98,9 +102,14 @@ export const createUserSuccess = data => ({
   payload: data,
 });
 
-export const createUserError = errors => ({
-  type: CREATE_USER_FAILURE,
+export const createUserValidationError = errors => ({
+  type: CREATE_USER_VALIDATION_FAILURE,
   payload: errors,
+});
+
+export const createUserError = error => ({
+  type: CREATE_USER_FAILURE,
+  payload: error,
 });
 
 // Side effects
@@ -156,8 +165,11 @@ export function* createUserSaga(action) {
     yield put(createUserSuccess(user.data));
     yield put(closeModal());
   } catch (error) {
-    const errors = error.response.data.errors;
-    yield put(createUserError(errors));
+    if (error.response.data.errors) {
+      yield put(createUserValidationError(error.response.data.errors));
+    } else {
+      yield put(createUserError(error.response.data));
+    }
   }
 }
 

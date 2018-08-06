@@ -1,7 +1,7 @@
 // @flow
 
 import styled, {css} from 'styled-components';
-import * as variables from '../constants/style-variables';
+import * as variables from '../styleVariables';
 
 const Button = styled.button`
   padding: 8px 16px;

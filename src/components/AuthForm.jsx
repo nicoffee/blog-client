@@ -100,6 +100,8 @@ class AuthForm extends React.Component<Props, State> {
               name="password"
               required
               type="password"
+              validationError="Must be at least 8 chars long"
+              validations="minLength:8"
             />
             {this.state.activeForm === 'signup' && (
               <FormGroup

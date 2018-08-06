@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import * as variables from '../constants/style-variables';
+import * as variables from '../styleVariables';
 
 const StyledContainer = styled.div`
   position: relative;

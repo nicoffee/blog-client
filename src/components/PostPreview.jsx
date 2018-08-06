@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {formatDate} from '../utils/helpers';
 import type {post} from '../containers/PostList';
-import * as variables from '../constants/style-variables';
+import * as variables from '../styleVariables';
 
 const StyledPost = styled.div`
   display: flex;

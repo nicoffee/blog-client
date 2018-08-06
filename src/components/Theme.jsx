@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import {ThemeProvider} from 'styled-components';
-import * as variables from '../constants/style-variables';
+import * as variables from '../styleVariables';
 
 export const DefaultTheme = {
   buttonsBgColor: variables.COLOR_WHITE,

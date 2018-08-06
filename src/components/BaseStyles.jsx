@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import * as variables from '../constants/style-variables';
+import * as variables from '../styleVariables';
 
 const Styles = styled.div`
   background-color: ${props => props.theme.secondaryBackgroundColor};

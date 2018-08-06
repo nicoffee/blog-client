@@ -3,7 +3,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
-import * as variables from '../constants/style-variables';
+import * as variables from '../styleVariables';
 
 const StyledError = styled.div`
   display: flex;
