@@ -1,36 +1,37 @@
 // @flow
 
 import styled, {css} from 'styled-components';
-import * as variables from '../styleVariables';
 
 const Button = styled.button`
   padding: 8px 16px;
   border: 1px solid ${props => props.theme.secondaryColor};
   margin: 0 1em;
   background-color: ${props => props.theme.buttonsBgColor};
-  border-radius: ${variables.SMALL_BORDER_RADIUS};
-  color: ${props => props.theme.color};
+  border-radius: ${props => props.theme.smallBorderRadius};
+  color: ${props => props.theme.buttonsFontColor};
   cursor: pointer;
-  font-size: 12px;
+  font-size: ${props => (props.fontSize ? props.fontSize : '12px')};
+  font-weight: ${props => props.theme.basicFontWeight};
 
   ${props =>
     props.primary &&
     css`
       background: ${props.theme.secondaryColor};
-      color: ${props.theme.color};
+      color: ${props.theme.buttonsFontColor};
     `};
 
-  transition: background-color 200ms, color 200ms;
+  transition: background-color ${props => props.theme.basicAnimationPreset},
+    color ${props => props.theme.basicAnimationPreset};
 
   &:hover {
     background-color: ${props => props.theme.buttonsHoverBgColor};
-    color: ${variables.COLOR_WHITE};
+    color: ${props => props.theme.fontColor};
     color: #fff;
   }
 
   &:disabled {
-    background-color: ${variables.COLOR_GRAY_400};
-    border-color: ${variables.COLOR_GRAY_400};
+    background-color: ${props => props.theme.disabledColor};
+    border-color: ${props => props.theme.disabledColor};
     cursor: not-allowed;
     pointer-events: none;
   }

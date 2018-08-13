@@ -1,34 +1,30 @@
 // @flow
 
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import * as variables from '../styleVariables';
 
 const Styles = styled.div`
   background-color: ${props => props.theme.secondaryBackgroundColor};
   color: ${props => props.theme.fontColor};
-  transition: background-color 200ms ease-out, color 200ms ease-out;
+  transition: background-color ${props => props.theme.basicAnimationPreset},
+    color ${props => props.theme.basicAnimationPreset};
 
   a {
     color: inherit;
     text-decoration: none;
   }
 
-  button:disabled {
-    background-color: ${variables.COLOR_GRAY_600};
-  }
-
   p {
-    font-size: ${variables.BASIC_FONT_SIZE};
+    font-size: ${props => props.theme.basicFontSize};
     font-weight: 100;
   }
 
   h1 {
-    font-size: ${variables.H1_FONT_SIZE};
+    font-size: ${props => props.theme.h1FontSize};
   }
 
   h2 {
-    font-size: ${variables.H2_FONT_SIZE};
+    font-size: ${props => props.theme.h2FontSize};
   }
 `;
 

@@ -34,16 +34,16 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_LOGIN_REQUEST:
     case CREATE_USER_REQUEST:
-      return {...state, isFetching: true, error: null};
+      return {...state, isFetching: true, signInError: null, signUpError: null};
     case FETCH_LOGIN_SUCCESS:
     case CREATE_USER_SUCCESS:
       return {...state, isFetching: false, email: action.payload};
     case FETCH_LOGIN_FAILURE:
-      return {...state, isFetching: false, error: action.payload};
+      return {...state, isFetching: false, signInError: action.payload};
     case CREATE_USER_VALIDATION_FAILURE:
       return {...state, isFetching: false, errors: action.payload};
     case CREATE_USER_FAILURE:
-      return {...state, isFetching: false, error: action.payload};
+      return {...state, isFetching: false, signUpError: action.payload};
     case FETCH_LOGOUT_REQUEST:
       return {...state, isFetching: false, email: null};
     case FETCH_SESSION_REQUEST:
@@ -174,7 +174,8 @@ export function* createUserSaga(action) {
 }
 
 //Selectors
-export const getErrorMessage = state => state.user.error;
+export const getSignUpError = state => state.user.signUpError;
+export const getSignInError = state => state.user.signInError;
 export const getErrors = state => state.user.errors;
 export const getUserName = state => state.user.email;
 export const getUserId = state => state.user.id;

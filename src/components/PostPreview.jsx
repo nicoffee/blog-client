@@ -5,14 +5,14 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {formatDate} from '../utils/helpers';
 import type {post} from '../containers/PostList';
-import * as variables from '../styleVariables';
 
 const StyledPost = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: ${variables.BASIC_PADDING};
-  border-radius: ${variables.BASIC_BORDER_RADIUS};
-  transition: box-shadow ${variables.BASIC_ANIMATION_PRESET};
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 10px;
+  padding: ${props => props.theme.basicPadding};
+  border-radius: ${props => props.theme.basicBorderRadius};
+  transition: box-shadow ${props => props.theme.basicAnimationPreset};
 
   &:hover {
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.25);
@@ -33,11 +33,13 @@ const PreviewImage = styled.div`
 const PostPreviw = (props: post) => (
   <Link to={`post/${props._id}`}>
     <StyledPost>
-      {props.picture && <PreviewImage background={props.picture} />}
-      <h1>{props.title}</h1>
-      <p>{props.body.slice(0, 100)}</p>
-      <span>{props.author.name}</span>
-      <span>{formatDate(props.published)}</span>
+      <div>
+        <h1>{props.title}</h1>
+        <p>{props.body.slice(0, 100)}</p>
+        <span>{props.author.name}</span>
+        <span>{formatDate(props.published)}</span>
+      </div>
+      <div>{props.picture && <PreviewImage background={props.picture} />}</div>
     </StyledPost>
   </Link>
 );

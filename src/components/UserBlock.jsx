@@ -1,7 +1,8 @@
+// @flow
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import * as variables from '../styleVariables';
 
 const StyledContainer = styled.div`
   position: relative;
@@ -24,7 +25,7 @@ const StyledDropdown = styled.div`
   width: 200px;
   margin-top: 5px;
   background-color: ${props => props.theme.primaryBackgroundColor};
-  border-radius: ${variables.SMALL_BORDER_RADIUS};
+  border-radius: ${props => props.theme.smallBorderRadius};
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35);
 
   ul {
@@ -36,7 +37,8 @@ const StyledDropdown = styled.div`
     display: flex;
     padding: 10px;
     cursor: pointer;
-    transition: background-color 200ms ease-out, color 200ms ease-out;
+    transition: background-color ${props => props.theme.basicAnimationPreset},
+      color ${props => props.theme.basicAnimationPreset};
 
     &:hover {
       background-color: ${props => props.theme.secondaryColor};

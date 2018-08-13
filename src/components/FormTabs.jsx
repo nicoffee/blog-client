@@ -21,7 +21,8 @@ const Tab = styled.div`
     `};
 
   text-align: center;
-  transition: font-weight 200ms, color 200ms;
+  transition: font-weight ${props => props.theme.basicAnimationPreset},
+    color ${props => props.theme.basicAnimationPreset};
 `;
 
 const FormTabs = props => (

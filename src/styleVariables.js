@@ -35,5 +35,3 @@ export const COLOR_GRAY_800 = '#424242';
 export const COLOR_GRAY_600 = '#757575';
 export const COLOR_GRAY_400 = '#bdbdbd';
 export const COLOR_GRAY_300 = '#e0e0e0';
-
-export const SECONDARY_FONT_COLOR = '#9e9e9e';

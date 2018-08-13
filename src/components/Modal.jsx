@@ -1,7 +1,8 @@
+// @flow
+
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import ModalPortal from './ModalPortal';
-import * as variables from '../styleVariables';
 
 const fadeIn = keyframes`
   from {
@@ -21,7 +22,7 @@ const Overlay = styled.div`
   overflow: hidden;
   width: 100%;
   height: 100%;
-  animation: ${fadeIn} 200ms linear;
+  animation: ${fadeIn} ${props => props.theme.basicAnimationPreset};
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
@@ -30,7 +31,7 @@ const StyledModal = styled.div`
   width: 40%;
   margin: 90px auto;
   background-color: ${props => props.theme.headerBackgroundColor};
-  border-radius: ${variables.SMALL_BORDER_RADIUS};
+  border-radius: ${props => props.theme.smallBorderRadius};
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   color: ${props => props.theme.fontColor};
 `;

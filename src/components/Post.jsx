@@ -4,7 +4,6 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
-import * as variables from '../styleVariables';
 import type Props from '../containers/Post';
 
 const StyledPost = styled.div`
@@ -12,9 +11,9 @@ const StyledPost = styled.div`
   width: 100%;
 
   p {
-    font-size: ${variables.LARGE_FONT_SIZE};
-    font-weight: ${variables.BASIC_FONT_WIGHT};
-    line-height: ${variables.BASIC_LINE_HEIGHT};
+    font-size: ${props => props.theme.largeFontSize};
+    font-weight: ${props => props.theme.basicFontWeight};
+    line-height: ${props => props.theme.basicLineHeight};
   }
 `;
 
@@ -22,7 +21,7 @@ const LikeBlock = styled.div`
   position: fixed;
   top: 50%;
   left: 30px;
-  font-size: ${variables.SMALL_FONT_SIZE};
+  font-size: ${props => props.theme.smallFontSize};
   font-weight: 100;
 
   div {
@@ -38,16 +37,16 @@ const LikeBlock = styled.div`
     cursor: pointer;
     stroke: black;
     stroke-width: 1px;
-    transition: fill ${variables.BASIC_ANIMATION_PRESET};
+    transition: fill ${props => props.theme.basicAnimationPreset};
 
     path {
       fill: ${props =>
-        props.isLiked ? variables.COLOR_RED_600 : 'transparent'};
-      transition: fill ${variables.BASIC_ANIMATION_PRESET};
+        props.isLiked ? props.theme.errorColor : 'transparent'};
+      transition: fill ${props => props.theme.basicAnimationPreset};
     }
 
     &:hover path {
-      fill: ${variables.COLOR_RED_400};
+      fill: ${props => props.theme.redColorHover};
     }
   }
 
