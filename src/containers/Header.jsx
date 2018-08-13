@@ -8,6 +8,7 @@ import {
   openModal,
   switchTheme,
 } from '../modules/app';
+import {fetchPostsRequest} from '../modules/posts';
 import {getUserName} from '../modules/user';
 import Header from '../components/Header';
 
@@ -19,6 +20,8 @@ const mapStateToProps = state => ({
   theme: getCurrentTheme(state),
 });
 
-export default connect(mapStateToProps, {openModal, switchTheme})(
-  HeaderContainer
-);
+export default connect(mapStateToProps, {
+  openModal,
+  switchTheme,
+  fetchPostsRequest,
+})(HeaderContainer);
