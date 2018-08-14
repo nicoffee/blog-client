@@ -8,11 +8,13 @@ import {
   fetchPostRequest,
   fetchPostCommentsRequest,
   toggleLikeRequest,
+  getErrorMessage,
 } from '../modules/post';
 import {getIsLiked, getCanEdit, getLikesCount} from '../modules/post';
 import {getUserName} from '../modules/user';
 import Post from '../components/Post';
 import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 export type Props = {
   fetchPostRequest: Function,
@@ -44,10 +46,14 @@ class PostContainer extends React.Component<Props> {
   }
 
   render() {
-    const {isFetching} = this.props;
+    const {isFetching, errorMessage} = this.props;
 
     if (isFetching) {
       return <Loader />;
+    }
+
+    if (errorMessage) {
+      return <Error errorMessage={errorMessage} request={fetchPostRequest} />;
     }
 
     return <Post {...this.props} />;
@@ -61,6 +67,7 @@ const mapStateToProps = state => ({
   isLiked: getIsLiked(state),
   likesCounts: getLikesCount(state),
   isUserLogged: !!getUserName(state),
+  errorMessage: getErrorMessage(state),
 });
 
 export default connect(mapStateToProps, {

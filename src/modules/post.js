@@ -227,3 +227,4 @@ export function* likePostSaga(action) {
 export const getIsLiked = state => state.post.data.isLiked;
 export const getCanEdit = state => state.post.data.canEdit;
 export const getLikesCount = state => state.post.data.likes.length;
+export const getErrorMessage = state => state.post.error;

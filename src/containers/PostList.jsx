@@ -81,6 +81,10 @@ class PostListContainer extends React.Component<Props> {
       return <Loader />;
     }
 
+    if (errorMessage) {
+      return <Error errorMessage={errorMessage} request={fetchPostsRequest} />;
+    }
+
     if (!posts.length) {
       return (
         <Error
@@ -88,10 +92,6 @@ class PostListContainer extends React.Component<Props> {
           request={fetchPostsRequest}
         />
       );
-    }
-
-    if (errorMessage) {
-      return <Error errorMessage={errorMessage} request={fetchPostsRequest} />;
     }
 
     return (
