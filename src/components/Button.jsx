@@ -5,7 +5,6 @@ import styled, {css} from 'styled-components';
 const Button = styled.button`
   padding: 8px 16px;
   border: 1px solid ${props => props.theme.secondaryColor};
-  margin: 0 1em;
   background-color: ${props => props.theme.buttonsBgColor};
   border-radius: ${props => props.theme.smallBorderRadius};
   color: ${props => props.theme.buttonsFontColor};
