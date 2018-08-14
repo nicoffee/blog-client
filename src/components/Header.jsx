@@ -62,10 +62,6 @@ const Inner = styled.div`
   }
 `;
 
-// const StyledInput = styled.input`
-//   border: 1px solid
-// `;
-
 type Props = {
   onSignInClick: Function,
   openModal: Function,
@@ -110,7 +106,7 @@ const Header = (props: Props) => (
           {props.user ? (
             <UserBlock />
           ) : (
-            <Button onClick={() => props.openModal()} fontSize="inherit">
+            <Button fontSize="inherit" onClick={() => props.openModal()}>
               Sign in
             </Button>
           )}

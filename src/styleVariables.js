@@ -12,7 +12,8 @@ export const BASIC_FONT_WIGHT = '200';
 export const BASIC_CONTENT_WIDTH = '700px';
 export const BASIC_ANIMATION_PRESET = '200ms ease-out';
 
-export const BASIC_PADDING = '15px';
+export const BASIC_PADDING = '14px 18px';
+export const BASIC_BUTTON_PADDING = '8px 16px';
 
 export const BASIC_BORDER_RADIUS = '12px';
 export const SMALL_BORDER_RADIUS = '6px';

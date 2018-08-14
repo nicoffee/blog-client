@@ -17,8 +17,6 @@ const commonStyles = {
 
   basicLineHeight: variables.BASIC_LINE_HEIGHT,
 
-  basicPadding: variables.BASIC_PADDING,
-
   basicAnimationPreset: variables.BASIC_ANIMATION_PRESET,
 
   h1FontSize: variables.H1_FONT_SIZE,
@@ -30,6 +28,9 @@ const commonStyles = {
 
   buttonsFontColor: variables.COLOR_GRAY_900,
   errorColor: variables.COLOR_RED_600,
+
+  basicPadding: variables.BASIC_PADDING,
+  basicButtonPadding: variables.BASIC_BUTTON_PADDING,
 };
 
 const DefaultTheme = {
@@ -40,7 +41,8 @@ const DefaultTheme = {
   secondaryColor: variables.COLOR_BLUE_400,
   fontColor: variables.COLOR_GRAY_900,
   invertedFontColor: variables.COLOR_WHITE,
-  iconColor: variables.COLOR_BLACK,
+  iconColor: variables.COLOR_GRAY_600,
+  iconHoverColor: variables.COLOR_GRAY_800,
   primaryBackgroundColor: variables.COLOR_WHITE,
   secondaryBackgroundColor: variables.COLOR_WHITE,
   headerBackgroundColor: variables.COLOR_WHITE,
@@ -56,6 +58,7 @@ const DarkTheme = {
   fontColor: variables.COLOR_WHITE,
   invertedFontColor: variables.COLOR_GRAY_900,
   iconColor: variables.COLOR_YELLOW_600,
+  iconHoverColor: variables.COLOR_YELLOW_600,
   primaryBackgroundColor: variables.COLOR_GRAY_900,
   secondaryBackgroundColor: variables.COLOR_GRAY_800,
   headerBackgroundColor: variables.COLOR_BLACK,

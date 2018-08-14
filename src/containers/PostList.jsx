@@ -36,6 +36,13 @@ const StyledDiv = styled.div`
   width: 100%;
 `;
 
+const LoadMoreWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: ${props => props.theme.basicPadding};
+`;
+
 class PostListContainer extends React.Component<Props> {
   componentDidMount() {
     if (!this.props.posts.length) {
@@ -90,11 +97,13 @@ class PostListContainer extends React.Component<Props> {
     return (
       <StyledDiv>
         <PostList posts={posts} />
-        {isFetching ? (
-          <Loader />
-        ) : (
-          <Button onClick={this.fetchMore}>Load more</Button>
-        )}
+        <LoadMoreWrapper>
+          {isFetching ? (
+            <Loader />
+          ) : (
+            <Button onClick={this.fetchMore}>Load more</Button>
+          )}
+        </LoadMoreWrapper>
       </StyledDiv>
     );
   }

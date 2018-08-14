@@ -3,7 +3,7 @@
 import styled, {css} from 'styled-components';
 
 const Button = styled.button`
-  padding: 8px 16px;
+  padding: ${props => props.theme.basicButtonPadding};
   border: 1px solid ${props => props.theme.secondaryColor};
   background-color: ${props => props.theme.buttonsBgColor};
   border-radius: ${props => props.theme.smallBorderRadius};

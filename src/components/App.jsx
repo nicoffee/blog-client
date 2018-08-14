@@ -4,6 +4,7 @@ import {ConnectedRouter} from 'react-router-redux';
 import {Route, Switch} from 'react-router-dom';
 import Layout from '../containers/Layout';
 import PostList from '../containers/PostList';
+import SearchedPostList from '../containers/SearchedPostList';
 import Post from '../containers/Post';
 import PostEdit from '../containers/PostEdit';
 import PostCreate from '../containers/PostCreate';
@@ -15,6 +16,7 @@ const App = ({store}) => (
       <Layout>
         <Switch>
           <Route component={PostList} exact path="/" />
+          <Route component={SearchedPostList} exact path="/search" />
           <Route component={Post} exact path="/post/:postId" />
           <Route component={PostEdit} exact path="/post/:postId/edit" />
           <Route component={PostCreate} exact path="/new" />
