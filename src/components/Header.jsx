@@ -14,12 +14,12 @@ const StyledHeader = styled.div`
   top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
   width: 100%;
+  justify-content: center;
   background-color: ${props => props.theme.headerBackgroundColor};
+  font-size: ${props => props.theme.smallFontSize};
   grid-template-columns: repeat(3, 1fr);
   opacity: 0.9;
-  font-size: ${props => props.theme.smallFontSize};
 `;
 
 const StyledSwitcher = styled.div`
@@ -43,17 +43,17 @@ const SearchBlock = styled.div`
 `;
 
 const ActionsBlock = styled.div`
-  width: 40%;
   display: flex;
+  width: 40%;
   flex-direction: flex-end;
   justify-content: flex-end;
 `;
 
 const Inner = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 1040px;
   width: 100%;
+  max-width: 1040px;
+  grid-template-columns: repeat(3, 1fr);
 
   > div {
     display: flex;

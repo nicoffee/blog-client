@@ -2,17 +2,15 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import styled from 'styled-components';
 import {
   fetchPostsRequest,
   getPosts,
   getIsFetching,
   getErrorMessage,
 } from '../modules/posts';
+import Loader from '../components/Loader';
 import PostList from '../components/PostList';
 import Error from '../components/Error';
-import Loader from '../components/Loader';
-import Button from '../components/Button';
 
 export type post = {
   _id: string,
@@ -31,17 +29,6 @@ type Props = {
   isFetching: boolean,
   errorMessage: string,
 };
-
-const StyledDiv = styled.div`
-  width: 100%;
-`;
-
-const LoadMoreWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: ${props => props.theme.basicPadding};
-`;
 
 class PostListContainer extends React.Component<Props> {
   componentDidMount() {
@@ -94,18 +81,7 @@ class PostListContainer extends React.Component<Props> {
       );
     }
 
-    return (
-      <StyledDiv>
-        <PostList posts={posts} />
-        <LoadMoreWrapper>
-          {isFetching ? (
-            <Loader />
-          ) : (
-            <Button onClick={this.fetchMore}>Load more</Button>
-          )}
-        </LoadMoreWrapper>
-      </StyledDiv>
-    );
+    return <PostList isFetching={isFetching} posts={posts} />;
   }
 }
 

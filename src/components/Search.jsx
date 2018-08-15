@@ -9,9 +9,9 @@ const StyledDiv = styled.div`
   transition: border-color ${props => props.theme.basicAnimationPreset};
 
   svg {
-    margin-right: 5px;
     width: 20px;
     height: 20px;
+    margin-right: 5px;
     fill: ${props =>
       props.isFocused ? props.theme.secondaryColor : props.theme.iconColor};
     stroke: ${props =>
@@ -24,11 +24,11 @@ const StyledDiv = styled.div`
 const StyledInput = styled.input`
   width: 100%;
   border: none;
-  font-weight: 100;
-  outline: none;
-  font-size: inherit;
   background: none;
   color: ${props => props.theme.fontColor};
+  font-size: inherit;
+  font-weight: 100;
+  outline: none;
 `;
 
 class Search extends React.PureComponent {

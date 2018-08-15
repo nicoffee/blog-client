@@ -3,10 +3,6 @@
 import * as React from 'react';
 import {ThemeProvider} from 'styled-components';
 
-const H1_FONT_SIZE = '36px';
-const H2_FONT_SIZE = '28px';
-const H3_FONT_SIZE = '20px';
-
 const LARGE_FONT_SIZE = '18px';
 const BASIC_FONT_SIZE = '16px';
 const SMALL_FONT_SIZE = '14px';
@@ -17,15 +13,8 @@ const BASIC_FONT_WIGHT = '200';
 const BASIC_CONTENT_WIDTH = '700px';
 const BASIC_ANIMATION_PRESET = '200ms ease-out';
 
-const LARGE_PADDING = '28px 36px';
-const BASIC_PADDING = '14px 18px';
-const BASIC_BUTTON_PADDING = '8px 16px';
-
 const BASIC_BORDER_RADIUS = '12px';
 const SMALL_BORDER_RADIUS = '6px';
-
-const BASIC_BOX_SHADOW = 'rgba(0, 0, 0, 0.4)';
-const SECONDARY_BOX_SHADOW = 'rgba(0, 0, 0, 0.22)';
 
 const COLOR_WHITE = '#fff';
 const COLOR_BLACK = '#000';
@@ -40,7 +29,6 @@ const COLOR_YELLOW_600 = '#fdd835';
 const COLOR_GRAY_900 = '#212121';
 const COLOR_GRAY_800 = '#424242';
 const COLOR_GRAY_600 = '#757575';
-const COLOR_GRAY_400 = '#bdbdbd';
 const COLOR_GRAY_300 = '#e0e0e0';
 
 const commonStyles = {
@@ -72,6 +60,9 @@ const commonStyles = {
   basicPadding: '14px 18px',
   smallPadding: '8px 12px',
   basicButtonPadding: '8px 16px',
+
+  boxShadow: 'rgba(0, 0, 0, 0.4)',
+  secondaryBoxShadow: 'rgba(0, 0, 0, 0.22)',
 };
 
 const DefaultTheme = {

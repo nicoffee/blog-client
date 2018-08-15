@@ -8,10 +8,10 @@ import type {post} from '../containers/PostList';
 
 const StyledPost = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-gap: 10px;
   padding: ${props => props.theme.basicPadding};
   border-radius: ${props => props.theme.basicBorderRadius};
+  grid-gap: 10px;
+  grid-template-columns: 3fr 1fr;
   transition: box-shadow ${props => props.theme.basicAnimationPreset};
 
   &:hover {
