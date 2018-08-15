@@ -2,67 +2,108 @@
 
 import * as React from 'react';
 import {ThemeProvider} from 'styled-components';
-import * as variables from '../styleVariables';
+
+const H1_FONT_SIZE = '36px';
+const H2_FONT_SIZE = '28px';
+const H3_FONT_SIZE = '20px';
+
+const LARGE_FONT_SIZE = '18px';
+const BASIC_FONT_SIZE = '16px';
+const SMALL_FONT_SIZE = '14px';
+const XSMALL_FONT_SIZE = '12px';
+
+const BASIC_LINE_HEIGHT = '25px';
+const BASIC_FONT_WIGHT = '200';
+const BASIC_CONTENT_WIDTH = '700px';
+const BASIC_ANIMATION_PRESET = '200ms ease-out';
+
+const LARGE_PADDING = '28px 36px';
+const BASIC_PADDING = '14px 18px';
+const BASIC_BUTTON_PADDING = '8px 16px';
+
+const BASIC_BORDER_RADIUS = '12px';
+const SMALL_BORDER_RADIUS = '6px';
+
+const BASIC_BOX_SHADOW = 'rgba(0, 0, 0, 0.4)';
+const SECONDARY_BOX_SHADOW = 'rgba(0, 0, 0, 0.22)';
+
+const COLOR_WHITE = '#fff';
+const COLOR_BLACK = '#000';
+
+const COLOR_RED_600 = '#e53935';
+const COLOR_RED_400 = '#ef5350';
+
+const COLOR_BLUE_400 = '#29b6f6';
+
+const COLOR_YELLOW_600 = '#fdd835';
+
+const COLOR_GRAY_900 = '#212121';
+const COLOR_GRAY_800 = '#424242';
+const COLOR_GRAY_600 = '#757575';
+const COLOR_GRAY_400 = '#bdbdbd';
+const COLOR_GRAY_300 = '#e0e0e0';
 
 const commonStyles = {
-  xSmallFontSize: variables.XSMALL_FONT_SIZE,
-  smallFontSize: variables.SMALL_FONT_SIZE,
-  basicFontSize: variables.BASIC_FONT_SIZE,
-  largeFontSize: variables.LARGE_FONT_SIZE,
+  xSmallFontSize: XSMALL_FONT_SIZE,
+  smallFontSize: SMALL_FONT_SIZE,
+  basicFontSize: BASIC_FONT_SIZE,
+  largeFontSize: LARGE_FONT_SIZE,
 
-  basicBorderRadius: variables.BASIC_BORDER_RADIUS,
-  smallBorderRadius: variables.SMALL_BORDER_RADIUS,
+  basicBorderRadius: BASIC_BORDER_RADIUS,
+  smallBorderRadius: SMALL_BORDER_RADIUS,
 
-  basicFontWeight: variables.BASIC_FONT_WIGHT,
+  basicFontWeight: BASIC_FONT_WIGHT,
 
-  basicLineHeight: variables.BASIC_LINE_HEIGHT,
+  basicLineHeight: BASIC_LINE_HEIGHT,
 
-  basicAnimationPreset: variables.BASIC_ANIMATION_PRESET,
+  basicAnimationPreset: BASIC_ANIMATION_PRESET,
 
-  h1FontSize: variables.H1_FONT_SIZE,
-  h2FontSize: variables.H2_FONT_SIZE,
+  h1FontSize: '36px',
+  h2FontSize: '28px',
 
-  basicContentWidth: variables.BASIC_CONTENT_WIDTH,
+  basicContentWidth: BASIC_CONTENT_WIDTH,
 
-  redColorHover: variables.COLOR_RED_400,
+  redColorHover: COLOR_RED_400,
 
-  buttonsFontColor: variables.COLOR_GRAY_900,
-  errorColor: variables.COLOR_RED_600,
+  buttonsFontColor: COLOR_GRAY_900,
+  errorColor: COLOR_RED_600,
 
-  basicPadding: variables.BASIC_PADDING,
-  basicButtonPadding: variables.BASIC_BUTTON_PADDING,
+  largePadding: '28px 36px',
+  basicPadding: '14px 18px',
+  smallPadding: '8px 12px',
+  basicButtonPadding: '8px 16px',
 };
 
 const DefaultTheme = {
   ...commonStyles,
-  buttonsBgColor: variables.COLOR_WHITE,
-  buttonsHoverBgColor: variables.COLOR_BLUE_400,
-  primaryColor: variables.COLOR_GRAY_900,
-  secondaryColor: variables.COLOR_BLUE_400,
-  fontColor: variables.COLOR_GRAY_900,
-  invertedFontColor: variables.COLOR_WHITE,
-  iconColor: variables.COLOR_GRAY_600,
-  iconHoverColor: variables.COLOR_GRAY_800,
-  primaryBackgroundColor: variables.COLOR_WHITE,
-  secondaryBackgroundColor: variables.COLOR_WHITE,
-  headerBackgroundColor: variables.COLOR_WHITE,
-  disabledColor: variables.COLOR_GRAY_300,
+  buttonsBgColor: COLOR_WHITE,
+  buttonsHoverBgColor: COLOR_BLUE_400,
+  primaryColor: COLOR_GRAY_900,
+  secondaryColor: COLOR_BLUE_400,
+  fontColor: COLOR_GRAY_900,
+  invertedFontColor: COLOR_WHITE,
+  iconColor: COLOR_GRAY_600,
+  iconHoverColor: COLOR_GRAY_800,
+  primaryBackgroundColor: COLOR_WHITE,
+  secondaryBackgroundColor: COLOR_WHITE,
+  headerBackgroundColor: COLOR_WHITE,
+  disabledColor: COLOR_GRAY_300,
 };
 
 const DarkTheme = {
   ...commonStyles,
-  buttonsBgColor: variables.COLOR_YELLOW_600,
-  buttonsHoverBgColor: variables.COLOR_YELLOW_600,
-  primaryColor: variables.COLOR_BLUE_400,
-  secondaryColor: variables.COLOR_YELLOW_600,
-  fontColor: variables.COLOR_WHITE,
-  invertedFontColor: variables.COLOR_GRAY_900,
-  iconColor: variables.COLOR_YELLOW_600,
-  iconHoverColor: variables.COLOR_YELLOW_600,
-  primaryBackgroundColor: variables.COLOR_GRAY_900,
-  secondaryBackgroundColor: variables.COLOR_GRAY_800,
-  headerBackgroundColor: variables.COLOR_BLACK,
-  disabledColor: variables.COLOR_GRAY_800,
+  buttonsBgColor: COLOR_YELLOW_600,
+  buttonsHoverBgColor: COLOR_YELLOW_600,
+  primaryColor: COLOR_BLUE_400,
+  secondaryColor: COLOR_YELLOW_600,
+  fontColor: COLOR_WHITE,
+  invertedFontColor: COLOR_GRAY_900,
+  iconColor: COLOR_YELLOW_600,
+  iconHoverColor: COLOR_YELLOW_600,
+  primaryBackgroundColor: COLOR_GRAY_900,
+  secondaryBackgroundColor: COLOR_GRAY_800,
+  headerBackgroundColor: COLOR_BLACK,
+  disabledColor: COLOR_GRAY_800,
 };
 
 type Props = {

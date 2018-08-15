@@ -23,7 +23,6 @@
     "flowtype/define-flow-type": "warn",
     "flowtype/use-flow-type": "warn",
     "react/sort-comp": "warn",
-    "react/jsx-sort-props": "warn",
-    "sort-imports": "warn"
+    "react/jsx-sort-props": "warn"
   }
 }

@@ -41,7 +41,7 @@ class FormGroup extends React.Component {
   };
 
   render() {
-    const {label, component, name, type, validationError} = this.props;
+    const {label, component, name, type} = this.props;
     const errorMessage = this.props.getErrorMessage();
 
     return (

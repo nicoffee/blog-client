@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Input = styled.input`
-  padding: 8px 12px;
+  padding: ${props => props.theme.smallPadding};
   border: 1px solid
     ${props =>
       props.isInvalid ? props.theme.errorColor : props.theme.disabledColor};

@@ -48,8 +48,8 @@ class AuthForm extends React.Component<Props, State> {
           />
         ) : (
           <SignUpForm
-            error={signUpError}
             createUserRequest={createUserRequest}
+            error={signUpError}
           />
         )}
       </Fragment>
