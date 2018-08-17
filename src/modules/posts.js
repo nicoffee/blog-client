@@ -60,9 +60,19 @@ const createList = () => {
     }
   };
 
+  const isMorePostsAvailable = (state = false, action) => {
+    switch (action.type) {
+      case FETCH_POSTS_SUCCESS:
+        return action.payload.result.length === 10;
+      default:
+        return state;
+    }
+  };
+
   return combineReducers({
     ids,
     isFetching,
+    isMorePostsAvailable,
     errorMessage,
   });
 };
@@ -180,6 +190,7 @@ export const getPost = state => state;
 const getIds = state => state.ids;
 const getIsListFetching = state => state.isFetching;
 const getListErrorMessage = state => state.errorMessage;
+const getListIsMorePostsAvailable = state => state.isMorePostsAvailable;
 
 export const getPosts = state => {
   const ids = getIds(state.posts.all);
@@ -201,3 +212,5 @@ export const getIsSearchedFetching = state =>
 
 export const getIsFetching = state => getIsListFetching(state.posts.all);
 export const getErrorMessage = state => getListErrorMessage(state.posts.all);
+export const getIsMorePostsAvailable = state =>
+  getListIsMorePostsAvailable(state.posts.all);

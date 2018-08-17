@@ -7,6 +7,7 @@ import {
   getPosts,
   getIsFetching,
   getErrorMessage,
+  getIsMorePostsAvailable,
 } from '../modules/posts';
 import Loader from '../components/Loader';
 import PostList from '../components/PostList';
@@ -62,7 +63,13 @@ class PostListContainer extends React.Component<Props> {
   };
 
   render() {
-    const {posts, isFetching, errorMessage, fetchPostsRequest} = this.props;
+    const {
+      posts,
+      isFetching,
+      errorMessage,
+      fetchPostsRequest,
+      isMorePostsAvailable,
+    } = this.props;
 
     if (!posts.length && isFetching) {
       return <Loader />;
@@ -81,14 +88,22 @@ class PostListContainer extends React.Component<Props> {
       );
     }
 
-    return <PostList isFetching={isFetching} posts={posts} />;
+    return (
+      <PostList
+        fetchMore={this.fetchMore}
+        isFetching={isFetching}
+        isMorePostsAvailable={isMorePostsAvailable}
+        posts={posts}
+      />
+    );
   }
 }
 
 const mapStateToProps = state => ({
   posts: getPosts(state),
-  isFetching: getIsFetching(state),
   errorMessage: getErrorMessage(state),
+  isFetching: getIsFetching(state),
+  isMorePostsAvailable: getIsMorePostsAvailable(state),
 });
 
 export default connect(mapStateToProps, {

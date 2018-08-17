@@ -29,7 +29,9 @@ const PostsList = (props: Props) => (
       {props.isFetching ? (
         <Loader />
       ) : (
-        <Button onClick={this.fetchMore}>Load more</Button>
+        props.isMorePostsAvailable && (
+          <Button onClick={props.fetchMore}>Load more</Button>
+        )
       )}
     </LoadMoreWrapper>
   </StyledDiv>
