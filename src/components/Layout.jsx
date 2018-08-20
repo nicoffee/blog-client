@@ -8,13 +8,11 @@ import AuthForm from '../containers/AuthForm';
 import Theme from '../containers/Theme';
 import Modal from '../containers/Modal';
 import ModalPortal from './ModalPortal';
-import BaseStyles from './BaseStyles';
-import * as variables from '../styleVariables';
+import BaseStyles from '../ui/BaseStyles';
 
 const InnerContainer = styled.div`
   display: flex;
-  max-width: ${variables.BASIC_CONTENT_WIDTH};
-  min-height: 100vh;
+  max-width: ${props => props.theme.basicContentWidth};
   flex-direction: column;
   align-items: center;
   padding: 10px 20px 50px;

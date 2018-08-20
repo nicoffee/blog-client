@@ -2,13 +2,12 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
-import * as variables from '../styleVariables';
+import Button from '../ui/Button';
 
 const StyledError = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${variables.COLOR_RED_600};
+  color: ${props => props.theme.errorColor};
 `;
 
 type Props = {
@@ -18,7 +17,7 @@ type Props = {
 
 const Error = (props: Props) => (
   <StyledError>
-    <h1>{props.errorMessage}</h1>
+    <h2>{props.errorMessage}</h2>
     <Button onClick={props.request}>Retry</Button>
   </StyledError>
 );

@@ -4,7 +4,6 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
-import * as variables from '../styleVariables';
 import type Props from '../containers/Post';
 
 const StyledPost = styled.div`
@@ -12,17 +11,21 @@ const StyledPost = styled.div`
   width: 100%;
 
   p {
-    font-size: ${variables.LARGE_FONT_SIZE};
-    font-weight: ${variables.BASIC_FONT_WIGHT};
-    line-height: ${variables.BASIC_LINE_HEIGHT};
+    font-size: ${props => props.theme.largeFontSize};
+    font-weight: ${props => props.theme.basicFontWeight};
+    line-height: ${props => props.theme.basicLineHeight};
   }
+`;
+
+const LikeBlockWrapper = styled.div`
+  position: absolute;
+  left: -80px;
 `;
 
 const LikeBlock = styled.div`
   position: fixed;
   top: 50%;
-  left: 30px;
-  font-size: ${variables.SMALL_FONT_SIZE};
+  font-size: ${props => props.theme.smallFontSize};
   font-weight: 100;
 
   div {
@@ -38,16 +41,16 @@ const LikeBlock = styled.div`
     cursor: pointer;
     stroke: black;
     stroke-width: 1px;
-    transition: fill ${variables.BASIC_ANIMATION_PRESET};
+    transition: fill ${props => props.theme.basicAnimationPreset};
 
     path {
       fill: ${props =>
-        props.isLiked ? variables.COLOR_RED_600 : 'transparent'};
-      transition: fill ${variables.BASIC_ANIMATION_PRESET};
+        props.isLiked ? props.theme.errorColor : 'transparent'};
+      transition: fill ${props => props.theme.basicAnimationPreset};
     }
 
     &:hover path {
-      fill: ${variables.COLOR_RED_400};
+      fill: ${props => props.theme.redColorHover};
     }
   }
 
@@ -76,7 +79,7 @@ class Post extends React.PureComponent<Props> {
 
   render() {
     const {info, canEdit, isLiked} = this.props;
-    const {title, body, picture, _id, likesCounts} = info;
+    const {title, body, picture, _id, likes} = info;
 
     return (
       <StyledPost>
@@ -88,17 +91,19 @@ class Post extends React.PureComponent<Props> {
             <Button>Edit</Button>
           </Link>
         )}
-        <LikeBlock isLiked={isLiked}>
-          <div onClick={() => this.handleLikeClick(_id)}>
-            <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M24.85 10.126c2.018-4.783 6.628-8.125 11.99-8.125 7.223 0 12.425 6.179 13.079 13.543 0 0 .353 1.828-.424 5.119-1.058 4.482-3.545 8.464-6.898 11.503L24.85 48 7.402 32.165c-3.353-3.038-5.84-7.021-6.898-11.503-.777-3.291-.424-5.119-.424-5.119C.734 8.179 5.936 2 13.159 2c5.363 0 9.673 3.343 11.691 8.126z"
-                fill="#d75a4a"
-              />
-            </svg>
-            <span>{likesCounts}</span>
-          </div>
-        </LikeBlock>
+        <LikeBlockWrapper>
+          <LikeBlock isLiked={isLiked}>
+            <div onClick={() => this.handleLikeClick(_id)}>
+              <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M24.85 10.126c2.018-4.783 6.628-8.125 11.99-8.125 7.223 0 12.425 6.179 13.079 13.543 0 0 .353 1.828-.424 5.119-1.058 4.482-3.545 8.464-6.898 11.503L24.85 48 7.402 32.165c-3.353-3.038-5.84-7.021-6.898-11.503-.777-3.291-.424-5.119-.424-5.119C.734 8.179 5.936 2 13.159 2c5.363 0 9.673 3.343 11.691 8.126z"
+                  fill="#d75a4a"
+                />
+              </svg>
+              <span>{likes.length}</span>
+            </div>
+          </LikeBlock>
+        </LikeBlockWrapper>
       </StyledPost>
     );
   }

@@ -11,7 +11,7 @@ const FormInner = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: stretch;
-  padding: 30px 40px;
+  padding: ${props => props.theme.largePadding};
 `;
 
 type Props = {

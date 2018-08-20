@@ -8,7 +8,7 @@ const Tabs = styled.div`
 
 const Tab = styled.div`
   width: 50%;
-  padding: 30px 40px;
+  padding: ${props => props.theme.largePadding};
   background-color: ${props => props.theme.disabledColor};
   cursor: pointer;
 
@@ -21,7 +21,8 @@ const Tab = styled.div`
     `};
 
   text-align: center;
-  transition: font-weight 200ms, color 200ms;
+  transition: font-weight ${props => props.theme.basicAnimationPreset},
+    color ${props => props.theme.basicAnimationPreset};
 `;
 
 const FormTabs = props => (

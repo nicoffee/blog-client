@@ -3,7 +3,8 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {
-  getErrorMessage,
+  getSignUpError,
+  getSignInError,
   getErrors,
   fetchLoginRequest,
   createUserRequest,
@@ -13,7 +14,8 @@ import AuthForm from '../components/AuthForm';
 const AuthFormContainer = props => <AuthForm {...props} />;
 
 const mapStateToProps = state => ({
-  error: getErrorMessage(state),
+  signUpError: getSignUpError(state),
+  signInError: getSignInError(state),
   errors: getErrors(state),
 });
 
