@@ -4,8 +4,8 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import UserBlock from '../containers/UserBlock';
-import Switcher from './Switcher';
-import Button from './Button';
+import Switcher from '../ui/Switcher';
+import Button from '../ui/Button';
 import Search from './Search';
 
 const StyledHeader = styled.div`

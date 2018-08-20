@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import PostPreviw from './PostPreview';
 import Loader from './Loader';
-import Button from './Button';
+import Button from '../ui/Button';
 import type {post} from '../containers/PostList';
 
 const StyledDiv = styled.div`

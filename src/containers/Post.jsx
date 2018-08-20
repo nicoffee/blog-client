@@ -7,10 +7,11 @@ import {openModal} from '../modules/app';
 import {
   fetchPostRequest,
   fetchPostCommentsRequest,
+  deletePostRequest,
   toggleLikeRequest,
   getErrorMessage,
 } from '../modules/post';
-import {getIsLiked, getCanEdit, getLikesCount} from '../modules/post';
+import {getIsLiked, getisAuthor, getLikesCount} from '../modules/post';
 import {getUserName} from '../modules/user';
 import Post from '../components/Post';
 import Loader from '../components/Loader';
@@ -22,7 +23,7 @@ export type Props = {
   toggleLikeRequest: Function,
   openModal: Function,
   toggleLike: Function,
-  canEdit: boolean,
+  isAuthor: boolean,
   isFetching: boolean,
   isLiked: boolean,
   isUserLogged: boolean,
@@ -63,7 +64,7 @@ class PostContainer extends React.Component<Props> {
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
   info: state.post.data,
-  canEdit: getCanEdit(state),
+  isAuthor: getisAuthor(state),
   isLiked: getIsLiked(state),
   likesCounts: getLikesCount(state),
   isUserLogged: !!getUserName(state),
@@ -73,6 +74,7 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   fetchPostRequest,
   fetchPostCommentsRequest,
+  deletePostRequest,
   toggleLikeRequest,
   openModal,
 })(PostContainer);

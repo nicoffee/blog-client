@@ -9,7 +9,7 @@ import {
   toggleLikeRequest,
 } from '../modules/post';
 import {openModal} from '../modules/app';
-import {getIsLiked, getCanEdit} from '../modules/post';
+import {getIsLiked, getisAuthor} from '../modules/post';
 import {getUserId} from '../modules/user';
 import Post from '../components/Post';
 import Comment from '../components/Comment';
@@ -21,7 +21,7 @@ export type Props = {
   toggleLikeRequest: Function,
   openModal: Function,
   toggleLike: Function,
-  canEdit: boolean,
+  isAuthor: boolean,
   isFetching: boolean,
   isLiked: boolean,
   isUserLogged: boolean,
@@ -64,7 +64,7 @@ const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
   info: state.post.data,
   comments: state.post.comments,
-  canEdit: getCanEdit(state),
+  isAuthor: getisAuthor(state),
   isLiked: getIsLiked(state),
   isUserLogged: !!getUserId(state),
 });

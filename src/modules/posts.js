@@ -2,6 +2,7 @@ import axios from 'axios';
 import {combineReducers} from 'redux';
 import {call, put} from 'redux-saga/effects';
 import {schema, normalize} from 'normalizr';
+import {CREATE_POST_SUCCESS} from './post';
 import {sortPostsByDate} from '../utils/helpers';
 import history from '../utils/history';
 import config from '../../config.json';
@@ -31,6 +32,8 @@ const createList = () => {
     switch (action.type) {
       case FETCH_POSTS_SUCCESS:
         return [...state, ...action.payload.result];
+      case CREATE_POST_SUCCESS:
+        return [...state, action.payload._id];
       default:
         return state;
     }
@@ -124,6 +127,11 @@ const byId = (state = {}, action) => {
       ...state,
       ...action.payload.entities.posts,
     };
+  }
+
+  // @TODO: refactor
+  if (action.payload && action.type === CREATE_POST_SUCCESS) {
+    return {...state, [action.payload._id]: action.payload};
   }
 
   return state;

@@ -19,11 +19,14 @@ const SMALL_BORDER_RADIUS = '6px';
 const COLOR_WHITE = '#fff';
 const COLOR_BLACK = '#000';
 
+const COLOR_RED_800 = '#c62828';
 const COLOR_RED_600 = '#e53935';
 const COLOR_RED_400 = '#ef5350';
 
+const COLOR_BLUE_600 = '#039be5';
 const COLOR_BLUE_400 = '#29b6f6';
 
+const COLOR_YELLOW_800 = '#f9a825';
 const COLOR_YELLOW_600 = '#fdd835';
 
 const COLOR_GRAY_900 = '#212121';
@@ -61,14 +64,22 @@ const commonStyles = {
   smallPadding: '8px 12px',
   basicButtonPadding: '8px 16px',
 
-  boxShadow: 'rgba(0, 0, 0, 0.4)',
+  boxShadow: '0 0 1px 1px rgba(0, 0, 0, 0.4)',
   secondaryBoxShadow: 'rgba(0, 0, 0, 0.22)',
 };
 
-const DefaultTheme = {
+export const LightTheme = {
   ...commonStyles,
+  name: 'light',
+
   buttonsBgColor: COLOR_WHITE,
   buttonsHoverBgColor: COLOR_BLUE_400,
+  buttonsActiveBgColor: COLOR_BLUE_600,
+  buttonDangerBgColor: COLOR_RED_600,
+  buttonDangerHoverBgColor: COLOR_RED_800,
+  buttonDangerColor: COLOR_WHITE,
+  buttonRoundedBorderColor: COLOR_GRAY_600,
+
   primaryColor: COLOR_GRAY_900,
   secondaryColor: COLOR_BLUE_400,
   fontColor: COLOR_GRAY_900,
@@ -81,10 +92,18 @@ const DefaultTheme = {
   disabledColor: COLOR_GRAY_300,
 };
 
-const DarkTheme = {
+export const DarkTheme = {
   ...commonStyles,
+  name: 'dark',
+
   buttonsBgColor: COLOR_YELLOW_600,
   buttonsHoverBgColor: COLOR_YELLOW_600,
+  buttonsActiveBgColor: COLOR_YELLOW_800,
+  buttonDangerBgColor: COLOR_RED_600,
+  buttonDangerHoverBgColor: COLOR_RED_800,
+  buttonDangerColor: COLOR_WHITE,
+  buttonRoundedBorderColor: COLOR_GRAY_600,
+
   primaryColor: COLOR_BLUE_400,
   secondaryColor: COLOR_YELLOW_600,
   fontColor: COLOR_WHITE,
@@ -103,7 +122,7 @@ type Props = {
 };
 
 const Theme = (props: Props) => (
-  <ThemeProvider theme={props.theme === 'dark' ? DarkTheme : DefaultTheme}>
+  <ThemeProvider theme={props.theme === 'dark' ? DarkTheme : LightTheme}>
     {props.children}
   </ThemeProvider>
 );

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {withFormsy} from 'formsy-react';
 import styled from 'styled-components';
-import TextArea from './TextArea';
+import TextArea from '../ui/TextArea';
 import Input from './Input';
 import ErrorMessage from './ErrorMessage';
 

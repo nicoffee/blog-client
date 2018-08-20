@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import Formsy from 'formsy-react';
 import styled from 'styled-components';
 import FormGroup from './FormGroup';
-import Button from './Button';
+import Button from '../ui/Button';
 import ErrorMessage from './ErrorMessage';
 
 const Header = styled.h1`

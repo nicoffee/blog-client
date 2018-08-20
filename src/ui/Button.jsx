@@ -19,13 +19,35 @@ const Button = styled.button`
       color: ${props.theme.buttonsFontColor};
     `};
 
-  transition: background-color ${props => props.theme.basicAnimationPreset},
-    color ${props => props.theme.basicAnimationPreset};
-
   &:hover {
     background-color: ${props => props.theme.buttonsHoverBgColor};
     color: ${props => props.theme.fontColor};
     color: #fff;
+  }
+
+  ${props =>
+    props.danger &&
+    css`
+      background: ${props.theme.buttonDangerBgColor};
+      color: ${props.theme.buttonDangerColor};
+      border-color: ${props.theme.buttonDangerBgColor};
+
+      &:hover {
+        background: ${props.theme.buttonDangerHoverBgColor};
+        color: ${props.theme.buttonDangerColor};
+        border-color: ${props.theme.buttonDangerHoverBgColor};
+      }
+    `};
+
+  transition: background-color ${props => props.theme.basicAnimationPreset},
+    color ${props => props.theme.basicAnimationPreset};
+
+  &:active {
+    background-color: ${props => props.theme.buttonsActiveBgColor};
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:disabled {

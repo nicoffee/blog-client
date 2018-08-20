@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import Button from '../ui/Button';
 
 const StyledError = styled.div`
   display: flex;
