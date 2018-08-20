@@ -6,9 +6,11 @@ import {
   UPDATE_POST_REQUEST,
   TOGGLE_LIKE_REQUEST,
   FETCH_COMMENTS_REQUEST,
+  DELETE_POST_REQUEST,
   createPostSaga,
   fetchPostSaga,
   updatePostSaga,
+  deletePostSaga,
   fetchPostCommentsSaga,
   likePostSaga,
 } from './modules/post';
@@ -30,6 +32,8 @@ function* mySaga() {
   yield takeEvery(CREATE_POST_REQUEST, createPostSaga);
   yield takeEvery(FETCH_POST_REQUEST, fetchPostSaga);
   yield takeEvery(UPDATE_POST_REQUEST, updatePostSaga);
+  yield takeEvery(DELETE_POST_REQUEST, deletePostSaga);
+
   yield takeEvery(TOGGLE_LIKE_REQUEST, likePostSaga);
   yield takeEvery(FETCH_COMMENTS_REQUEST, fetchPostCommentsSaga);
 

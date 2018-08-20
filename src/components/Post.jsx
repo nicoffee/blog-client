@@ -5,6 +5,9 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
 import type Props from '../containers/Post';
+import HeartIcon from '../assets/icons/Heart';
+import PencilIcon from '../assets/icons/Pencil';
+import TrashIcon from '../assets/icons/Trash';
 
 const StyledPost = styled.div`
   position: relative;
@@ -66,6 +69,51 @@ const PreviewImage = styled.div`
   background-position: center;
   background-size: cover;
 `;
+
+const RoundedButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 0.1px solid ${props => props.theme.buttonRoundedBorderColor};
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+      0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke: ${props => props.theme.buttonRoundedBorderColor};
+    stroke-width: 1px;
+  }
+
+  ${props =>
+    props.danger &&
+    css`
+      background-color: ${props.theme.buttonDangerBgColor};
+      border-color: ${props.theme.buttonDangerBgColor};
+
+      svg {
+        stroke: ${props => props.theme.buttonsBgColor};
+        fill: ${props => props.theme.buttonsBgColor};
+      }
+    `};
+`;
+
+// path {
+//   fill: ${props =>
+//     props.isLiked ? props.theme.errorColor : 'transparent'};
+//   transition: fill ${props => props.theme.basicAnimationPreset};
+// }
+
+// &:hover path {
+//   fill: ${props => props.theme.redColorHover};
+// }
 
 class Post extends React.PureComponent<Props> {
   handleLikeClick = (id: string) => {
