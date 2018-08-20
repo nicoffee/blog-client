@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import Button from './Button';
+import Button from '../ui/Button';
 import type Props from '../containers/Post';
 import HeartIcon from '../assets/icons/Heart';
 import PencilIcon from '../assets/icons/Pencil';

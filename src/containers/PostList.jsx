@@ -9,7 +9,7 @@ import {
   getErrorMessage,
   getIsMorePostsAvailable,
 } from '../modules/posts';
-import Loader from '../components/Loader';
+import Loader from '../ui/Loader';
 import PostList from '../components/PostList';
 import Error from '../components/Error';
 

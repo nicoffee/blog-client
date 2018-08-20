@@ -14,7 +14,7 @@ import {
 import {getIsLiked, getisAuthor, getLikesCount} from '../modules/post';
 import {getUserName} from '../modules/user';
 import Post from '../components/Post';
-import Loader from '../components/Loader';
+import Loader from '../ui/Loader';
 import Error from '../components/Error';
 
 export type Props = {

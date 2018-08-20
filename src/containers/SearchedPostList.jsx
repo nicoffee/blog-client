@@ -10,7 +10,7 @@ import {
 } from '../modules/posts';
 import PostList from '../components/PostList';
 import Error from '../components/Error';
-import Loader from '../components/Loader';
+import Loader from '../ui/Loader';
 
 export type post = {
   _id: string,
