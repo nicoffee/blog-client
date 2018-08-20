@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -41,7 +43,7 @@ const Slider = styled.span`
     background-color: white;
     border-radius: 50%;
     content: '';
-    transition: 0.4s;
+    transition: ${props => props.theme.basicAnimationPreset};
   }
 `;
 

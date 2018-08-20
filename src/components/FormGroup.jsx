@@ -1,8 +1,35 @@
-import React, {Component} from 'react';
-import {withFormsy} from 'formsy-react';
-import {StyledFormGroup, ErrorMessage, Input, TextArea} from './Styled';
+// @flow
 
-class FormGroup extends Component {
+import * as React from 'react';
+import {withFormsy} from 'formsy-react';
+import styled from 'styled-components';
+import TextArea from '../ui/TextArea';
+import Input from './Input';
+import ErrorMessage from './ErrorMessage';
+
+const StyledFormGroup = styled.div`
+  width: 100%;
+  margin-bottom: 30px;
+
+  label {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: ${props => props.theme.fontColor};
+    font-size: ${props => props.theme.smallFontSize};
+  }
+
+  input,
+  textarea {
+    margin-bottom: 8px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+class FormGroup extends React.Component {
   componentDidMount() {
     if (this.props.initialValue) {
       this.props.setValue(this.props.initialValue);
@@ -14,25 +41,27 @@ class FormGroup extends Component {
   };
 
   render() {
-    const {label, component, ...rest} = this.props;
+    const {label, component, name, type} = this.props;
     const errorMessage = this.props.getErrorMessage();
 
     return (
       <StyledFormGroup>
-        <label htmlFor={rest.name}>{label}</label>
+        <label htmlFor={name}>{label}</label>
         <div>
           {component === 'textarea' ? (
             <TextArea
-              id={rest.name}
+              id={name}
+              isInvalid={!!errorMessage}
               onChange={this.changeValue}
               rows={this.props.rows}
               value={this.props.getValue() || ''}
             />
           ) : (
             <Input
-              id={rest.name}
+              id={name}
+              isInvalid={!!errorMessage}
               onChange={this.changeValue}
-              type={rest.type || 'text'}
+              type={type || 'text'}
               value={this.props.getValue() || ''}
             />
           )}

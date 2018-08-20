@@ -2,11 +2,16 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {fetchPostsRequest} from '../modules/posts';
-import {getPosts, getIsFetching, getErrorMessage} from '../modules/posts';
+import {
+  fetchPostsRequest,
+  getPosts,
+  getIsFetching,
+  getErrorMessage,
+  getIsMorePostsAvailable,
+} from '../modules/posts';
+import Loader from '../components/Loader';
 import PostList from '../components/PostList';
 import Error from '../components/Error';
-import Loader from '../components/Loader';
 
 export type post = {
   _id: string,
@@ -28,12 +33,14 @@ type Props = {
 
 class PostListContainer extends React.Component<Props> {
   componentDidMount() {
-    this.props.fetchPostsRequest({limit: 10, offset: 0});
-    window.addEventListener('scroll', this.handleScroll);
+    if (!this.props.posts.length) {
+      this.props.fetchPostsRequest({limit: 10, offset: 0});
+    }
+    // window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    // window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = () => {
@@ -48,10 +55,23 @@ class PostListContainer extends React.Component<Props> {
     }
   };
 
-  render() {
-    const {posts, isFetching, errorMessage, fetchPostsRequest} = this.props;
+  fetchMore = () => {
+    this.props.fetchPostsRequest({
+      limit: 10,
+      offset: this.props.posts.length,
+    });
+  };
 
-    if (isFetching) {
+  render() {
+    const {
+      posts,
+      isFetching,
+      errorMessage,
+      fetchPostsRequest,
+      isMorePostsAvailable,
+    } = this.props;
+
+    if (!posts.length && isFetching) {
       return <Loader />;
     }
 
@@ -68,14 +88,24 @@ class PostListContainer extends React.Component<Props> {
       );
     }
 
-    return <PostList posts={posts} />;
+    return (
+      <PostList
+        fetchMore={this.fetchMore}
+        isFetching={isFetching}
+        isMorePostsAvailable={isMorePostsAvailable}
+        posts={posts}
+      />
+    );
   }
 }
 
 const mapStateToProps = state => ({
   posts: getPosts(state),
-  isFetching: getIsFetching(state),
   errorMessage: getErrorMessage(state),
+  isFetching: getIsFetching(state),
+  isMorePostsAvailable: getIsMorePostsAvailable(state),
 });
 
-export default connect(mapStateToProps, {fetchPostsRequest})(PostListContainer);
+export default connect(mapStateToProps, {
+  fetchPostsRequest,
+})(PostListContainer);
