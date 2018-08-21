@@ -65,8 +65,8 @@ class Post extends React.PureComponent<Props> {
       <React.Fragment>
         {isModalOpen && (
           <Modal
-            type={'confirm'}
             confirmAction={() => this.props.deletePostRequest(_id)}
+            type={'confirm'}
           />
         )}
         <StyledPost>

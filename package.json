@@ -15,7 +15,7 @@
     "dev": "webpack-dev-server --mode development --open --config webpack/webpack.dev.js",
     "postinstall": "npm run build",
     "lint": "yarn lint:js & yarn lint:css",
-    "lint:js": "eslint --ext .jsx --ext .js src/ ",
+    "lint:js": "eslint --ext .jsx --ext .js src/ --fix",
     "lint:css": "stylelint './src/**/*.jsx'",
     "test": "jest",
     "test:watch": "npm test -- --watch",

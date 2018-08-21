@@ -34,9 +34,9 @@ const COLOR_GRAY_800 = '#424242';
 const COLOR_GRAY_600 = '#757575';
 const COLOR_GRAY_300 = '#e0e0e0';
 
-const COLOR_GREEN_800 = '#00695C';
+// const COLOR_GREEN_800 = '#00695C';
 const COLOR_GREEN_600 = '#00897B';
-const COLOR_GREEN_300 = '#4DB6AC';
+// const COLOR_GREEN_300 = '#4DB6AC';
 
 const commonStyles = {
   xSmallFontSize: XSMALL_FONT_SIZE,

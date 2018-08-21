@@ -4,12 +4,12 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 const Styles = styled.div`
+  height: 100%;
+  flex-grow: 1;
   background-color: ${props => props.theme.secondaryBackgroundColor};
   color: ${props => props.theme.fontColor};
   transition: background-color ${props => props.theme.basicAnimationPreset},
     color ${props => props.theme.basicAnimationPreset};
-  height: 100%;
-  flex-grow: 1;
 
   a {
     color: inherit;

@@ -1,5 +1,3 @@
-import {call, put} from 'redux-saga/effects';
-
 // Actions
 export const OPEN_MODAL = 'blog/ui/modal/OPEN';
 export const CLOSE_MODAL = 'blog/ui/modal/CLOSE';
