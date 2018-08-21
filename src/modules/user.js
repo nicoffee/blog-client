@@ -141,7 +141,11 @@ export function* fetchLoginSaga(action) {
     yield put(fetchLoginSuccess(login.data.email));
     yield put(closeModal());
   } catch (error) {
-    yield put(fetchLoginError(error.response.data.message));
+    yield put(
+      fetchLoginError(
+        error.response ? error.response.data.message : error.message
+      )
+    );
   }
 }
 
@@ -165,10 +169,14 @@ export function* createUserSaga(action) {
     yield put(createUserSuccess(user.data));
     yield put(closeModal());
   } catch (error) {
-    if (error.response.data.errors) {
-      yield put(createUserValidationError(error.response.data.errors));
+    if (error.response) {
+      if (error.response.data.errors) {
+        yield put(createUserValidationError(error.response.data.errors));
+      } else {
+        yield put(createUserError(error.response.data));
+      }
     } else {
-      yield put(createUserError(error.response.data));
+      yield put(createUserError(error.message));
     }
   }
 }

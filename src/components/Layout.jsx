@@ -20,13 +20,14 @@ const InnerContainer = styled.div`
 type Props = {
   isModalOpen: boolean,
   children?: React.Node,
+  modalType: string,
 };
 
 const Layout = (props: Props) => (
   <Theme>
     <BaseStyles>
       <Header />
-      {props.isModalOpen && <Modal type="auth" />}
+      {props.isModalOpen && props.modalType === 'auth' && <Modal type="auth" />}
       <InnerContainer>{props.children}</InnerContainer>
     </BaseStyles>
   </Theme>

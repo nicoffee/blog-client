@@ -47,7 +47,7 @@ type Props = {
   rows: number,
 };
 
-class FormGroup extends React.PureComponent<Props> {
+class FormGroup extends React.Component<Props> {
   componentDidMount() {
     if (this.props.initialValue) {
       this.props.setValue(this.props.initialValue);

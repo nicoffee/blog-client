@@ -2,10 +2,11 @@ import axios from 'axios';
 import {combineReducers} from 'redux';
 import {call, put} from 'redux-saga/effects';
 import {schema, normalize} from 'normalizr';
-import {CREATE_POST_SUCCESS} from './post';
+import {CREATE_POST_SUCCESS, DELETE_POST_SUCCESS} from './post';
 import {sortPostsByDate} from '../utils/helpers';
 import history from '../utils/history';
 import config from '../../config.json';
+const R = require('ramda');
 
 axios.defaults.withCredentials = true;
 
@@ -34,6 +35,8 @@ const createList = () => {
         return [...state, ...action.payload.result];
       case CREATE_POST_SUCCESS:
         return [...state, action.payload._id];
+      case DELETE_POST_SUCCESS:
+        return state.filter(id => id !== action.payload);
       default:
         return state;
     }
@@ -132,6 +135,11 @@ const byId = (state = {}, action) => {
   // @TODO: refactor
   if (action.payload && action.type === CREATE_POST_SUCCESS) {
     return {...state, [action.payload._id]: action.payload};
+  }
+
+  // @TODO: refactor
+  if (action.payload && action.type === DELETE_POST_SUCCESS) {
+    return R.omit([action.payload], state);
   }
 
   return state;

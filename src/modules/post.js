@@ -24,7 +24,7 @@ const UPDATE_POST_SUCCESS = 'blog/post/update/SUCCESS';
 const UPDATE_POST_FAILURE = 'blog/post/update/FAILURE';
 
 export const DELETE_POST_REQUEST = 'blog/post/delete/REQUEST';
-const DELETE_POST_SUCCESS = 'blog/post/delete/SUCCESS';
+export const DELETE_POST_SUCCESS = 'blog/post/delete/SUCCESS';
 
 export const FETCH_COMMENTS_REQUEST = 'blog/post/comments/REQUEST';
 const FETCH_COMMENTS_SUCCESS = 'blog/post/comments/SUCCESS';
@@ -136,8 +136,9 @@ export const deletePostRequest = postId => ({
   id: postId,
 });
 
-export const deletePostSuccess = () => ({
+export const deletePostSuccess = id => ({
   type: DELETE_POST_SUCCESS,
+  payload: id,
 });
 
 export const updatePostError = error => ({
@@ -213,7 +214,11 @@ export function* fetchPostSaga(action) {
     const post = yield call(fetchPost, action.id);
     yield put(fetchPostSuccess(post.data));
   } catch (error) {
-    yield put(fetchPostError(error.response.data.message));
+    yield put(
+      fetchPostError(
+        error.response ? error.response.data.message : error.message
+      )
+    );
   }
 }
 
@@ -228,7 +233,7 @@ export function* updatePostSaga(action) {
 
 export function* deletePostSaga(action) {
   yield call(deletePost, action.id);
-  yield put(deletePostSuccess());
+  yield put(deletePostSuccess(action.id));
   yield call(history.push, '/');
 }
 
