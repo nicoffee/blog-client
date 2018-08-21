@@ -5,6 +5,9 @@
   "repository": "https://github.com/nicoffee/blog-demo.git",
   "author": "nicoffee <fedoseevn@gmail.com>",
   "license": "MIT",
+  "engines": { 
+    "node": "8.11.3" 
+  },
   "scripts": {
     "start": "node index.js",
     "start:test": "npm run server & npm run test:watch",
