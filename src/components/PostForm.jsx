@@ -4,7 +4,7 @@ import * as React from 'react';
 import Formsy from 'formsy-react';
 import styled from 'styled-components';
 import FormGroup from './FormGroup';
-import Button from './Button';
+import Button from '../ui/Button';
 
 const FormInner = styled.div`
   display: flex;

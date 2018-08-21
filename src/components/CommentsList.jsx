@@ -13,7 +13,7 @@ import {getIsLiked, getisAuthor} from '../modules/post';
 import {getUserId} from '../modules/user';
 import Post from '../components/Post';
 import Comment from '../components/Comment';
-import Loader from '../components/Loader';
+import Loader from '../ui/Loader';
 
 export type Props = {
   fetchPostInfoRequest: Function,

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import PostPreviw from './PostPreview';
-import Loader from './Loader';
+import Loader from '../ui/Loader';
 import Button from '../ui/Button';
 import type {post} from '../containers/PostList';
 

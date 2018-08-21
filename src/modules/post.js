@@ -12,7 +12,7 @@ const apiUrl =
 
 // Actions
 export const CREATE_POST_REQUEST = 'blog/post/create/REQUEST';
-const CREATE_POST_SUCCESS = 'blog/post/create/SUCCESS';
+export const CREATE_POST_SUCCESS = 'blog/post/create/SUCCESS';
 const CREATE_POST_FAILURE = 'blog/post/create/FAILURE';
 
 export const FETCH_POST_REQUEST = 'blog/post/read/REQUEST';
@@ -22,6 +22,9 @@ const FETCH_POST_FAILURE = 'blog/post/read/FAILURE';
 export const UPDATE_POST_REQUEST = 'blog/post/update/REQUEST';
 const UPDATE_POST_SUCCESS = 'blog/post/update/SUCCESS';
 const UPDATE_POST_FAILURE = 'blog/post/update/FAILURE';
+
+export const DELETE_POST_REQUEST = 'blog/post/delete/REQUEST';
+const DELETE_POST_SUCCESS = 'blog/post/delete/SUCCESS';
 
 export const FETCH_COMMENTS_REQUEST = 'blog/post/comments/REQUEST';
 const FETCH_COMMENTS_SUCCESS = 'blog/post/comments/SUCCESS';
@@ -41,7 +44,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_POST_REQUEST:
-      return {...state, isFetching: true};
+      return {...state, isFetching: true, error: null};
     case CREATE_POST_SUCCESS:
       return {
         ...state,
@@ -99,7 +102,7 @@ export const fetchPostSuccess = data => ({
 
 export const fetchPostError = error => ({
   type: FETCH_POST_FAILURE,
-  payload: error.message,
+  payload: error,
 });
 
 export const createPostRequest = data => ({
@@ -126,6 +129,15 @@ export const updatePostRequest = (postId, data) => ({
 export const updatePostSuccess = data => ({
   type: UPDATE_POST_SUCCESS,
   payload: data,
+});
+
+export const deletePostRequest = postId => ({
+  type: DELETE_POST_REQUEST,
+  id: postId,
+});
+
+export const deletePostSuccess = () => ({
+  type: DELETE_POST_SUCCESS,
 });
 
 export const updatePostError = error => ({
@@ -160,6 +172,11 @@ export const toggleLikeSuccess = data => ({
 });
 
 // Side effects
+
+export function createPost(data) {
+  return axios.post(`${apiUrl}/posts`, data);
+}
+
 export function fetchPost(postId) {
   return axios.get(`${apiUrl}/posts/${postId}`);
 }
@@ -168,8 +185,8 @@ export function updatePost(postId, data) {
   return axios.patch(`${apiUrl}/posts/${postId}`, data);
 }
 
-export function createPost(data) {
-  return axios.post(`${apiUrl}/posts`, data);
+export function deletePost(postId) {
+  return axios.delete(`${apiUrl}/posts/${postId}`);
 }
 
 export function likePost(postId, like) {
@@ -184,8 +201,8 @@ export function fetchPostComments(postId) {
 export function* createPostSaga(action) {
   try {
     const post = yield call(createPost, action.data);
-    // yield put(createPostSuccess(post.data));
-    yield call(history.push, `/post/${post.data.id}`);
+    yield put(createPostSuccess(post.data));
+    yield call(history.push, `/post/${post.data._id}`);
   } catch (error) {
     yield put(createPostError(error));
   }
@@ -196,7 +213,7 @@ export function* fetchPostSaga(action) {
     const post = yield call(fetchPost, action.id);
     yield put(fetchPostSuccess(post.data));
   } catch (error) {
-    yield put(fetchPostError(error));
+    yield put(fetchPostError(error.response.data.message));
   }
 }
 
@@ -207,6 +224,12 @@ export function* updatePostSaga(action) {
   } catch (error) {
     yield put(updatePostError(error));
   }
+}
+
+export function* deletePostSaga(action) {
+  yield call(deletePost, action.id);
+  yield put(deletePostSuccess());
+  yield call(history.push, '/');
 }
 
 export function* fetchPostCommentsSaga(action) {
@@ -225,6 +248,6 @@ export function* likePostSaga(action) {
 
 //Selectors
 export const getIsLiked = state => state.post.data.isLiked;
-export const getCanEdit = state => state.post.data.canEdit;
+export const getisAuthor = state => state.post.data.isAuthor;
 export const getLikesCount = state => state.post.data.likes.length;
 export const getErrorMessage = state => state.post.error;
