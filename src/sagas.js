@@ -24,7 +24,12 @@ import {
   fetchSessionSaga,
   createUserSaga,
 } from './modules/user';
-import {SWITCH_THEME, switchThemeSaga} from './modules/app';
+import {
+  SWITCH_THEME,
+  // OPEN_CONFIRM_MODAL,
+  switchThemeSaga,
+  // openConfirmModalSaga,
+} from './modules/app';
 
 function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPostsSaga);
@@ -33,6 +38,8 @@ function* mySaga() {
   yield takeEvery(FETCH_POST_REQUEST, fetchPostSaga);
   yield takeEvery(UPDATE_POST_REQUEST, updatePostSaga);
   yield takeEvery(DELETE_POST_REQUEST, deletePostSaga);
+
+  // yield takeEvery(OPEN_CONFIRM_MODAL, openConfirmModalSaga);
 
   yield takeEvery(TOGGLE_LIKE_REQUEST, likePostSaga);
   yield takeEvery(FETCH_COMMENTS_REQUEST, fetchPostCommentsSaga);

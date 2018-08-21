@@ -44,7 +44,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_POST_REQUEST:
-      return {...state, isFetching: true};
+      return {...state, isFetching: true, error: null};
     case CREATE_POST_SUCCESS:
       return {
         ...state,
@@ -102,7 +102,7 @@ export const fetchPostSuccess = data => ({
 
 export const fetchPostError = error => ({
   type: FETCH_POST_FAILURE,
-  payload: error.message,
+  payload: error,
 });
 
 export const createPostRequest = data => ({
@@ -202,7 +202,7 @@ export function* createPostSaga(action) {
   try {
     const post = yield call(createPost, action.data);
     yield put(createPostSuccess(post.data));
-    yield call(history.push, `/post/${post.data.id}`);
+    yield call(history.push, `/post/${post.data._id}`);
   } catch (error) {
     yield put(createPostError(error));
   }
@@ -213,7 +213,7 @@ export function* fetchPostSaga(action) {
     const post = yield call(fetchPost, action.id);
     yield put(fetchPostSuccess(post.data));
   } catch (error) {
-    yield put(fetchPostError(error));
+    yield put(fetchPostError(error.response.data.message));
   }
 }
 

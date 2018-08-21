@@ -11,6 +11,7 @@ import {
   toggleLikeRequest,
   getErrorMessage,
 } from '../modules/post';
+import {getIsModalOpen} from '../modules/app';
 import {getIsLiked, getisAuthor, getLikesCount} from '../modules/post';
 import {getUserName} from '../modules/user';
 import Post from '../components/Post';
@@ -66,6 +67,7 @@ const mapStateToProps = state => ({
   info: state.post.data,
   isAuthor: getisAuthor(state),
   isLiked: getIsLiked(state),
+  isModalOpen: getIsModalOpen(state),
   likesCounts: getLikesCount(state),
   isUserLogged: !!getUserName(state),
   errorMessage: getErrorMessage(state),
@@ -77,4 +79,5 @@ export default connect(mapStateToProps, {
   deletePostRequest,
   toggleLikeRequest,
   openModal,
+  // openConfirmModal,
 })(PostContainer);

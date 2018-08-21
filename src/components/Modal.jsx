@@ -3,6 +3,8 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import ModalPortal from './ModalPortal';
+import AuthForm from '../containers/AuthForm';
+import ConfirmDialog from '../containers/ConfirmDialog';
 
 const fadeIn = keyframes`
   from {
@@ -49,11 +51,22 @@ class Modal extends React.Component<Props> {
     }
   }
 
+  renderContent = type => {
+    switch (type) {
+      case 'auth':
+        return <AuthForm />;
+      case 'confirm':
+        return <ConfirmDialog onConfirm={this.props.confirmAction} />;
+      default:
+        return this.props.children;
+    }
+  };
+
   render() {
     return (
       <ModalPortal>
         <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>
-          <StyledModal>{this.props.children}</StyledModal>
+          <StyledModal>{this.renderContent(this.props.type)}</StyledModal>
         </Overlay>
       </ModalPortal>
     );

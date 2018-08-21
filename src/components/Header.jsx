@@ -106,7 +106,7 @@ const Header = (props: Props) => (
           {props.user ? (
             <UserBlock />
           ) : (
-            <Button fontSize="inherit" onClick={() => props.openModal()}>
+            <Button fontSize="inherit" onClick={() => props.openModal('auth')}>
               Sign in
             </Button>
           )}
