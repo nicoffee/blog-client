@@ -33,13 +33,13 @@ export type Props = {
     title: string,
     body: string,
     picture: string,
-    likes: Array,
   },
+  errorMessage: string,
   comments: Array<{id: string, body: string, name: string}>,
   match: Match,
 };
 
-class PostContainer extends React.Component<Props> {
+class PostContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const {postId} = this.props.match.params;
 
@@ -73,11 +73,14 @@ const mapStateToProps = state => ({
   errorMessage: getErrorMessage(state),
 });
 
-export default connect(mapStateToProps, {
-  fetchPostRequest,
-  fetchPostCommentsRequest,
-  deletePostRequest,
-  toggleLikeRequest,
-  openModal,
-  // openConfirmModal,
-})(PostContainer);
+export default connect(
+  mapStateToProps,
+  {
+    fetchPostRequest,
+    fetchPostCommentsRequest,
+    deletePostRequest,
+    toggleLikeRequest,
+    openModal,
+    // openConfirmModal,
+  }
+)(PostContainer);

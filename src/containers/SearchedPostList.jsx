@@ -30,7 +30,7 @@ type Props = {
   errorMessage: string,
 };
 
-class PostListContainer extends React.Component<Props> {
+class PostListContainer extends React.PureComponent<Props> {
   render() {
     const {posts, isFetching, errorMessage, fetchPostsRequest} = this.props;
 

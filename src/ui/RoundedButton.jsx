@@ -3,12 +3,20 @@
 import * as React from 'react';
 import styled, {css} from 'styled-components';
 
+type Props = {
+  active?: boolean,
+  color?: string,
+  danger?: boolean,
+  onClick?: Function,
+  children: React.Node,
+};
+
 const Rounded = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 0.1px solid ${props => props.theme.buttonRoundedBorderColor};
+  border: 0.1px solid ${({theme}) => theme.buttonRoundedBorderColor};
   height: 40px;
   width: 40px;
   box-shadow: 0px 3px 2px -1px rgba(0, 0, 0, 0.2),
@@ -50,10 +58,14 @@ const Rounded = styled.button`
     `};
 `;
 
-const RoundedButton = ({active, color, danger, onClick, children}) => (
-  <Rounded color={color} danger={danger} onClick={onClick}>
-    {React.cloneElement(children, {active})}
-  </Rounded>
-);
+const RoundedButton = (props: Props) => {
+  const {active, color, danger, onClick, children} = props;
+
+  return (
+    <Rounded color={color} danger={danger} onClick={onClick}>
+      {children}
+    </Rounded>
+  );
+};
 
 export default RoundedButton;

@@ -28,10 +28,11 @@ type Props = {
   fetchPostsRequest: Function,
   posts: Array<post>,
   isFetching: boolean,
+  isMorePostsAvailable: boolean,
   errorMessage: string,
 };
 
-class PostListContainer extends React.Component<Props> {
+class PostListContainer extends React.PureComponent<Props> {
   componentDidMount() {
     if (!this.props.posts.length) {
       this.props.fetchPostsRequest({limit: 10, offset: 0});
@@ -44,7 +45,9 @@ class PostListContainer extends React.Component<Props> {
   }
 
   handleScroll = () => {
+    //$FlowFixMe
     const offset = document.documentElement.scrollTop + window.innerHeight;
+    //$FlowFixMe
     const height = document.documentElement.offsetHeight;
 
     if (offset === height) {
@@ -106,6 +109,9 @@ const mapStateToProps = state => ({
   isMorePostsAvailable: getIsMorePostsAvailable(state),
 });
 
-export default connect(mapStateToProps, {
-  fetchPostsRequest,
-})(PostListContainer);
+export default connect(
+  mapStateToProps,
+  {
+    fetchPostsRequest,
+  }
+)(PostListContainer);

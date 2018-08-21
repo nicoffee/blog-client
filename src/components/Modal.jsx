@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import styled, {keyframes} from 'styled-components';
 import ModalPortal from './ModalPortal';
 import AuthForm from '../containers/AuthForm';
@@ -40,10 +40,13 @@ const StyledModal = styled.div`
 
 type Props = {
   closeModal: Function,
+  confirmAction: Function,
+  children: React.Node,
+  type?: ?string,
 };
 
-class Modal extends React.Component<Props> {
-  modal: {value: null | HTMLDivElement} = React.createRef();
+class Modal extends React.PureComponent<Props> {
+  modal = React.createRef();
 
   handleClick(e: SyntheticInputEvent<>) {
     if (e.target === this.modal.current) {
@@ -51,7 +54,7 @@ class Modal extends React.Component<Props> {
     }
   }
 
-  renderContent = type => {
+  renderContent = (type: ?string) => {
     switch (type) {
       case 'auth':
         return <AuthForm />;

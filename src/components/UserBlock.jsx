@@ -14,7 +14,10 @@ const UserImage = styled.div`
   cursor: pointer;
 
   svg {
-    fill: ${props => props.isDropdownOpen ? props.theme.iconHoverColor : props.theme.iconColor};
+    fill: ${props =>
+      props.isDropdownOpen
+        ? props.theme.iconHoverColor
+        : props.theme.iconColor};
   }
 
   &:hover svg {
@@ -57,18 +60,20 @@ const StyledDropdown = styled.div`
 
 type Props = {
   handleLogout: Function,
+  fetchLogoutRequest: Function,
 };
 
 type State = {
   isDropdownOpen: boolean,
 };
 
-class UserBlock extends React.Component<Props, State> {
+class UserBlock extends React.PureComponent<Props, State> {
   state = {
     isDropdownOpen: false,
   };
 
   componentDidMount() {
+    //$FlowFixMe
     document.body.addEventListener(
       'click',
       this.handleDropdownClose.bind(this)
@@ -76,6 +81,7 @@ class UserBlock extends React.Component<Props, State> {
   }
 
   componentWillUnmount() {
+    //$FlowFixMe
     document.body.removeEventListener('click', this.handleDropdownClose);
   }
 

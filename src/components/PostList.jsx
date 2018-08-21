@@ -20,11 +20,16 @@ const LoadMoreWrapper = styled.div`
 
 type Props = {
   posts: Array<post>,
+  isMorePostsAvailable?: boolean,
+  isFetching?: boolean,
+  fetchMore?: Function,
 };
 
 const PostsList = (props: Props) => (
   <StyledDiv>
-    {props.posts.map(post => <PostPreviw key={post._id} {...post} />)}
+    {props.posts.map(post => (
+      <PostPreviw key={post._id} {...post} />
+    ))}
     <LoadMoreWrapper>
       {props.isFetching ? (
         <Loader />

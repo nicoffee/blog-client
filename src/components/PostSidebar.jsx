@@ -45,12 +45,19 @@ const LikeBlock = styled.div`
   }
 `;
 
-const PostSidebar = ({isLiked, likesCount, postId}) => (
+type Props = {
+  handleLikeClick: Function,
+  isLiked: boolean,
+  postId: string,
+  likesCount: number,
+};
+
+const PostSidebar = (props: Props) => (
   <Sidebar>
-    <LikeBlock isLiked={isLiked}>
-      <HeartIcon />
-      <div onClick={() => this.handleLikeClick(postId)}>
-        <span>{likesCount}</span>
+    <LikeBlock isLiked={props.isLiked}>
+      <HeartIcon active={true} />
+      <div onClick={() => props.handleLikeClick(props.postId)}>
+        <span>{props.likesCount}</span>
       </div>
     </LikeBlock>
   </Sidebar>

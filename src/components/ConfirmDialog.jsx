@@ -23,10 +23,14 @@ const Inner = styled.div`
   }
 `;
 
-const Confirm = ({onConfirm}) => (
+type Props = {
+  onConfirm: Function,
+};
+
+const Confirm = (props: Props) => (
   <Inner>
     <Header>You sure?</Header>
-    <Button onClick={onConfirm}>Yes</Button>
+    <Button onClick={props.onConfirm}>Yes</Button>
   </Inner>
 );
 

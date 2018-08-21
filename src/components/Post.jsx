@@ -59,7 +59,7 @@ class Post extends React.PureComponent<Props> {
 
   render() {
     const {info, isAuthor, isLiked, isModalOpen} = this.props;
-    const {title, body, picture, _id, likes} = info;
+    const {title, body, picture, _id} = info;
 
     return (
       <React.Fragment>
@@ -79,7 +79,7 @@ class Post extends React.PureComponent<Props> {
                 active={isLiked}
                 color="red"
                 onClick={() => this.handleLikeClick(_id)}>
-                <HeartIcon />
+                <HeartIcon active={isLiked} />
               </RoundedButton>
               {isAuthor && (
                 <React.Fragment>

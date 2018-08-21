@@ -29,20 +29,46 @@ const StyledFormGroup = styled.div`
   }
 `;
 
-class FormGroup extends React.Component {
+declare type SyntheticInputEvent<E> = {
+  currentTarget: {
+    value: string,
+  },
+};
+
+type Props = {
+  initialValue: any,
+  setValue: Function,
+  getValue: Function,
+  getErrorMessage: Function,
+  component: string,
+  name: string,
+  type: string,
+  label: string,
+  rows: number,
+};
+
+class FormGroup extends React.PureComponent<Props> {
   componentDidMount() {
     if (this.props.initialValue) {
       this.props.setValue(this.props.initialValue);
     }
   }
 
-  changeValue = (e: SyntheticInputEvent<>) => {
+  changeValue = (e: SyntheticInputEvent<EventTarget>) => {
     this.props.setValue(e.currentTarget.value);
   };
 
   render() {
-    const {label, component, name, type} = this.props;
-    const errorMessage = this.props.getErrorMessage();
+    const {
+      label,
+      component,
+      name,
+      type,
+      getErrorMessage,
+      rows,
+      getValue,
+    } = this.props;
+    const errorMessage = getErrorMessage();
 
     return (
       <StyledFormGroup>
@@ -53,8 +79,8 @@ class FormGroup extends React.Component {
               id={name}
               isInvalid={!!errorMessage}
               onChange={this.changeValue}
-              rows={this.props.rows}
-              value={this.props.getValue() || ''}
+              rows={rows}
+              value={getValue() || ''}
             />
           ) : (
             <Input
@@ -62,7 +88,7 @@ class FormGroup extends React.Component {
               isInvalid={!!errorMessage}
               onChange={this.changeValue}
               type={type || 'text'}
-              value={this.props.getValue() || ''}
+              value={getValue() || ''}
             />
           )}
           <ErrorMessage>{errorMessage}</ErrorMessage>

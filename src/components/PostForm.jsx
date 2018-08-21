@@ -26,7 +26,7 @@ type State = {
   canSubmit: boolean,
 };
 
-class PostForm extends React.Component<Props, State> {
+class PostForm extends React.PureComponent<Props, State> {
   state = {
     canSubmit: false,
   };

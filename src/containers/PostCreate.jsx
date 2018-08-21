@@ -16,7 +16,7 @@ type Props = {
   },
 };
 
-class PostContainer extends React.Component<Props> {
+class PostContainer extends React.PureComponent<Props> {
   submitForm(data) {
     this.props.createPostRequest(data);
   }
