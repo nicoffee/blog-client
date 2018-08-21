@@ -70,6 +70,11 @@ const commonStyles = {
 
   boxShadow: '0 0 1px 1px rgba(0, 0, 0, 0.4)',
   secondaryBoxShadow: 'rgba(0, 0, 0, 0.22)',
+
+  colors: {
+    red: COLOR_RED_600,
+    green: COLOR_GREEN_600,
+  },
 };
 
 export const LightTheme = {
@@ -94,11 +99,6 @@ export const LightTheme = {
   secondaryBackgroundColor: COLOR_WHITE,
   headerBackgroundColor: COLOR_WHITE,
   disabledColor: COLOR_GRAY_300,
-
-  colors: {
-    red: COLOR_RED_600,
-    green: COLOR_GREEN_600,
-  },
 };
 
 export const DarkTheme = {

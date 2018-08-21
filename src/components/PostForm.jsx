@@ -56,7 +56,7 @@ class PostForm extends React.Component<Props, State> {
             required
             rows={10}
           />
-          <Button disabled={!canSubmit} primary type="submit">
+          <Button disabled={!canSubmit} type="submit">
             Save
           </Button>
         </Formsy>

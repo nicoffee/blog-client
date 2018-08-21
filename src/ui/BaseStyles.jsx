@@ -8,6 +8,8 @@ const Styles = styled.div`
   color: ${props => props.theme.fontColor};
   transition: background-color ${props => props.theme.basicAnimationPreset},
     color ${props => props.theme.basicAnimationPreset};
+  height: 100%;
+  flex-grow: 1;
 
   a {
     color: inherit;

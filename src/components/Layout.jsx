@@ -14,7 +14,7 @@ const InnerContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 10px 20px 50px;
-  margin: 78px auto 0;
+  margin: 82px auto 0;
 `;
 
 type Props = {
