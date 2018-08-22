@@ -2,11 +2,8 @@ import axios from 'axios';
 import {combineReducers} from 'redux';
 import {call, put} from 'redux-saga/effects';
 import {schema, normalize} from 'normalizr';
-import {CREATE_POST_SUCCESS, DELETE_POST_SUCCESS} from './post';
-import {sortPostsByDate} from '../utils/helpers';
 import history from '../utils/history';
 import config from '../../config.json';
-const R = require('ramda');
 
 axios.defaults.withCredentials = true;
 
@@ -20,23 +17,23 @@ const postListSchema = new schema.Array(postSchema);
 
 // Actions
 export const FETCH_POSTS_REQUEST = 'blog/posts/fetch/REQUEST';
-const FETCH_POSTS_SUCCESS = 'blog/posts/fetch/SUCCESS';
-const FETCH_POSTS_FAILURE = 'blog/posts/fetch/FAILURE';
+export const FETCH_MORE_POSTS_REQUEST = 'blog/posts/fetch-more/REQUEST';
+export const FETCH_POSTS_SUCCESS = 'blog/posts/fetch/SUCCESS';
+export const FETCH_MORE_POSTS_SUCCESS = 'blog/posts/fetch-more/SUCCESS';
+export const FETCH_POSTS_FAILURE = 'blog/posts/fetch/FAILURE';
 
 export const SEARCH_POSTS_REQUEST = 'blog/posts/search/REQUEST';
-const SEARCH_POSTS_SUCCESS = 'blog/posts/search/SUCCESS';
-const SEARCH_POSTS_FAILURE = 'blog/posts/search/FAILURE';
+export const SEARCH_POSTS_SUCCESS = 'blog/posts/search/SUCCESS';
+export const SEARCH_POSTS_FAILURE = 'blog/posts/search/FAILURE';
 
 // Reducer
 const createList = () => {
   const ids = (state = [], action) => {
     switch (action.type) {
       case FETCH_POSTS_SUCCESS:
+        return action.payload.result;
+      case FETCH_MORE_POSTS_SUCCESS:
         return [...state, ...action.payload.result];
-      case CREATE_POST_SUCCESS:
-        return [...state, action.payload._id];
-      case DELETE_POST_SUCCESS:
-        return state.filter(id => id !== action.payload);
       default:
         return state;
     }
@@ -75,10 +72,22 @@ const createList = () => {
     }
   };
 
+  const isMorePostsFetching = (state = false, action) => {
+    switch (action.type) {
+      case FETCH_MORE_POSTS_REQUEST:
+        return true;
+      case FETCH_MORE_POSTS_SUCCESS:
+        return false;
+      default:
+        return state;
+    }
+  };
+
   return combineReducers({
     ids,
     isFetching,
     isMorePostsAvailable,
+    isMorePostsFetching,
     errorMessage,
   });
 };
@@ -132,16 +141,6 @@ const byId = (state = {}, action) => {
     };
   }
 
-  // @TODO: refactor
-  if (action.payload && action.type === CREATE_POST_SUCCESS) {
-    return {...state, [action.payload._id]: action.payload};
-  }
-
-  // @TODO: refactor
-  if (action.payload && action.type === DELETE_POST_SUCCESS) {
-    return R.omit([action.payload], state);
-  }
-
   return state;
 };
 
@@ -157,8 +156,18 @@ export const fetchPostsRequest = params => ({
   payload: params,
 });
 
+export const fetchMorePostsRequest = params => ({
+  type: FETCH_MORE_POSTS_REQUEST,
+  payload: params,
+});
+
 export const fetchPostsSuccess = data => ({
   type: FETCH_POSTS_SUCCESS,
+  payload: normalize(data, postListSchema),
+});
+
+export const fetchMorePostsSuccess = data => ({
+  type: FETCH_MORE_POSTS_SUCCESS,
   payload: normalize(data, postListSchema),
 });
 
@@ -200,6 +209,11 @@ export function* fetchPostsSaga(action) {
   }
 }
 
+export function* fetchMorePostsSaga(action) {
+  const posts = yield call(fetchPosts, action.payload);
+  yield put(fetchMorePostsSuccess(posts.data));
+}
+
 //Selectors
 export const getPost = state => state;
 
@@ -207,19 +221,22 @@ const getIds = state => state.ids;
 const getIsListFetching = state => state.isFetching;
 const getListErrorMessage = state => state.errorMessage;
 const getListIsMorePostsAvailable = state => state.isMorePostsAvailable;
+const getIsMoreListFetching = state => state.isMorePostsFetching;
 
 export const getPosts = state => {
   const ids = getIds(state.posts.all);
   const posts = ids.map(id => getPost(state.posts.byId[id], id));
 
-  return sortPostsByDate(posts);
+  // return sortPostsByDate(posts);
+  return posts;
 };
 
 export const getSearchedPosts = state => {
   const ids = getIds(state.posts.searched);
   const posts = ids.map(id => getPost(state.posts.byId[id], id));
 
-  return sortPostsByDate(posts);
+  // return sortPostsByDate(posts);
+  return posts;
 };
 
 export const getIsSearchedFetching = state =>
@@ -230,3 +247,5 @@ export const getIsFetching = state => getIsListFetching(state.posts.all);
 export const getErrorMessage = state => getListErrorMessage(state.posts.all);
 export const getIsMorePostsAvailable = state =>
   getListIsMorePostsAvailable(state.posts.all);
+export const getIsMorePostsFetching = state =>
+  getIsMoreListFetching(state.posts.all);

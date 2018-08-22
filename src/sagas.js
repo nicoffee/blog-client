@@ -1,5 +1,10 @@
 import {takeEvery} from 'redux-saga/effects';
-import {FETCH_POSTS_REQUEST, fetchPostsSaga} from './modules/posts';
+import {
+  FETCH_POSTS_REQUEST,
+  FETCH_MORE_POSTS_REQUEST,
+  fetchPostsSaga,
+  fetchMorePostsSaga,
+} from './modules/posts';
 import {
   CREATE_POST_REQUEST,
   FETCH_POST_REQUEST,
@@ -33,6 +38,7 @@ import {
 
 function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPostsSaga);
+  yield takeEvery(FETCH_MORE_POSTS_REQUEST, fetchMorePostsSaga);
 
   yield takeEvery(CREATE_POST_REQUEST, createPostSaga);
   yield takeEvery(FETCH_POST_REQUEST, fetchPostSaga);

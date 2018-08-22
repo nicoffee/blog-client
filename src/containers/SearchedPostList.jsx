@@ -3,7 +3,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {
-  fetchPostsRequest,
   getSearchedPosts,
   getIsSearchedFetching,
   getErrorMessage,
@@ -24,7 +23,6 @@ export type post = {
 };
 
 type Props = {
-  fetchPostsRequest: Function,
   posts: Array<post>,
   isFetching: boolean,
   errorMessage: string,
@@ -32,20 +30,18 @@ type Props = {
 
 class PostListContainer extends React.PureComponent<Props> {
   render() {
-    const {posts, isFetching, errorMessage, fetchPostsRequest} = this.props;
+    const {posts, isFetching, errorMessage} = this.props;
 
     if (isFetching) {
       return <Loader />;
     }
 
     if (errorMessage) {
-      return <Error errorMessage={errorMessage} request={fetchPostsRequest} />;
+      return <Error errorMessage={errorMessage} />;
     }
 
     if (!posts.length) {
-      return (
-        <Error errorMessage="No posts found yet" request={fetchPostsRequest} />
-      );
+      return <Error errorMessage="No posts found" />;
     }
 
     return (
@@ -62,6 +58,4 @@ const mapStateToProps = state => ({
   errorMessage: getErrorMessage(state),
 });
 
-export default connect(mapStateToProps, {
-  fetchPostsRequest,
-})(PostListContainer);
+export default connect(mapStateToProps)(PostListContainer);

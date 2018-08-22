@@ -4,8 +4,10 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {
   fetchPostsRequest,
+  fetchMorePostsRequest,
   getPosts,
   getIsFetching,
+  getIsMorePostsFetching,
   getErrorMessage,
   getIsMorePostsAvailable,
 } from '../modules/posts';
@@ -26,17 +28,19 @@ export type post = {
 
 type Props = {
   fetchPostsRequest: Function,
+  fetchMorePostsRequest: Function,
   posts: Array<post>,
   isFetching: boolean,
+  isMoreFetching: boolean,
   isMorePostsAvailable: boolean,
   errorMessage: string,
 };
 
 class PostListContainer extends React.PureComponent<Props> {
   componentDidMount() {
-    if (!this.props.posts.length) {
-      this.props.fetchPostsRequest({limit: 10, offset: 0});
-    }
+    // if (!this.props.posts.length) {
+    this.props.fetchPostsRequest({limit: 10, offset: 0});
+    // }
     // window.addEventListener('scroll', this.handleScroll);
   }
 
@@ -59,7 +63,7 @@ class PostListContainer extends React.PureComponent<Props> {
   };
 
   fetchMore = () => {
-    this.props.fetchPostsRequest({
+    this.props.fetchMorePostsRequest({
       limit: 10,
       offset: this.props.posts.length,
     });
@@ -69,6 +73,7 @@ class PostListContainer extends React.PureComponent<Props> {
     const {
       posts,
       isFetching,
+      isMoreFetching,
       errorMessage,
       fetchPostsRequest,
       isMorePostsAvailable,
@@ -95,6 +100,7 @@ class PostListContainer extends React.PureComponent<Props> {
       <PostList
         fetchMore={this.fetchMore}
         isFetching={isFetching}
+        isMoreFetching={isMoreFetching}
         isMorePostsAvailable={isMorePostsAvailable}
         posts={posts}
       />
@@ -106,6 +112,7 @@ const mapStateToProps = state => ({
   posts: getPosts(state),
   errorMessage: getErrorMessage(state),
   isFetching: getIsFetching(state),
+  isMoreFetching: getIsMorePostsFetching(state),
   isMorePostsAvailable: getIsMorePostsAvailable(state),
 });
 
@@ -113,5 +120,6 @@ export default connect(
   mapStateToProps,
   {
     fetchPostsRequest,
+    fetchMorePostsRequest,
   }
 )(PostListContainer);

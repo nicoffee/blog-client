@@ -13,7 +13,7 @@ const apiUrl =
 // Actions
 export const CREATE_POST_REQUEST = 'blog/post/create/REQUEST';
 export const CREATE_POST_SUCCESS = 'blog/post/create/SUCCESS';
-const CREATE_POST_FAILURE = 'blog/post/create/FAILURE';
+export const CREATE_POST_FAILURE = 'blog/post/create/FAILURE';
 
 export const FETCH_POST_REQUEST = 'blog/post/read/REQUEST';
 const FETCH_POST_SUCCESS = 'blog/post/read/SUCCESS';

@@ -22,6 +22,7 @@ type Props = {
   posts: Array<post>,
   isMorePostsAvailable?: boolean,
   isFetching?: boolean,
+  isMoreFetching?: boolean,
   fetchMore?: Function,
 };
 
@@ -31,7 +32,7 @@ const PostsList = (props: Props) => (
       <PostPreviw key={post._id} {...post} />
     ))}
     <LoadMoreWrapper>
-      {props.isFetching ? (
+      {props.isMoreFetching ? (
         <Loader />
       ) : (
         props.isMorePostsAvailable && (
