@@ -66,6 +66,7 @@ type Props = {
   onSignInClick: Function,
   openModal: Function,
   switchTheme: Function,
+  fetchPostsRequest: Function,
   user: string,
   theme: string,
 };
@@ -95,7 +96,7 @@ const Header = (props: Props) => (
         <SearchBlock>
           <Search
             onKeyPress={e => {
-              if (e.key === 'Enter') {
+              if (e.key === 'Enter' && e.target.value) {
                 props.fetchPostsRequest({search: e.target.value});
               }
             }}
@@ -106,7 +107,7 @@ const Header = (props: Props) => (
           {props.user ? (
             <UserBlock />
           ) : (
-            <Button fontSize="inherit" onClick={() => props.openModal()}>
+            <Button fontSize="inherit" onClick={() => props.openModal('auth')}>
               Sign in
             </Button>
           )}

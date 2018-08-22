@@ -3,7 +3,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import PostPreviw from './PostPreview';
-import Loader from './Loader';
+import Loader from '../ui/Loader';
 import Button from '../ui/Button';
 import type {post} from '../containers/PostList';
 
@@ -20,13 +20,19 @@ const LoadMoreWrapper = styled.div`
 
 type Props = {
   posts: Array<post>,
+  isMorePostsAvailable?: boolean,
+  isFetching?: boolean,
+  isMoreFetching?: boolean,
+  fetchMore?: Function,
 };
 
 const PostsList = (props: Props) => (
   <StyledDiv>
-    {props.posts.map(post => <PostPreviw key={post._id} {...post} />)}
+    {props.posts.map(post => (
+      <PostPreviw key={post._id} {...post} />
+    ))}
     <LoadMoreWrapper>
-      {props.isFetching ? (
+      {props.isMoreFetching ? (
         <Loader />
       ) : (
         props.isMorePostsAvailable && (

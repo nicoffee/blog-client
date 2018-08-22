@@ -1,8 +1,10 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import styled, {keyframes} from 'styled-components';
 import ModalPortal from './ModalPortal';
+import AuthForm from '../containers/AuthForm';
+import ConfirmDialog from '../containers/ConfirmDialog';
 
 const fadeIn = keyframes`
   from {
@@ -38,10 +40,13 @@ const StyledModal = styled.div`
 
 type Props = {
   closeModal: Function,
+  confirmAction: Function,
+  children: React.Node,
+  type?: ?string,
 };
 
-class Modal extends React.Component<Props> {
-  modal: {value: null | HTMLDivElement} = React.createRef();
+class Modal extends React.PureComponent<Props> {
+  modal = React.createRef();
 
   handleClick(e: SyntheticInputEvent<>) {
     if (e.target === this.modal.current) {
@@ -49,11 +54,22 @@ class Modal extends React.Component<Props> {
     }
   }
 
+  renderContent = (type: ?string) => {
+    switch (type) {
+      case 'auth':
+        return <AuthForm />;
+      case 'confirm':
+        return <ConfirmDialog onConfirm={this.props.confirmAction} />;
+      default:
+        return this.props.children;
+    }
+  };
+
   render() {
     return (
       <ModalPortal>
         <Overlay innerRef={this.modal} onClick={e => this.handleClick(e)}>
-          <StyledModal>{this.props.children}</StyledModal>
+          <StyledModal>{this.renderContent(this.props.type)}</StyledModal>
         </Overlay>
       </ModalPortal>
     );

@@ -29,13 +29,13 @@ const Button = styled.button`
     props.danger &&
     css`
       background: ${props.theme.buttonDangerBgColor};
-      color: ${props.theme.buttonDangerColor};
       border-color: ${props.theme.buttonDangerBgColor};
+      color: ${props.theme.buttonDangerColor};
 
       &:hover {
         background: ${props.theme.buttonDangerHoverBgColor};
-        color: ${props.theme.buttonDangerColor};
         border-color: ${props.theme.buttonDangerHoverBgColor};
+        color: ${props.theme.buttonDangerColor};
       }
     `};
 

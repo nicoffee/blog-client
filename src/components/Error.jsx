@@ -11,14 +11,14 @@ const StyledError = styled.div`
 `;
 
 type Props = {
-  request: Function,
+  request?: Function,
   errorMessage: string,
 };
 
 const Error = (props: Props) => (
   <StyledError>
     <h2>{props.errorMessage}</h2>
-    <Button onClick={props.request}>Retry</Button>
+    {props.request && <Button onClick={props.request}>Retry</Button>}
   </StyledError>
 );
 

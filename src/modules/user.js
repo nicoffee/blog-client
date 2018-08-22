@@ -1,14 +1,6 @@
-import axios from 'axios';
+import axios from '../utils/axiosConfig';
 import {call, put} from 'redux-saga/effects';
-import config from '../../config.json';
 import {closeModal} from './app';
-
-axios.defaults.withCredentials = true;
-
-const apiUrl =
-  process.env.NODE_ENV === 'development'
-    ? config.api_dev
-    : config.real_api_prod;
 
 // Actions
 export const CREATE_USER_REQUEST = 'blog/user/create/REQUEST';
@@ -114,23 +106,23 @@ export const createUserError = error => ({
 
 // Side effects
 export function fetchLogin(data) {
-  return axios.put(`${apiUrl}/users`, data);
+  return axios.put(`/users`, data);
 }
 
 export function createUser(data) {
-  return axios.post(`${apiUrl}/users`, data);
+  return axios.post(`/users`, data);
 }
 
 export function fetchLogout() {
-  return axios.get(`${apiUrl}/logout`);
+  return axios.get(`/logout`);
 }
 
 export function fetchSession() {
-  return axios.get(`${apiUrl}/session`);
+  return axios.get(`/session`);
 }
 
 export function updateUser(userId, data) {
-  return axios.patch(`${apiUrl}/users/${userId}`, data);
+  return axios.patch(`/users/${userId}`, data);
 }
 
 // Sagas
@@ -141,7 +133,11 @@ export function* fetchLoginSaga(action) {
     yield put(fetchLoginSuccess(login.data.email));
     yield put(closeModal());
   } catch (error) {
-    yield put(fetchLoginError(error.response.data.message));
+    yield put(
+      fetchLoginError(
+        error.response ? error.response.data.message : error.message
+      )
+    );
   }
 }
 
@@ -165,10 +161,14 @@ export function* createUserSaga(action) {
     yield put(createUserSuccess(user.data));
     yield put(closeModal());
   } catch (error) {
-    if (error.response.data.errors) {
-      yield put(createUserValidationError(error.response.data.errors));
+    if (error.response) {
+      if (error.response.data.errors) {
+        yield put(createUserValidationError(error.response.data.errors));
+      } else {
+        yield put(createUserError(error.response.data));
+      }
     } else {
-      yield put(createUserError(error.response.data));
+      yield put(createUserError(error.message));
     }
   }
 }

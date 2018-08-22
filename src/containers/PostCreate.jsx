@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {createPostRequest} from '../modules/post';
 import {getUserName, getUserId} from '../modules/user';
 import PostForm from '../components/PostForm';
-import Loader from '../components/Loader';
+import Loader from '../ui/Loader';
 
 type Props = {
   createPostRequest: Function,
@@ -16,7 +16,7 @@ type Props = {
   },
 };
 
-class PostContainer extends React.Component<Props> {
+class PostContainer extends React.PureComponent<Props> {
   submitForm(data) {
     this.props.createPostRequest(data);
   }
