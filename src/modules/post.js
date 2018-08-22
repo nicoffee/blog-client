@@ -1,14 +1,6 @@
-import axios from 'axios';
+import axios from '../utils/axiosConfig';
 import {call, put} from 'redux-saga/effects';
 import history from '../utils/history';
-import config from '../../config.json';
-
-axios.defaults.withCredentials = true;
-
-const apiUrl =
-  process.env.NODE_ENV === 'development'
-    ? config.api_dev
-    : config.real_api_prod;
 
 // Actions
 export const CREATE_POST_REQUEST = 'blog/post/create/REQUEST';
@@ -175,27 +167,27 @@ export const toggleLikeSuccess = data => ({
 // Side effects
 
 export function createPost(data) {
-  return axios.post(`${apiUrl}/posts`, data);
+  return axios.post(`/posts`, data);
 }
 
 export function fetchPost(postId) {
-  return axios.get(`${apiUrl}/posts/${postId}`);
+  return axios.get(`/posts/${postId}`);
 }
 
 export function updatePost(postId, data) {
-  return axios.patch(`${apiUrl}/posts/${postId}`, data);
+  return axios.patch(`/posts/${postId}`, data);
 }
 
 export function deletePost(postId) {
-  return axios.delete(`${apiUrl}/posts/${postId}`);
+  return axios.delete(`/posts/${postId}`);
 }
 
 export function likePost(postId, like) {
-  return axios.put(`${apiUrl}/posts/${postId}/like`, {like});
+  return axios.put(`/posts/${postId}/like`, {like});
 }
 
 export function fetchPostComments(postId) {
-  return axios.get(`${apiUrl}/comments/?postId=${postId}`);
+  return axios.get(`/comments/?postId=${postId}`);
 }
 
 // Sagas

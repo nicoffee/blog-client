@@ -1,14 +1,6 @@
-import axios from 'axios';
+import axios from '../utils/axiosConfig';
 import {call, put} from 'redux-saga/effects';
-import config from '../../config.json';
 import {closeModal} from './app';
-
-axios.defaults.withCredentials = true;
-
-const apiUrl =
-  process.env.NODE_ENV === 'development'
-    ? config.api_dev
-    : config.real_api_prod;
 
 // Actions
 export const CREATE_USER_REQUEST = 'blog/user/create/REQUEST';
@@ -114,23 +106,23 @@ export const createUserError = error => ({
 
 // Side effects
 export function fetchLogin(data) {
-  return axios.put(`${apiUrl}/users`, data);
+  return axios.put(`/users`, data);
 }
 
 export function createUser(data) {
-  return axios.post(`${apiUrl}/users`, data);
+  return axios.post(`/users`, data);
 }
 
 export function fetchLogout() {
-  return axios.get(`${apiUrl}/logout`);
+  return axios.get(`/logout`);
 }
 
 export function fetchSession() {
-  return axios.get(`${apiUrl}/session`);
+  return axios.get(`/session`);
 }
 
 export function updateUser(userId, data) {
-  return axios.patch(`${apiUrl}/users/${userId}`, data);
+  return axios.patch(`/users/${userId}`, data);
 }
 
 // Sagas
