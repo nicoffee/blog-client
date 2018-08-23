@@ -4,7 +4,7 @@ import * as React from 'react';
 import Formsy from 'formsy-react';
 import styled from 'styled-components';
 import FormGroup from './FormGroup';
-import Button from './Button';
+import Button from '../ui/Button';
 
 const FormInner = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ type State = {
   canSubmit: boolean,
 };
 
-class PostForm extends React.Component<Props, State> {
+class PostForm extends React.PureComponent<Props, State> {
   state = {
     canSubmit: false,
   };
@@ -56,7 +56,7 @@ class PostForm extends React.Component<Props, State> {
             required
             rows={10}
           />
-          <Button disabled={!canSubmit} primary type="submit">
+          <Button disabled={!canSubmit} type="submit">
             Save
           </Button>
         </Formsy>

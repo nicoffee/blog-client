@@ -1,32 +1,17 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import backgrounds from '@storybook/addon-backgrounds';
-import {action} from '@storybook/addon-actions';
-import {linkTo} from '@storybook/addon-links';
-import {ThemeProvider} from 'styled-components';
-import {DefaultTheme, DarkTheme} from '../src/components/Theme';
-
-import {Button, Welcome} from '@storybook/react/demo';
-import Loader from '../src/components/Loader';
-
-storiesOf('Welcome', module).add('to Storybook', () => (
-  <Welcome showApp={linkTo('Button')} />
-));
+import Button from '../src/ui/Button';
+import Switcher from '../src/ui/Switcher';
+import Loader from '../src/ui/Loader';
+import TextArea from '../src/ui/TextArea';
 
 storiesOf('Button', module)
-  .add('with text', () => (
-    <Button onClick={action('clicked')}>Hello Button</Button>
-  ))
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
-  ));
+  .add('Default', () => <Button>Hello Button</Button>)
+  .add('Danger', () => <Button danger>Delete</Button>)
+  .add('Disabled', () => <Button disabled>Disabled Button</Button>);
 
-storiesOf('Loader', module).add('lalala', () => (
-  <ThemeProvider theme={DefaultTheme}>
-    <Loader />
-  </ThemeProvider>
-));
+storiesOf('UI Components', module)
+  .add('Loader', () => <Loader />)
+  .add('Switcher', () => <Switcher />);
+
+storiesOf('Form Elements', module).add('TextArea', () => <TextArea />);

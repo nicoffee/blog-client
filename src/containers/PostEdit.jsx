@@ -5,14 +5,14 @@ import {connect} from 'react-redux';
 import type {Match} from 'react-router-dom';
 import {fetchPostRequest, updatePostRequest} from '../modules/post';
 import PostForm from '../components/PostForm';
-import Loader from '../components/Loader';
+import Loader from '../ui/Loader';
 
 type Props = {
-  fetchPostInfoRequest: Function,
-  editPostInfoRequest: Function,
+  fetchPostRequest: Function,
+  updatePostRequest: Function,
   isFetching: boolean,
   info: {
-    id: string,
+    _id: string,
     title: string,
     body: string,
     picture: string,
@@ -20,7 +20,7 @@ type Props = {
   match: Match,
 };
 
-class PostEditContainer extends React.Component<Props> {
+class PostEditContainer extends React.PureComponent<Props> {
   componentDidMount() {
     this.props.fetchPostRequest(this.props.match.params.postId);
   }
@@ -44,7 +44,7 @@ class PostEditContainer extends React.Component<Props> {
       <PostForm
         body={info.body}
         handleSubmit={this.submitForm.bind(this)}
-        id={info.id}
+        id={info._id}
         picture={info.picture}
         title={info.title}
       />
@@ -57,7 +57,10 @@ const mapStateToProps = state => ({
   info: state.post.data,
 });
 
-export default connect(mapStateToProps, {
-  fetchPostRequest,
-  updatePostRequest,
-})(PostEditContainer);
+export default connect(
+  mapStateToProps,
+  {
+    fetchPostRequest,
+    updatePostRequest,
+  }
+)(PostEditContainer);

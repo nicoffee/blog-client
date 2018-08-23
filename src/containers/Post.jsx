@@ -11,10 +11,11 @@ import {
   toggleLikeRequest,
   getErrorMessage,
 } from '../modules/post';
+import {getIsModalOpen, getModalType} from '../modules/app';
 import {getIsLiked, getisAuthor, getLikesCount} from '../modules/post';
 import {getUserName} from '../modules/user';
 import Post from '../components/Post';
-import Loader from '../components/Loader';
+import Loader from '../ui/Loader';
 import Error from '../components/Error';
 
 export type Props = {
@@ -32,13 +33,13 @@ export type Props = {
     title: string,
     body: string,
     picture: string,
-    likes: Array,
   },
+  errorMessage: string,
   comments: Array<{id: string, body: string, name: string}>,
   match: Match,
 };
 
-class PostContainer extends React.Component<Props> {
+class PostContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const {postId} = this.props.match.params;
 
@@ -66,15 +67,21 @@ const mapStateToProps = state => ({
   info: state.post.data,
   isAuthor: getisAuthor(state),
   isLiked: getIsLiked(state),
+  isModalOpen: getIsModalOpen(state),
   likesCounts: getLikesCount(state),
   isUserLogged: !!getUserName(state),
   errorMessage: getErrorMessage(state),
+  modalType: getModalType(state),
 });
 
-export default connect(mapStateToProps, {
-  fetchPostRequest,
-  fetchPostCommentsRequest,
-  deletePostRequest,
-  toggleLikeRequest,
-  openModal,
-})(PostContainer);
+export default connect(
+  mapStateToProps,
+  {
+    fetchPostRequest,
+    fetchPostCommentsRequest,
+    deletePostRequest,
+    toggleLikeRequest,
+    openModal,
+    // openConfirmModal,
+  }
+)(PostContainer);

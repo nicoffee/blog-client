@@ -20,7 +20,7 @@ const COLOR_WHITE = '#fff';
 const COLOR_BLACK = '#000';
 
 const COLOR_RED_800 = '#c62828';
-const COLOR_RED_600 = '#e53935';
+export const COLOR_RED_600 = '#e53935';
 const COLOR_RED_400 = '#ef5350';
 
 const COLOR_BLUE_600 = '#039be5';
@@ -33,6 +33,10 @@ const COLOR_GRAY_900 = '#212121';
 const COLOR_GRAY_800 = '#424242';
 const COLOR_GRAY_600 = '#757575';
 const COLOR_GRAY_300 = '#e0e0e0';
+
+// const COLOR_GREEN_800 = '#00695C';
+const COLOR_GREEN_600 = '#00897B';
+// const COLOR_GREEN_300 = '#4DB6AC';
 
 const commonStyles = {
   xSmallFontSize: XSMALL_FONT_SIZE,
@@ -66,6 +70,11 @@ const commonStyles = {
 
   boxShadow: '0 0 1px 1px rgba(0, 0, 0, 0.4)',
   secondaryBoxShadow: 'rgba(0, 0, 0, 0.22)',
+
+  colors: {
+    red: COLOR_RED_600,
+    green: COLOR_GREEN_600,
+  },
 };
 
 export const LightTheme = {

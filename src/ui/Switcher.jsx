@@ -3,6 +3,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+type Props = {
+  defaultChecked: boolean,
+  onChange: Function,
+};
+
 const StyledLabel = styled.label`
   position: relative;
   display: inline-block;
@@ -47,7 +52,7 @@ const Slider = styled.span`
   }
 `;
 
-const Switcher = props => (
+const Switcher = (props: Props) => (
   <StyledLabel>
     <input
       defaultChecked={props.defaultChecked}

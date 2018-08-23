@@ -7,21 +7,21 @@ import SignUpForm from './SignUpForm';
 
 type Props = {
   fetchLoginRequest: Function,
+  createUserRequest: Function,
   signUpError?: string,
   signInError?: string,
 };
 
 type State = {
-  email: string,
-  password: string,
+  activeForm: string,
 };
 
-class AuthForm extends React.Component<Props, State> {
+class AuthForm extends React.PureComponent<Props, State> {
   state = {
     activeForm: 'signin',
   };
 
-  switchActiveForm = activeForm => {
+  switchActiveForm = (activeForm: string) => {
     this.setState({activeForm});
   };
 

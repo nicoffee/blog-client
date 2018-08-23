@@ -28,7 +28,7 @@ const ErrorWrapper = styled.div`
   margin-bottom: 30px;
 `;
 
-class SignInForm extends React.Component<Props, State> {
+class SignInForm extends React.PureComponent<Props, State> {
   state = {
     canSubmit: false,
   };

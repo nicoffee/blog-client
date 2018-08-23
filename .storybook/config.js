@@ -1,16 +1,19 @@
 import {configure, addDecorator} from '@storybook/react';
+import {LightTheme, DarkTheme} from '../src/ui/Theme';
+import {withThemesProvider} from 'storybook-addon-styled-component-theme';
 import backgrounds from '@storybook/addon-backgrounds';
+
+addDecorator(withThemesProvider([LightTheme, DarkTheme]));
 
 addDecorator(
   backgrounds([
-    {name: 'twitter', value: '#00aced', default: true},
-    {name: 'facebook', value: '#3b5998'},
+    {name: 'light', value: '#fff', default: true},
+    {name: 'dark', value: '#212121'},
   ])
 );
 
-function loadStories() {
+const loadStories = () => {
   require('../stories/index.stories.js');
-  // You can require as many stories as you need.
-}
+};
 
 configure(loadStories, module);
