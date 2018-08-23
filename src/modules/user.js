@@ -4,20 +4,21 @@ import {closeModal} from './app';
 
 // Actions
 export const CREATE_USER_REQUEST = 'blog/user/create/REQUEST';
-const CREATE_USER_SUCCESS = 'blog/user/create/SUCCESS';
-const CREATE_USER_VALIDATION_FAILURE = 'blog/user/create/validation/FAILURE';
-const CREATE_USER_FAILURE = 'blog/user/create/FAILURE';
+export const CREATE_USER_SUCCESS = 'blog/user/create/SUCCESS';
+export const CREATE_USER_VALIDATION_FAILURE =
+  'blog/user/create/validation/FAILURE';
+export const CREATE_USER_FAILURE = 'blog/user/create/FAILURE';
 
 export const FETCH_LOGIN_REQUEST = 'blog/user/login/REQUEST';
-const FETCH_LOGIN_SUCCESS = 'blog/user/login/SUCCESS';
-const FETCH_LOGIN_FAILURE = 'blog/user/login/FAILURE';
+export const FETCH_LOGIN_SUCCESS = 'blog/user/login/SUCCESS';
+export const FETCH_LOGIN_FAILURE = 'blog/user/login/FAILURE';
 
 export const FETCH_LOGOUT_REQUEST = 'blog/user/logout/REQUEST';
-const FETCH_LOGOUT_SUCCESS = 'blog/user/logout/SUCCESS';
+export const FETCH_LOGOUT_SUCCESS = 'blog/user/logout/SUCCESS';
 
 export const FETCH_SESSION_REQUEST = 'blog/user/session/REQUEST';
-const FETCH_SESSION_SUCCESS = 'blog/user/session/SUCCESS';
-const FETCH_SESSION_FAILURE = 'blog/user/session/FAILURE';
+export const FETCH_SESSION_SUCCESS = 'blog/user/session/SUCCESS';
+export const FETCH_SESSION_FAILURE = 'blog/user/session/FAILURE';
 
 // Reducer
 const initialState = {isFetching: false, errors: []};
@@ -29,7 +30,7 @@ export default function reducer(state = initialState, action) {
       return {...state, isFetching: true, signInError: null, signUpError: null};
     case FETCH_LOGIN_SUCCESS:
     case CREATE_USER_SUCCESS:
-      return {...state, isFetching: false, email: action.payload};
+      return {...state, isFetching: false, email: action.payload.email};
     case FETCH_LOGIN_FAILURE:
       return {...state, isFetching: false, signInError: action.payload};
     case CREATE_USER_VALIDATION_FAILURE:
@@ -130,7 +131,7 @@ export function* fetchLoginSaga(action) {
   try {
     const login = yield call(fetchLogin, action.payload);
     localStorage.setItem('session_id', login.data.session_id);
-    yield put(fetchLoginSuccess(login.data.email));
+    yield put(fetchLoginSuccess(login.data));
     yield put(closeModal());
   } catch (error) {
     yield put(

@@ -1,6 +1,7 @@
 import axios from '../utils/axiosConfig';
 import {call, put} from 'redux-saga/effects';
 import history from '../utils/history';
+import {FETCH_LOGOUT_SUCCESS, FETCH_LOGIN_SUCCESS} from '../modules/user';
 
 // Actions
 export const CREATE_POST_REQUEST = 'blog/post/create/REQUEST';
@@ -69,12 +70,28 @@ export default function reducer(state = initialState, action) {
     case UPDATE_POST_FAILURE:
       return {...state, isFetching: false, error: action.payload};
 
-    case FETCH_COMMENTS_REQUEST:
-      return {...state, isFetching: true};
-    case FETCH_COMMENTS_SUCCESS:
-      return {...state, isFetching: false, comments: action.payload};
-    case FETCH_COMMENTS_FAILURE:
-      return {...state, isFetching: false, error: action.payload};
+    case FETCH_LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        data: {...state.data, isAuthor: false, isLiked: false},
+      };
+    case FETCH_LOGIN_SUCCESS:
+      debugger;
+      return {
+        ...state,
+        isFetching: false,
+        data: {
+          ...state.data,
+          isAuthor: action.payload.posts.indexOf(state.data._id) > -1,
+          isLiked: state.data.likes.indexOf(action.payload._id) > -1,
+        },
+      };
+    // return {
+    //   ...state,
+    //   isFetching: false,
+    //   data: {...state.data, isAuthor: },
+    // };
 
     default:
       return state;

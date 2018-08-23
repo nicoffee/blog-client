@@ -58,17 +58,18 @@ class Post extends React.PureComponent<Props> {
   };
 
   render() {
-    const {info, isAuthor, isLiked, isModalOpen} = this.props;
+    const {info, isAuthor, isLiked, isModalOpen, modalType} = this.props;
     const {title, body, picture, _id} = info;
 
     return (
       <React.Fragment>
-        {isModalOpen && (
-          <Modal
-            confirmAction={() => this.props.deletePostRequest(_id)}
-            type={'confirm'}
-          />
-        )}
+        {isModalOpen &&
+          modalType === 'confirm' && (
+            <Modal
+              confirmAction={() => this.props.deletePostRequest(_id)}
+              type="confirm"
+            />
+          )}
         <StyledPost>
           <h2>{title}</h2>
           {picture && <PreviewImage background={picture} />}

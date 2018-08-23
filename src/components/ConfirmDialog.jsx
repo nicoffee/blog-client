@@ -27,11 +27,11 @@ type Props = {
   onConfirm: Function,
 };
 
-const Confirm = (props: Props) => (
+const ConfirmDialog = (props: Props) => (
   <Inner>
     <Header>You sure?</Header>
     <Button onClick={props.onConfirm}>Yes</Button>
   </Inner>
 );
 
-export default Confirm;
+export default ConfirmDialog;

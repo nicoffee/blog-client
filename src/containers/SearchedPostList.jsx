@@ -2,11 +2,7 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {
-  getSearchedPosts,
-  getIsSearchedFetching,
-  getErrorMessage,
-} from '../modules/posts';
+import {getPosts, getIsFetching, getErrorMessage} from '../modules/posts';
 import PostList from '../components/PostList';
 import Error from '../components/Error';
 import Loader from '../ui/Loader';
@@ -53,8 +49,8 @@ class PostListContainer extends React.PureComponent<Props> {
 }
 
 const mapStateToProps = state => ({
-  posts: getSearchedPosts(state),
-  isFetching: getIsSearchedFetching(state),
+  posts: getPosts(state),
+  isFetching: getIsFetching(state),
   errorMessage: getErrorMessage(state),
 });
 

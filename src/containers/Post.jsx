@@ -11,7 +11,7 @@ import {
   toggleLikeRequest,
   getErrorMessage,
 } from '../modules/post';
-import {getIsModalOpen} from '../modules/app';
+import {getIsModalOpen, getModalType} from '../modules/app';
 import {getIsLiked, getisAuthor, getLikesCount} from '../modules/post';
 import {getUserName} from '../modules/user';
 import Post from '../components/Post';
@@ -71,6 +71,7 @@ const mapStateToProps = state => ({
   likesCounts: getLikesCount(state),
   isUserLogged: !!getUserName(state),
   errorMessage: getErrorMessage(state),
+  modalType: getModalType(state),
 });
 
 export default connect(

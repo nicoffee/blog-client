@@ -1,3 +1,9 @@
+import {
+  FETCH_SESSION_REQUEST,
+  FETCH_SESSION_SUCCESS,
+  FETCH_SESSION_FAILURE,
+} from './user';
+
 // Actions
 export const OPEN_MODAL = 'blog/ui/modal/OPEN';
 export const CLOSE_MODAL = 'blog/ui/modal/CLOSE';
@@ -17,15 +23,16 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isModalOpen: true,
-        type: action.payload,
+        modalType: action.payload,
         confirmAction: action.payload.confirmAction,
       };
     case CLOSE_MODAL:
       return {...state, isModalOpen: false};
-    // case FETCH_SESSION_SUCCESS:
-    //   return {...state, isFetching: false};
-    // case FETCH_SESSION_FAILURE:
-    //   return {...state, isFetching: false};
+    case FETCH_SESSION_REQUEST:
+      return {...state, isFetching: true};
+    case FETCH_SESSION_SUCCESS:
+    case FETCH_SESSION_FAILURE:
+      return {...state, isFetching: false};
     default:
       return state;
   }
@@ -56,21 +63,9 @@ export function* switchThemeSaga(action) {
   yield localStorage.setItem('theme', action.payload);
 }
 
-// export function* openConfirmModalSaga(action) {
-// debugger;
-// debugger;
-// const agree = yield call(confirm, action);
-// console.log('agree', agree);
-// if (agree) {
-//   yield action;
-//   // yield put(fetchPostCommentsSuccess(post.data));
-//   return;
-// }
-// yield put(openConfirmModal(post.data));
-// }
-
 //Selectors
 export const getCurrentTheme = state => state.app.theme;
-export const getModalType = state => state.app.type;
+export const getModalType = state => state.app.modalType;
 export const getIsModalOpen = state => state.app.isModalOpen;
 export const getAction = state => state.app.performAction;
+export const getIsFetching = state => state.app.isFetching;

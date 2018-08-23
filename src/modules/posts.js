@@ -10,9 +10,6 @@ export const FETCH_POSTS_FAILURE = 'blog/posts/fetch/FAILURE';
 export const FETCH_MORE_POSTS_REQUEST = 'blog/posts/fetch-more/REQUEST';
 export const FETCH_MORE_POSTS_SUCCESS = 'blog/posts/fetch-more/SUCCESS';
 
-export const SEARCH_POSTS_REQUEST = 'blog/posts/search/REQUEST';
-export const SEARCH_POSTS_SUCCESS = 'blog/posts/search/SUCCESS';
-
 // Reducer
 const initialState = {
   isFetching: false,
@@ -36,7 +33,6 @@ export default function reducer(state = initialState, action) {
         isMorePostsFetching: true,
       };
     case FETCH_POSTS_SUCCESS:
-    case SEARCH_POSTS_SUCCESS:
       return {
         ...state,
         isFetching: false,
@@ -83,10 +79,10 @@ export const fetchMorePostsSuccess = data => ({
   payload: data,
 });
 
-export const searchPostsSuccess = data => ({
-  type: SEARCH_POSTS_SUCCESS,
-  payload: data,
-});
+// export const searchPostsSuccess = data => ({
+//   type: SEARCH_POSTS_SUCCESS,
+//   payload: data,
+// });
 
 // Side effects
 function fetchPosts(params) {
@@ -99,7 +95,7 @@ export function* fetchPostsSaga(action) {
     if (action.payload.search) {
       yield call(history.push, `/search?q=${action.payload.search}`);
       const posts = yield call(fetchPosts, action.payload);
-      yield put(searchPostsSuccess(posts.data));
+      yield put(fetchPostsSuccess(posts.data));
 
       return;
     }

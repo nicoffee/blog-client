@@ -48,15 +48,6 @@ describe('actions', () => {
 
     expect(module.fetchMorePostsSuccess(mockedPosts)).toEqual(expectedAction);
   });
-
-  it('should create an action fetch searched posts success', () => {
-    const expectedAction = {
-      type: module.SEARCH_POSTS_SUCCESS,
-      payload: mockedPosts,
-    };
-
-    expect(module.searchPostsSuccess(mockedPosts)).toEqual(expectedAction);
-  });
 });
 
 describe('reducer', () => {

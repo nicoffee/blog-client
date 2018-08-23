@@ -3,8 +3,8 @@
 import * as React from 'react';
 import styled, {keyframes} from 'styled-components';
 import ModalPortal from './ModalPortal';
+import ConfirmDialog from './ConfirmDialog';
 import AuthForm from '../containers/AuthForm';
-import ConfirmDialog from '../containers/ConfirmDialog';
 
 const fadeIn = keyframes`
   from {
