@@ -5,8 +5,8 @@ import {withRouter} from 'react-router';
 import styled from 'styled-components';
 import Header from '../containers/Header';
 import Theme from '../containers/Theme';
-import Modal from '../containers/Modal';
 import BaseStyles from '../ui/BaseStyles';
+import LoadableModal from './LoadableModal';
 
 const InnerContainer = styled.div`
   display: flex;
@@ -27,7 +27,8 @@ const Layout = (props: Props) => (
   <Theme>
     <BaseStyles>
       <Header />
-      {props.isModalOpen && props.modalType === 'auth' && <Modal type="auth" />}
+      {props.isModalOpen &&
+        props.modalType === 'auth' && <LoadableModal type="auth" />}
       <InnerContainer>{props.children}</InnerContainer>
     </BaseStyles>
   </Theme>

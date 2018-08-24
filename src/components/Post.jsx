@@ -4,11 +4,11 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import type Props from '../containers/Post';
-import Modal from '../containers/Modal';
 import RoundedButton from '../ui/RoundedButton';
 import HeartIcon from '../assets/icons/Heart';
 import PencilIcon from '../assets/icons/Pencil';
 import TrashIcon from '../assets/icons/Trash';
+import LoadableModal from './LoadableModal';
 
 const StyledPost = styled.div`
   position: relative;
@@ -65,7 +65,7 @@ class Post extends React.PureComponent<Props> {
       <React.Fragment>
         {isModalOpen &&
           modalType === 'confirm' && (
-            <Modal
+            <LoadableModal
               confirmAction={() => this.props.deletePostRequest(_id)}
               type="confirm"
             />

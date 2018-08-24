@@ -4,7 +4,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {createPostRequest} from '../modules/post';
 import {getUserName, getUserId} from '../modules/user';
-import PostForm from '../components/PostForm';
+import LoadablePostForm from '../components/LoadablePostForm';
 import Loader from '../ui/Loader';
 
 type Props = {
@@ -32,7 +32,7 @@ class PostContainer extends React.PureComponent<Props> {
       return <p>You need to sign in order to write new post</p>;
     }
 
-    return <PostForm handleSubmit={this.submitForm.bind(this)} />;
+    return <LoadablePostForm handleSubmit={this.submitForm.bind(this)} />;
   }
 }
 
@@ -45,6 +45,9 @@ const mapStateToProps = state => ({
   },
 });
 
-export default connect(mapStateToProps, {
-  createPostRequest,
-})(PostContainer);
+export default connect(
+  mapStateToProps,
+  {
+    createPostRequest,
+  }
+)(PostContainer);
