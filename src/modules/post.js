@@ -77,7 +77,6 @@ export default function reducer(state = initialState, action) {
         data: {...state.data, isAuthor: false, isLiked: false},
       };
     case FETCH_LOGIN_SUCCESS:
-      debugger;
       return {
         ...state,
         isFetching: false,
@@ -87,11 +86,6 @@ export default function reducer(state = initialState, action) {
           isLiked: state.data.likes.indexOf(action.payload._id) > -1,
         },
       };
-    // return {
-    //   ...state,
-    //   isFetching: false,
-    //   data: {...state.data, isAuthor: },
-    // };
 
     default:
       return state;
@@ -244,15 +238,6 @@ export function* deletePostSaga(action) {
   yield call(deletePost, action.id);
   yield put(deletePostSuccess(action.id));
   yield call(history.push, '/');
-}
-
-export function* fetchPostCommentsSaga(action) {
-  try {
-    const post = yield call(fetchPostComments, action.id);
-    yield put(fetchPostCommentsSuccess(post.data));
-  } catch (error) {
-    yield put(fetchPostCommentsError(error));
-  }
 }
 
 export function* likePostSaga(action) {

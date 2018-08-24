@@ -1,9 +1,5 @@
-# dependencies
 /node_modules
-
-# production
 /public
-
 .vscode
 .DS_Store
 stats.json

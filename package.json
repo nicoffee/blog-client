@@ -23,12 +23,6 @@
     "storybook": "start-storybook -p 6006 -c .storybook",
     "build-storybook": "build-storybook"
   },
-  "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/utils/testsConfig.js",
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/utils/test_mocks/index.js"
-    }
-  },
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.3",
