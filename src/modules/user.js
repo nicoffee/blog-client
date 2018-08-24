@@ -1,4 +1,4 @@
-import axios from '../utils/axiosConfig';
+import axios from '../config/axios';
 import {call, put} from 'redux-saga/effects';
 import {closeModal} from './app';
 
