@@ -4,6 +4,7 @@ const path = require('path');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
+  mode: 'development',
   devServer: {
     contentBase: ['./public', path.resolve(__dirname, 'assets')],
     historyApiFallback: true,
