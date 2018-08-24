@@ -22,10 +22,16 @@ Installing dependencies
 yarn install
 ```
 
-Run
+### Starting development
 
 ```
-yarn start
+yarn dev
+```
+
+### Building the app
+
+```
+yarn build
 ```
 
 ## Running the tests
@@ -42,8 +48,9 @@ yarn lint
 
 ## Built With
 
-* [React](https://reactjs.org/) - The web framework used
-* [Redux](https://redux.js.org/) - The state management framework used
-* [Redux-saga](https://redux-saga.js.org/) - Application side effects
-* [Styled-components](https://www.styled-components.com/) - Application styling solution
-* [Yarn](https://yarnpkg.com/) - Dependency Management
+- [React](https://reactjs.org/) - The web framework used
+- [React-router](https://reacttraining.com/react-router/) - Routing
+- [Redux](https://redux.js.org/) - The state management framework used
+- [Redux-saga](https://redux-saga.js.org/) - Application side effects
+- [Styled-components](https://www.styled-components.com/) - Application styling solution
+- [Yarn](https://yarnpkg.com/) - Dependency Management
