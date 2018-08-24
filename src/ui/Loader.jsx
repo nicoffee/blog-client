@@ -10,9 +10,8 @@ const fadeAway = keyframes`
 
 const SkFadingCircle = styled.div`
   position: relative;
-  width: 40px;
-  height: 40px;
-  margin: 100px auto;
+  width: ${props => (props.size === 'small' ? '20px' : '40px')};
+  height: ${props => (props.size === 'small' ? '20px' : '40px')};
 
   > div {
     position: absolute;
@@ -138,8 +137,8 @@ const SkCircle12 = styled.div`
   }
 `;
 
-const Loader = () => (
-  <SkFadingCircle>
+const Loader = ({size}) => (
+  <SkFadingCircle size={size}>
     <SkCircle1 />
     <SkCircle2 />
     <SkCircle3 />

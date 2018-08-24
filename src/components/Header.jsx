@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import UserBlock from '../containers/UserBlock';
 import Switcher from '../ui/Switcher';
 import Button from '../ui/Button';
+import Loader from '../ui/Loader';
 import Search from './Search';
 
 const StyledHeader = styled.div`
@@ -42,11 +43,8 @@ const SearchBlock = styled.div`
   width: 60%;
 `;
 
-const ActionsBlock = styled.div`
-  display: flex;
-  width: 40%;
-  flex-direction: flex-end;
-  justify-content: flex-end;
+const StyledActions = styled.div`
+  justify-content: space-between;
 `;
 
 const Inner = styled.div`
@@ -69,6 +67,7 @@ type Props = {
   fetchPostsRequest: Function,
   user: string,
   theme: string,
+  isFetching: boolean,
 };
 
 const Header = (props: Props) => (
@@ -92,7 +91,7 @@ const Header = (props: Props) => (
           <h1>Blog</h1>
         </Link>
       </StyledLogo>
-      <div>
+      <StyledActions>
         <SearchBlock>
           <Search
             onKeyPress={e => {
@@ -103,16 +102,16 @@ const Header = (props: Props) => (
             type="text"
           />
         </SearchBlock>
-        <ActionsBlock>
-          {props.user ? (
-            <UserBlock />
-          ) : (
-            <Button fontSize="inherit" onClick={() => props.openModal('auth')}>
-              Sign in
-            </Button>
-          )}
-        </ActionsBlock>
-      </div>
+        {props.isFetching ? (
+          <Loader size="small" />
+        ) : props.user ? (
+          <UserBlock />
+        ) : (
+          <Button fontSize="inherit" onClick={() => props.openModal('auth')}>
+            Sign in
+          </Button>
+        )}
+      </StyledActions>
     </Inner>
   </StyledHeader>
 );
