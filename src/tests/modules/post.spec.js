@@ -1,6 +1,6 @@
 import {call, put} from 'redux-saga/effects';
 import {mockedPost} from '../mock';
-import history from '../../utils/history';
+import history from '../../config/history';
 import reducer, * as module from '../../modules/post';
 
 describe('reducer', () => {

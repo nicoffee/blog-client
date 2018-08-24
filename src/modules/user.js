@@ -151,7 +151,7 @@ export function* fetchSessionSaga() {
     const session = yield call(fetchSession);
     yield put(fetchSessionSuccess(session.data.email));
   } catch (error) {
-    yield put(fetchSessionError());
+    yield put(fetchSessionError(error.message));
   }
 }
 

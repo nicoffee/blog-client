@@ -54,7 +54,7 @@ class Post extends React.PureComponent<Props> {
       return;
     }
 
-    this.props.openModal();
+    this.props.openModal('auth');
   };
 
   render() {

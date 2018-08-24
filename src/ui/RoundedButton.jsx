@@ -67,6 +67,10 @@ const Rounded = styled.button`
       stroke: ${props => props.theme.colors[props.color]};
     }
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const RoundedButton = (props: Props) => {
