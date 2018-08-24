@@ -3,7 +3,7 @@ import {mockedPost} from '../mock';
 import history from '../../utils/history';
 import reducer, * as module from '../../modules/post';
 
-describe('post reducer', () => {
+describe('reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual({
       isFetching: false,
@@ -55,7 +55,7 @@ describe('post reducer', () => {
   });
 });
 
-describe('post sagas', () => {
+describe('sagas', () => {
   it('should wait for server to fetch post', () => {
     const data = {
       picture:

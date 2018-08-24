@@ -130,7 +130,6 @@ export function updateUser(userId, data) {
 export function* fetchLoginSaga(action) {
   try {
     const login = yield call(fetchLogin, action.payload);
-    localStorage.setItem('session_id', login.data.session_id);
     yield put(fetchLoginSuccess(login.data));
     yield put(closeModal());
   } catch (error) {

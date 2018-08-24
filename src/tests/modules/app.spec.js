@@ -12,7 +12,7 @@ describe('actions', () => {
   });
 });
 
-describe('post reducer', () => {
+describe('reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual({
       theme: undefined,
@@ -22,7 +22,7 @@ describe('post reducer', () => {
   });
 });
 
-describe('app sagas', () => {
+describe('sagas', () => {
   it('should switch theme', () => {
     const action = {
       payload: 'dark',
