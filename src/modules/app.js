@@ -24,7 +24,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         isModalOpen: true,
         modalType: action.payload,
-        confirmAction: action.payload.confirmAction,
       };
     case CLOSE_MODAL:
       return {...state, isModalOpen: false};

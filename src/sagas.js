@@ -10,13 +10,11 @@ import {
   FETCH_POST_REQUEST,
   UPDATE_POST_REQUEST,
   TOGGLE_LIKE_REQUEST,
-  FETCH_COMMENTS_REQUEST,
   DELETE_POST_REQUEST,
   createPostSaga,
   fetchPostSaga,
   updatePostSaga,
   deletePostSaga,
-  fetchPostCommentsSaga,
   likePostSaga,
 } from './modules/post';
 import {
@@ -29,12 +27,7 @@ import {
   fetchSessionSaga,
   createUserSaga,
 } from './modules/user';
-import {
-  SWITCH_THEME,
-  // OPEN_CONFIRM_MODAL,
-  switchThemeSaga,
-  // openConfirmModalSaga,
-} from './modules/app';
+import {SWITCH_THEME, switchThemeSaga} from './modules/app';
 
 function* mySaga() {
   yield takeEvery(FETCH_POSTS_REQUEST, fetchPostsSaga);
@@ -44,16 +37,12 @@ function* mySaga() {
   yield takeEvery(FETCH_POST_REQUEST, fetchPostSaga);
   yield takeEvery(UPDATE_POST_REQUEST, updatePostSaga);
   yield takeEvery(DELETE_POST_REQUEST, deletePostSaga);
-
-  // yield takeEvery(OPEN_CONFIRM_MODAL, openConfirmModalSaga);
-
   yield takeEvery(TOGGLE_LIKE_REQUEST, likePostSaga);
-  yield takeEvery(FETCH_COMMENTS_REQUEST, fetchPostCommentsSaga);
 
   yield takeEvery(FETCH_LOGIN_REQUEST, fetchLoginSaga);
   yield takeEvery(FETCH_LOGOUT_REQUEST, fetchLogoutSaga);
-  yield takeEvery(CREATE_USER_REQUEST, createUserSaga);
   yield takeEvery(FETCH_SESSION_REQUEST, fetchSessionSaga);
+  yield takeEvery(CREATE_USER_REQUEST, createUserSaga);
 
   yield takeEvery(SWITCH_THEME, switchThemeSaga);
 }

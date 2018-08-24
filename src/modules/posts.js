@@ -1,6 +1,6 @@
-import axios from '../utils/axiosConfig';
+import axios from '../config/axios';
 import {call, put} from 'redux-saga/effects';
-import history from '../utils/history';
+import history from '../config/history';
 
 // Actions
 export const FETCH_POSTS_REQUEST = 'blog/posts/fetch/REQUEST';

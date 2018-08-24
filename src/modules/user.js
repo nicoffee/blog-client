@@ -1,4 +1,4 @@
-import axios from '../utils/axiosConfig';
+import axios from '../config/axios';
 import {call, put} from 'redux-saga/effects';
 import {closeModal} from './app';
 
@@ -130,7 +130,6 @@ export function updateUser(userId, data) {
 export function* fetchLoginSaga(action) {
   try {
     const login = yield call(fetchLogin, action.payload);
-    localStorage.setItem('session_id', login.data.session_id);
     yield put(fetchLoginSuccess(login.data));
     yield put(closeModal());
   } catch (error) {
@@ -152,7 +151,7 @@ export function* fetchSessionSaga() {
     const session = yield call(fetchSession);
     yield put(fetchSessionSuccess(session.data.email));
   } catch (error) {
-    yield put(fetchSessionError());
+    yield put(fetchSessionError(error.message));
   }
 }
 
