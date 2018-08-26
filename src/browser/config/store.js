@@ -4,12 +4,12 @@ import createSagaMiddleware from 'redux-saga';
 import {logger} from 'redux-logger';
 import rootReducer from '../reducers';
 import mySaga from '../sagas';
-import {loadTheme} from '../utils/helpers';
+// import {loadTheme} from '../utils/helpers';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = [];
-const persistedState = {app: {theme: loadTheme(), isFetching: true}};
+const persistedState = window.__INITIAL_STATE__; //{app: {theme: loadTheme(), isFetching: true}};
 
 middlewares.push(sagaMiddleware);
 
