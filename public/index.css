@@ -1,0 +1,44 @@
+html,
+body,
+#app-root {
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  min-height: 100%;
+}
+
+body,
+#app-root {
+  flex-grow: 1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 100;
+  font-style: normal;
+  src: url('./assets/fonts/Raleway-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./assets/fonts/Raleway-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-style: normal;
+  src: url('./assets/fonts/Raleway-Bold.ttf');
+}
