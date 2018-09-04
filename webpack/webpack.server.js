@@ -3,7 +3,7 @@ const path = require('path');
 
 const serverConfig = {
   entry: ['babel-polyfill', './src/server/index.js'],
-  mode: 'development',
+  mode: 'production',
   target: 'node',
   externals: [nodeExternals()],
   output: {

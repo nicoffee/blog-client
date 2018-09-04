@@ -5,7 +5,7 @@ export default (html, styles, preloadedState, bundles) => `
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="shortcut icon" href="./favicon.ico">
-      <link rel="stylesheet" href="./index.css">
+      <link rel="stylesheet" type="text/css" href="./index.css">
       ${styles}
       <title>Blog</title>
     </head>
@@ -15,7 +15,6 @@ export default (html, styles, preloadedState, bundles) => `
       </noscript>
       <div id="app-root">${html}</div>
       <div id="modal-root"></div>
-      <script src="./manifest.js"></script>
       ${bundles
         .map(bundle => {
           return `<script src="./${bundle.file}"></script>`;

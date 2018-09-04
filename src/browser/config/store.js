@@ -14,8 +14,6 @@ delete window.__PRELOADED_STATE__; // Allow the passed state to be garbage-colle
 
 middlewares.push(sagaMiddleware);
 
-console.log('process.env', process.env.NODE_ENV);
-
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
 }
