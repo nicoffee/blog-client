@@ -1,31 +1,27 @@
-const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
+const {ReactLoadablePlugin} = require('react-loadable/webpack');
 const path = require('path');
 
 const serverConfig = {
-  entry: './src/server/index.js',
+  entry: ['babel-polyfill', './src/server/index.js'],
   mode: 'development',
-
   target: 'node',
-  // node: {
-  //   fs: 'empty',
-  //   net: 'empty',
-  //   tls: 'empty',
-  //   dns: 'empty',
-  // },
   externals: [nodeExternals()],
   output: {
-    path: path.resolve('server-build'),
+    path: path.resolve('./'),
     filename: 'index.js',
   },
   module: {
     rules: [{test: /\.js$|\.jsx$/, use: 'babel-loader'}],
   },
-  // plugins: [
-  //   new webpack.DefinePlugin({
-  //     __isBrowser__: 'false',
-  //   }),
-  // ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  plugins: [
+    new ReactLoadablePlugin({
+      filename: './public/react-loadable.json',
+    }),
+  ],
 };
 
 module.exports = serverConfig;

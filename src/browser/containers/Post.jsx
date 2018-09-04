@@ -41,9 +41,8 @@ export type Props = {
 
 class PostContainer extends React.PureComponent<Props> {
   componentDidMount() {
-    const {postId} = this.props.match.params;
-
-    this.props.fetchPostRequest(postId);
+    // const {postId} = this.props.match.params;
+    // this.props.fetchPostRequest(postId);
     // this.props.fetchPostCommentsRequest(postId);
   }
 

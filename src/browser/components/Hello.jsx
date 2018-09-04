@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import * as React from 'react';
+import {Link} from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return <div>Hello World</div>;
-  }
-}
+const Hello = () => (
+  <div>
+    <h1>Hello</h1>
+    <Link to="/bye">To bye</Link>
+  </div>
+);
 
-export default App;
+export default Hello;

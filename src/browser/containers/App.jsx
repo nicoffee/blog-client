@@ -10,7 +10,7 @@ type Props = {
   fetchSessionRequest: Function,
 };
 
-class AppContainer extends React.PureComponent<Props> {
+class AppContainer extends React.Component<Props> {
   componentDidMount() {
     this.props.fetchSessionRequest();
   }

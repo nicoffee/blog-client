@@ -38,9 +38,10 @@ type Props = {
 
 class PostListContainer extends React.PureComponent<Props> {
   componentDidMount() {
-    // if (!this.props.posts.length) {
-    this.props.fetchPostsRequest({limit: 10, offset: 0});
+    // if (window.__ROUTE_DATA__) {
+    //   debugger;
     // }
+    // this.props.fetchPostsRequest({limit: 10, offset: 0});
     // window.addEventListener('scroll', this.handleScroll);
   }
 
