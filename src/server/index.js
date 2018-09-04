@@ -13,8 +13,8 @@ import {ServerStyleSheet} from 'styled-components';
 import rootReducer from '../browser/reducers';
 import App from '../browser/components/App';
 import routes from '../browser/routes';
-import stats from '../../public/react-loadable.json';
 import createHtml from './createHtml';
+import stats from '../../public/react-loadable.json';
 
 const sendHtml = (res, url, store) => {
   const context = {};
