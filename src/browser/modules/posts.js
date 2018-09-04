@@ -1,5 +1,5 @@
 import axios from '../config/axios';
-import history from '../config/history';
+// import history from '../config/history';
 import {call, put} from 'redux-saga/effects';
 
 // Actions
@@ -88,7 +88,7 @@ export function fetchPosts(params) {
 export function* fetchPostsSaga(action) {
   try {
     if (action.payload.search) {
-      yield call(history.push, `/search?q=${action.payload.search}`);
+      // yield call(history.push, `/search?q=${action.payload.search}`);
       const posts = yield call(fetchPosts, action.payload);
       yield put(fetchPostsSuccess(posts.data));
 
