@@ -1,5 +1,4 @@
 const nodeExternals = require('webpack-node-externals');
-const {ReactLoadablePlugin} = require('react-loadable/webpack');
 const path = require('path');
 
 const serverConfig = {
@@ -17,11 +16,6 @@ const serverConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  plugins: [
-    new ReactLoadablePlugin({
-      filename: './public/react-loadable.json',
-    }),
-  ],
 };
 
 module.exports = serverConfig;

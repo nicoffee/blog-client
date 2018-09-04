@@ -1,4 +1,5 @@
 const path = require('path');
+const {ReactLoadablePlugin} = require('react-loadable/webpack');
 
 module.exports = {
   entry: './src/browser/index.js',
@@ -41,4 +42,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  plugins: [
+    new ReactLoadablePlugin({
+      filename: './public/react-loadable.json',
+    }),
+  ],
 };
