@@ -4,13 +4,16 @@ import createSagaMiddleware from 'redux-saga';
 import {logger} from 'redux-logger';
 import rootReducer from '../reducers';
 import mySaga from '../sagas';
-// import {loadTheme} from '../utils/helpers';
+import {loadTheme} from '../utils/helpers';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = [];
-const persistedState = window.__PRELOADED_STATE__; //{app: {theme: loadTheme(), isFetching: true}};
-delete window.__PRELOADED_STATE__; // Allow the passed state to be garbage-collected
+const persistedState = {
+  ...window.__PRELOADED_STATE__,
+  app: {theme: loadTheme()},
+};
+delete window.__PRELOADED_STATE__;
 
 middlewares.push(sagaMiddleware);
 

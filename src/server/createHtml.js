@@ -18,9 +18,6 @@ export default (html, styles, preloadedState, bundles) => `
       ${bundles
         .map(bundle => {
           return `<script src="./${bundle.file}"></script>`;
-          // alternatively if you are using publicPath option in webpack config
-          // you can use the publicPath value from bundle, e.g:
-          // return `<script src="${bundle.publicPath}"></script>`
         })
         .join('\n')}
       <script>
