@@ -1,6 +1,6 @@
 import axios from '../config/axios';
+// import history from '../config/history';
 import {call, put} from 'redux-saga/effects';
-import history from '../config/history';
 
 // Actions
 export const FETCH_POSTS_REQUEST = 'blog/posts/fetch/REQUEST';
@@ -79,21 +79,16 @@ export const fetchMorePostsSuccess = data => ({
   payload: data,
 });
 
-// export const searchPostsSuccess = data => ({
-//   type: SEARCH_POSTS_SUCCESS,
-//   payload: data,
-// });
-
 // Side effects
-function fetchPosts(params) {
-  return axios.get(`/posts`, {params});
+export function fetchPosts(params) {
+  return axios.get(`https://blog-demo-api.herokuapp.com/posts`, {params});
 }
 
 // Sagas
 export function* fetchPostsSaga(action) {
   try {
     if (action.payload.search) {
-      yield call(history.push, `/search?q=${action.payload.search}`);
+      // yield call(history.push, `/search?q=${action.payload.search}`);
       const posts = yield call(fetchPosts, action.payload);
       yield put(fetchPostsSuccess(posts.data));
 

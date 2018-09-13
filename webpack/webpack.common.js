@@ -1,7 +1,8 @@
 const path = require('path');
+const {ReactLoadablePlugin} = require('react-loadable/webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/browser/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../public'),
@@ -15,14 +16,6 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.svg$/,
-        loader: 'url-loader',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -41,4 +34,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  plugins: [
+    new ReactLoadablePlugin({
+      filename: './public/react-loadable.json',
+    }),
+  ],
 };

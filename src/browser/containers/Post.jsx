@@ -10,6 +10,7 @@ import {
   deletePostRequest,
   toggleLikeRequest,
   getErrorMessage,
+  getIsCreated,
 } from '../modules/post';
 import {getIsModalOpen, getModalType} from '../modules/app';
 import {getIsLiked, getisAuthor, getLikesCount} from '../modules/post';
@@ -26,6 +27,7 @@ export type Props = {
   toggleLike: Function,
   isAuthor: boolean,
   isFetching: boolean,
+  isCreated: boolean,
   isLiked: boolean,
   isUserLogged: boolean,
   info: {
@@ -42,9 +44,8 @@ export type Props = {
 class PostContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const {postId} = this.props.match.params;
-
     this.props.fetchPostRequest(postId);
-    // this.props.fetchPostCommentsRequest(postId);
+    this.props.fetchPostCommentsRequest(postId);
   }
 
   render() {
@@ -64,6 +65,7 @@ class PostContainer extends React.PureComponent<Props> {
 
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
+  isCreated: getIsCreated(state),
   info: state.post.data,
   isAuthor: getisAuthor(state),
   isLiked: getIsLiked(state),
@@ -82,6 +84,5 @@ export default connect(
     deletePostRequest,
     toggleLikeRequest,
     openModal,
-    // openConfirmModal,
   }
 )(PostContainer);

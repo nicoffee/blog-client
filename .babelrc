@@ -1,8 +1,15 @@
 {
-  "presets": ["es2015", "react", "stage-0", "flow"],
+  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-flow"],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-decorators-legacy",
-    ["transform-class-properties", { "spec": true }]
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-syntax-dynamic-import",
+    ["transform-class-properties", {"spec": true}],
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true
+      }
+    ],
+    "react-loadable/babel"
   ]
 }

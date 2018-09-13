@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {createPostRequest} from '../modules/post';
+import {Redirect} from 'react-router';
+import {createPostRequest, getIsCreated} from '../modules/post';
 import {getUserName, getUserId} from '../modules/user';
 import LoadablePostForm from '../components/LoadablePostForm';
 import Loader from '../ui/Loader';
@@ -22,7 +23,7 @@ class PostContainer extends React.PureComponent<Props> {
   }
 
   render() {
-    const {isFetching, user} = this.props;
+    const {isFetching, isCreated, user, info} = this.props;
 
     if (isFetching) {
       return <Loader />;
@@ -32,12 +33,17 @@ class PostContainer extends React.PureComponent<Props> {
       return <p>You need to sign in order to write new post</p>;
     }
 
+    if (isCreated) {
+      return <Redirect to={`/post/${info._id}`} />;
+    }
+
     return <LoadablePostForm handleSubmit={this.submitForm.bind(this)} />;
   }
 }
 
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
+  isCreated: getIsCreated(state),
   info: state.post.data,
   user: {
     id: getUserId(state),

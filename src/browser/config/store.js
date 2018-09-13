@@ -9,7 +9,11 @@ import {loadTheme} from '../utils/helpers';
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = [];
-const persistedState = {app: {theme: loadTheme(), isFetching: true}};
+const persistedState = {
+  ...window.__PRELOADED_STATE__,
+  app: {theme: loadTheme()},
+};
+delete window.__PRELOADED_STATE__;
 
 middlewares.push(sagaMiddleware);
 
