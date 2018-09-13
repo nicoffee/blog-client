@@ -4,4 +4,7 @@ coverage
 .DS_Store
 stats.json
 *.index.js
+index.js
 yarn-error.log
+public/*.js
+public/*.json

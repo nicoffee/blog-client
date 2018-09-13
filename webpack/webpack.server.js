@@ -3,13 +3,14 @@ const path = require('path');
 
 const serverConfig = {
   entry: ['babel-polyfill', './src/server/index.js'],
-  mode: 'production',
-  target: 'node',
-  externals: [nodeExternals()],
   output: {
     path: path.resolve('./'),
     filename: 'index.js',
+    publicPath: '/',
   },
+  mode: 'production',
+  target: 'node',
+  externals: [nodeExternals()],
   module: {
     rules: [{test: /\.js$|\.jsx$/, use: 'babel-loader'}],
   },

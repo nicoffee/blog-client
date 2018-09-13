@@ -10,6 +10,7 @@ import {
   deletePostRequest,
   toggleLikeRequest,
   getErrorMessage,
+  getIsCreated,
 } from '../modules/post';
 import {getIsModalOpen, getModalType} from '../modules/app';
 import {getIsLiked, getisAuthor, getLikesCount} from '../modules/post';
@@ -26,6 +27,7 @@ export type Props = {
   toggleLike: Function,
   isAuthor: boolean,
   isFetching: boolean,
+  isCreated: boolean,
   isLiked: boolean,
   isUserLogged: boolean,
   info: {
@@ -63,6 +65,7 @@ class PostContainer extends React.PureComponent<Props> {
 
 const mapStateToProps = state => ({
   isFetching: state.post.isFetching,
+  isCreated: getIsCreated(state),
   info: state.post.data,
   isAuthor: getisAuthor(state),
   isLiked: getIsLiked(state),

@@ -10,8 +10,12 @@ import {createStore, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import {ServerStyleSheet} from 'styled-components';
 
-import rootReducer from '../browser/reducers';
+// import webpack from 'webpack';
+// import webpackDevMiddleware from 'webpack-dev-middleware';
+// import webpackConfig from '../../webpack/webpack.server';
+
 import App from '../browser/components/App';
+import rootReducer from '../browser/reducers';
 import routes from '../browser/routes';
 import createHtml from './createHtml';
 import stats from '../../public/react-loadable.json';
@@ -40,10 +44,20 @@ const sendHtml = (res, url, store) => {
   return res.send(createHtml(markup, styleTags, preloadedState, bundles));
 };
 
-const app = express();
-const port = process.env.PORT || 3000;
+// const compiler = webpack(webpackConfig);
 
-// app.use(cors());
+const app = express();
+
+// // app.use(cors());
+
+// app.use(
+//   webpackDevMiddleware(compiler, {
+//     publicPath: webpackConfig.output.publicPath,
+//   })
+// );
+
+// app.use(require('webpack-hot-middleware')(compiler));
+
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
@@ -65,6 +79,6 @@ app.get('*', (req, res) => {
   }
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is listening on port: 3000`);
 });

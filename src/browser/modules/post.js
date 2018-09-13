@@ -29,6 +29,7 @@ const TOGGLE_LIKE_SUCCESS = 'blog/post/like/SUCCESS';
 // Reducer
 const initialState = {
   isFetching: false,
+  isCreated: false,
   error: null,
   data: {likes: []},
   comments: [],
@@ -37,11 +38,12 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_POST_REQUEST:
-      return {...state, isFetching: true, error: null};
+      return {...state, isFetching: true, isCreated: false, error: null};
     case CREATE_POST_SUCCESS:
       return {
         ...state,
         isFetching: false,
+        isCreated: true,
         data: {...state.data, ...action.payload},
       };
     case CREATE_POST_FAILURE:
@@ -249,4 +251,5 @@ export function* likePostSaga(action) {
 export const getIsLiked = state => state.post.data.isLiked;
 export const getisAuthor = state => state.post.data.isAuthor;
 export const getLikesCount = state => state.post.data.likes.length;
+export const getIsCreated = state => state.post.isCreated;
 export const getErrorMessage = state => state.post.error;
